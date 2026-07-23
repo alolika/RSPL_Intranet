@@ -1,0 +1,1322 @@
+INFO:     Started server process [17472]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:57953 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57958 - "POST /support/tickets/999999999/attachments HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:57962 - "GET /support/attachments?voucher_no=999999999 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57965 - "GET /support/tickets/999999999/attachments/sample.png HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57968 - "GET /support/tickets/999999999/attachments/doesnotexist.png HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:57971 - "GET /support/tickets/999999999/attachments/../../../windows/win.ini HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:57977 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57978 - "OPTIONS /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57977 - "OPTIONS /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57977 - "OPTIONS /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57978 - "OPTIONS /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57980 - "OPTIONS /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57980 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57981 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57977 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57982 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57978 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57979 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57990 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57989 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57992 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57993 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57991 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57988 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58003 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58000 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58001 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58004 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58002 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57999 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58015 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58017 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58019 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58016 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58018 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58014 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58025 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58029 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58027 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58030 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58028 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58026 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58036 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58037 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58039 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58040 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58038 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58035 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58047 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58046 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58049 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58050 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58048 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58045 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58058 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58060 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58057 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58061 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58056 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58059 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58070 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58073 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58071 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58074 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58072 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58069 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58082 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58081 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58084 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58085 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58083 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58080 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58092 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58093 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58095 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58096 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58094 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58091 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58107 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58120 - "OPTIONS /support/customers?search=yewale HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58120 - "GET /support/customers?search=yewale HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58120 - "OPTIONS /support/customers?search=yewale%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58120 - "GET /support/customers?search=yewale%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58120 - "OPTIONS /support/customers?search=yewale%20p HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58120 - "GET /support/customers?search=yewale%20p HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58120 - "OPTIONS /support/customers?search=yewale%20pu HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "OPTIONS /support/customers?search=yewale%20pur HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "GET /support/customers?search=yewale%20pur HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "OPTIONS /support/customers?search=p HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "GET /support/customers?search=p HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "OPTIONS /support/customers?search=puirandar HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "GET /support/customers?search=puirandar HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "OPTIONS /support/customers?search=pu HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "GET /support/customers?search=pu HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "OPTIONS /support/customers?search=puran HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "GET /support/customers?search=puran HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "OPTIONS /support/customers?search=purandar HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "GET /support/customers?search=purandar HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "OPTIONS /support/customer-info?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58122 - "OPTIONS /support/pending-tickets?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "OPTIONS /support/closed-tickets?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58123 - "GET /support/customer-info?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58122 - "GET /support/closed-tickets?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "GET /support/pending-tickets?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52064 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52065 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52074 - "OPTIONS /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52075 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52075 - "OPTIONS /general/reports/13/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52081 - "OPTIONS /general/reports/13/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52074 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52082 - "GET /general/reports/13/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52083 - "GET /general/reports/13/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52083 - "OPTIONS /general/reports/13/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52082 - "GET /general/reports/13/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52082 - "OPTIONS /general/reports/13/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58130 - "OPTIONS /support/tickets HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58130 - "POST /support/tickets HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 303, in create_ticket
+    voucher_no = master_rows[0]["Voucherno"]
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Voucherno'
+INFO:     192.168.200.49:52083 - "POST /general/reports/13/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58131 - "POST /support/tickets HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 303, in create_ticket
+    voucher_no = master_rows[0]["Voucherno"]
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Voucherno'
+INFO:     192.168.200.18:58135 - "POST /support/tickets HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 303, in create_ticket
+    voucher_no = master_rows[0]["Voucherno"]
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Voucherno'
+INFO:     192.168.200.18:58136 - "POST /support/tickets HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 303, in create_ticket
+    voucher_no = master_rows[0]["Voucherno"]
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Voucherno'
+INFO:     192.168.200.18:58137 - "POST /support/tickets HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 303, in create_ticket
+    voucher_no = master_rows[0]["Voucherno"]
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Voucherno'
+INFO:     192.168.200.49:52092 - "OPTIONS /general/reports/12/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52093 - "OPTIONS /general/reports/12/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52095 - "GET /general/reports/12/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52094 - "GET /general/reports/12/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52094 - "OPTIONS /general/reports/12/run HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52095 - "POST /general/reports/12/run HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52111 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52114 - "OPTIONS /general/reports/9/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52112 - "OPTIONS /general/reports/9/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52113 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52115 - "GET /general/reports/9/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52116 - "GET /general/reports/9/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52116 - "OPTIONS /general/reports/9/run HTTP/1.1" 200 OK
+Report 9 (ad-hoc SQL) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 691, in run_report
+    cursor.execute(sql, *params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server 'sharedmssql5.znetindia.net,1234' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW); [42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not use view or function 'vw_Web_ClientOfflinePayment' because of binding errors. (4413)")
+INFO:     192.168.200.49:52115 - "POST /general/reports/9/run HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:58155 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58158 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52174 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52174 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52175 - "GET /general/reports/9/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52176 - "GET /general/reports/9/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52175 - "POST /general/reports/9/run HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52178 - "OPTIONS /general/reports/39/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52179 - "OPTIONS /general/reports/39/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52181 - "GET /general/reports/39/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52180 - "GET /general/reports/39/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52180 - "OPTIONS /general/reports/39/run HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52181 - "POST /general/reports/39/run HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52182 - "OPTIONS /general/reports/8/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52183 - "OPTIONS /general/reports/8/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52184 - "GET /general/reports/8/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52185 - "GET /general/reports/8/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52185 - "OPTIONS /general/reports/8/run HTTP/1.1" 200 OK
+Report 8 (ad-hoc SQL) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 691, in run_report
+    cursor.execute(sql, *params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server 'sharedmssql5.znetindia.net,1234' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW); [42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not use view or function 'vw_web_clientwalletrequest' because of binding errors. (4413)")
+INFO:     192.168.200.49:52184 - "POST /general/reports/8/run HTTP/1.1" 503 Service Unavailable
+INFO:     192.168.200.49:52222 - "POST /general/reports/8/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58244 - "OPTIONS /support/tickets HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58244 - "POST /support/tickets HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 303, in create_ticket
+    voucher_no = master_rows[0]["VoucherNo"]
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Voucherno'
+INFO:     192.168.200.18:58245 - "POST /support/tickets HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 303, in create_ticket
+    voucher_no = master_rows[0]["VoucherNo"]
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Voucherno'
+INFO:     192.168.200.18:58253 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58252 - "OPTIONS /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58254 - "OPTIONS /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58252 - "OPTIONS /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58256 - "OPTIONS /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58257 - "OPTIONS /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58252 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58254 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58257 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58256 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58255 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58253 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52222 - "OPTIONS /general/reports/28/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52223 - "OPTIONS /general/reports/28/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52224 - "GET /general/reports/28/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52225 - "GET /general/reports/28/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52224 - "OPTIONS /general/reports/28/run HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52225 - "POST /general/reports/28/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58259 - "OPTIONS /support/customers?search=p HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58259 - "GET /support/customers?search=p HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58259 - "OPTIONS /support/customers?search=pu HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58260 - "OPTIONS /support/customers?search=pur HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58260 - "GET /support/customers?search=pur HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58260 - "OPTIONS /support/customers?search=pura HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58260 - "GET /support/customers?search=pura HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58260 - "OPTIONS /support/customers?search=puran HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58260 - "GET /support/customers?search=puran HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58260 - "OPTIONS /support/customer-info?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58261 - "OPTIONS /support/pending-tickets?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58262 - "OPTIONS /support/closed-tickets?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58261 - "GET /support/pending-tickets?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58260 - "GET /support/customer-info?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58262 - "GET /support/closed-tickets?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52226 - "OPTIONS /general/reports/20/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52227 - "OPTIONS /general/reports/20/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52229 - "GET /general/reports/20/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52228 - "GET /general/reports/20/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52228 - "OPTIONS /general/reports/20/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52229 - "OPTIONS /general/reports/20/filter-fields/2/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52226 - "GET /general/reports/20/filter-fields/2/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52227 - "GET /general/reports/20/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52227 - "OPTIONS /general/reports/20/run HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52226 - "POST /general/reports/20/run HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52234 - "OPTIONS /general/reports/40/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52235 - "OPTIONS /general/reports/40/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52237 - "GET /general/reports/40/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52236 - "GET /general/reports/40/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52236 - "OPTIONS /general/reports/40/filter-fields/2/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52237 - "GET /general/reports/40/filter-fields/2/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52237 - "OPTIONS /general/reports/40/run HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52236 - "POST /general/reports/40/run HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52238 - "OPTIONS /general/reports/16/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52239 - "OPTIONS /general/reports/16/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52240 - "GET /general/reports/16/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52241 - "GET /general/reports/16/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52241 - "OPTIONS /general/reports/16/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58265 - "POST /support/tickets HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 303, in create_ticket
+    voucher_no = master_rows[0]["VoucherNo"]
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Voucherno'
+INFO:     192.168.200.49:52240 - "POST /general/reports/16/run HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52256 - "OPTIONS /general/reports/34/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52257 - "OPTIONS /general/reports/34/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52258 - "GET /general/reports/34/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52259 - "GET /general/reports/34/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52258 - "OPTIONS /general/reports/34/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52256 - "OPTIONS /general/reports/34/filter-fields/2/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52259 - "GET /general/reports/34/filter-fields/2/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52259 - "OPTIONS /general/reports/34/run HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52256 - "POST /general/reports/34/run HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52257 - "GET /general/reports/34/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52257 - "OPTIONS /general/reports/33/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52260 - "OPTIONS /general/reports/33/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52262 - "GET /general/reports/33/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52261 - "GET /general/reports/33/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52261 - "OPTIONS /general/reports/33/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52262 - "GET /general/reports/33/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52261 - "OPTIONS /general/reports/33/run HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52262 - "POST /general/reports/33/run HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52264 - "OPTIONS /general/reports/33/drill-down HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52265 - "POST /general/reports/33/drill-down HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52266 - "OPTIONS /general/reports/31/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52267 - "OPTIONS /general/reports/31/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52268 - "GET /general/reports/31/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52269 - "GET /general/reports/31/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52269 - "OPTIONS /general/reports/31/filter-fields/5/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52268 - "GET /general/reports/31/filter-fields/5/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52269 - "OPTIONS /general/reports/31/run HTTP/1.1" 200 OK
+Report 31 (proc=Proc_WebEnquiryActionDelay) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Unclosed quotation mark after the character string 'Ni order by Actiondate desc'. (105) (SQLExecDirectW); [42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Incorrect syntax near 'Ni order by Actiondate desc'. (102)")
+INFO:     192.168.200.49:52268 - "POST /general/reports/31/run HTTP/1.1" 503 Service Unavailable
+INFO:     192.168.200.18:58268 - "POST /support/tickets HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 303, in create_ticket
+    voucher_no = master_rows[0]["VoucherNo"]
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Voucherno'
+INFO:     192.168.200.18:58269 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52332 - "OPTIONS /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52333 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52334 - "OPTIONS /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52336 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52335 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52337 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52342 - "OPTIONS /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52343 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52353 - "OPTIONS /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52354 - "OPTIONS /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52355 - "OPTIONS /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52356 - "OPTIONS /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52358 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52358 - "OPTIONS /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52354 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52355 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52356 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52353 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52357 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52353 - "OPTIONS /support/customers?search=p HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52357 - "GET /support/customers?search=p HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52357 - "OPTIONS /support/customers?search=pu HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52353 - "GET /support/customers?search=pu HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52353 - "OPTIONS /support/customers?search=pur HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52357 - "GET /support/customers?search=pur HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52357 - "OPTIONS /support/customers?search=purda HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52353 - "GET /support/customers?search=purda HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52353 - "OPTIONS /support/customers?search=purdar HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52357 - "GET /support/customers?search=purdar HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52357 - "GET /support/customers?search=pur HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52357 - "OPTIONS /support/customers?search=pura HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52353 - "GET /support/customers?search=pura HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52353 - "OPTIONS /support/customers?search=puran HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52357 - "GET /support/customers?search=puran HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52357 - "OPTIONS /support/customers?search=purand HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52353 - "GET /support/customers?search=purand HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52353 - "OPTIONS /support/customer-info?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52357 - "OPTIONS /support/pending-tickets?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52359 - "OPTIONS /support/closed-tickets?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52360 - "GET /support/customer-info?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52361 - "GET /support/pending-tickets?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52362 - "GET /support/closed-tickets?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52373 - "OPTIONS /support/tickets HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52374 - "POST /support/tickets HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 303, in create_ticket
+    voucher_no = master_rows[0]["VoucherNo"]
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Voucherno'
+INFO:     192.168.200.49:52380 - "POST /support/tickets HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 303, in create_ticket
+    voucher_no = master_rows[0]["VoucherNo"]
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Voucherno'
+INFO:     192.168.200.49:52381 - "POST /support/tickets HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 303, in create_ticket
+    voucher_no = master_rows[0]["VoucherNo"]
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Voucherno'
+INFO:     192.168.200.49:52391 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52390 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52389 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52392 - "OPTIONS /support/tt-modify/rows?product_name=All&latest_owner_id=25&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52393 - "GET /support/tt-modify/rows?product_name=All&latest_owner_id=25&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52393 - "GET /support/tt-modify/rows?product_name=All&latest_owner_id=25&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52400 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52399 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52402 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52400 - "GET /support/pending-tickets?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52403 - "GET /support/customer-info?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52399 - "GET /support/closed-tickets?cust_id=97603 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52401 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52398 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52401 - "OPTIONS /support/customers?search=meg HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52398 - "GET /support/customers?search=meg HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52398 - "OPTIONS /support/customers?search=me HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52401 - "GET /support/customers?search=me HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52401 - "OPTIONS /support/customers?search=meher HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52398 - "GET /support/customers?search=meher HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52398 - "OPTIONS /support/customer-info?cust_id=10130 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52401 - "OPTIONS /support/pending-tickets?cust_id=10130 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52404 - "OPTIONS /support/closed-tickets?cust_id=10130 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52405 - "GET /support/customer-info?cust_id=10130 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52407 - "GET /support/closed-tickets?cust_id=10130 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52406 - "GET /support/pending-tickets?cust_id=10130 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52412 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52412 - "GET /support/customer-info?cust_id=10130 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52414 - "GET /support/pending-tickets?cust_id=10130 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52413 - "GET /support/closed-tickets?cust_id=10130 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52420 - "OPTIONS /support/modules-data?field_name=ViewAction&cust_id=10130 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52421 - "GET /support/modules-data?field_name=ViewAction&cust_id=10130 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52428 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52425 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52427 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52427 - "GET /support/pending-tickets?cust_id=10130 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52430 - "GET /support/customer-info?cust_id=10130 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52428 - "GET /support/closed-tickets?cust_id=10130 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52429 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52426 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52468 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52468 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52468 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52468 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52555 - "OPTIONS /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52556 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52557 - "OPTIONS /general/reports/16/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52559 - "OPTIONS /general/reports/16/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52558 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52560 - "GET /general/reports/16/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52561 - "GET /general/reports/16/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52562 - "OPTIONS /general/reports/31/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52563 - "OPTIONS /general/reports/31/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52564 - "GET /general/reports/31/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52565 - "GET /general/reports/31/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52565 - "OPTIONS /general/reports/31/filter-fields/5/options HTTP/1.1" 200 OK
+INFO:     192.168.200.49:52564 - "GET /general/reports/31/filter-fields/5/options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58318 - "POST /support/tickets HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 303, in create_ticket
+    voucher_no = master_rows[0]["VoucherNo"]
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Voucherno'

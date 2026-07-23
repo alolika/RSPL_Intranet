@@ -1,0 +1,280 @@
+INFO:     Started server process [6472]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:53764 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53768 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53774 - "GET /general/dashboards/sales-team HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53786 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53797 - "OPTIONS /support/coordinator-dashboard HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53797 - "GET /support/coordinator-dashboard HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53803 - "GET /support/coordinator-dashboard HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53836 - "GET /support/coordinator-dashboard HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53842 - "GET /support/coordinator-dashboard HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53857 - "GET /support/coordinator-dashboard HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53857 - "OPTIONS /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53857 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53889 - "OPTIONS /general/dashboards/sales-team HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53889 - "GET /general/dashboards/sales-team HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53920 - "GET /general/dashboards/sales-team HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53926 - "GET /general/dashboards/sales-team HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53938 - "GET /general/dashboards/sales-team HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53947 - "OPTIONS /general/dashboards/sales-team HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53947 - "GET /general/dashboards/sales-team HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53985 - "OPTIONS /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53983 - "GET /general/dashboards/sales-team HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53985 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53987 - "OPTIONS /admin/leave/rows?from_date=2026-07-20&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53987 - "GET /admin/leave/rows?from_date=2026-07-20&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53990 - "OPTIONS /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53990 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53992 - "OPTIONS /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53992 - "GET /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54002 - "GET /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54009 - "GET /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54016 - "GET /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54192 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54240 - "OPTIONS /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54240 - "GET /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54248 - "OPTIONS /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54249 - "OPTIONS /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54248 - "OPTIONS /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54248 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54250 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54249 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54257 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54256 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54255 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54255 - "GET /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54257 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54256 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54255 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54255 - "GET /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54267 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54268 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54266 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54266 - "GET /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54289 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54290 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54288 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54288 - "GET /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54297 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54296 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54298 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54298 - "GET /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54301 - "OPTIONS /admin/customers/tin-followup/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54302 - "OPTIONS /admin/customers/tin-followup?software=&salesman=&followup_remark= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54302 - "GET /admin/customers/tin-followup/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54301 - "GET /admin/customers/tin-followup?software=&salesman=&followup_remark= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54302 - "GET /admin/customers/tin-followup?software=&salesman=&followup_remark= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54301 - "GET /admin/customers/tin-followup/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54301 - "GET /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54317 - "GET /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54319 - "GET /admin/customers/tin-followup?software=&salesman=&followup_remark= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54317 - "GET /admin/customers/tin-followup/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54359 - "OPTIONS /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54359 - "GET /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54369 - "OPTIONS /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54369 - "GET /marketing/lead/summary?group_by=Vertical&from_date=2026-07-01&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54377 - "OPTIONS /developer/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54378 - "GET /developer/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54406 - "OPTIONS /marketing/enquiry/master-lists HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54405 - "OPTIONS /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54406 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54405 - "GET /marketing/enquiry/master-lists HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54412 - "OPTIONS /general/years HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54413 - "OPTIONS /general/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54414 - "OPTIONS /general/months HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54415 - "OPTIONS /general/attendance?user_id=25&year=2026&month=7 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54415 - "GET /general/years HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54414 - "GET /general/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54416 - "GET /general/months HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54417 - "GET /general/attendance?user_id=25&year=2026&month=7 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54420 - "OPTIONS /admin/leave/rows?from_date=2026-07-20&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54420 - "GET /admin/leave/rows?from_date=2026-07-20&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54423 - "OPTIONS /general/manage-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54424 - "OPTIONS /general/manage-chart/departments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54423 - "OPTIONS /general/manage-chart/designations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54425 - "OPTIONS /general/manage-chart/assignments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54426 - "GET /general/manage-chart/departments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54423 - "GET /general/manage-chart/assignments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54425 - "GET /general/manage-chart/designations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54424 - "GET /general/manage-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54438 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54444 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54450 - "GET /general/manage-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54453 - "GET /general/manage-chart/departments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54456 - "GET /general/manage-chart/designations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54459 - "GET /general/manage-chart/assignments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54469 - "GET /general/manage-chart/departments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54470 - "GET /general/manage-chart/designations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54468 - "GET /general/manage-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54471 - "GET /general/manage-chart/assignments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54475 - "OPTIONS /admin/content/web-master-names HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54475 - "GET /admin/content/web-master-names HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54475 - "OPTIONS /admin/content/web-master-values?master_name=ActionStageMaster HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54475 - "GET /admin/content/web-master-values?master_name=ActionStageMaster HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54475 - "OPTIONS /admin/content/web-master-values?master_name=AssetType HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54475 - "GET /admin/content/web-master-values?master_name=AssetType HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54475 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-20&to_date=2026-07-20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54475 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-20&to_date=2026-07-20 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support_callsip.py", line 133, in get_missed_calls
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "EXEC WebProc_SIPMissedCalls ?, ?, ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        product,
+        ^^^^^^^^
+    )
+    ^
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'synapsecdr.dbo.SIPEventRegisterCDR'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]execution of synapsecdr.dbo.procSIP_SIPEventRegisterCDRAdd started (0)")
+INFO:     192.168.200.18:54480 - "OPTIONS /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54481 - "OPTIONS /support/visit-log/clients?search=&id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54482 - "OPTIONS /support/visit-log/products?search=&id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54482 - "OPTIONS /support/visit-log/causes?search=&id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54481 - "OPTIONS /support/visit-log-register?narration= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54484 - "GET /support/visit-log/products?search=&id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54480 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54481 - "GET /support/visit-log/causes?search=&id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54483 - "GET /support/visit-log/clients?search=&id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54482 - "GET /support/visit-log-register?narration= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54486 - "OPTIONS /support/visit-log-register?narration=&person_id=3 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54486 - "GET /support/visit-log-register?narration=&person_id=3 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54486 - "GET /support/visit-log-register?narration=&person_id=3 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54552 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54552 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54552 - "OPTIONS /general/manage-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54552 - "OPTIONS /general/manage-chart/departments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54552 - "OPTIONS /general/manage-chart/designations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54555 - "OPTIONS /general/manage-chart/assignments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54554 - "GET /general/manage-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54552 - "GET /general/manage-chart/departments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54556 - "GET /general/manage-chart/designations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54555 - "GET /general/manage-chart/assignments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54573 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54573 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54573 - "OPTIONS /general/manage-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54573 - "OPTIONS /general/manage-chart/departments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54573 - "OPTIONS /general/manage-chart/assignments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54575 - "OPTIONS /general/manage-chart/designations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54576 - "GET /general/manage-chart/departments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54577 - "GET /general/manage-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54573 - "GET /general/manage-chart/assignments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54575 - "GET /general/manage-chart/designations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54579 - "OPTIONS /general/org-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54579 - "GET /general/org-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54581 - "OPTIONS /general/manage-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54583 - "OPTIONS /general/manage-chart/designations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54582 - "OPTIONS /general/manage-chart/assignments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54584 - "OPTIONS /general/manage-chart/departments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54584 - "GET /general/manage-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54582 - "GET /general/manage-chart/designations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54581 - "GET /general/manage-chart/departments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54583 - "GET /general/manage-chart/assignments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54585 - "GET /general/org-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54593 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54593 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54593 - "OPTIONS /general/manage-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54593 - "OPTIONS /general/manage-chart/departments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54596 - "OPTIONS /general/manage-chart/designations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54597 - "OPTIONS /general/manage-chart/assignments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54593 - "GET /general/manage-chart/departments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54595 - "GET /general/manage-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54597 - "GET /general/manage-chart/assignments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54596 - "GET /general/manage-chart/designations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54601 - "OPTIONS /support/visit-log/last-log-id HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54600 - "OPTIONS /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54602 - "OPTIONS /support/visit-log/clients?search=&id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54600 - "OPTIONS /support/visit-log/products?search=&id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54602 - "OPTIONS /support/visit-log/causes?search=&id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54601 - "OPTIONS /support/visit-log/support-reasons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54603 - "OPTIONS /support/visit-log/log-ids?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54600 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54603 - "GET /support/visit-log/last-log-id HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54601 - "GET /support/visit-log/support-reasons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54602 - "GET /support/visit-log/log-ids?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54605 - "GET /support/visit-log/products?search=&id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54604 - "GET /support/visit-log/clients?search=&id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54600 - "GET /support/visit-log/causes?search=&id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54614 - "OPTIONS /marketing/geo/locations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54614 - "GET /marketing/geo/locations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54622 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54622 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54622 - "OPTIONS /general/manage-chart/employees HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54622 - "OPTIONS /general/manage-chart/departments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54622 - "OPTIONS /general/manage-chart/designations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54625 - "OPTIONS /general/manage-chart/assignments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54622 - "GET /general/manage-chart/designations HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54626 - "GET /general/manage-chart/departments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54625 - "GET /general/manage-chart/assignments HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54624 - "GET /general/manage-chart/employees HTTP/1.1" 200 OK

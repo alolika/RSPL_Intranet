@@ -1,0 +1,19 @@
+INFO:     Started server process [4700]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:50830 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50836 - "OPTIONS /admin/holidays/title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50836 - "GET /admin/holidays/title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50835 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50840 - "OPTIONS /admin/holidays/title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50840 - "PUT /admin/holidays/title HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:50847 - "GET /admin/holidays/title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50848 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50856 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50857 - "GET /admin/holidays/title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50860 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50863 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50866 - "GET /admin/holidays/title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50869 - "PUT /admin/holidays/title HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:50870 - "PUT /admin/holidays/title HTTP/1.1" 422 Unprocessable Content

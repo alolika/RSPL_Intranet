@@ -1,0 +1,131 @@
+INFO:     Started server process [235512]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8010 (Press CTRL+C to quit)
+INFO:     127.0.0.1:50972 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50983 - "GET /support/tt-modify/rows?status=All HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50989 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51016 - "GET /support/tt-modify/rows?status=Closed&priority=High HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51019 - "GET /support/tt-modify/rows?product_name=Accounting&status=All HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51033 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51033 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51034 - "OPTIONS /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51034 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51034 - "OPTIONS /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51034 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51043 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51044 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "OPTIONS /support/tt-modify/rows?product_name=All&latest_owner_id=9&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "GET /support/tt-modify/rows?product_name=All&latest_owner_id=9&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "OPTIONS /support/tt-modify/rows?product_name=All&latest_owner_id=9&internal_reference_user_id=4&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "GET /support/tt-modify/rows?product_name=All&latest_owner_id=9&internal_reference_user_id=4&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "OPTIONS /support/tt-modify/rows?product_name=All&latest_owner_id=9&internal_reference_user_id=4&priority=Medium&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "GET /support/tt-modify/rows?product_name=All&latest_owner_id=9&internal_reference_user_id=4&priority=Medium&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "OPTIONS /support/tt-modify/rows?product_name=All&latest_owner_id=9&internal_reference_user_id=4&priority=Medium&status=Closed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "GET /support/tt-modify/rows?product_name=All&latest_owner_id=9&internal_reference_user_id=4&priority=Medium&status=Closed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "OPTIONS /support/customers?search=te HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "GET /support/customers?search=te HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "OPTIONS /support/customers?search=tej HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "GET /support/customers?search=tej HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "OPTIONS /support/customers?search=tejas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "GET /support/customers?search=tejas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "OPTIONS /support/customers?search=tejas%20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "GET /support/customers?search=tejas%20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "OPTIONS /support/tt-modify/rows?cust_id=14332&product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "GET /support/tt-modify/rows?cust_id=14332&product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "OPTIONS /support/tt-modify/rows?cust_id=14332&product_name=All&priority=High&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "GET /support/tt-modify/rows?cust_id=14332&product_name=All&priority=High&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51045 - "GET /support/tt-modify/rows?cust_id=14332&product_name=All&priority=High&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51046 - "OPTIONS /support/tt-modify/rows?cust_id=14332&product_name=All&priority=Low&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51046 - "GET /support/tt-modify/rows?cust_id=14332&product_name=All&priority=Low&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51046 - "OPTIONS /support/tt-modify/rows?cust_id=14332&product_name=All&priority=Medium&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51046 - "GET /support/tt-modify/rows?cust_id=14332&product_name=All&priority=Medium&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51046 - "GET /support/tt-modify/rows?cust_id=14332&product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51077 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51078 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51076 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51091 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51090 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51092 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51098 - "OPTIONS /support/tt-modify/182974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51098 - "PUT /support/tt-modify/182974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51099 - "OPTIONS /support/tt-modify/183046 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51099 - "PUT /support/tt-modify/183046 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51099 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51106 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51107 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51117 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51116 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51118 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51119 - "OPTIONS /support/tt-modify/183032 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51119 - "PUT /support/tt-modify/183032 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51127 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51119 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51128 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51134 - "PUT /support/tt-modify/183032 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:51135 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51134 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51135 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51142 - "PUT /support/tt-modify/183032 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:51147 - "OPTIONS /support/tt-modify/183030 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51147 - "PUT /support/tt-modify/183030 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51148 - "OPTIONS /support/customers?search=te HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51148 - "GET /support/customers?search=te HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51148 - "OPTIONS /support/customers?search=tejas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51148 - "GET /support/customers?search=tejas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51148 - "OPTIONS /support/tt-modify/rows?cust_id=14332&product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51148 - "GET /support/tt-modify/rows?cust_id=14332&product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51151 - "OPTIONS /support/tt-modify/110832 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51151 - "PUT /support/tt-modify/110832 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51151 - "GET /support/tt-modify/rows?cust_id=14332&product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51151 - "GET /support/tt-modify/rows?cust_id=14332&product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51151 - "GET /support/tt-modify/rows?cust_id=14332&product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51152 - "OPTIONS /support/tt-modify/rows?cust_id=14332&product_name=All&priority=All&status=Closed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51152 - "GET /support/tt-modify/rows?cust_id=14332&product_name=All&priority=All&status=Closed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51176 - "OPTIONS /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51175 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51174 - "OPTIONS /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51175 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51176 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51174 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51177 - "PUT /support/tt-modify/183046 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51177 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51185 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51186 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51201 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51200 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51202 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51203 - "OPTIONS /support/tt-register/filter-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51203 - "OPTIONS /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&customer=ALL&ticket_no=&exclude_action=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51203 - "GET /support/tt-register/filter-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51211 - "GET /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&customer=ALL&ticket_no=&exclude_action=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51249 - "GET /support/tt-register/search HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51252 - "GET /support/tt-register/search?ticket_no=183046 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51255 - "GET /support/tt-register/search?exclude_action=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51258 - "GET /support/tt-register/search HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51287 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51288 - "OPTIONS /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51289 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51287 - "GET /support/tt-register/filter-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51288 - "GET /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51290 - "OPTIONS /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=183051&exclude_action=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51290 - "GET /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=183051&exclude_action=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51294 - "OPTIONS /support/customers?search=tejas%20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51294 - "GET /support/customers?search=tejas%20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51294 - "OPTIONS /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false&cust_id=14332 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51294 - "GET /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false&cust_id=14332 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51294 - "OPTIONS /support/tt-register/search?product=CUSTOMISED&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false&cust_id=14332 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51294 - "GET /support/tt-register/search?product=CUSTOMISED&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false&cust_id=14332 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51294 - "OPTIONS /support/tt-register/search?product=JEWELSOFT&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false&cust_id=14332 HTTP/1.1" 200 OK
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     127.0.0.1:51295 - "GET /support/tt-register/search?product=JEWELSOFT&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false&cust_id=14332 HTTP/1.1" 200 OK

@@ -1,0 +1,22 @@
+INFO:     Started server process [14664]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:50668 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50671 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50674 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50683 - "GET /admin/ledger/rows?search_field=0&search_value= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50688 - "GET /admin/ledger/rows?search_field=0&search_value= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50693 - "GET /admin/ledger/rows?search_field=0&search_value= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50701 - "GET /admin/ledger/rows?search_field=0&search_value= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50708 - "GET /admin/ledger/rows?search_field=0&search_value= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50711 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50717 - "OPTIONS /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50717 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50722 - "OPTIONS /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50722 - "POST /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50722 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50733 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50740 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50747 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50764 - "GET /admin/holidays HTTP/1.1" 200 OK

@@ -1,0 +1,47 @@
+INFO:     Started server process [185012]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8010 (Press CTRL+C to quit)
+INFO:     127.0.0.1:50746 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50754 - "GET /support/customers?search=aarya HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50757 - "GET /support/customers?search=32187 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50761 - "GET /support/customers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50767 - "GET /support/tt-modify/rows?cust_id=32187&status=All HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50770 - "GET /support/tt-modify/rows?status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50773 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "GET /support/tt-modify/rows?status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50786 - "GET /support/tt-modify/rows?cust_id=53550&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50799 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50799 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50800 - "OPTIONS /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50800 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50800 - "OPTIONS /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50810 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50800 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50811 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50812 - "OPTIONS /support/customers?search=mahaveer HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50812 - "GET /support/customers?search=mahaveer HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50812 - "OPTIONS /support/tt-modify/rows?cust_id=68109&product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50812 - "GET /support/tt-modify/rows?cust_id=68109&product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50812 - "GET /support/tt-modify/rows?cust_id=68109&product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50812 - "GET /support/tt-modify/rows?cust_id=68109&product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50813 - "OPTIONS /support/customers?search=mahavee HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50813 - "GET /support/customers?search=mahavee HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50813 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50813 - "OPTIONS /support/customers?search=te HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50813 - "GET /support/customers?search=te HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50813 - "OPTIONS /support/customers?search=tejas%20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50813 - "GET /support/customers?search=tejas%20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50813 - "OPTIONS /support/tt-modify/rows?cust_id=14332&product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50813 - "GET /support/tt-modify/rows?cust_id=14332&product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50828 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50829 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50827 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50836 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50876 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50875 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50877 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50878 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50890 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50891 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50927 - "GET /support/tt-modify/rows?status=All HTTP/1.1" 200 OK

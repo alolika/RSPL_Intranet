@@ -1,0 +1,43 @@
+INFO:     Started server process [13304]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:50775 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50778 - "PUT /admin/holidays/9/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50781 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50784 - "PUT /admin/holidays/9/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50787 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "OPTIONS /admin/holidays/1/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "PUT /admin/holidays/1/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "OPTIONS /admin/holidays/2/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "PUT /admin/holidays/2/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "OPTIONS /admin/holidays/3/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "PUT /admin/holidays/3/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "OPTIONS /admin/holidays/4/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "PUT /admin/holidays/4/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "OPTIONS /admin/holidays/5/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "PUT /admin/holidays/5/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "OPTIONS /admin/holidays/6/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "PUT /admin/holidays/6/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "OPTIONS /admin/holidays/7/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "PUT /admin/holidays/7/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "OPTIONS /admin/holidays/8/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "PUT /admin/holidays/8/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "OPTIONS /admin/holidays/9/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "PUT /admin/holidays/9/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50788 - "GET /admin/holidays HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50792 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50792 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50792 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50794 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50794 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50792 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50806 - "GET /admin/holidays HTTP/1.1" 200 OK

@@ -1,0 +1,28 @@
+INFO:     Started server process [6384]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:50472 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50475 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50486 - "OPTIONS /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50485 - "OPTIONS /general/reports/39/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50487 - "OPTIONS /general/reports/39/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50485 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50486 - "GET /general/reports/39/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50487 - "GET /general/reports/39/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50491 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-23&to_date=2026-07-23 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50491 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-23&to_date=2026-07-23 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50495 - "OPTIONS /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50495 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50498 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-23&to_date=2026-07-23 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50501 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50503 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50503 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50504 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50527 - "OPTIONS /admin/customers/ans/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50528 - "OPTIONS /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50527 - "GET /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50527 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50527 - "GET /general/dashboards/software-client-count HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:50535 - "GET /general/dashboards/software-client-count HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:50538 - "GET /admin/vouchers/customers?search= HTTP/1.1" 200 OK

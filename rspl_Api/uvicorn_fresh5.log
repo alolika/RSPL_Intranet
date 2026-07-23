@@ -1,0 +1,27 @@
+INFO:     Started server process [305256]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8010 (Press CTRL+C to quit)
+INFO:     127.0.0.1:51309 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51317 - "GET /support/tt-register/filter-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51323 - "GET /support/tt-register/search HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51326 - "GET /support/tt-register/search HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51335 - "GET /support/tt-register/search?cust_id=53550 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51338 - "GET /support/customers?search=vimal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51341 - "GET /support/tt-register/search?exclude_action=true&product=RETAILWARE HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51344 - "GET /support/tt-register/search?what_next=Bug HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51349 - "GET /support/tt-register/search?what_next=Bug HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51364 - "GET /support/tt-register/search?what_next=Bug HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51367 - "GET /support/tt-register/search?what_next=Bug HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51378 - "GET /support/tt-register/search?what_next=Bug&what_next=Bug HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51381 - "OPTIONS /support/tt-register/ticket-detail/183051 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51381 - "GET /support/tt-register/ticket-detail/183051 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51382 - "OPTIONS /support/tt-register/ticket-detail/183050 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51382 - "GET /support/tt-register/ticket-detail/183050 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51382 - "OPTIONS /support/tt-register/ticket-detail/183048 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51382 - "GET /support/tt-register/ticket-detail/183048 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51382 - "OPTIONS /support/tt-register/ticket-detail/182970 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51382 - "GET /support/tt-register/ticket-detail/182970 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51388 - "OPTIONS /support/tt-register/search?product=JEWELSOFT&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=true&cust_id=14332 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51388 - "GET /support/tt-register/search?product=JEWELSOFT&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=true&cust_id=14332 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51397 - "GET /support/tt-register/search?product=RETAILWARE HTTP/1.1" 200 OK

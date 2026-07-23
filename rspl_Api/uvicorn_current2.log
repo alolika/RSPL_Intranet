@@ -1,0 +1,1095 @@
+INFO:     Started server process [1148]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:49922 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49939 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49939 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49941 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49942 - "OPTIONS /support/call-history/summary?from_date=2026-07-23&to_date=2026-07-23&customer_id=0&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49942 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49941 - "GET /support/call-history/summary?from_date=2026-07-23&to_date=2026-07-23&customer_id=0&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49941 - "OPTIONS /support/call-history/detail?from_date=2026-07-23&to_date=2026-07-23&entity_id=10096&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49941 - "GET /support/call-history/detail?from_date=2026-07-23&to_date=2026-07-23&entity_id=10096&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49945 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49946 - "GET /support/call-history/summary?from_date=2026-07-23&to_date=2026-07-23&customer_id=0&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49951 - "OPTIONS /admin/customers/ans/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49950 - "OPTIONS /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49949 - "OPTIONS /admin/customers/ans?customer_id=0&question= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49950 - "GET /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49951 - "GET /admin/customers/ans?customer_id=0&question= HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\admin_customers.py", line 496, in get_customer_ans_rows
+    cursor.execute(f"SELECT * FROM vw_web_clientAnswerSheet WHERE 1 = 1{where}", *params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('HYT00', '[HYT00] [Microsoft][ODBC Driver 17 for SQL Server]Query timeout expired (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:49949 - "GET /admin/customers/ans/filters HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\admin_customers.py", line 480, in get_customer_ans_filters
+    cursor.execute("SELECT DISTINCT Question FROM vw_web_clientAnswerSheet ORDER BY Question")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('HYT00', '[HYT00] [Microsoft][ODBC Driver 17 for SQL Server]Query timeout expired (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:49967 - "GET /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49966 - "GET /admin/customers/ans/filters HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\admin_customers.py", line 480, in get_customer_ans_filters
+    cursor.execute("SELECT DISTINCT Question FROM vw_web_clientAnswerSheet ORDER BY Question")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('HYT00', '[HYT00] [Microsoft][ODBC Driver 17 for SQL Server]Query timeout expired (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:49996 - "GET /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49995 - "GET /admin/customers/ans/filters HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\admin_customers.py", line 480, in get_customer_ans_filters
+    cursor.execute("SELECT DISTINCT Question FROM vw_web_clientAnswerSheet ORDER BY Question")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('HYT00', '[HYT00] [Microsoft][ODBC Driver 17 for SQL Server]Query timeout expired (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:49997 - "GET /admin/customers/ans?customer_id=0&question= HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\admin_customers.py", line 496, in get_customer_ans_rows
+    cursor.execute(f"SELECT * FROM vw_web_clientAnswerSheet WHERE 1 = 1{where}", *params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('HYT00', '[HYT00] [Microsoft][ODBC Driver 17 for SQL Server]Query timeout expired (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:50004 - "OPTIONS /admin/customers/ans?customer_id=66125&question= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50004 - "GET /admin/customers/ans?customer_id=66125&question= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50018 - "GET /admin/customers/ans?customer_id=66125&question= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50020 - "OPTIONS /admin/customers/ans?customer_id=42273&question= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50020 - "GET /admin/customers/ans?customer_id=42273&question= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50045 - "OPTIONS /admin/customers/ans/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50046 - "OPTIONS /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50046 - "GET /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50048 - "GET /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\admin_customers.py", line 480, in get_customer_ans_filters
+    cursor.execute("SELECT DISTINCT Question FROM vw_web_clientAnswerSheet ORDER BY Question")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('HYT00', '[HYT00] [Microsoft][ODBC Driver 17 for SQL Server]Query timeout expired (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:50046 - "GET /admin/customers/ans/filters HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\admin_customers.py", line 480, in get_customer_ans_filters
+    cursor.execute("SELECT DISTINCT Question FROM vw_web_clientAnswerSheet ORDER BY Question")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('HYT00', '[HYT00] [Microsoft][ODBC Driver 17 for SQL Server]Query timeout expired (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:50061 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50061 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50061 - "OPTIONS /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50061 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50065 - "OPTIONS /general/reports/39/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50064 - "OPTIONS /general/reports/39/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50066 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50064 - "GET /general/reports/39/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50065 - "GET /general/reports/39/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50065 - "OPTIONS /general/reports/39/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50065 - "POST /general/reports/39/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50072 - "GET /reports/list HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:50078 - "GET /reports HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:50081 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50084 - "POST /general/reports/39/run HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50109 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50111 - "GET /general/reports/39/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50110 - "GET /general/reports/39/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50111 - "GET /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50114 - "POST /general/reports/39/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50110 - "GET /admin/customers/ans/filters HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\admin_customers.py", line 480, in get_customer_ans_filters
+    cursor.execute("SELECT DISTINCT Question FROM vw_web_clientAnswerSheet ORDER BY Question")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('HYT00', '[HYT00] [Microsoft][ODBC Driver 17 for SQL Server]Query timeout expired (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:50269 - "OPTIONS /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50270 - "OPTIONS /general/reports/39/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50269 - "OPTIONS /general/reports/39/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50270 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50269 - "GET /general/reports/39/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50271 - "GET /general/reports/39/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50271 - "OPTIONS /admin/customers/ans/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50271 - "OPTIONS /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50271 - "GET /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50274 - "OPTIONS /general/reports/36/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50275 - "OPTIONS /general/reports/36/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50274 - "GET /general/reports/36/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50275 - "GET /general/reports/36/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50275 - "OPTIONS /general/reports/36/run HTTP/1.1" 200 OK
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50275 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+INFO:     192.168.200.18:50275 - "OPTIONS /general/reports/1/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50274 - "OPTIONS /general/reports/1/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50274 - "GET /general/reports/1/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50275 - "GET /general/reports/1/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50275 - "OPTIONS /general/reports/1/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50275 - "POST /general/reports/1/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50275 - "OPTIONS /general/reports/6/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50278 - "OPTIONS /general/reports/6/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50278 - "GET /general/reports/6/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50275 - "GET /general/reports/6/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50275 - "OPTIONS /general/reports/6/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50275 - "GET /general/reports/6/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50275 - "OPTIONS /general/reports/6/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50275 - "POST /general/reports/6/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50280 - "OPTIONS /general/reports/9/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50281 - "OPTIONS /general/reports/9/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50281 - "GET /general/reports/9/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50280 - "GET /general/reports/9/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50280 - "OPTIONS /general/reports/9/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50280 - "POST /general/reports/9/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50269 - "GET /admin/customers/ans/filters HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\admin_customers.py", line 480, in get_customer_ans_filters
+    cursor.execute("SELECT DISTINCT Question FROM vw_web_clientAnswerSheet ORDER BY Question")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('HYT00', '[HYT00] [Microsoft][ODBC Driver 17 for SQL Server]Query timeout expired (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:50284 - "GET /general/reports/39/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50285 - "GET /general/reports/39/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50303 - "OPTIONS /general/reports/39/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50303 - "POST /general/reports/39/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50320 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50322 - "GET /general/reports/39/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50321 - "GET /general/reports/39/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50322 - "GET /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50323 - "POST /general/reports/39/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50321 - "GET /admin/customers/ans/filters HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\admin_customers.py", line 480, in get_customer_ans_filters
+    cursor.execute("SELECT DISTINCT Question FROM vw_web_clientAnswerSheet ORDER BY Question")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('HYT00', '[HYT00] [Microsoft][ODBC Driver 17 for SQL Server]Query timeout expired (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:50347 - "GET /general/reports/9/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50346 - "GET /general/reports/9/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50346 - "POST /general/reports/9/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50382 - "OPTIONS /general/reports/21/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50383 - "OPTIONS /general/reports/21/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50383 - "GET /general/reports/21/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50382 - "GET /general/reports/21/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50382 - "OPTIONS /general/reports/21/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50382 - "GET /general/reports/21/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50382 - "OPTIONS /general/reports/21/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50382 - "POST /general/reports/21/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50384 - "OPTIONS /general/reports/8/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50385 - "OPTIONS /general/reports/8/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50385 - "GET /general/reports/8/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50384 - "GET /general/reports/8/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50384 - "OPTIONS /general/reports/8/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50384 - "POST /general/reports/8/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50384 - "OPTIONS /general/reports/9/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50386 - "OPTIONS /general/reports/9/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50387 - "GET /general/reports/9/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50386 - "GET /general/reports/9/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50386 - "OPTIONS /general/reports/9/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50386 - "POST /general/reports/9/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50389 - "OPTIONS /general/reports/6/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50390 - "OPTIONS /general/reports/6/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50390 - "GET /general/reports/6/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50389 - "GET /general/reports/6/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50389 - "OPTIONS /general/reports/6/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50389 - "GET /general/reports/6/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50389 - "OPTIONS /general/reports/6/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50389 - "POST /general/reports/6/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50391 - "OPTIONS /general/reports/12/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50392 - "OPTIONS /general/reports/12/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50392 - "GET /general/reports/12/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50391 - "GET /general/reports/12/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50391 - "OPTIONS /general/reports/12/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50391 - "POST /general/reports/12/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50391 - "OPTIONS /general/reports/14/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50391 - "OPTIONS /general/reports/14/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50393 - "GET /general/reports/14/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50391 - "GET /general/reports/14/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50391 - "OPTIONS /general/reports/14/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50391 - "GET /general/reports/14/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50391 - "OPTIONS /general/reports/14/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50391 - "POST /general/reports/14/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50395 - "OPTIONS /general/reports/5/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50396 - "OPTIONS /general/reports/5/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50396 - "GET /general/reports/5/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50395 - "GET /general/reports/5/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50395 - "OPTIONS /general/reports/5/filter-fields/3/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50396 - "OPTIONS /general/reports/5/filter-fields/2/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50395 - "OPTIONS /general/reports/5/filter-fields/4/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50395 - "GET /general/reports/5/filter-fields/2/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50395 - "OPTIONS /general/reports/5/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50395 - "POST /general/reports/5/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50396 - "GET /general/reports/5/filter-fields/3/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50397 - "GET /general/reports/5/filter-fields/4/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50398 - "OPTIONS /general/reports/2/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50399 - "OPTIONS /general/reports/2/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50399 - "GET /general/reports/2/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50398 - "GET /general/reports/2/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50398 - "OPTIONS /general/reports/2/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50399 - "OPTIONS /general/reports/2/filter-fields/2/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50400 - "OPTIONS /general/reports/2/filter-fields/3/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50399 - "GET /general/reports/2/filter-fields/1/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50400 - "GET /general/reports/2/filter-fields/3/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50398 - "GET /general/reports/2/filter-fields/2/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50398 - "OPTIONS /general/reports/2/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50398 - "POST /general/reports/2/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50403 - "OPTIONS /general/reports/1/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50404 - "OPTIONS /general/reports/1/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50403 - "GET /general/reports/1/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50404 - "GET /general/reports/1/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50404 - "OPTIONS /general/reports/1/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50404 - "POST /general/reports/1/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50406 - "OPTIONS /general/reports/19/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50405 - "OPTIONS /general/reports/19/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50405 - "GET /general/reports/19/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50406 - "GET /general/reports/19/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50406 - "OPTIONS /general/reports/19/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50406 - "POST /general/reports/19/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50406 - "OPTIONS /general/reports/22/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50408 - "OPTIONS /general/reports/22/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50408 - "GET /general/reports/22/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50406 - "GET /general/reports/22/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50406 - "OPTIONS /general/reports/22/filter-fields/2/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50408 - "OPTIONS /general/reports/22/filter-fields/3/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50406 - "GET /general/reports/22/filter-fields/3/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50408 - "GET /general/reports/22/filter-fields/2/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50408 - "OPTIONS /general/reports/22/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50408 - "POST /general/reports/22/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50408 - "OPTIONS /general/reports/32/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50408 - "OPTIONS /general/reports/32/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50409 - "GET /general/reports/32/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50408 - "GET /general/reports/32/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50408 - "OPTIONS /general/reports/32/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50408 - "POST /general/reports/32/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50408 - "OPTIONS /general/reports/30/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50410 - "OPTIONS /general/reports/30/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50410 - "GET /general/reports/30/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50408 - "GET /general/reports/30/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50408 - "OPTIONS /general/reports/30/filter-fields/2/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50410 - "OPTIONS /general/reports/30/filter-fields/3/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50411 - "OPTIONS /general/reports/30/filter-fields/4/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50412 - "OPTIONS /general/reports/30/filter-fields/5/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50411 - "GET /general/reports/30/filter-fields/2/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50411 - "OPTIONS /general/reports/30/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50412 - "GET /general/reports/30/filter-fields/4/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50410 - "GET /general/reports/30/filter-fields/3/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50408 - "GET /general/reports/30/filter-fields/5/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50411 - "POST /general/reports/30/run HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50413 - "OPTIONS /general/reports/36/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50414 - "OPTIONS /general/reports/36/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50414 - "GET /general/reports/36/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50413 - "GET /general/reports/36/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50413 - "OPTIONS /general/reports/36/run HTTP/1.1" 200 OK
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable
+Report 36 (proc=Proc_GetAPIRequestData_summary) failed
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_reports.py", line 668, in run_report
+    cursor.execute(f"EXEC {proc}")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Could not find server '103.25.126.228,14189' in sys.servers. Verify that the correct server name was specified. If necessary, execute the stored procedure sp_addlinkedserver to add the server to sys.servers. (7202) (SQLExecDirectW)")
+INFO:     192.168.200.18:50413 - "POST /general/reports/36/run HTTP/1.1" 503 Service Unavailable

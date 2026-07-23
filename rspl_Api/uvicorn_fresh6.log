@@ -1,0 +1,22 @@
+INFO:     Started server process [137944]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8010 (Press CTRL+C to quit)
+INFO:     127.0.0.1:51437 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51444 - "GET /support/tt-register/search?what_next=Bug HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51450 - "GET /support/tt-register/search?what_next=Bug&what_next=Requirement HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51453 - "GET /support/tt-register/search HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51470 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51470 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51471 - "OPTIONS /support/tt-register/filter-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51471 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51471 - "OPTIONS /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51485 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51471 - "GET /support/tt-register/filter-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51484 - "GET /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51498 - "GET /support/tt-register/filter-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51520 - "OPTIONS /support/tt-register/ledger-groups?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51524 - "GET /support/tt-register/ledger-groups?search= HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51522 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51519 - "GET /support/tt-register/filter-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51521 - "GET /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false HTTP/1.1" 200 OK

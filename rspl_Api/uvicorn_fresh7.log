@@ -1,0 +1,126 @@
+INFO:     Started server process [277064]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8010 (Press CTRL+C to quit)
+INFO:     127.0.0.1:51535 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51543 - "GET /support/tt-register/ledger-groups HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /support/tt-register/ledger-groups HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51552 - "GET /support/tt-register/ledger-groups?search=sale HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51558 - "GET /support/tt-register/filter-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51578 - "GET /support/tt-register/ledger-groups?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51579 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51580 - "GET /support/tt-register/filter-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51577 - "GET /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51581 - "OPTIONS /support/visit-log/last-log-id HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51581 - "OPTIONS /support/visit-log/clients HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51581 - "OPTIONS /support/visit-log/products HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51581 - "OPTIONS /support/visit-log/causes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51581 - "OPTIONS /support/visit-log/support-reasons HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51581 - "OPTIONS /support/visit-log/log-ids HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51581 - "GET /support/visit-log/last-log-id HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51581 - "GET /support/visit-log/causes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51581 - "GET /support/visit-log/log-ids HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51611 - "GET /support/visit-log/products HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51612 - "GET /support/visit-log/support-reasons HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51613 - "GET /support/visit-log/clients HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51636 - "OPTIONS /support/salesmen HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51637 - "GET /support/visit-log/last-log-id HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51640 - "GET /support/visit-log/causes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51639 - "GET /support/visit-log/products HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51637 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51641 - "GET /support/visit-log/support-reasons HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51636 - "GET /support/visit-log/log-ids HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51638 - "GET /support/visit-log/clients HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51665 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51671 - "GET /support/visit-log/log-ids HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51674 - "GET /support/visit-log/23615 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51685 - "GET /support/visit-log/last-log-id HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51687 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51689 - "GET /support/visit-log/causes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51688 - "GET /support/visit-log/products HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51685 - "GET /support/visit-log/log-ids HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51690 - "GET /support/visit-log/support-reasons HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51686 - "GET /support/visit-log/clients HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51700 - "OPTIONS /support/tt-register/filter-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51701 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51702 - "OPTIONS /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51703 - "GET /support/tt-register/ledger-groups?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51701 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51702 - "GET /support/tt-register/filter-options HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51700 - "GET /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51704 - "GET /support/visit-log/last-log-id HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51704 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51704 - "GET /support/visit-log/products HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51710 - "GET /support/visit-log/causes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51711 - "GET /support/visit-log/support-reasons HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51712 - "GET /support/visit-log/log-ids HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51700 - "GET /support/visit-log/clients HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51746 - "OPTIONS /support/visit-log/last-log-id HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51747 - "OPTIONS /support/visit-log/clients?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51748 - "OPTIONS /support/visit-log/products?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51749 - "OPTIONS /support/visit-log/causes?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51750 - "OPTIONS /support/visit-log/support-reasons?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51751 - "OPTIONS /support/visit-log/log-ids?search= HTTP/1.1" 200 OK
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     127.0.0.1:51746 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51749 - "GET /support/visit-log/causes?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51750 - "GET /support/visit-log/products?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51749 - "GET /support/visit-log/last-log-id HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51746 - "GET /support/visit-log/log-ids?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51747 - "GET /support/visit-log/support-reasons?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51751 - "GET /support/visit-log/clients?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51753 - "GET /support/visit-log/last-log-id HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51766 - "GET /support/visit-log/causes?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51764 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51765 - "GET /support/visit-log/products?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51767 - "GET /support/visit-log/support-reasons?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51768 - "GET /support/visit-log/log-ids?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51753 - "GET /support/visit-log/clients?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51780 - "GET /support/visit-log/last-log-id HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51784 - "GET /support/visit-log/causes?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51782 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51783 - "GET /support/visit-log/products?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51780 - "GET /support/visit-log/log-ids?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51785 - "GET /support/visit-log/support-reasons?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51781 - "GET /support/visit-log/clients?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51781 - "GET /support/visit-log/last-log-id HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51800 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51798 - "GET /support/visit-log/causes?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51799 - "GET /support/visit-log/products?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51797 - "GET /support/visit-log/support-reasons?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51796 - "GET /support/visit-log/log-ids?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51781 - "GET /support/visit-log/clients?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51818 - "OPTIONS /support/visit-log/clients?search=&id=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51819 - "OPTIONS /support/salesmen HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51820 - "OPTIONS /support/visit-log/products?search=&id=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51821 - "OPTIONS /support/visit-log/causes?search=&id=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51822 - "GET /support/visit-log/last-log-id HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51819 - "GET /support/visit-log/causes?search=&id=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51820 - "GET /support/visit-log/products?search=&id=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51822 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51818 - "GET /support/visit-log/log-ids?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51823 - "GET /support/visit-log/support-reasons?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51821 - "GET /support/visit-log/clients?search=&id=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51838 - "GET /support/visit-log/causes?search=&id=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51834 - "GET /support/visit-log/last-log-id HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51835 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51837 - "GET /support/visit-log/products?search=&id=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51839 - "GET /support/visit-log/support-reasons?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51834 - "GET /support/visit-log/log-ids?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51836 - "GET /support/visit-log/clients?search=&id=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51852 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51851 - "GET /support/visit-log/last-log-id HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51855 - "GET /support/visit-log/causes?search=&id=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51854 - "GET /support/visit-log/products?search=&id=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51852 - "GET /support/visit-log/log-ids?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51856 - "GET /support/visit-log/support-reasons?search= HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51853 - "GET /support/visit-log/clients?search=&id=0 HTTP/1.1" 200 OK
