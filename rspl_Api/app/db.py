@@ -37,7 +37,15 @@ def _connection_string() -> str:
 
 
 def _new_connection() -> pyodbc.Connection:
-    conn = pyodbc.connect(_connection_string())
+    # `timeout=` here bounds the connect/login handshake itself (separate
+    # from conn.timeout below, which bounds query execution). Without it,
+    # pyodbc.connect() has no cap at all — confirmed live that when the
+    # network path to this remote SQL Server is degraded, a fresh connect
+    # attempt can hang far past the ~100s "cold" cost documented below,
+    # which is exactly what turned a single dead pooled connection into a
+    # 10+ minute request when the replacement was opened synchronously
+    # (see get_cursor()'s finally block).
+    conn = pyodbc.connect(_connection_string(), timeout=10)
     # Safety net, not a performance tuning knob: without this, a single
     # runaway/hung query (e.g. webproc_LeadChartSummaryV2, confirmed live to
     # sometimes exceed 60s re-evaluating a heavy view ~10 times per call)
@@ -49,6 +57,24 @@ def _new_connection() -> pyodbc.Connection:
     # is strictly better than an indefinite hang either way.
     conn.timeout = 60
     return conn
+
+
+def _replenish_pool_async() -> None:
+    """Opens a replacement pooled connection in the background instead of
+    blocking whichever request's cursor just died — a synchronous reconnect
+    here was the actual cause of logins taking 10-15 minutes: the failing
+    query would error out reasonably quickly, but the *cleanup* then paid
+    the full uncapped reconnect cost before the client ever saw a response.
+    If the DB is still unreachable, retries on a short delay instead of
+    permanently shrinking the pool."""
+
+    def _worker() -> None:
+        try:
+            _pool.put(_new_connection())
+        except pyodbc.Error:
+            threading.Timer(5.0, _replenish_pool_async).start()
+
+    threading.Thread(target=_worker, daemon=True).start()
 
 
 def warm_pool() -> None:
@@ -102,7 +128,7 @@ def get_cursor() -> Generator[pyodbc.Cursor, None, None]:
                 conn.close()
             except pyodbc.Error:
                 pass
-            _pool.put(_new_connection())
+            _replenish_pool_async()
 
 
 def rows_to_dicts(cursor: pyodbc.Cursor, limit: int | None = None) -> list[dict[str, Any]]:
