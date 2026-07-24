@@ -69,9 +69,21 @@ class SaveTemplateRequest(BaseModel):
     filters: dict[str, str]
 
 
-def _data_type(raw: str | None) -> str:
+def _data_type(raw: str | None, column_name: str | None = None) -> str:
     raw = (raw or "").strip().lower()
     if raw in ("date", "datetime"):
+        return "date"
+    # Analytic_ReportColumnMaster.ColumnDataType is unreliable for date
+    # columns -- confirmed live that 11 of 20 date-named filter columns
+    # across the 38 reports are mistyped as 'bigint' (e.g. report 25 "SO and
+    # Sale Details": ColumnName='Date', ColumnDataType='bigint'). Without
+    # this, those columns fell through to "number", which meant no date
+    # picker in the UI (a plain textbox instead) AND naive exact-string SQL
+    # matching in _proc_filter_conditions below instead of its date-aware
+    # branch -- so date filtering on these reports was silently broken, not
+    # just visually. Trusting the column's own name over the bad metadata
+    # fixes both at once.
+    if column_name and "date" in column_name.lower():
         return "date"
     if raw in ("bigint", "int", "numeric", "float", "decimal"):
         return "number"
@@ -116,7 +128,7 @@ def get_filter_fields(report_id: int) -> list[ReportFilterField]:
     return [
         ReportFilterField(
             column_id=r["ColumnId"], column_name=r["ColumnName"] or "",
-            display_name=r["DisplayName"] or r["ColumnName"] or "", data_type=_data_type(r["ColumnDataType"]),
+            display_name=r["DisplayName"] or r["ColumnName"] or "", data_type=_data_type(r["ColumnDataType"], r["ColumnName"]),
             auto_populate=bool(r["AutoPopulate"]) and (r["QryLen"] or 0) > 0,
         )
         for r in rows
@@ -180,7 +192,7 @@ def _build_where(cursor, report_id: int, filters: dict[str, str]) -> tuple[str, 
         if not col:
             continue
         field = col["FieldName"] or column_name
-        if _data_type(col["ColumnDataType"]) == "string":
+        if _data_type(col["ColumnDataType"], col["ColumnName"]) == "string":
             clauses.append(f"{field} LIKE ?")
             params.append(f"%{value}%")
         else:
@@ -425,10 +437,10 @@ def _proc_filter_conditions(cursor, report_id: int, filters: dict[str, str]) -> 
             continue
         field = col["FieldName"] or column_name
         escaped = value.replace("'", "''")
-        if _data_type(col["ColumnDataType"]) == "date":
+        if _data_type(col["ColumnDataType"], col["ColumnName"]) == "date":
             date_part = escaped[:10] if re.match(r"^\d{4}-\d{2}-\d{2}", escaped) else escaped
             sql = f"({field} = '{date_part}')"
-        elif _data_type(col["ColumnDataType"]) == "string":
+        elif _data_type(col["ColumnDataType"], col["ColumnName"]) == "string":
             sql = f"({field} LIKE '%{escaped}%')"
         else:
             sql = f"({field} = '{escaped}')"
@@ -558,7 +570,7 @@ def _cancel_order_filter_conditions(cursor, report_id: int, filters: dict[str, s
             continue
         field = col["FieldName"] or column_name
         escaped = value.replace("'", "''")
-        if _data_type(col["ColumnDataType"]) == "string":
+        if _data_type(col["ColumnDataType"], col["ColumnName"]) == "string":
             conditions.append((col["ColumnId"], f"({field} LIKE '%{escaped}%')", value))
         else:
             conditions.append((col["ColumnId"], f"({field} = '{escaped}')", value))
