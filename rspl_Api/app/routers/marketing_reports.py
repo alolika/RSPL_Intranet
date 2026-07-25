@@ -235,9 +235,13 @@ def get_action_search_filters() -> dict:
 def get_action_search_salesmen(search: str = "") -> list[LookupOption]:
     with get_cursor() as cursor:
         if search.strip():
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["Name LIKE ?"] * len(keywords))
+            params = [f"%{kw}%" for kw in keywords]
             cursor.execute(
-                "SELECT TOP 100 SalesmanID, Name FROM Salesman WHERE Enabled = 1 AND Name LIKE ? ORDER BY Name",
-                f"%{search}%",
+                f"SELECT TOP 100 SalesmanID, Name FROM Salesman WHERE Enabled = 1 AND {where_clause} ORDER BY Name",
+                *params,
             )
         else:
             cursor.execute("SELECT TOP 100 SalesmanID, Name FROM Salesman WHERE Enabled = 1 ORDER BY Name")
@@ -582,9 +586,13 @@ def get_lead_record_users(search: str = "") -> list[LookupOption]:
     # independently searchable and shares the same underlying user list.
     with get_cursor() as cursor:
         if search.strip():
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["name LIKE ?"] * len(keywords))
+            params = [f"%{kw}%" for kw in keywords]
             cursor.execute(
-                "SELECT TOP 100 UserID, name FROM usermaster WHERE enabled=1 AND UserType IN (1,6,3,5) AND name LIKE ? ORDER BY name",
-                f"%{search}%",
+                f"SELECT TOP 100 UserID, name FROM usermaster WHERE enabled=1 AND UserType IN (1,6,3,5) AND {where_clause} ORDER BY name",
+                *params,
             )
         else:
             cursor.execute("SELECT TOP 100 UserID, name FROM usermaster WHERE enabled=1 AND UserType IN (1,6,3,5) ORDER BY name")
@@ -595,9 +603,13 @@ def get_lead_record_users(search: str = "") -> list[LookupOption]:
 def get_lead_record_salesmen(search: str = "") -> list[LookupOption]:
     with get_cursor() as cursor:
         if search.strip():
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["Name LIKE ?"] * len(keywords))
+            params = [f"%{kw}%" for kw in keywords]
             cursor.execute(
-                "SELECT TOP 100 SalesManId, Name FROM SalesMan WHERE Enabled=1 AND Name LIKE ? ORDER BY Name",
-                f"%{search}%",
+                f"SELECT TOP 100 SalesManId, Name FROM SalesMan WHERE Enabled=1 AND {where_clause} ORDER BY Name",
+                *params,
             )
         else:
             cursor.execute("SELECT TOP 100 SalesManId, Name FROM SalesMan WHERE Enabled=1 ORDER BY Name")

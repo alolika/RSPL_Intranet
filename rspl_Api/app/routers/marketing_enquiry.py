@@ -140,10 +140,21 @@ def get_customers_for_search(search: str = "") -> list[LookupOption]:
     # types (same load-on-demand shape as the other two). No-search default keeps
     # the original "most recently added" ordering — search results sort by name.
     with get_cursor() as cursor:
-        if search.strip():
+        keywords = search.split()
+        if keywords:
+            # Smart/keyword search: split what was typed into words and
+            # require each one to appear somewhere in DisplayName, in any
+            # order — e.g. "maha ino pvt" matches "Mahaveer Innovation Pvt.
+            # Ltd. Pune" — instead of the old single LIKE '%whole string%'
+            # (which only matched an exact substring in the right order).
+            # This DB's default collation is already case-insensitive, same
+            # as every other LIKE search in this app, so no extra
+            # upper()/lower() is needed here.
+            where_clause = " AND ".join(["DisplayName LIKE ?"] * len(keywords))
+            params = [f"%{kw}%" for kw in keywords]
             cursor.execute(
-                "SELECT TOP 100 CustID, DisplayName FROM CustomerMaster WHERE Disabled = 0 AND DisplayName LIKE ? ORDER BY DisplayName",
-                f"%{search}%",
+                f"SELECT TOP 100 CustID, DisplayName FROM CustomerMaster WHERE Disabled = 0 AND {where_clause} ORDER BY DisplayName",
+                *params,
             )
         else:
             cursor.execute("SELECT TOP 100 CustID, DisplayName FROM CustomerMaster WHERE Disabled = 0 ORDER BY CustID DESC")

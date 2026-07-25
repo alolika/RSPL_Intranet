@@ -150,8 +150,11 @@ def get_ledger_groups(search: str = "") -> list[LookupOption]:
         params: list = []
         search = search.strip()
         if search:
-            sql += "AND Name LIKE ? "
-            params.append(f"%{search}%")
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["Name LIKE ?"] * len(keywords))
+            sql += f"AND {where_clause} "
+            params.extend(f"%{kw}%" for kw in keywords)
         sql += "ORDER BY Name"
         cursor.execute(sql, *params)
         return [LookupOption(label=r["Name"], value=r["Name"]) for r in rows_to_dicts(cursor)]

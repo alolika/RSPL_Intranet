@@ -241,12 +241,19 @@ def get_cust_ledger_areas(search: str = "") -> list[str]:
 def get_cust_ledger_ledger_groups(search: str = "") -> list[LookupOption]:
     with get_cursor() as cursor:
         if search.strip():
+            # Smart keyword search: split what was typed into words and require
+            # each one to appear somewhere in the name, in any order — e.g.
+            # "steel trad" matches "Trading Steel Co." — instead of the old
+            # single LIKE '%whole string%' (exact substring, in order only).
+            keywords = search.split()
+            where_clause = " AND ".join(["LGM.Name LIKE ?"] * len(keywords))
+            params = [f"%{kw}%" for kw in keywords]
             cursor.execute(
                 "SELECT DISTINCT TOP 100 LGM.LedgerGroupID, LGM.Name FROM LedgerGroupMaster LGM "
                 "INNER JOIN CustomerMaster CM ON CM.LedgerGroupId = LGM.LedgerGroupID "
                 "WHERE CM.custid IN (SELECT custid FROM customerattributes WHERE AttributeID = 1) AND CM.disabled = 0 "
-                "AND LGM.Name LIKE ? ORDER BY LGM.Name",
-                f"%{search}%",
+                f"AND {where_clause} ORDER BY LGM.Name",
+                *params,
             )
         else:
             cursor.execute(
@@ -266,10 +273,14 @@ def get_cust_ledger_customers(search: str = "") -> list[str]:
     # list" problem an ID-keyed dropdown would have here.
     with get_cursor() as cursor:
         if search.strip():
+            # Smart keyword search — see get_cust_ledger_ledger_groups above.
+            keywords = search.split()
+            where_clause = " AND ".join(["DisplayName LIKE ?"] * len(keywords))
+            params = [f"%{kw}%" for kw in keywords]
             cursor.execute(
                 "SELECT DISTINCT TOP 100 DisplayName FROM customermaster WHERE custid IN (SELECT custid FROM "
-                "customerattributes WHERE AttributeID = 1) AND disabled = 0 AND groupid = 1 AND DisplayName LIKE ? ORDER BY DisplayName",
-                f"%{search}%",
+                f"customerattributes WHERE AttributeID = 1) AND disabled = 0 AND groupid = 1 AND {where_clause} ORDER BY DisplayName",
+                *params,
             )
         else:
             cursor.execute(

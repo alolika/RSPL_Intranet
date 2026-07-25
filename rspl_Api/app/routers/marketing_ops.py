@@ -193,10 +193,14 @@ def get_outstanding_followup_filters() -> dict:
 def get_outstanding_followup_customers(search: str = "") -> list[str]:
     with get_cursor() as cursor:
         if search.strip():
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["DisplayName LIKE ?"] * len(keywords))
+            params = [f"%{kw}%" for kw in keywords]
             cursor.execute(
                 "SELECT TOP 100 DisplayName FROM customermaster WHERE custid IN (SELECT custid FROM customerattributes "
-                "WHERE AttributeID=1) AND disabled=0 AND groupid=1 AND DisplayName LIKE ? ORDER BY DisplayName",
-                f"%{search}%",
+                f"WHERE AttributeID=1) AND disabled=0 AND groupid=1 AND {where_clause} ORDER BY DisplayName",
+                *params,
             )
         else:
             cursor.execute(

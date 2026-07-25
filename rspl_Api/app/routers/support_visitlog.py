@@ -100,8 +100,11 @@ def get_products(search: str = "", id: int = 0) -> list[LookupOption]:
         params: list = []
         search = search.strip()
         if search:
-            sql += "AND ProductName LIKE ? "
-            params.append(f"%{search}%")
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["ProductName LIKE ?"] * len(keywords))
+            sql += f"AND {where_clause} "
+            params.extend(f"%{kw}%" for kw in keywords)
         sql += "ORDER BY ProductName"
         cursor.execute(sql, *params)
         return [LookupOption(label=r["ProductName"], value=r["ProductID"]) for r in rows_to_dicts(cursor)]
@@ -117,8 +120,11 @@ def get_causes(search: str = "", id: int = 0) -> list[LookupOption]:
         params: list = []
         search = search.strip()
         if search:
-            sql += "AND Name LIKE ? "
-            params.append(f"%{search}%")
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["Name LIKE ?"] * len(keywords))
+            sql += f"AND {where_clause} "
+            params.extend(f"%{kw}%" for kw in keywords)
         sql += "ORDER BY Name"
         cursor.execute(sql, *params)
         return [LookupOption(label=r["Name"], value=r["CauseID"]) for r in rows_to_dicts(cursor)]
@@ -131,8 +137,11 @@ def get_support_reasons(search: str = "") -> list[str]:
         params: list = []
         search = search.strip()
         if search:
-            sql += "AND SupportReason LIKE ? "
-            params.append(f"%{search}%")
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["SupportReason LIKE ?"] * len(keywords))
+            sql += f"AND {where_clause} "
+            params.extend(f"%{kw}%" for kw in keywords)
         sql += "ORDER BY SupportReason"
         cursor.execute(sql, *params)
         return [r["SupportReason"] for r in rows_to_dicts(cursor)]
@@ -148,8 +157,11 @@ def get_clients(search: str = "", id: int = 0) -> list[LookupOption]:
         params: list = []
         search = search.strip()
         if search:
-            sql += "AND Name LIKE ? "
-            params.append(f"%{search}%")
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["Name LIKE ?"] * len(keywords))
+            sql += f"AND {where_clause} "
+            params.extend(f"%{kw}%" for kw in keywords)
         sql += "ORDER BY Name"
         cursor.execute(sql, *params)
         return [LookupOption(label=r["Name"], value=r["CustID"]) for r in rows_to_dicts(cursor)]

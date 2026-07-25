@@ -48,9 +48,13 @@ def get_e_referral_shops(search: str = "") -> list[LookupOption]:
     # user types (search param), same load-on-demand shape as /customers-for-search.
     with get_cursor() as cursor:
         if search.strip():
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["DisplayName LIKE ?"] * len(keywords))
+            params = [f"%{kw}%" for kw in keywords]
             cursor.execute(
-                "SELECT TOP 100 CustID, DisplayName FROM CustomerMaster WHERE Disabled = 0 AND DisplayName LIKE ? ORDER BY DisplayName",
-                f"%{search}%",
+                f"SELECT TOP 100 CustID, DisplayName FROM CustomerMaster WHERE Disabled = 0 AND {where_clause} ORDER BY DisplayName",
+                *params,
             )
         else:
             cursor.execute("SELECT TOP 100 CustID, DisplayName FROM CustomerMaster WHERE Disabled = 0 ORDER BY DisplayName")

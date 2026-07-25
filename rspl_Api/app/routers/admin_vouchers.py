@@ -117,8 +117,13 @@ def get_customers(search: str = "") -> list[LookupOption]:
         sql = f"SELECT TOP 100 CustID, {name_expr} AS FullName FROM CustomerMaster WHERE Disabled = 0 AND GroupId = 1"
         params: list = []
         if search.strip():
-            sql += f" AND {name_expr} LIKE ?"
-            params.append(f"%{search}%")
+            # Smart keyword search: split what was typed into words and require
+            # each one to appear somewhere in the name, in any order — e.g.
+            # "maha ino" matches "Mahaveer Inovation Pvt. Ltd." — instead of the
+            # old single LIKE '%whole string%' (exact substring, in order only).
+            keywords = search.split()
+            sql += " AND " + " AND ".join([f"{name_expr} LIKE ?"] * len(keywords))
+            params.extend(f"%{kw}%" for kw in keywords)
         sql += " ORDER BY FullName"
         cursor.execute(sql, *params)
         return [LookupOption(label=(r["FullName"] or "").strip(), value=r["CustID"]) for r in rows_to_dicts(cursor)]

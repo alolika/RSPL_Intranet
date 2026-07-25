@@ -70,9 +70,13 @@ def get_entity_lat_long_customers(edit_mode: bool = True, search: str = "") -> l
     where = "GroupID=1 and Latitude<>'0'" if edit_mode else "GroupID=1 and (Latitude='0' Or Latitude Is Null or Latitude='')"
     with get_cursor() as cursor:
         if search.strip():
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            name_clause = " and ".join(["DisplayName LIKE ?"] * len(keywords))
+            params = [f"%{kw}%" for kw in keywords]
             cursor.execute(
-                f"Select TOP 100 CustID,DisplayName From CustomerMaster Where {where} and DisplayName LIKE ? Order By DisplayName",
-                f"%{search}%",
+                f"Select TOP 100 CustID,DisplayName From CustomerMaster Where {where} and {name_clause} Order By DisplayName",
+                *params,
             )
         else:
             cursor.execute(f"Select TOP 100 CustID,DisplayName From CustomerMaster Where {where} Order By DisplayName")

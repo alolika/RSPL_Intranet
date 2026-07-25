@@ -153,13 +153,30 @@ def get_enquiry_register_rows(cust_id: int | None = None) -> list[CustEnquiryReg
 
 
 @router.get("/lookup/contact-persons", response_model=list[dict])
-def get_contact_person_lookup() -> list[dict]:
-    """Mirrors CustEnquiryRegister.aspx.vb's ddlContact source (distinct CustomerMaster.Landmark values)."""
+def get_contact_person_lookup(search: str = "") -> list[dict]:
+    """Mirrors CustEnquiryRegister.aspx.vb's ddlContact source (distinct
+    CustomerMaster.Landmark values). Was an unbounded full list — on a table
+    this size that's tens of thousands of distinct values shipped and
+    rendered up front. Capped to TOP 100 + server-side search instead, same
+    load-on-demand shape as every other customer/name picker in this app
+    (e.g. this page's own Shop Name picker above)."""
     with get_cursor() as cursor:
-        cursor.execute(
-            "SELECT DISTINCT Landmark AS value, Landmark AS label FROM CustomerMaster "
-            "WHERE Landmark IS NOT NULL AND Landmark <> '' ORDER BY Landmark"
-        )
+        search = search.strip()
+        if search:
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["Landmark LIKE ?"] * len(keywords))
+            params = [f"%{kw}%" for kw in keywords]
+            cursor.execute(
+                "SELECT DISTINCT TOP 100 Landmark AS value, Landmark AS label FROM CustomerMaster "
+                f"WHERE Landmark IS NOT NULL AND Landmark <> '' AND {where_clause} ORDER BY Landmark",
+                *params,
+            )
+        else:
+            cursor.execute(
+                "SELECT DISTINCT TOP 100 Landmark AS value, Landmark AS label FROM CustomerMaster "
+                "WHERE Landmark IS NOT NULL AND Landmark <> '' ORDER BY Landmark"
+            )
         return rows_to_dicts(cursor)
 
 

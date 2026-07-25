@@ -112,10 +112,14 @@ def get_tour_report_filters() -> dict:
 def get_tour_report_customers(search: str = "") -> list[LookupOption]:
     with get_cursor() as cursor:
         if search.strip():
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " and ".join(["Displayname LIKE ?"] * len(keywords))
+            params = [f"%{kw}%" for kw in keywords]
             cursor.execute(
                 "select distinct top 100 Displayname as Name, CustID as ID from CustomerMaster "
-                "where disabled=0 and Displayname LIKE ? Order by Displayname",
-                f"%{search}%",
+                f"where disabled=0 and {where_clause} Order by Displayname",
+                *params,
             )
         else:
             cursor.execute("select distinct top 100 Displayname as Name, CustID as ID from CustomerMaster where disabled=0 Order by Displayname")

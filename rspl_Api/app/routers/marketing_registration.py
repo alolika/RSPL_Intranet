@@ -157,11 +157,15 @@ def get_cust_registration_lookups() -> CustRegistrationLookups:
 def get_referred_by_customers(search: str = "") -> list[LookupOption]:
     with get_cursor() as cursor:
         if search.strip():
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["CM.DisplayName LIKE ?"] * len(keywords))
+            params = [f"%{kw}%" for kw in keywords]
             cursor.execute(
                 "SELECT TOP 100 CM.CustID, CM.DisplayName FROM CustomerMaster CM "
                 "INNER JOIN CustomerGroupMaster G ON CM.GroupID = G.GroupID "
-                "WHERE G.GroupID = 1 AND CM.DisplayName LIKE ? ORDER BY CM.DisplayName",
-                f"%{search}%",
+                f"WHERE G.GroupID = 1 AND {where_clause} ORDER BY CM.DisplayName",
+                *params,
             )
         else:
             cursor.execute(
@@ -176,9 +180,13 @@ def get_referred_by_customers(search: str = "") -> list[LookupOption]:
 def get_potential_customers(search: str = "") -> list[LookupOption]:
     with get_cursor() as cursor:
         if search.strip():
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["DisplayName LIKE ?"] * len(keywords))
+            params = [f"%{kw}%" for kw in keywords]
             cursor.execute(
-                "SELECT TOP 100 CustID, DisplayName FROM CustomerMaster WHERE GroupId <> 1 AND DisplayName LIKE ? ORDER BY DisplayName",
-                f"%{search}%",
+                f"SELECT TOP 100 CustID, DisplayName FROM CustomerMaster WHERE GroupId <> 1 AND {where_clause} ORDER BY DisplayName",
+                *params,
             )
         else:
             cursor.execute(
@@ -207,8 +215,10 @@ def search_customer_name(search: str = "", current_user: CurrentUser = Depends(g
             sql += " AND CM.userID = ?"
             params.append(current_user.user_id)
         if search.strip():
-            sql += " AND CM.DisplayName LIKE ?"
-            params.append(f"%{search}%")
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            sql += " AND " + " AND ".join(["CM.DisplayName LIKE ?"] * len(keywords))
+            params.extend(f"%{kw}%" for kw in keywords)
         sql += " ORDER BY CM.DisplayName"
         cursor.execute(sql, *params)
         return [LookupOption(label=r["DisplayName"] or "", value=r["CustID"]) for r in rows_to_dicts(cursor)]

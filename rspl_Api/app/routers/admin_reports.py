@@ -140,10 +140,14 @@ def get_referral_analysis_cities(search: str = "") -> list[str]:
 def get_referral_analysis_referred_by(search: str = "") -> list[str]:
     with get_cursor() as cursor:
         if search.strip():
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["ReferredBy LIKE ?"] * len(keywords))
+            params = [f"%{kw}%" for kw in keywords]
             cursor.execute(
-                "SELECT TOP 100 ReferredBy FROM VW_Customer_Refferal_Dtls WHERE ReferredBy LIKE ? "
+                f"SELECT TOP 100 ReferredBy FROM VW_Customer_Refferal_Dtls WHERE {where_clause} "
                 "GROUP BY ReferredBy ORDER BY ReferredBy",
-                f"%{search}%",
+                *params,
             )
         else:
             cursor.execute("SELECT TOP 100 ReferredBy FROM VW_Customer_Refferal_Dtls GROUP BY ReferredBy ORDER BY ReferredBy")
@@ -154,10 +158,14 @@ def get_referral_analysis_referred_by(search: str = "") -> list[str]:
 def get_referral_analysis_referral_names(search: str = "") -> list[str]:
     with get_cursor() as cursor:
         if search.strip():
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["NewCustomer LIKE ?"] * len(keywords))
+            params = [f"%{kw}%" for kw in keywords]
             cursor.execute(
-                "SELECT TOP 100 NewCustomer FROM VW_Customer_Refferal_Dtls WHERE NewCustomer LIKE ? "
+                f"SELECT TOP 100 NewCustomer FROM VW_Customer_Refferal_Dtls WHERE {where_clause} "
                 "GROUP BY NewCustomer ORDER BY NewCustomer",
-                f"%{search}%",
+                *params,
             )
         else:
             cursor.execute("SELECT TOP 100 NewCustomer FROM VW_Customer_Refferal_Dtls GROUP BY NewCustomer ORDER BY NewCustomer")

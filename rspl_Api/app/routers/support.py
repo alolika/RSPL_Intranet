@@ -269,9 +269,17 @@ def get_customers(search: str = "") -> list[LookupOption]:
         if search:
             # Staff commonly know a customer by their numeric CustID ("customer
             # code") as readily as by name — match either so the same search
-            # box works for both instead of requiring name-only text.
-            sql += "AND (DisplayName LIKE ? OR CAST(CustID AS NVARCHAR(20)) LIKE ?) "
-            params.append(f"%{search}%")
+            # box works for both instead of requiring name-only text. For the
+            # name side, split what was typed into words and require each one
+            # to appear somewhere in DisplayName, in any order — e.g. "maha
+            # ino" matches "Mahaveer Inovation Pvt. Ltd." — instead of the old
+            # single LIKE '%whole string%' (exact substring, in order only).
+            # The CustID side still matches the whole typed string as-is,
+            # since a customer code search is always a single token anyway.
+            keywords = search.split()
+            name_clause = " AND ".join(["DisplayName LIKE ?"] * len(keywords))
+            sql += f"AND (({name_clause}) OR CAST(CustID AS NVARCHAR(20)) LIKE ?) "
+            params.extend(f"%{kw}%" for kw in keywords)
             params.append(f"%{search}%")
         sql += "ORDER BY DisplayName"
         cursor.execute(sql, *params)
@@ -564,8 +572,11 @@ def get_closed_narrations(search: str = "") -> list[LookupOption]:
         params: list = []
         search = search.strip()
         if search:
-            sql += "WHERE ClosedNarration LIKE ? "
-            params.append(f"%{search}%")
+            # Smart keyword search — see marketing_enquiry.get_customers_for_search.
+            keywords = search.split()
+            where_clause = " AND ".join(["ClosedNarration LIKE ?"] * len(keywords))
+            sql += f"WHERE {where_clause} "
+            params.extend(f"%{kw}%" for kw in keywords)
         sql += "ORDER BY ClosedNarration"
         cursor.execute(sql, *params)
         return [LookupOption(label=r["ClosedNarration"], value=r["ClosedID"]) for r in rows_to_dicts(cursor)]
