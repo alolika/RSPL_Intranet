@@ -1,0 +1,412 @@
+INFO:     Started server process [14232]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:61900 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61947 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:62186 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62186 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62186 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62189 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62190 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62189 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62186 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62190 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62517 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62518 - "OPTIONS /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62519 - "OPTIONS /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62520 - "OPTIONS /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62521 - "OPTIONS /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62522 - "OPTIONS /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62517 - "OPTIONS /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62518 - "OPTIONS /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62519 - "OPTIONS /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62517 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62522 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62520 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62521 - "GET /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62517 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62520 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62519 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62522 - "GET /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62518 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62524 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62525 - "OPTIONS /support/tickets/191575 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62525 - "GET /support/tickets/191575 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62525 - "OPTIONS /support/customer-info?cust_id=58945 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62525 - "OPTIONS /support/pending-tickets?cust_id=58945 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62525 - "OPTIONS /support/closed-tickets?cust_id=58945 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62527 - "GET /support/customer-info?cust_id=58945 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62528 - "GET /support/pending-tickets?cust_id=58945 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62525 - "GET /support/closed-tickets?cust_id=58945 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62528 - "OPTIONS /support/tt-action/brief/188875 HTTP/1.1" 200 OK
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     192.168.200.18:62525 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62527 - "GET /support/tt-action/brief/188875 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52674 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52675 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52676 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52677 - "GET /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52674 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52676 - "GET /support/customer-info?cust_id=58945 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52674 - "GET /support/closed-tickets?cust_id=58945 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 356, in get_closed_tickets
+    rows = _tt_details_rows(0, cust_id, 1)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 337, in _tt_details_rows
+    cursor.execute("EXEC webProc_TTDetails ?, ?, ?, '', 0", tt_no, cust_id, closed)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.Error: ('HY000', '[HY000] [Microsoft][ODBC Driver 17 for SQL Server]Connection is busy with results for another command (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:52675 - "GET /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52677 - "GET /support/pending-tickets?cust_id=58945 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52678 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52673 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52684 - "OPTIONS /admin/leave/rows?from_date=2026-07-24&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52684 - "GET /admin/leave/rows?from_date=2026-07-24&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52708 - "OPTIONS /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52708 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52963 - "GET /admin/leave/rows?from_date=2026-07-24&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53028 - "GET /admin/leave/rows?from_date=2026-07-24&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53040 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53051 - "GET /admin/leave/rows?from_date=2026-07-24&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53056 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53056 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53056 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53056 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53290 - "OPTIONS /admin/leave/register1-rows?user_id=0&include_subordinate=false&sanction_filter=ALL&from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53291 - "OPTIONS /admin/leave/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53291 - "GET /admin/leave/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53290 - "GET /admin/leave/register1-rows?user_id=0&include_subordinate=false&sanction_filter=ALL&from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53322 - "OPTIONS /admin/leave/rows?from_date=2026-07-24&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53322 - "GET /admin/leave/rows?from_date=2026-07-24&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53330 - "GET /admin/leave/rows?from_date=2026-07-24&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53340 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53367 - "GET /admin/leave/rows?from_date=2026-07-24&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53383 - "GET /admin/leave/rows?from_date=2026-07-24&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53383 - "GET /admin/leave/rows?from_date=2026-07-24&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53383 - "GET /admin/leave/rows?from_date=2026-07-24&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53383 - "OPTIONS /admin/content/article-categories HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53390 - "OPTIONS /admin/content/article-register?category_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53390 - "GET /admin/content/article-categories HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53383 - "GET /admin/content/article-register?category_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53383 - "GET /admin/leave/rows?from_date=2026-07-24&to_date=2026-07-24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53500 - "OPTIONS /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53500 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53595 - "OPTIONS /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53595 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53627 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53645 - "OPTIONS /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53645 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53804 - "OPTIONS /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53804 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53813 - "OPTIONS /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53813 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53874 - "OPTIONS /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53874 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53943 - "OPTIONS /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53943 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53982 - "OPTIONS /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53982 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54224 - "OPTIONS /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54224 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54313 - "OPTIONS /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54313 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54355 - "OPTIONS /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54355 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54406 - "OPTIONS /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54406 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54441 - "OPTIONS /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54441 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54465 - "OPTIONS /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54465 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54493 - "OPTIONS /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54493 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54560 - "GET /general/dashboards/amc HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55515 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55515 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55515 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55515 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55515 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55515 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55519 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55518 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55665 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55666 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55666 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55665 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55667 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55666 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55680 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55680 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55681 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55681 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55682 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55680 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55694 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55694 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55695 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55696 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55695 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55694 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55708 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55708 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55708 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55710 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55709 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55708 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55884 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55884 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55885 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55886 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55885 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55884 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55974 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55974 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55974 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55976 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55975 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55974 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56075 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56075 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56076 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56077 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56076 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56075 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56151 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56151 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56151 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56153 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56152 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56151 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56224 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56224 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56225 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56225 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56226 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56224 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56238 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56238 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56238 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56240 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56238 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56239 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56252 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56252 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56254 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56254 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56252 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56253 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56266 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56267 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56268 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56268 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56267 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56266 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56339 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56339 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56340 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56341 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56340 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56339 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56405 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56405 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56406 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56406 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56407 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56405 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56506 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56506 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56506 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56506 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56507 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56508 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56555 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56555 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56555 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56556 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56555 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56557 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56592 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56591 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56590 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56612 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56612 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56612 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56613 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56614 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56612 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56623 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56623 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56624 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56624 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56625 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56623 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56635 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56635 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56636 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56635 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56636 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56637 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56649 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56649 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56649 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56651 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56649 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56650 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56673 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56674 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56675 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56675 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56674 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56673 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56714 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56714 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56714 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56716 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56715 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56714 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56736 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56737 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56735 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56792 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56792 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56793 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56793 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56794 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56792 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56834 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56834 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56834 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56835 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56834 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56836 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56875 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56875 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56875 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56875 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56877 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56876 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56910 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56911 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56911 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56911 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56910 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56912 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56977 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56978 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56979 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56979 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56978 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56977 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56991 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56991 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56991 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56993 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56991 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56992 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57005 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57006 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57007 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57005 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57006 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57007 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57019 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57019 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57020 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57021 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57020 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57019 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59181 - "OPTIONS /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59181 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59190 - "OPTIONS /general/reports/25/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59189 - "OPTIONS /general/reports/25/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59189 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59190 - "GET /general/reports/25/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59191 - "GET /general/reports/25/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59249 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59270 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59298 - "GET /general/reports/25/filters HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:59321 - "GET /general/reports/25/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59396 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59397 - "GET /general/reports/25/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59398 - "GET /general/reports/25/templates HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59460 - "GET /general/reports/25/filter-fields HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59459 - "GET /general/reports HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59461 - "GET /general/reports/25/templates HTTP/1.1" 200 OK

@@ -4,3 +4,552 @@ INFO:     Application startup complete.
 ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 8010): [winerror 10048] only one usage of each socket address (protocol/network address/port) is normally permitted
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
+INFO:     Started server process [15868]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:60559 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60565 - "GET /admin/vouchers/customers?search=maha%20ino HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60568 - "GET /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60571 - "GET /support/customers?search=test HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60593 - "GET /marketing/enquiry/customers-for-search?search=test HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60596 - "GET /admin/vouchers/customers?search=maha%20ino HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60603 - "OPTIONS /admin/customers/ans/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60604 - "OPTIONS /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60603 - "GET /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60611 - "OPTIONS /admin/vouchers/customers?search=vee HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60611 - "GET /admin/vouchers/customers?search=vee HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60611 - "OPTIONS /admin/vouchers/customers?search=vee%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60611 - "GET /admin/vouchers/customers?search=vee%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60612 - "OPTIONS /admin/vouchers/customers?search=vee%20vat HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60612 - "GET /admin/vouchers/customers?search=vee%20vat HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60612 - "OPTIONS /admin/vouchers/customers?search=vee%20vat%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60612 - "GET /admin/vouchers/customers?search=vee%20vat%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60612 - "OPTIONS /admin/vouchers/customers?search=vee%20vat%20lim HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60612 - "GET /admin/vouchers/customers?search=vee%20vat%20lim HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60612 - "OPTIONS /admin/vouchers/customers?search=vee%20vat%20lim%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60612 - "GET /admin/vouchers/customers?search=vee%20vat%20lim%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60615 - "OPTIONS /admin/vouchers/customers?search=vee%20vat%20lim%20c HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60615 - "GET /admin/vouchers/customers?search=vee%20vat%20lim%20c HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60615 - "OPTIONS /admin/vouchers/customers?search=vee%20vat%20lim%20ch HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60615 - "GET /admin/vouchers/customers?search=vee%20vat%20lim%20ch HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60615 - "OPTIONS /admin/vouchers/customers?search=vee%20vat%20lim%20cha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60615 - "GET /admin/vouchers/customers?search=vee%20vat%20lim%20cha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60615 - "GET /admin/vouchers/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60622 - "OPTIONS /support/tt-register/filter-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60623 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60622 - "OPTIONS /support/tt-register/ledger-groups?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60624 - "OPTIONS /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60623 - "GET /support/tt-register/ledger-groups?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60624 - "GET /support/tt-register/filter-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60622 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "GET /support/tt-register/search?product=ALL&action_taken_by=ALL&received_by=ALL&tt_status=ALL&latest_owner=ALL&ledger_group=ALL&ticket_no=&exclude_action=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "OPTIONS /support/customers?search=ma HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "GET /support/customers?search=ma HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "OPTIONS /support/customers?search=maha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "GET /support/customers?search=maha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "OPTIONS /support/customers?search=maha%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "GET /support/customers?search=maha%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "OPTIONS /support/customers?search=maha%20p HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "GET /support/customers?search=maha%20p HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "OPTIONS /support/customers?search=maha%20pr HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "GET /support/customers?search=maha%20pr HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "OPTIONS /support/customers?search=maha%20pri HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "GET /support/customers?search=maha%20pri HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "OPTIONS /support/customers?search=maha%20pri%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "GET /support/customers?search=maha%20pri%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "OPTIONS /support/customers?search=maha%20pri%20he HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60625 - "GET /support/customers?search=maha%20pri%20he HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60604 - "GET /admin/customers/ans/filters HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\admin_customers.py", line 491, in get_customer_ans_filters
+    cursor.execute("SELECT DISTINCT Question FROM vw_web_clientAnswerSheet ORDER BY Question")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.OperationalError: ('HYT00', '[HYT00] [Microsoft][ODBC Driver 17 for SQL Server]Query timeout expired (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:60632 - "OPTIONS /support/customers?search=maha%20pri%20h HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60632 - "GET /support/customers?search=maha%20pri%20h HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60632 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60635 - "OPTIONS /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60636 - "OPTIONS /marketing/register/lookup/contact-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60636 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60635 - "GET /marketing/register/lookup/contact-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60673 - "OPTIONS /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60674 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.49:49733 - "OPTIONS /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.49:49734 - "OPTIONS /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.49:49735 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60673 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.49:49736 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60673 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.49:49736 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60674 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.49:49735 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     Started server process [20364]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:60710 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60713 - "GET /marketing/register/lookup/contact-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60716 - "GET /marketing/register/lookup/contact-persons?search=kumar HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60724 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60725 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60728 - "GET /marketing/register/lookup/contact-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60731 - "GET /marketing/register/lookup/contact-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60739 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60740 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60829 - "OPTIONS /marketing/enquiry/customers-for-search?search=c HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60830 - "OPTIONS /marketing/enquiry/customers-for-search?search=ch HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60829 - "GET /marketing/enquiry/customers-for-search?search=c HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60829 - "OPTIONS /marketing/enquiry/customers-for-search?search=chi HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60830 - "GET /marketing/enquiry/customers-for-search?search=ch HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60829 - "GET /marketing/enquiry/customers-for-search?search=chi HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60829 - "OPTIONS /marketing/enquiry/customers-for-search?search=chi%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60829 - "GET /marketing/enquiry/customers-for-search?search=chi%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60829 - "GET /marketing/enquiry/customers-for-search?search=chi HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60829 - "GET /marketing/enquiry/customers-for-search?search=ch HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60830 - "GET /marketing/enquiry/customers-for-search?search=c HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60830 - "OPTIONS /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60830 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60837 - "OPTIONS /marketing/enquiry/customers-for-search?search=s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60837 - "GET /marketing/enquiry/customers-for-search?search=s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60837 - "OPTIONS /marketing/enquiry/customers-for-search?search=sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60839 - "OPTIONS /marketing/enquiry/customers-for-search?search=san HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60840 - "OPTIONS /marketing/enquiry/customers-for-search?search=san%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60837 - "GET /marketing/enquiry/customers-for-search?search=sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60839 - "GET /marketing/enquiry/customers-for-search?search=san HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60839 - "OPTIONS /marketing/enquiry/customers-for-search?search=san%20s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60840 - "GET /marketing/enquiry/customers-for-search?search=san%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60840 - "OPTIONS /marketing/enquiry/customers-for-search?search=san%20sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60837 - "OPTIONS /marketing/enquiry/customers-for-search?search=san%20sam HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60840 - "GET /marketing/enquiry/customers-for-search?search=san%20sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60837 - "GET /marketing/enquiry/customers-for-search?search=san%20sam HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60839 - "GET /marketing/enquiry/customers-for-search?search=san%20s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60839 - "GET /marketing/enquiry/customers-for-search?search=san%20sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60839 - "GET /marketing/enquiry/customers-for-search?search=san%20s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60847 - "GET /marketing/enquiry/customers-for-search?search=san%20sam HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60846 - "GET /marketing/enquiry/customers-for-search?search=san%20sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60839 - "GET /marketing/enquiry/customers-for-search?search=san%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60845 - "GET /marketing/enquiry/customers-for-search?search=san%20s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60846 - "GET /marketing/enquiry/customers-for-search?search=san%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60839 - "GET /marketing/enquiry/customers-for-search?search=san%20s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60847 - "GET /marketing/enquiry/customers-for-search?search=san%20sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60847 - "GET /marketing/enquiry/customers-for-search?search=san HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60839 - "GET /marketing/enquiry/customers-for-search?search=sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60839 - "GET /marketing/enquiry/customers-for-search?search=s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60839 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60849 - "OPTIONS /marketing/enquiry/customers-for-search?search=i HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60849 - "GET /marketing/enquiry/customers-for-search?search=i HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60849 - "OPTIONS /marketing/enquiry/customers-for-search?search=in HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60849 - "GET /marketing/enquiry/customers-for-search?search=in HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60849 - "OPTIONS /marketing/enquiry/customers-for-search?search=ino HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60849 - "GET /marketing/enquiry/customers-for-search?search=ino HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60870 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60869 - "GET /marketing/enquiry/customers-for-search?search=i HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60872 - "OPTIONS /marketing/enquiry/customers-for-search?search=sanj HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60868 - "GET /marketing/enquiry/customers-for-search?search=in HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60868 - "OPTIONS /marketing/enquiry/customers-for-search?search=sanja HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60874 - "OPTIONS /marketing/enquiry/customers-for-search?search=sanjay HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60868 - "GET /marketing/enquiry/customers-for-search?search=sanja HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60870 - "GET /marketing/enquiry/customers-for-search?search=s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60870 - "OPTIONS /marketing/enquiry/customers-for-search?search=sanjay%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60874 - "GET /marketing/enquiry/customers-for-search?search=sanjay HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60870 - "GET /marketing/enquiry/customers-for-search?search=sanjay%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60872 - "GET /marketing/enquiry/customers-for-search?search=sanj HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60871 - "GET /marketing/enquiry/customers-for-search?search=sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60869 - "GET /marketing/enquiry/customers-for-search?search=san HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60869 - "OPTIONS /marketing/enquiry/customers-for-search?search=sanjay%20s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60871 - "OPTIONS /marketing/enquiry/customers-for-search?search=sanjay%20sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60869 - "GET /marketing/enquiry/customers-for-search?search=sanjay%20s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60871 - "GET /marketing/enquiry/customers-for-search?search=sanjay%20sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60881 - "GET /marketing/enquiry/customers-for-search?search=sanjay%20s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60881 - "GET /marketing/enquiry/customers-for-search?search=sanjay%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60883 - "GET /marketing/enquiry/customers-for-search?search=sanja HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60882 - "GET /marketing/enquiry/customers-for-search?search=sanjay HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60883 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\marketing_enquiry.py", line 160, in get_customers_for_search
+    cursor.execute("SELECT TOP 100 CustID, DisplayName FROM CustomerMaster WHERE Disabled = 0 ORDER BY CustID DESC")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.Error: ('HY000', '[HY000] [Microsoft][ODBC Driver 17 for SQL Server]Connection is busy with results for another command (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:60886 - "GET /marketing/enquiry/customers-for-search?search=sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60884 - "GET /marketing/enquiry/customers-for-search?search=sanj HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60885 - "GET /marketing/enquiry/customers-for-search?search=san HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60881 - "GET /marketing/enquiry/customers-for-search?search=s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60907 - "GET /marketing/enquiry/customers-for-search?search=s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60908 - "OPTIONS /marketing/enquiry/customers-for-search?search=sam HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60907 - "GET /marketing/enquiry/customers-for-search?search=sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60908 - "GET /marketing/enquiry/customers-for-search?search=sam HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60908 - "OPTIONS /marketing/enquiry/customers-for-search?search=samb HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60908 - "GET /marketing/enquiry/customers-for-search?search=samb HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60907 - "OPTIONS /marketing/enquiry/customers-for-search?search=sambh HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60907 - "GET /marketing/enquiry/customers-for-search?search=sambh HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60907 - "OPTIONS /marketing/enquiry/customers-for-search?search=sambha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60908 - "OPTIONS /marketing/enquiry/customers-for-search?search=sambhaj HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60907 - "GET /marketing/enquiry/customers-for-search?search=sambha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60908 - "GET /marketing/enquiry/customers-for-search?search=sambhaj HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60908 - "OPTIONS /marketing/enquiry/customers-for-search?search=sambhaji HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60908 - "GET /marketing/enquiry/customers-for-search?search=sambhaji HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60924 - "GET /marketing/enquiry/customers-for-search?search=sambhaj HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60924 - "GET /marketing/enquiry/customers-for-search?search=sambha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60925 - "GET /marketing/enquiry/customers-for-search?search=sambh HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60924 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\marketing_enquiry.py", line 160, in get_customers_for_search
+    cursor.execute("SELECT TOP 100 CustID, DisplayName FROM CustomerMaster WHERE Disabled = 0 ORDER BY CustID DESC")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.Error: ('HY000', '[HY000] [Microsoft][ODBC Driver 17 for SQL Server]Connection is busy with results for another command (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:60927 - "GET /marketing/enquiry/customers-for-search?search=sam HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60928 - "GET /marketing/enquiry/customers-for-search?search=sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "GET /marketing/enquiry/customers-for-search?search=s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60926 - "GET /marketing/enquiry/customers-for-search?search=samb HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "GET /marketing/enquiry/customers-for-search?search=s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "GET /marketing/enquiry/customers-for-search?search=sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "GET /marketing/enquiry/customers-for-search?search=san HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "GET /marketing/enquiry/customers-for-search?search=san%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "GET /marketing/enquiry/customers-for-search?search=san%20s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "GET /marketing/enquiry/customers-for-search?search=san%20sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "GET /marketing/enquiry/customers-for-search?search=san%20sam HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "OPTIONS /marketing/enquiry/customers-for-search?search=san%20samb HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "GET /marketing/enquiry/customers-for-search?search=san%20samb HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "OPTIONS /marketing/enquiry/customers-for-search?search=san%20sambh HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "GET /marketing/enquiry/customers-for-search?search=san%20sambh HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "OPTIONS /marketing/enquiry/customers-for-search?search=san%20sambha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "GET /marketing/enquiry/customers-for-search?search=san%20sambha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "GET /marketing/enquiry/customers-for-search?search=san%20sambh HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60934 - "GET /marketing/enquiry/customers-for-search?search=san%20samb HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "GET /marketing/enquiry/customers-for-search?search=san%20sam HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "GET /marketing/enquiry/customers-for-search?search=san%20sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60937 - "GET /marketing/enquiry/customers-for-search?search=sa HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60929 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\marketing_enquiry.py", line 160, in get_customers_for_search
+    cursor.execute("SELECT TOP 100 CustID, DisplayName FROM CustomerMaster WHERE Disabled = 0 ORDER BY CustID DESC")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.Error: ('HY000', '[HY000] [Microsoft][ODBC Driver 17 for SQL Server]Connection is busy with results for another command (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:60934 - "GET /marketing/enquiry/customers-for-search?search=san%20s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60935 - "GET /marketing/enquiry/customers-for-search?search=san%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60936 - "GET /marketing/enquiry/customers-for-search?search=san HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60938 - "GET /marketing/enquiry/customers-for-search?search=s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61034 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61035 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61035 - "GET /marketing/enquiry/customers-for-search?search=a HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61035 - "GET /marketing/enquiry/customers-for-search?search=a HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61101 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61102 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61102 - "GET /marketing/enquiry/customers-for-search?search=a HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61136 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61137 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61189 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61190 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61208 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61209 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61228 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61229 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61248 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61249 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61249 - "GET /marketing/enquiry/customers-for-search?search=mumbai HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61289 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61290 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61307 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61308 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61318 - "OPTIONS /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61319 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61318 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62075 - "OPTIONS /marketing/enquiry/customers-for-search?search=v HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62076 - "OPTIONS /marketing/enquiry/customers-for-search?search=ve HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62077 - "OPTIONS /marketing/enquiry/customers-for-search?search=vee HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62078 - "OPTIONS /marketing/enquiry/customers-for-search?search=vee%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62076 - "GET /marketing/enquiry/customers-for-search?search=ve HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62077 - "GET /marketing/enquiry/customers-for-search?search=vee HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62075 - "GET /marketing/enquiry/customers-for-search?search=v HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62078 - "GET /marketing/enquiry/customers-for-search?search=vee%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62078 - "OPTIONS /marketing/enquiry/customers-for-search?search=vee%20i HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62078 - "GET /marketing/enquiry/customers-for-search?search=vee%20i HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62078 - "OPTIONS /marketing/enquiry/customers-for-search?search=vee%20in HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62078 - "GET /marketing/enquiry/customers-for-search?search=vee%20in HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62086 - "OPTIONS /marketing/enquiry/customers-for-search?search=vee%20in%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62086 - "GET /marketing/enquiry/customers-for-search?search=vee%20in%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62086 - "OPTIONS /marketing/enquiry/customers-for-search?search=vee%20in%20p HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62087 - "OPTIONS /marketing/enquiry/customers-for-search?search=vee%20in%20pr HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62086 - "GET /marketing/enquiry/customers-for-search?search=vee%20in%20p HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62086 - "OPTIONS /marketing/enquiry/customers-for-search?search=vee%20in%20pri HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62087 - "GET /marketing/enquiry/customers-for-search?search=vee%20in%20pr HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62086 - "GET /marketing/enquiry/customers-for-search?search=vee%20in%20pri HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62086 - "OPTIONS /marketing/enquiry/customers-for-search?search=vee%20in%20pri%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62086 - "GET /marketing/enquiry/customers-for-search?search=vee%20in%20pri%20 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62086 - "OPTIONS /marketing/enquiry/customers-for-search?search=vee%20in%20pri%20h HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62086 - "GET /marketing/enquiry/customers-for-search?search=vee%20in%20pri%20h HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62086 - "OPTIONS /marketing/enquiry/customers-for-search?search=vee%20in%20pri%20he HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62086 - "GET /marketing/enquiry/customers-for-search?search=vee%20in%20pri%20he HTTP/1.1" 200 OK
