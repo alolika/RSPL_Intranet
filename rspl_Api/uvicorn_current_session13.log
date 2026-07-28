@@ -28,3 +28,66 @@ INFO:     192.168.200.18:58625 - "GET /support/missed-calls?product=Retailware&f
 INFO:     192.168.200.18:58660 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
 INFO:     192.168.200.18:58752 - "OPTIONS /support/close-popup/call-attempts?entity_id=12349&mobile_no=%2B919503507128&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
 INFO:     192.168.200.18:58752 - "GET /support/close-popup/call-attempts?entity_id=12349&mobile_no=%2B919503507128&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59163 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59163 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59590 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59590 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59593 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59594 - "OPTIONS /support/call-history/summary?from_date=2026-07-28&to_date=2026-07-28&customer_id=0&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59593 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59594 - "GET /support/call-history/summary?from_date=2026-07-28&to_date=2026-07-28&customer_id=0&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59608 - "OPTIONS /support/call-history/detail?from_date=2026-07-28&to_date=2026-07-28&entity_id=10040&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59608 - "GET /support/call-history/detail?from_date=2026-07-28&to_date=2026-07-28&entity_id=10040&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59617 - "GET /support/call-history/detail?from_date=2026-07-28&to_date=2026-07-28&entity_id=10040&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59617 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59618 - "GET /support/call-history/summary?from_date=2026-07-28&to_date=2026-07-28&customer_id=0&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59618 - "OPTIONS /support/call-history/detail?from_date=2026-07-28&to_date=2026-07-28&entity_id=10124&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59618 - "GET /support/call-history/detail?from_date=2026-07-28&to_date=2026-07-28&entity_id=10124&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59623 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59624 - "GET /support/call-history/summary?from_date=2026-07-28&to_date=2026-07-28&customer_id=0&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59643 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59651 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59652 - "GET /support/call-history/summary?from_date=2026-07-28&to_date=2026-07-28&customer_id=0&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59653 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59657 - "OPTIONS /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59658 - "OPTIONS /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59659 - "OPTIONS /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59657 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59659 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59658 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59679 - "OPTIONS /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59678 - "OPTIONS /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59678 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59679 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59679 - "OPTIONS /marketing/register/search?mode=shop_id&value=97667 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59679 - "GET /marketing/register/search?mode=shop_id&value=97667 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59679 - "OPTIONS /marketing/register/actions/97667 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59679 - "GET /marketing/register/actions/97667 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59679 - "OPTIONS /support/amc/competitors HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59681 - "OPTIONS /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59679 - "OPTIONS /support/amc/special-ratings HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59683 - "OPTIONS /marketing/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59682 - "OPTIONS /marketing/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59684 - "OPTIONS /marketing/register/customer-info/97667 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59685 - "OPTIONS /support/amc/action-stages HTTP/1.1" 200 OK
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     192.168.200.18:59679 - "GET /support/amc/competitors HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59685 - "GET /support/amc/special-ratings HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59681 - "GET /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59682 - "GET /marketing/register/customer-info/97667 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59684 - "GET /marketing/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59679 - "GET /support/amc/action-stages HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59686 - "GET /marketing/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59686 - "OPTIONS /support/amc/enquiry-action-context?cust_id=97667&ref_action_id=1 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59686 - "GET /support/amc/enquiry-action-context?cust_id=97667&ref_action_id=1 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59688 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59687 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
