@@ -1,0 +1,21 @@
+INFO:     Started server process [12408]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:51496 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55198 - "OPTIONS /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55199 - "OPTIONS /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55200 - "OPTIONS /general/leave/inform-to-options HTTP/1.1" 200 OK
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     192.168.200.18:55200 - "GET /general/leave/ho-enabled HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:55199 - "GET /general/leave/ho-options HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:55201 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK

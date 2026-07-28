@@ -1,0 +1,13 @@
+INFO:     Started server process [10860]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+Executive Schedule: failed to fetch/parse Schedule.xlsx from OneDrive
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support_schedule.py", line 142, in get_executive_schedule
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://graph.microsoft.com/v1.0/shares/u!aHR0cHM6Ly9teXJldGFpbHdhcmUtbXkuc2hhcmVwb2ludC5jb20vOng6L3IvcGVyc29uYWwvYW1vbGpfcmV0YWlsd2FyZV9pbmZvL0RvY3VtZW50cy9TY2hlZHVsZS54bHN4P2Q9d2ZlYjJlYjdmYWYzZjQ1ZjE4YjgyNDkzNGU4NmJhNDhkJmNzZj0xJndlYj0xJmU9TVA5Z3J5/driveItem/content
+INFO:     192.168.200.18:65126 - "GET /support/executive-schedule HTTP/1.1" 200 OK

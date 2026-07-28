@@ -1,0 +1,24 @@
+INFO:     Started server process [5564]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:51390 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51402 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51403 - "GET /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51404 - "GET /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51409 - "POST /general/leave/application HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51410 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51411 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51409 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51421 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51419 - "GET /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51420 - "GET /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51419 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51420 - "GET /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51421 - "GET /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51433 - "GET /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51432 - "GET /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51434 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51459 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51457 - "GET /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51458 - "GET /general/leave/ho-options HTTP/1.1" 200 OK

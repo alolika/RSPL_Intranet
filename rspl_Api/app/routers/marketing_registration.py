@@ -7,8 +7,23 @@ campaign in the source — a real legacy quirk, not replicated) collapses to
 a single MultiSelect whose first selection is sent as one @Campaign value;
 and the GSTIN auto-fill button calls an external LicenseInfo COM API
 (GSTIN_TaxPayerSearch, hardcoded creds) that has no equivalent in this
-stack — stubbed to always report "not verified" rather than faking a
-successful lookup.
+stack — the auto-fill (name/address/pincode from a live government lookup)
+genuinely isn't available without that external API.
+
+Update (2026-07-28): verify_gstin() was hardcoded to always return
+{"verified": False} regardless of input — every GSTIN, valid or not, showed
+"Invalid GST No", which is what was actually reported as a bug. Since the
+real government lookup is still unavailable (same limitation as above), what
+CAN be verified locally is the GSTIN's own structure: the standard 15-char
+format (2-digit state code + 10-char PAN + entity code + literal 'Z' + a
+checksum digit) and its checksum, which follows a published, standard MOD-36
+algorithm (verified here against a real, widely-published example GSTIN,
+27AAPFU0939F1ZV, used across Indian GST documentation). A syntactically
+valid, correctly-checksummed GSTIN now reports verified=True; a malformed one
+or one with a broken checksum correctly reports verified=False. This does
+NOT confirm the GSTIN is actually registered to a real business (that still
+needs the missing external API) — it confirms the number itself is
+well-formed, which is what was actually broken.
 
 webProc_AddCustomer and webProc_ModifyCustomer are both 40-param procs;
 verified the source's call sites supply exactly 40 for both — unlike
@@ -17,6 +32,7 @@ NOT short-by-N (worth checking every proc call this way; two of four found
 in this project so far were actually broken).
 """
 
+import re
 from datetime import date, datetime
 
 from fastapi import APIRouter, Depends
@@ -372,11 +388,35 @@ def check_mobile_availability(mobile_no: str) -> dict:
     return {"available": True}
 
 
+_GSTIN_CODE_POINTS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+_GSTIN_FORMAT_RE = re.compile(r"^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$")
+
+
+def _gstin_checksum(gstin_14: str) -> str:
+    """Standard published GSTIN check-digit algorithm (MOD-36, alternating
+    1x/2x factor over the first 14 characters). Verified against a real,
+    widely-published example GSTIN — see module docstring."""
+    factor = 1
+    total = 0
+    for ch in gstin_14:
+        addend = factor * _GSTIN_CODE_POINTS.index(ch)
+        factor = 2 if factor == 1 else 1
+        total += (addend // 36) + (addend % 36)
+    return _GSTIN_CODE_POINTS[(36 - (total % 36)) % 36]
+
+
+def _is_valid_gstin(gstin: str) -> bool:
+    gstin = gstin.strip().upper()
+    return bool(_GSTIN_FORMAT_RE.match(gstin)) and _gstin_checksum(gstin[:14]) == gstin[14]
+
+
 @router.get("/verify-gstin")
 def verify_gstin(gstin: str) -> dict:
-    # Stubbed — see module docstring. The source's GSTIN_TaxPayerSearch call hits an
-    # external license server with hardcoded credentials; no equivalent in this stack.
-    return {"verified": False}
+    # See module docstring: this confirms the GSTIN is well-formed (correct
+    # 15-char structure + checksum), not that it's registered to a real
+    # business — the real government lookup (name/address/pincode auto-fill)
+    # still needs the missing external LicenseInfo API.
+    return {"verified": _is_valid_gstin(gstin)}
 
 
 @router.get("/lookup-pincode")

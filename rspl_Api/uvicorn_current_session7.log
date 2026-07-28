@@ -1,0 +1,19 @@
+INFO:     Started server process [16292]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:55244 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55268 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55278 - "POST /general/leave/ho-sanction HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55508 - "OPTIONS /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55509 - "OPTIONS /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55510 - "OPTIONS /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55510 - "GET /general/leave/ho-enabled HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:55508 - "GET /general/leave/ho-options HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:55509 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55545 - "GET /general/leave/ho-enabled HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:55544 - "GET /general/leave/ho-options HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:55546 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55631 - "GET /general/leave/ho-enabled HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:55632 - "GET /general/leave/ho-options HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:55633 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK

@@ -1,0 +1,30 @@
+INFO:     Started server process [11284]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:58469 - "GET /marketing/registration/verify-gstin?gstin=27AAQPA9188H1Z6 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58473 - "GET /marketing/registration/verify-gstin?gstin=27AAPFU0939F1ZV HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58474 - "OPTIONS /marketing/registration/verify-gstin?gstin=27AAQPA9188H1Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58474 - "GET /marketing/registration/verify-gstin?gstin=27AAQPA9188H1Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58474 - "GET /marketing/registration/verify-gstin?gstin=27AAQPA9188H1Z6 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58490 - "GET /marketing/registration/verify-gstin?gstin=27AAQPA9188H1Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58492 - "OPTIONS /marketing/registration/verify-gstin?gstin=27AAQPA9188H1Z9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58492 - "GET /marketing/registration/verify-gstin?gstin=27AAQPA9188H1Z9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58494 - "OPTIONS /marketing/registration/verify-gstin?gstin=27AAQPA9188H1i9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58494 - "GET /marketing/registration/verify-gstin?gstin=27AAQPA9188H1i9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58495 - "GET /marketing/registration/verify-gstin?gstin=27AAQPA9188H1Z6 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58496 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58496 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58499 - "OPTIONS /support/close-popup/call-attempts?entity_id=56051&mobile_no=%2B919028423329&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58499 - "GET /support/close-popup/call-attempts?entity_id=56051&mobile_no=%2B919028423329&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58499 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58530 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58557 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58565 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58576 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58576 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58625 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58625 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58660 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58752 - "OPTIONS /support/close-popup/call-attempts?entity_id=12349&mobile_no=%2B919503507128&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58752 - "GET /support/close-popup/call-attempts?entity_id=12349&mobile_no=%2B919503507128&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK

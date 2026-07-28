@@ -43,6 +43,38 @@ about "when the HOD takes action" — submit_ceo_sanction/SubmitSanctionRequest
 (the CEO's own, separate sanction step) is untouched and still uses the old
 flat selected_sr_nos shape; revisit the same way if CEO notifications are
 asked for later.
+
+Update (2026-07-28): leave-cancellation notifications wired up too.
+request_ho_cancel_leave() emails the applicant's HOD (resolved via
+ParentEmpID, same lookup as get_ho_options — NOT the leave row's stored HO
+name text, which has no email attached) with an action link to
+LeaveSanctionCancellation (`{frontend_base_url}/leave-sanction-cancellation
+?LID=&UID=&SrNo=`, matching that route's real query params). Needed adding
+SrNo to that endpoint's own SELECT since the frontend never sent it (LeaveID
+was already enough to find one row). submit_ho_cancel_sanction() emails the
+applicant a confirmation once the HOD confirms. Both keep the source's
+hardcoded-broadcast recipients (CEO on the request side; akshayaj@/amc2@ on
+the confirm side) stubbed — same policy applied consistently all session:
+dynamically-resolved recipients get wired for real, hardcoded blast lists to
+specific real staff stay stubbed unless explicitly asked for. cancel_my_leave
+(the plain, pre-HOD-sanction self-cancel) has no source email at all — no
+stub comment was ever written for it during original migration, unlike every
+other endpoint here, so that's trusted as accurate rather than re-guessed.
+
+Update (2026-07-28, later): submit_ho_cancel_sanction() reworked from a single
+always-approve action into a real approve/reject decision, mirroring
+submit_ho_sanction's pattern (per user request, for consistency) — added
+CancelRejectedByHO/CancelRejectedDate columns to web_leaveapplication (same
+shape as HORejected/HORejectedDate), since there was previously no way to
+record "the HOD rejected this cancellation" distinctly from "not yet
+decided." Approve emails the applicant "Leave Cancellation - Approved"
+(confirming removal from the Leave Register, which is real:
+get_my_pending_leaves already filters out CancelledbyHO=1 rows, so approving
+a cancellation genuinely does make it disappear from that page). Reject
+emails "Leave Cancellation - Rejected", leaves CancelledbyHO=0, and sets the
+new rejected flag instead. request_ho_cancel_leave's HOD notification (added
+earlier the same day) was already correct for this workflow's first step and
+needed no changes.
 """
 
 from datetime import date, datetime, timedelta
@@ -140,11 +172,13 @@ class LeaveCancelSanctionRequest(BaseModel):
     cancel_to_date: str | None
     cancel_reason: str
     already_cancelled_by_ho: bool
+    already_rejected: bool
 
 
 class SubmitHoCancelSanctionRequest(BaseModel):
     leave_id: int
     user_id: int
+    decision: Literal["approve", "reject"]
     remark: str
 
 
@@ -361,7 +395,7 @@ def request_ho_cancel_leave(
 ) -> dict[str, bool]:
     with get_cursor() as cursor:
         cursor.execute(
-            "SELECT FromDate, ToDate FROM web_leaveapplication WHERE UserID = ? AND LeaveID = ?",
+            "SELECT FromDate, ToDate, SrNo FROM web_leaveapplication WHERE UserID = ? AND LeaveID = ?",
             current_user.user_id,
             body.leave_id,
         )
@@ -369,6 +403,7 @@ def request_ho_cancel_leave(
         if row is None:
             return {"success": False}
         original_from, original_to = row[0].date(), row[1].date()
+        sr_no = row[2]
         if body.from_date < original_from or body.to_date > original_to:
             return {"success": False}
 
@@ -383,7 +418,41 @@ def request_ho_cancel_leave(
             current_user.user_id,
             body.leave_id,
         )
-        # NOTE: source emails CEO/HO here — intentionally stubbed, see module docstring.
+
+        # HOD is resolved the same way as the submission flow's HOD picker
+        # (ParentEmpID), not the leave row's stored HO name text, since we
+        # need a real email address here. Gets an action link to the
+        # unauthenticated LeaveSanctionCancellation page, matching the
+        # source's emailed-link workflow (see that route's docstring).
+        cursor.execute(
+            "SELECT Email FROM UserMaster WHERE UserID = (SELECT ParentEmpID FROM UserMaster WHERE UserID = ?)",
+            current_user.user_id,
+        )
+        ho_row = cursor.fetchone()
+        ho_email = ho_row[0] if ho_row and ho_row[0] else None
+
+        if ho_email:
+            cancel_link = (
+                f"{settings.frontend_base_url}/leave-sanction-cancellation"
+                f"?LID={body.leave_id}&UID={current_user.user_id}&SrNo={sr_no}"
+            )
+            subject = f"Leave Cancellation Request - {current_user.username} (Action Required)"
+            message = (
+                f"{current_user.username} has requested to cancel leave from "
+                f"{body.from_date:%d-%b-%Y} to {body.to_date:%d-%b-%Y}.\n"
+                f"Reason: {body.remark}\n\n"
+                f"Please click the link below to confirm this cancellation:\n{cancel_link}"
+            )
+            cursor.execute(
+                "EXEC PROC_SENDEMAIL @EMAILID=?, @SUBJECT=?, @MESSAGE=?, @USERID=?",
+                ho_email,
+                subject,
+                message,
+                current_user.user_id,
+            )
+        # NOTE: source also emails a hardcoded CEO address here — kept stubbed, same policy as
+        # every other hardcoded-broadcast email in this module; only the dynamically-resolved HOD
+        # email above is wired for real.
 
     return {"success": True}
 
@@ -556,7 +625,7 @@ def get_leave_cancel_sanction_request(leave_id: int, user_id: int, sr_no: int) -
     with get_cursor() as cursor:
         cursor.execute(
             """
-            SELECT U.Name, L.HO, L.CancelFromDate, L.CancelToDate, L.CancelReason, L.CancelledbyHO
+            SELECT U.Name, L.HO, L.CancelFromDate, L.CancelToDate, L.CancelReason, L.CancelledbyHO, L.CancelRejectedByHO
             FROM web_leaveapplication L INNER JOIN UserMaster U ON L.UserId = U.UserID
             WHERE L.UserID = ? AND L.LeaveID = ? AND L.SrNo = ?
             """,
@@ -569,7 +638,7 @@ def get_leave_cancel_sanction_request(leave_id: int, user_id: int, sr_no: int) -
     if row is None:
         return LeaveCancelSanctionRequest(
             applicant_name="", ho_name="", cancel_from_date=None, cancel_to_date=None,
-            cancel_reason="", already_cancelled_by_ho=False,
+            cancel_reason="", already_cancelled_by_ho=False, already_rejected=False,
         )
 
     return LeaveCancelSanctionRequest(
@@ -579,6 +648,7 @@ def get_leave_cancel_sanction_request(leave_id: int, user_id: int, sr_no: int) -
         cancel_to_date=row[3].isoformat() if row[3] else None,
         cancel_reason=row[4] or "",
         already_cancelled_by_ho=bool(row[5]),
+        already_rejected=bool(row[6]),
     )
 
 
@@ -586,11 +656,44 @@ def get_leave_cancel_sanction_request(leave_id: int, user_id: int, sr_no: int) -
 def submit_ho_cancel_sanction(body: SubmitHoCancelSanctionRequest) -> dict[str, bool]:
     today = datetime.now()
     with get_cursor() as cursor:
-        cursor.execute(
-            "UPDATE web_leaveapplication SET CancelledByHO = 1, HOSanctionedDate = ? WHERE LeaveID = ?",
-            today,
-            body.leave_id,
-        )
-        # NOTE: source emails the applicant + akshayaj@retailware.info + amc2@retailware.info here — intentionally stubbed.
+        if body.decision == "approve":
+            cursor.execute(
+                "UPDATE web_leaveapplication SET CancelledByHO = 1, HOSanctionedDate = ?, CancelRejectedByHO = 0 "
+                "WHERE LeaveID = ?",
+                today,
+                body.leave_id,
+            )
+        else:
+            cursor.execute(
+                "UPDATE web_leaveapplication SET CancelRejectedByHO = 1, CancelRejectedDate = ? WHERE LeaveID = ?",
+                today,
+                body.leave_id,
+            )
+
+        cursor.execute("SELECT Email FROM UserMaster WHERE UserID = ?", body.user_id)
+        row = cursor.fetchone()
+        applicant_email = row[0] if row and row[0] else None
+
+        if applicant_email:
+            if body.decision == "approve":
+                subject = "Leave Cancellation - Approved"
+                message = (
+                    "Your leave cancellation request has been approved by your HOD. "
+                    "The leave has been successfully removed from the Leave Register."
+                )
+            else:
+                subject = "Leave Cancellation - Rejected"
+                message = "Your leave cancellation request has been rejected by your HOD. The leave remains active."
+            if body.remark.strip():
+                message += f"\n\nRemark: {body.remark.strip()}"
+            cursor.execute(
+                "EXEC PROC_SENDEMAIL @EMAILID=?, @SUBJECT=?, @MESSAGE=?",
+                applicant_email,
+                subject,
+                message,
+            )
+        # NOTE: source also emails hardcoded akshayaj@retailware.info + amc2@retailware.info here —
+        # kept stubbed, same policy as every other hardcoded-broadcast email in this module; only
+        # the applicant's own approved/rejected email above is wired for real.
 
     return {"success": True}

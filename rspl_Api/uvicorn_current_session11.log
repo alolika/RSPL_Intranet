@@ -1,0 +1,107 @@
+INFO:     Started server process [960]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:57910 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57917 - "OPTIONS /support/close-popup/call-attempts?record_no=6456024&from_date=&to_date= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57918 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57917 - "GET /support/close-popup/call-attempts?record_no=6456024&from_date=&to_date= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57917 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57917 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57920 - "OPTIONS /support/close-popup/call-attempts?record_no=6455985&from_date=&to_date= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57921 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57920 - "GET /support/close-popup/call-attempts?record_no=6455985&from_date=&to_date= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57963 - "OPTIONS /support/close-popup/call-attempts?record_no=6455969&from_date=&to_date= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57964 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57963 - "GET /support/close-popup/call-attempts?record_no=6455969&from_date=&to_date= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57967 - "OPTIONS /support/close-popup/call-attempts?record_no=6455879&from_date=&to_date= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57970 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57968 - "GET /support/close-popup/call-attempts?record_no=6455879&from_date=&to_date= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57979 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57986 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57986 - "OPTIONS /support/close-popup/call-attempts?record_no=6456094&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57987 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57986 - "GET /support/close-popup/call-attempts?record_no=6456094&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57994 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57994 - "OPTIONS /support/close-popup/call-attempts?record_no=6455985&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57994 - "GET /support/close-popup/call-attempts?record_no=6455985&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57996 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57998 - "GET /support/close-popup/call-attempts?record_no=6455985&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58004 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58023 - "GET /support/close-popup/call-attempts?record_no=6456094&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58023 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58032 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58034 - "GET /support/close-popup/call-attempts?record_no=6456094&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58034 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58034 - "OPTIONS /support/close-popup/call-attempts?record_no=6456027&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58034 - "GET /support/close-popup/call-attempts?record_no=6456027&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58034 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58040 - "GET /support/close-popup/call-attempts?record_no=6456027&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58054 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58054 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58054 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58054 - "GET /support/close-popup/call-attempts?record_no=6455985&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58063 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58063 - "GET /support/close-popup/call-attempts?record_no=6456094&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58065 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58065 - "OPTIONS /support/close-popup/call-attempts?record_no=6455879&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58065 - "GET /support/close-popup/call-attempts?record_no=6455879&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58065 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58065 - "OPTIONS /support/close-popup/call-attempts?record_no=6455923&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58065 - "GET /support/close-popup/call-attempts?record_no=6455923&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58065 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58065 - "OPTIONS /support/close-popup/call-attempts?record_no=6455649&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58065 - "GET /support/close-popup/call-attempts?record_no=6455649&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58070 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58071 - "OPTIONS /support/close-popup/call-attempts?record_no=6455957&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58071 - "GET /support/close-popup/call-attempts?record_no=6455957&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58071 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58088 - "GET /support/close-popup/call-attempts?record_no=6456094&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58088 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58088 - "OPTIONS /support/close-popup/call-attempts?record_no=6456158&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58089 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58089 - "OPTIONS /support/close-popup/call-attempts?record_no=6455936&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58088 - "GET /support/close-popup/call-attempts?record_no=6456158&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58089 - "GET /support/close-popup/call-attempts?record_no=6455936&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58089 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58089 - "OPTIONS /support/close-popup/call-attempts?record_no=6455969&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58089 - "GET /support/close-popup/call-attempts?record_no=6455969&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58089 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58089 - "GET /support/close-popup/call-attempts?record_no=6456158&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58089 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58107 - "OPTIONS /support/close-popup/call-attempts?record_no=6455985&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58108 - "GET /support/close-popup/call-attempts?record_no=6455985&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58115 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58108 - "GET /support/close-popup/call-attempts?record_no=6455985&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58119 - "OPTIONS /support/close-popup/call-attempts?record_no=6456088&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58119 - "GET /support/close-popup/call-attempts?record_no=6456088&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58121 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58156 - "GET /support/close-popup/call-attempts?record_no=6455923&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58156 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58167 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58167 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58172 - "OPTIONS /support/close-popup/call-attempts?entity_id=47359&mobile_no=%2B919920398230&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58172 - "GET /support/close-popup/call-attempts?entity_id=47359&mobile_no=%2B919920398230&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:58172 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58172 - "OPTIONS /support/close-popup/call-attempts?entity_id=75139&mobile_no=7899277233&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58172 - "GET /support/close-popup/call-attempts?entity_id=75139&mobile_no=7899277233&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:58172 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58209 - "GET /support/close-popup/call-attempts?entity_id=75139&mobile_no=7899277233&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:58209 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58209 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58209 - "OPTIONS /support/close-popup/call-attempts?entity_id=75509&mobile_no=%2B919325971549&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58209 - "GET /support/close-popup/call-attempts?entity_id=75509&mobile_no=%2B919325971549&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:58209 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58224 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58224 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58224 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58224 - "OPTIONS /support/close-popup/call-attempts?entity_id=75139&mobile_no=%2B917899277233&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58224 - "GET /support/close-popup/call-attempts?entity_id=75139&mobile_no=%2B917899277233&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:58224 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58252 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58252 - "GET /support/close-popup/call-attempts?entity_id=75139&mobile_no=%2B917899277233&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:58252 - "GET /support/close-popup/call-attempts?entity_id=75139&mobile_no=%2B917899277233&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:58252 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58252 - "GET /support/close-popup/call-attempts?entity_id=75509&mobile_no=%2B919325971549&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:58268 - "GET /support/close-popup/call-attempts?entity_id=75509&mobile_no=%2B919325971549&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:58268 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK

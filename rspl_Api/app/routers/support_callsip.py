@@ -17,6 +17,24 @@ WebProc_UpdateSIPEventRegisterCDR, webfun_SIPMissedCalls) are written
 against the confirmed proc signatures but have NOT been individually
 live-tested yet.
 
+Update (2026-07-28): attempt_missed_call() added — MissedCall.aspx's "Click
+to Attempt" action (Angular: missed-call.ts's attempt()) was a pure
+client-side stub in SupportDataService.attemptCall() (no HTTP call at all)
+from back when SynapseCDR didn't exist, so there was nothing to write to.
+Confirmed via sys.objects there's no dedicated "record an attempt" proc —
+ExecutiveName is a real nvarchar(500) column on SIPEventRegisterCDR that
+webfun_SIPMissedCalls reads directly, so a plain UPDATE by RecordNo is the
+correct write, not a missing/undiscovered proc. Worth knowing:
+webfun_SIPMissedCalls's grouping includes ExecutiveName as a GROUP BY key
+when aggregating multiple raw CDR rows per entity/day into one grid row (via
+MAX(RecordNo)) — if a given entity has more than one underlying CDR row for
+the same day and only one gets its ExecutiveName updated here, the next
+fetch could in theory split back into two grid rows instead of one updating
+cleanly. Not fixed here (would need the legacy source's own Attempt
+click-handler to confirm whether it updates by RecordNo alone or by the
+whole entity/day group, and that source isn't on this machine) — flagged for
+whoever revisits this if a duplicate-row report ever comes in.
+
 Separately (not a correctness bug, a real perf one): Proc_CallHistory's
 summary mode times out past the pooled connection's 60s cap on broad,
 unfiltered date ranges — SIPEventRegisterCDR has ~297K rows with no index
@@ -93,6 +111,11 @@ class CloseEventRequest(BaseModel):
     name: str
 
 
+class AttemptCallRequest(BaseModel):
+    record_no: int
+    executive_name: str
+
+
 @router.get("/call-history/summary", response_model=list[CallHistorySummaryRow])
 def get_call_history_summary(
     from_date: date, to_date: date, customer_id: int = 0, mobile_no: str = ""
@@ -149,6 +172,58 @@ def get_call_history_detail(
     ]
 
 
+def _merge_missed_calls_by_customer(rows: list[dict]) -> list[dict]:
+    """webfun_SIPMissedCalls (the table function WebProc_SIPMissedCalls wraps)
+    groups by EntityID plus several other per-call columns — CallType,
+    ExecutiveName among them — not by EntityID alone. ExecutiveName in
+    particular is set per-call once someone clicks Attempt (see
+    attempt_missed_call above), so a customer with one already-attempted call
+    and one not-yet-attempted call splits into two separate rows from the
+    proc, each only spanning its own single call — confirmed live, e.g. one
+    real EntityID showed up as two rows, First/Last Call Time identical
+    within each because neither row saw the other's call at all.
+
+    Rewriting that ~100-line legacy function's GROUP BY risks side effects on
+    the other columns it also computes (EntityName suffixing, Software
+    categorization, the outgoing-call ExecutiveName derivation) — safer to
+    merge same-customer rows here instead, after the query, touching nothing
+    but this endpoint. Registered entities (EntityID != 0) are merged by
+    EntityID; unregistered ones (EntityID == 0, no matched customer) are
+    merged by phone number instead, mirroring the same two-tier split
+    webfun_SIPMissedCalls itself already uses internally.
+    """
+    groups: dict[tuple[str, object], list[dict]] = {}
+    for r in rows:
+        key = ("entity", r["EntityID"]) if r["EntityID"] else ("phone", r["EntityPhone"])
+        groups.setdefault(key, []).append(r)
+
+    merged: list[dict] = []
+    for group_rows in groups.values():
+        if len(group_rows) == 1:
+            merged.append(group_rows[0])
+            continue
+
+        # The most recent call's row is the representative for every
+        # entity-level display field (name, software, AMC figures, ledger
+        # balance) — those should already be consistent per customer, so
+        # picking from the latest call is the most current/accurate choice.
+        representative = dict(max(group_rows, key=lambda r: r["CallTime"] or r["MinCallTime"]))
+        all_times = [t for r in group_rows for t in (r["MinCallTime"], r["CallTime"]) if t is not None]
+        if all_times:
+            representative["MinCallTime"] = min(all_times)
+            representative["CallTime"] = max(all_times)
+        representative["Cnt"] = sum(r["Cnt"] or 0 for r in group_rows)
+        # Prefer whichever call in the group already has a recorded
+        # Executive Name — merging must never un-attempt a call that was
+        # already marked attempted just because a newer, not-yet-attempted
+        # call from the same customer came in later.
+        representative["ExecutiveName"] = next((r["ExecutiveName"] for r in group_rows if r.get("ExecutiveName")), "")
+        merged.append(representative)
+
+    merged.sort(key=lambda r: r["RecordNo"])
+    return merged
+
+
 @router.get("/missed-calls", response_model=list[MissedCallRow])
 def get_missed_calls(product: str = "", from_date: date | None = None, to_date: date | None = None) -> list[MissedCallRow]:
     with get_cursor() as cursor:
@@ -159,6 +234,8 @@ def get_missed_calls(product: str = "", from_date: date | None = None, to_date: 
             product,
         )
         rows = rows_to_dicts(cursor)
+
+    rows = _merge_missed_calls_by_customer(rows)
 
     return [
         MissedCallRow(
@@ -177,6 +254,27 @@ def get_missed_calls(product: str = "", from_date: date | None = None, to_date: 
     ]
 
 
+@router.post("/missed-calls/attempt")
+def attempt_missed_call(body: AttemptCallRequest) -> dict[str, bool]:
+    # webfun_SIPMissedCalls (the table-valued function get_missed_calls's proc
+    # wraps) reads ExecutiveName straight from this real column on
+    # SynapseCDR.dbo.SIPEventRegisterCDR — there's no dedicated "record an
+    # attempt" proc (confirmed via sys.objects; WebProc_UpdateSIPEventRegisterCDR
+    # only handles PreClose/Close, ActionStateID 1/2, and never touches
+    # ExecutiveName at all), so a direct parameterized UPDATE is the correct
+    # write here, not a missing proc call. Previously this whole action was a
+    # client-side stub (`of({success:true}).pipe(delay(150))`, no HTTP call
+    # at all) dating back to when SynapseCDR didn't exist on this instance —
+    # it exists now, confirmed live via sys.databases.
+    with get_cursor() as cursor:
+        cursor.execute(
+            "UPDATE SynapseCDR.dbo.SIPEventRegisterCDR SET ExecutiveName = ? WHERE RecordNo = ?",
+            body.executive_name,
+            body.record_no,
+        )
+    return {"success": True}
+
+
 @router.get("/close-popup/narration")
 def get_event_narration(record_no: int) -> str:
     with get_cursor() as cursor:
@@ -188,13 +286,69 @@ def get_event_narration(record_no: int) -> str:
 
 
 @router.get("/close-popup/call-attempts")
-def get_call_attempts(record_no: int, from_date: str, to_date: str) -> list[dict]:
-    """from_date/to_date arrive as dd-MMM-yyyy text straight from the query string, same as get_call_history_detail."""
+def get_call_attempts(entity_id: int, mobile_no: str, from_date: date, to_date: date) -> list[dict]:
+    """Replaces the old EXEC proc_SIPMissCallAttemptList ?, ?, ? call (2026-07-28).
+    That proc looked up direction (incoming vs outgoing) from a single RecordNo,
+    then required a LEFT JOIN to SMSSent to also have an ActionID=6 row whose
+    SentDate matched *today's* Options.Billdate — not the day of the call — so
+    it only ever showed a call if an unrelated SMS batch happened to fire today,
+    which is unrelated to whether the customer actually has call history.
+    Confirmed live: a customer with 2 plain incoming-missed calls, no SMS
+    involved at all, returned 0 rows from the old proc for exactly this reason.
+    It also missed half a customer's history whenever their calls spanned both
+    incoming and outgoing-missed direction, since the proc only ever looked at
+    one direction (whichever the single RecordNo happened to represent).
+
+    This queries SIPEventRegisterCDR directly for the given EntityID, covering
+    both call directions via UNION ALL, with the SMS Message (if any exists)
+    left-joined in as enrichment only, never required for a row to show. Same
+    fallback pattern as _merge_missed_calls_by_customer: entity_id=0 rows (no
+    matched customer) match by mobile_no's last 10 digits instead, mirroring
+    webfun_SIPMissedCalls's own right(EntityPhone,10) convention — SourceNo
+    carries a country-code prefix, DestinationNo doesn't, so a plain equality
+    match would miss half of these.
+    """
     with get_cursor() as cursor:
-        cursor.execute(
-            "EXEC proc_SIPMissCallAttemptList ?, ?, ?",
-            record_no, from_date, to_date,
-        )
+        if entity_id:
+            cursor.execute(
+                """
+                SELECT c.CallTime, c.SourceNo AS PhoneNo, sm.Message
+                FROM SynapseCDR.dbo.SIPEventRegisterCDR c
+                LEFT OUTER JOIN SMSSent sm ON sm.Voucherno = c.RecordNo
+                WHERE c.Discard = 0 AND c.SourceEntityID = ?
+                  AND c.CallType IN ('External-incoming_missed', 'External-incoming_busy')
+                  AND c.CallDate >= ? AND c.CallDate <= ?
+                UNION ALL
+                SELECT c.CallTime, c.DestinationNo AS PhoneNo, sm.Message
+                FROM SynapseCDR.dbo.SIPEventRegisterCDR c
+                LEFT OUTER JOIN SMSSent sm ON sm.Voucherno = c.RecordNo
+                WHERE c.Discard = 0 AND c.DestinationEntityID = ?
+                  AND c.CallType = 'External-outgoing_missed'
+                  AND c.CallDate >= ? AND c.CallDate <= ?
+                ORDER BY CallTime
+                """,
+                entity_id, from_date, to_date, entity_id, from_date, to_date,
+            )
+        else:
+            cursor.execute(
+                """
+                SELECT c.CallTime, c.SourceNo AS PhoneNo, sm.Message
+                FROM SynapseCDR.dbo.SIPEventRegisterCDR c
+                LEFT OUTER JOIN SMSSent sm ON sm.Voucherno = c.RecordNo
+                WHERE c.Discard = 0 AND RIGHT(c.SourceNo, 10) = RIGHT(?, 10)
+                  AND c.CallType IN ('External-incoming_missed', 'External-incoming_busy')
+                  AND c.CallDate >= ? AND c.CallDate <= ?
+                UNION ALL
+                SELECT c.CallTime, c.DestinationNo AS PhoneNo, sm.Message
+                FROM SynapseCDR.dbo.SIPEventRegisterCDR c
+                LEFT OUTER JOIN SMSSent sm ON sm.Voucherno = c.RecordNo
+                WHERE c.Discard = 0 AND RIGHT(c.DestinationNo, 10) = RIGHT(?, 10)
+                  AND c.CallType = 'External-outgoing_missed'
+                  AND c.CallDate >= ? AND c.CallDate <= ?
+                ORDER BY CallTime
+                """,
+                mobile_no, from_date, to_date, mobile_no, from_date, to_date,
+            )
         rows = rows_to_dicts(cursor)
 
     return [

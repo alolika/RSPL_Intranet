@@ -1,0 +1,156 @@
+INFO:     Started server process [11140]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:56699 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56711 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56713 - "OPTIONS /general/leave/request-ho-cancel HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56713 - "POST /general/leave/request-ho-cancel HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56713 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56716 - "OPTIONS /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56716 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56744 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56765 - "OPTIONS /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56765 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56765 - "POST /general/leave/request-ho-cancel HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56765 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56765 - "POST /general/leave/request-ho-cancel HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56765 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56777 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56778 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56780 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56790 - "OPTIONS /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56789 - "OPTIONS /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56788 - "OPTIONS /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56789 - "GET /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56788 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56790 - "GET /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56791 - "OPTIONS /general/leave/application HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56791 - "POST /general/leave/application HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56791 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56793 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56794 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56793 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56791 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56794 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56794 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56795 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56795 - "OPTIONS /general/leave/cancel-my/14986 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56795 - "POST /general/leave/cancel-my/14986 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56795 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56795 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56805 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56870 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56870 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56968 - "OPTIONS /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56969 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56970 - "OPTIONS /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56968 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56969 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56970 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56973 - "OPTIONS /support/tt-modify/rows?product_name=All&latest_owner_id=25&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56973 - "GET /support/tt-modify/rows?product_name=All&latest_owner_id=25&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57040 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57038 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57039 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57041 - "GET /support/tt-modify/rows?product_name=All&latest_owner_id=25&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57059 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57058 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57057 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57060 - "GET /support/tt-modify/rows?product_name=All&latest_owner_id=25&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57078 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57077 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57076 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57093 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57092 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57091 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57102 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57101 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57100 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57113 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57112 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57111 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57128 - "GET /support/tt-modify/rows?product_name=All&latest_owner_id=25&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57145 - "OPTIONS /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57144 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57146 - "OPTIONS /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57144 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57146 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57145 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57160 - "OPTIONS /support/amc/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57159 - "OPTIONS /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57159 - "GET /support/amc/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57160 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57185 - "OPTIONS /support/amc/rows?mode=AMCPending&sign=%3E= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57186 - "GET /support/amc/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57187 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57185 - "GET /support/amc/rows?mode=AMCPending&sign=%3E= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57208 - "OPTIONS /support/amc/rows?mode=AMCPending&customer=aarya%20collection&sign=%3E= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57208 - "GET /support/amc/rows?mode=AMCPending&customer=aarya%20collection&sign=%3E= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57216 - "GET /support/amc/rows?mode=AMCPending&sign=%3E= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57216 - "OPTIONS /support/amc/action-history?cust_id=32187 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57216 - "GET /support/amc/action-history?cust_id=32187 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57219 - "OPTIONS /marketing/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57220 - "OPTIONS /marketing/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57221 - "OPTIONS /support/amc/special-ratings HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57222 - "OPTIONS /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57223 - "OPTIONS /support/amc/competitors HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57224 - "OPTIONS /marketing/register/customer-info/32187 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57225 - "OPTIONS /support/amc/action-stages HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57226 - "GET /marketing/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57228 - "GET /support/amc/special-ratings HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57229 - "GET /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57230 - "GET /support/amc/competitors HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57227 - "GET /marketing/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57231 - "GET /marketing/register/customer-info/32187 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57226 - "GET /support/amc/action-stages HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57226 - "GET /support/amc/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57231 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57231 - "GET /support/tt-modify/rows?product_name=All&priority=All&status=Pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57226 - "GET /support/tt-modify/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57232 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57227 - "GET /support/amc/rows?mode=AMCPending&sign=%3E= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57232 - "GET /support/amc/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57231 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57226 - "GET /support/amc/rows?mode=AMCPending&sign=%3E= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57317 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57317 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57323 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57363 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57395 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57500 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57500 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57566 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57574 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57574 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57574 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57574 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     192.168.200.18:57577 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57578 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57579 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57576 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57576 - "OPTIONS /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57576 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57588 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57617 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57619 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57620 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57617 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57617 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57621 - "OPTIONS /support/missed-calls/attempt HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57621 - "POST /support/missed-calls/attempt HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:57621 - "POST /support/missed-calls/attempt HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:57621 - "POST /support/missed-calls/attempt HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:57621 - "POST /support/missed-calls/attempt HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:57621 - "POST /support/missed-calls/attempt HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:57621 - "POST /support/missed-calls/attempt HTTP/1.1" 404 Not Found

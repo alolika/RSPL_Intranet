@@ -1,0 +1,24 @@
+INFO:     Started server process [12976]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:57634 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57648 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57648 - "POST /support/missed-calls/attempt HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57648 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57667 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57678 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57691 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57699 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57705 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57714 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57720 - "OPTIONS /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57720 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57734 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57742 - "POST /support/missed-calls/attempt HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57742 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57805 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57856 - "OPTIONS /support/close-popup/call-attempts?record_no=6455932&from_date=&to_date= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57857 - "OPTIONS /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57856 - "GET /support/close-popup/call-attempts?record_no=6455932&from_date=&to_date= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57857 - "GET /support/missed-calls?product=Jewelsoft&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK

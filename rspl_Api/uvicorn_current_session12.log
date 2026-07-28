@@ -1,0 +1,59 @@
+INFO:     Started server process [10516]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:58282 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58288 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58288 - "GET /support/close-popup/call-attempts?entity_id=75509&mobile_no=%2B919325971549&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58288 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58292 - "GET /support/close-popup/call-attempts?entity_id=74979&mobile_no=&from_date=2026-07-14&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58288 - "GET /support/close-popup/call-attempts?entity_id=75139&mobile_no=%2B917899277233&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58288 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58288 - "OPTIONS /support/close-popup/call-attempts?entity_id=56051&mobile_no=%2B919028423329&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58288 - "GET /support/close-popup/call-attempts?entity_id=56051&mobile_no=%2B919028423329&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58297 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58324 - "GET /support/close-popup/call-attempts?entity_id=0&mobile_no=9487445944&from_date=2026-07-14&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58325 - "GET /support/close-popup/call-attempts?entity_id=32554&mobile_no=8600700705&from_date=2026-07-14&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58326 - "GET /support/close-popup/call-attempts?entity_id=0&mobile_no=%2B918208139446&from_date=2026-07-14&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58327 - "GET /support/close-popup/call-attempts?entity_id=0&mobile_no=%2B919921194217&from_date=2026-07-14&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58329 - "GET /support/close-popup/call-attempts?entity_id=0&mobile_no=%2B917709718983&from_date=2026-07-14&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58330 - "GET /support/close-popup/call-attempts?entity_id=0&mobile_no=%2B918379005021&from_date=2026-07-14&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58331 - "GET /support/close-popup/call-attempts?entity_id=0&mobile_no=%2B919422287199&from_date=2026-07-14&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58333 - "OPTIONS /support/close-popup/call-attempts?entity_id=52064&mobile_no=%2B919117173131&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     192.168.200.18:58332 - "GET /support/close-popup/call-attempts?entity_id=0&mobile_no=%2B919730326777&from_date=2026-07-14&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58336 - "GET /support/close-popup/call-attempts?entity_id=52064&mobile_no=%2B919117173131&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58337 - "GET /support/close-popup/call-attempts?entity_id=0&mobile_no=%2B917350195171&from_date=2026-07-14&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58338 - "GET /support/close-popup/call-attempts?entity_id=0&mobile_no=%2B919284446794&from_date=2026-07-14&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58336 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58347 - "OPTIONS /support/close-popup/call-attempts?entity_id=12349&mobile_no=%2B919503507128&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58347 - "GET /support/close-popup/call-attempts?entity_id=12349&mobile_no=%2B919503507128&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58347 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58347 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58398 - "OPTIONS /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58399 - "OPTIONS /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58400 - "OPTIONS /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58401 - "OPTIONS /marketing/registration/customer-name-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58400 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58401 - "GET /marketing/registration/customer-name-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58399 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58398 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58423 - "OPTIONS /marketing/registration/verify-gstin?gstin=27AAQPA9188H1Z6 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58423 - "GET /marketing/registration/verify-gstin?gstin=27AAQPA9188H1Z6 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58436 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58438 - "OPTIONS /support/close-popup/call-attempts?entity_id=46874&mobile_no=%2B919766639227&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58438 - "GET /support/close-popup/call-attempts?entity_id=46874&mobile_no=%2B919766639227&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58438 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-28&to_date=2026-07-28 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58441 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58444 - "GET /marketing/registration/customer-name-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58442 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:58443 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK

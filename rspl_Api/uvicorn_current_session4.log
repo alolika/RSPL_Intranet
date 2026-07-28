@@ -1,0 +1,65 @@
+INFO:     Started server process [18476]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:50924 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50942 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50943 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50941 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50942 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50941 - "GET /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50943 - "GET /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50944 - "POST /general/leave/application HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50946 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50945 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50944 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50956 - "OPTIONS /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50956 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50963 - "OPTIONS /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50964 - "OPTIONS /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50964 - "OPTIONS /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50963 - "GET /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50965 - "GET /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50964 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50964 - "OPTIONS /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50964 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50968 - "OPTIONS /general/leave/request-ho-cancel HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50968 - "POST /general/leave/request-ho-cancel HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50968 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50968 - "OPTIONS /general/leave/cancel-my/14979 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50969 - "POST /general/leave/cancel-my/14979 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50969 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50978 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51312 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     192.168.200.18:51313 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:51313 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51313 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51316 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51313 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51316 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51317 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51313 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51320 - "OPTIONS /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51319 - "OPTIONS /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51321 - "OPTIONS /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51319 - "GET /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51320 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51321 - "GET /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51339 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51338 - "GET /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51337 - "GET /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51345 - "OPTIONS /general/leave/application HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51345 - "POST /general/leave/application HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51345 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51347 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51348 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
