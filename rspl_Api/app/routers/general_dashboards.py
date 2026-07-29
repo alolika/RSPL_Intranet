@@ -35,6 +35,7 @@ class SoftwareClientCount(BaseModel):
 
 class HolidayListRow(BaseModel):
     holiday_date: str
+    to_date: str
     day: str
     event: str
 
@@ -119,11 +120,16 @@ def get_software_client_count() -> list[SoftwareClientCount]:
 def get_holiday_list() -> list[HolidayListRow]:
     with get_cursor() as cursor:
         cursor.execute(
-            "SELECT HolidayDate, Day, Event FROM RSPL_HolidayMaster WHERE Enabled = 1 ORDER BY HolidayDate"
+            "SELECT HolidayDate, ToDate, Day, Event FROM RSPL_HolidayMaster WHERE Enabled = 1 ORDER BY HolidayDate"
         )
         rows = rows_to_dicts(cursor)
     return [
-        HolidayListRow(holiday_date=r["HolidayDate"].strftime("%Y-%m-%d"), day=r["Day"] or "", event=r["Event"] or "")
+        HolidayListRow(
+            holiday_date=r["HolidayDate"].strftime("%Y-%m-%d"),
+            to_date=r["ToDate"].strftime("%Y-%m-%d"),
+            day=r["Day"] or "",
+            event=r["Event"] or "",
+        )
         for r in rows
     ]
 

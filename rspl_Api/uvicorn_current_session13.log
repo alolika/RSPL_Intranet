@@ -481,3 +481,89 @@ INFO:     192.168.200.18:60966 - "GET /support/amc/action-stages HTTP/1.1" 200 O
 INFO:     192.168.200.18:60971 - "GET /marketing/register/customer-info/97669 HTTP/1.1" 200 OK
 INFO:     192.168.200.18:60970 - "GET /marketing/salesmen HTTP/1.1" 200 OK
 INFO:     192.168.200.18:60970 - "GET /support/amc/enquiry-action-context?cust_id=97669&ref_action_id=1 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61203 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61203 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61203 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61205 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61203 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61205 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61206 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61203 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65365 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65368 - "GET / HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:65378 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65378 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65378 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65378 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65383 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65382 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65383 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65378 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65528 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-29&to_date=2026-07-29 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65528 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-29&to_date=2026-07-29 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49294 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-29&to_date=2026-07-29 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49294 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-29&to_date=2026-07-29 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49486 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-29&to_date=2026-07-29 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49486 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-29&to_date=2026-07-29 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49519 - "OPTIONS /marketing/register/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49519 - "GET /marketing/register/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49522 - "OPTIONS /marketing/register/status/156 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49522 - "GET /marketing/register/status/156 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49584 - "GET /marketing/register/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49592 - "GET /marketing/register/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49597 - "GET /marketing/register/status/156 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49618 - "GET /marketing/register/status HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49621 - "GET /marketing/register/status/156 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49624 - "GET /marketing/register/status/156 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49627 - "GET /marketing/register/status/96 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49630 - "GET /marketing/register/status/51 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49697 - "OPTIONS /marketing/register/status/97 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49697 - "GET /marketing/register/status/97 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49710 - "OPTIONS /marketing/register/status/25 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49710 - "GET /marketing/register/status/25 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49826 - "OPTIONS /marketing/register/status/239 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49826 - "GET /marketing/register/status/239 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49853 - "OPTIONS /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49854 - "OPTIONS /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49855 - "OPTIONS /marketing/register/search?mode=cust_id&value=40385 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49855 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49853 - "GET /marketing/register/search?mode=cust_id&value=40385 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49854 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49854 - "OPTIONS /marketing/register/actions/40385 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49854 - "GET /marketing/register/actions/40385 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49856 - "OPTIONS /support/amc/competitors HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49856 - "OPTIONS /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49859 - "OPTIONS /marketing/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49858 - "OPTIONS /marketing/register/customer-info/40385 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49857 - "OPTIONS /support/amc/action-stages HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49860 - "OPTIONS /marketing/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49861 - "OPTIONS /support/amc/special-ratings HTTP/1.1" 200 OK
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     192.168.200.18:49857 - "GET /support/amc/competitors HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49860 - "GET /marketing/register/customer-info/40385 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49862 - "GET /support/amc/action-stages HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49864 - "GET /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49863 - "GET /marketing/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49865 - "GET /marketing/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49857 - "GET /support/amc/special-ratings HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49857 - "OPTIONS /support/amc/enquiry-action-context?cust_id=40385&ref_action_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49857 - "GET /support/amc/enquiry-action-context?cust_id=40385&ref_action_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50110 - "OPTIONS /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50111 - "OPTIONS /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50111 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50110 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50112 - "OPTIONS /marketing/register/search?mode=shop_id&value=97661 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50112 - "GET /marketing/register/search?mode=shop_id&value=97661 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50112 - "OPTIONS /marketing/register/actions/97661 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50112 - "GET /marketing/register/actions/97661 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50193 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50194 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK

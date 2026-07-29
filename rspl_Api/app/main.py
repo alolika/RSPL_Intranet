@@ -43,8 +43,8 @@ from app.routers import (
     support,
     support_amc,
     support_callsip,
+    support_executive_schedule,
     support_modules,
-    support_schedule,
     support_tt,
     support_visitlog,
     vote,
@@ -76,7 +76,7 @@ app.include_router(support_visitlog.router)
 app.include_router(support_callsip.router)
 app.include_router(support_amc.router)
 app.include_router(support_modules.router)
-app.include_router(support_schedule.router)
+app.include_router(support_executive_schedule.router)
 app.include_router(support_tt.router)
 app.include_router(admin_content.router)
 app.include_router(admin_holiday.router)

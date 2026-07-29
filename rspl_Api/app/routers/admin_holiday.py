@@ -1,15 +1,28 @@
 """New "Holiday Master" admin page, added under the Accounts menu group at
 the user's request. Backed by a new RSPL_HolidayMaster table (HolidayId PK,
-HolidayDate, Day, Event, Enabled) -- created specifically for this feature.
-The two pre-existing holiday tables in this DB (HolidayList, PR_HolidayMaster)
-are stale relics (no rows past 2021-22) with no admin page maintaining them,
-so this is a fresh table rather than reusing either.
+HolidayDate, ToDate, Day, Event, Enabled) -- created specifically for this
+feature. The two pre-existing holiday tables in this DB (HolidayList,
+PR_HolidayMaster) are stale relics (no rows past 2021-22) with no admin page
+maintaining them, so this is a fresh table rather than reusing either.
 
-Day is always derived server-side from HolidayDate on insert/update rather
-than trusted from the client, so it can never drift out of sync with the
-actual date. Delete is a soft-delete (Enabled=0), matching this app's
-established convention elsewhere (Article, PR_HolidayMaster's own Disable
-flag, etc.) instead of physically removing rows.
+HolidayDate/ToDate is a From/To date RANGE per holiday entry (added later,
+per explicit request, to support multi-day holidays like a Diwali break as
+one entry instead of one row per day) -- HolidayDate is the "From Date",
+ToDate the "To Date". Every pre-existing single-day row was backfilled with
+ToDate = HolidayDate, so a single-day holiday is just a range where both
+ends are the same date; the frontend grid only shows a "From - To" range
+when they differ, a single date otherwise. Confirmed no other consumer of
+this table does exact-date-equality lookups against HolidayDate (only
+general_dashboards.py's holiday-list tile, which just lists/orders rows) --
+if a "is this specific date on my calendar a holiday" check is ever added
+elsewhere, it must range-check BETWEEN HolidayDate AND ToDate, not equality.
+
+Day is always derived server-side from HolidayDate (the From Date) on
+insert/update rather than trusted from the client, so it can never drift
+out of sync with the actual date. Delete is a soft-delete (Enabled=0),
+matching this app's established convention elsewhere (Article,
+PR_HolidayMaster's own Disable flag, etc.) instead of physically removing
+rows.
 """
 
 from datetime import date
@@ -25,6 +38,7 @@ router = APIRouter(prefix="/admin/holidays", tags=["admin-holiday"])
 class HolidayRow(BaseModel):
     holiday_id: int
     holiday_date: str
+    to_date: str
     day: str
     event: str
     enabled: bool
@@ -32,6 +46,7 @@ class HolidayRow(BaseModel):
 
 class HolidayRequest(BaseModel):
     holiday_date: date
+    to_date: date
     event: str
 
 
@@ -47,31 +62,38 @@ def _row(r: dict) -> HolidayRow:
     return HolidayRow(
         holiday_id=r["HolidayId"],
         holiday_date=r["HolidayDate"].strftime("%Y-%m-%d"),
+        to_date=r["ToDate"].strftime("%Y-%m-%d"),
         day=r["Day"] or "",
         event=r["Event"] or "",
         enabled=bool(r["Enabled"]),
     )
 
 
+def _validate_range(body: HolidayRequest) -> None:
+    if body.to_date < body.holiday_date:
+        raise HTTPException(status_code=400, detail="To Date cannot be earlier than From Date")
+
+
 @router.get("", response_model=list[HolidayRow])
 def get_holidays() -> list[HolidayRow]:
     with get_cursor() as cursor:
-        cursor.execute("SELECT HolidayId, HolidayDate, Day, Event, Enabled FROM RSPL_HolidayMaster ORDER BY HolidayDate")
+        cursor.execute("SELECT HolidayId, HolidayDate, ToDate, Day, Event, Enabled FROM RSPL_HolidayMaster ORDER BY HolidayDate")
         rows = rows_to_dicts(cursor)
     return [_row(r) for r in rows]
 
 
 @router.post("", response_model=HolidayRow)
 def add_holiday(body: HolidayRequest) -> HolidayRow:
+    _validate_range(body)
     day_name = body.holiday_date.strftime("%A")
     with get_cursor() as cursor:
         cursor.execute(
-            "INSERT INTO RSPL_HolidayMaster (HolidayDate, Day, Event, Enabled) OUTPUT INSERTED.HolidayId "
-            "VALUES (?, ?, ?, 1)",
-            body.holiday_date, day_name, body.event.strip(),
+            "INSERT INTO RSPL_HolidayMaster (HolidayDate, ToDate, Day, Event, Enabled) OUTPUT INSERTED.HolidayId "
+            "VALUES (?, ?, ?, ?, 1)",
+            body.holiday_date, body.to_date, day_name, body.event.strip(),
         )
         new_id = cursor.fetchone()[0]
-        cursor.execute("SELECT HolidayId, HolidayDate, Day, Event, Enabled FROM RSPL_HolidayMaster WHERE HolidayId = ?", new_id)
+        cursor.execute("SELECT HolidayId, HolidayDate, ToDate, Day, Event, Enabled FROM RSPL_HolidayMaster WHERE HolidayId = ?", new_id)
         row = rows_to_dicts(cursor)[0]
     return _row(row)
 
@@ -108,15 +130,16 @@ def set_holiday_list_title(body: HolidayListTitle) -> HolidayListTitle:
 
 @router.put("/{holiday_id}", response_model=HolidayRow)
 def update_holiday(holiday_id: int, body: HolidayRequest) -> HolidayRow:
+    _validate_range(body)
     day_name = body.holiday_date.strftime("%A")
     with get_cursor() as cursor:
         cursor.execute(
-            "UPDATE RSPL_HolidayMaster SET HolidayDate = ?, Day = ?, Event = ? WHERE HolidayId = ?",
-            body.holiday_date, day_name, body.event.strip(), holiday_id,
+            "UPDATE RSPL_HolidayMaster SET HolidayDate = ?, ToDate = ?, Day = ?, Event = ? WHERE HolidayId = ?",
+            body.holiday_date, body.to_date, day_name, body.event.strip(), holiday_id,
         )
         if cursor.rowcount == 0:
             raise HTTPException(status_code=404, detail="Holiday not found")
-        cursor.execute("SELECT HolidayId, HolidayDate, Day, Event, Enabled FROM RSPL_HolidayMaster WHERE HolidayId = ?", holiday_id)
+        cursor.execute("SELECT HolidayId, HolidayDate, ToDate, Day, Event, Enabled FROM RSPL_HolidayMaster WHERE HolidayId = ?", holiday_id)
         row = rows_to_dicts(cursor)[0]
     return _row(row)
 
@@ -139,6 +162,6 @@ def set_holiday_status(holiday_id: int, body: HolidayStatusRequest) -> HolidayRo
         cursor.execute("UPDATE RSPL_HolidayMaster SET Enabled = ? WHERE HolidayId = ?", body.enabled, holiday_id)
         if cursor.rowcount == 0:
             raise HTTPException(status_code=404, detail="Holiday not found")
-        cursor.execute("SELECT HolidayId, HolidayDate, Day, Event, Enabled FROM RSPL_HolidayMaster WHERE HolidayId = ?", holiday_id)
+        cursor.execute("SELECT HolidayId, HolidayDate, ToDate, Day, Event, Enabled FROM RSPL_HolidayMaster WHERE HolidayId = ?", holiday_id)
         row = rows_to_dicts(cursor)[0]
     return _row(row)

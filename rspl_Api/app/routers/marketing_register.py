@@ -113,6 +113,8 @@ class EnquiryRegisterActionRow(BaseModel):
     completed_by: str
     completed_remark: str
     sales_person: str
+    voucher_no: str
+    to_do_voucher_no: str
     action_stage_status: str
     quotation_amt: float
     next_action: str
@@ -265,6 +267,7 @@ def get_enquiry_register_actions(cust_id: int) -> list[EnquiryRegisterActionRow]
             completion_date=r["CompletionDate"].isoformat() if r["CompletionDate"] else None,
             completion_time=str(r["CompletionTime"] or ""), completed_by=r["Completedby"] or "",
             completed_remark=r["CompletedRemark"] or "", sales_person=r["SalesPerson"] or "",
+            voucher_no=str(r["VoucherNo"] or ""), to_do_voucher_no=str(r["ToDoVoucherNo"] or ""),
             action_stage_status=r["ActionStageStatus"] or "", quotation_amt=float(r["QuotationAmt"] or 0),
             next_action=r["NextAction"] or "",
         )
