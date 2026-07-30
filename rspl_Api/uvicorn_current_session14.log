@@ -1,0 +1,48 @@
+INFO:     Started server process [3588]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:50201 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50244 - "OPTIONS /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50244 - "GET /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50244 - "OPTIONS /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50244 - "GET /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50244 - "OPTIONS /support/executive-schedule/cells?team_id=2&year=2026&month=7 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50244 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=7 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50521 - "OPTIONS /support/executive-schedule/cells/save HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50521 - "POST /support/executive-schedule/cells/save HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50521 - "POST /support/executive-schedule/cells/save HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50521 - "POST /support/executive-schedule/cells/save HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50521 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50526 - "OPTIONS /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50521 - "GET /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50526 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50526 - "OPTIONS /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50526 - "GET /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50526 - "OPTIONS /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50526 - "GET /support/executive-schedule/user-state HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50526 - "OPTIONS /support/executive-schedule/cells?team_id=2&year=2026&month=7 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50526 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=7 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50554 - "OPTIONS /support/executive-schedule/cells?team_id=1&year=2026&month=7 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50555 - "OPTIONS /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50555 - "PUT /support/executive-schedule/user-state HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50554 - "GET /support/executive-schedule/cells?team_id=1&year=2026&month=7 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50563 - "OPTIONS /support/executive-schedule/executives/reorder HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50563 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50563 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50563 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50563 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50563 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50563 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50563 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50563 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50563 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50565 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50565 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50565 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50565 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50565 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50569 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50569 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50569 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:50569 - "POST /support/executive-schedule/executives/reorder HTTP/1.1" 401 Unauthorized

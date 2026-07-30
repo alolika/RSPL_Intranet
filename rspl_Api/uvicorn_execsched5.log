@@ -1,0 +1,9 @@
+INFO:     Started server process [468]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:50053 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50064 - "GET /support/executive-schedule/executives?team_id=2 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50067 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50098 - "GET /support/executive-schedule/executives?team_id=2 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50101 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK

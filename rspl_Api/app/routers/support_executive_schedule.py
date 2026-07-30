@@ -9,15 +9,47 @@ Schema (hand-created directly on the SQL Server instance, confirmed live —
 no migration tooling exists in this repo):
 
 - RSPL_ExecScheduleTeam: fixed lookup, seeded with exactly two rows
-  ('Jwellsoft', 'Retailware'). No "add team" endpoint in v1.
-- RSPL_ExecScheduleExecutive: one row per executive, scoped to a team,
-  ordered by SortOrder. Delete is a soft-delete (Enabled=0) since historical
-  RSPL_ExecScheduleCell rows reference ExecutiveId and a hard delete would
-  orphan/lose past months' data for someone who left the team.
+  ('Jwellsoft', 'Retailware'), each tagged with the UserMaster.UserTypeID
+  that defines its roster (8 = Jwellsoft, 9 = Retailware). No "add team"
+  endpoint in v1.
 - RSPL_ExecScheduleCell: normalized (ExecutiveId, CellDate) -> (text, color)
   store, PK (ExecutiveId, CellDate). Deliberately not one column per day
   (unbounded/unmaintainable) and deliberately not tied to Dim_Time (only
   populated 2004-2015, see general_schedule.py) - CellDate is a plain date.
+  ExecutiveId here is UserMaster.UserID (the same identity CurrentUser.user_id
+  and every other *ByUserId audit column in this app already uses — see
+  auth.py's login endpoint, which puts UserMaster.UserID in the JWT `sub`).
+
+There used to be a third table, RSPL_ExecScheduleExecutive, holding a
+manually maintained roster (add/rename/delete/reorder). Per explicit request
+that roster concept is retired outright: the executive list for each team is
+now derived live from UserMaster (Enabled=1, UserTypeID matching the team),
+so a user created/deactivated in UserMaster automatically appears/disappears
+here with no manual step. That table and its FK from RSPL_ExecScheduleCell
+have been dropped from the database (it was empty — no historical schedule
+data existed to migrate).
+
+- RSPL_ExecScheduleExecutiveMeta: the roster itself is read-only (from
+  UserMaster), but two things about an executive's presentation on a given
+  team's grid are still genuinely user-editable and must persist: manual
+  row order (drag/move up/down) and a per-row background color. PK
+  (TeamId, ExecutiveId) — deliberately scoped per-team, not just per
+  executive, since "load sequence separately for Retailware and Jwellsoft"
+  was explicit, and it means an executive who ever moved between teams
+  (UserTypeID changed) doesn't drag a stale order/color across with them.
+  A row with no meta entry yet (a brand-new UserMaster user, or one who's
+  simply never been dragged/colored) sorts after every row that DOES have
+  an explicit SortOrder, then alphabetically among itself — see
+  _get_active_executives' ORDER BY. That's what makes "new executives
+  appear at the end by default" true without any extra bookkeeping.
+
+- RSPL_ExecScheduleUserState: one row per user (PK UserId), remembering
+  which Team/Year/Month they last had open. Per explicit request that
+  reopening the form — on any device, after any restart — must land back
+  exactly where the user left off, not just "whichever team happened to be
+  in this one browser's localStorage" (the previous mechanism, now
+  replaced by this). Read on mount, written after every team/month/year
+  change the user makes.
 """
 
 from datetime import date, datetime
@@ -42,20 +74,29 @@ class ExecutiveRow(BaseModel):
     team_id: int
     executive_name: str
     sort_order: int
-
-
-class AddExecutiveRequest(BaseModel):
-    team_id: int
-    executive_name: str
-
-
-class RenameExecutiveRequest(BaseModel):
-    executive_name: str
+    row_color: str | None
 
 
 class ReorderExecutivesRequest(BaseModel):
     team_id: int
     ordered_executive_ids: list[int]
+
+
+class SetExecutiveColorRequest(BaseModel):
+    team_id: int
+    color: str | None
+
+
+class UserStateResponse(BaseModel):
+    team_id: int
+    year: int
+    month: int
+
+
+class SaveUserStateRequest(BaseModel):
+    team_id: int
+    year: int
+    month: int
 
 
 class CellRow(BaseModel):
@@ -109,115 +150,83 @@ def get_teams() -> list[TeamRow]:
     return [TeamRow(team_id=r["TeamId"], team_code=r["TeamCode"], team_name=r["TeamName"]) for r in rows]
 
 
-def _get_active_executives(team_id: int) -> list[ExecutiveRow]:
+@router.get("/user-state", response_model=UserStateResponse | None)
+def get_user_state(current_user: CurrentUser = Depends(get_current_user)) -> UserStateResponse | None:
     with get_cursor() as cursor:
         cursor.execute(
-            "SELECT ExecutiveId, TeamId, ExecutiveName, SortOrder FROM RSPL_ExecScheduleExecutive "
-            "WHERE TeamId = ? AND Enabled = 1 ORDER BY SortOrder",
-            team_id,
+            "SELECT TeamId, SelectedYear, SelectedMonth FROM RSPL_ExecScheduleUserState WHERE UserId = ?",
+            current_user.user_id,
+        )
+        row = cursor.fetchone()
+    if not row:
+        return None
+    return UserStateResponse(team_id=row[0], year=row[1], month=row[2])
+
+
+@router.put("/user-state")
+def save_user_state(body: SaveUserStateRequest, current_user: CurrentUser = Depends(get_current_user)) -> dict:
+    with get_cursor() as cursor:
+        cursor.execute(
+            "UPDATE RSPL_ExecScheduleUserState SET TeamId = ?, SelectedYear = ?, SelectedMonth = ?, LastEditedAt = SYSDATETIME() "
+            "WHERE UserId = ?",
+            body.team_id, body.year, body.month, current_user.user_id,
+        )
+        if cursor.rowcount == 0:
+            cursor.execute(
+                "INSERT INTO RSPL_ExecScheduleUserState (UserId, TeamId, SelectedYear, SelectedMonth, LastEditedAt) "
+                "VALUES (?, ?, ?, ?, SYSDATETIME())",
+                current_user.user_id, body.team_id, body.year, body.month,
+            )
+    return {"success": True}
+
+
+def _get_active_executives(team_id: int) -> list[ExecutiveRow]:
+    # Roster comes straight from UserMaster now, scoped to whichever
+    # UserTypeID this team maps to (8 = Jwellsoft, 9 = Retailware) — no
+    # separate executive master to maintain. A user appears here the moment
+    # they exist in UserMaster with that UserTypeID and Enabled=1, and drops
+    # out the moment they're disabled there; nothing in this feature needs
+    # to be told about it separately.
+    #
+    # DISTINCT on Name is a defensive dedupe only (per explicit "ensure no
+    # duplicate Executive names are displayed" requirement) — today's real
+    # data has no same-team name collisions, but if two active UserMaster
+    # rows of the same UserTypeID ever did share a Name, ROW_NUMBER keeps
+    # just the lowest UserID of the two rather than showing both.
+    #
+    # SortOrder/RowColor come from the LEFT JOINed per-team meta row, which
+    # may not exist yet for a given executive (brand new, or simply never
+    # dragged/colored) — ORDER BY puts every row WITH an explicit SortOrder
+    # first (in that order), then everyone else alphabetically after, which
+    # is exactly "new executives appear at the end by default" with no
+    # separate bookkeeping needed.
+    with get_cursor() as cursor:
+        cursor.execute(
+            "SELECT UserID, Name, SortOrder, RowColor FROM ("
+            "  SELECT u.UserID, u.Name, m.SortOrder, m.RowColor,"
+            "         ROW_NUMBER() OVER (PARTITION BY u.Name ORDER BY u.UserID) AS rn"
+            "  FROM UserMaster u"
+            "  LEFT JOIN RSPL_ExecScheduleExecutiveMeta m ON m.TeamId = ? AND m.ExecutiveId = u.UserID"
+            "  WHERE u.Enabled = 1 AND u.UserTypeID = ("
+            "    SELECT UserTypeID FROM RSPL_ExecScheduleTeam WHERE TeamId = ?"
+            "  )"
+            ") AS deduped"
+            " WHERE rn = 1"
+            " ORDER BY CASE WHEN SortOrder IS NULL THEN 1 ELSE 0 END, SortOrder, Name",
+            team_id, team_id,
         )
         rows = rows_to_dicts(cursor)
     return [
-        ExecutiveRow(executive_id=r["ExecutiveId"], team_id=r["TeamId"], executive_name=r["ExecutiveName"], sort_order=r["SortOrder"])
-        for r in rows
+        ExecutiveRow(
+            executive_id=r["UserID"], team_id=team_id, executive_name=r["Name"] or "", sort_order=index, row_color=r["RowColor"]
+        )
+        for index, r in enumerate(rows, start=1)
     ]
 
 
 @router.get("/executives", response_model=list[ExecutiveRow])
 def get_executives(team_id: int) -> list[ExecutiveRow]:
     return _get_active_executives(team_id)
-
-
-def _find_duplicate_active_name(cursor, team_id: int, name: str, exclude_executive_id: int | None = None) -> bool:
-    # Case-insensitive, same-team, active-only match — soft-deleted
-    # (Enabled=0) executives don't block reuse of their old name.
-    if exclude_executive_id is None:
-        cursor.execute(
-            "SELECT COUNT(*) FROM RSPL_ExecScheduleExecutive WHERE TeamId = ? AND Enabled = 1 AND LOWER(ExecutiveName) = LOWER(?)",
-            team_id, name,
-        )
-    else:
-        cursor.execute(
-            "SELECT COUNT(*) FROM RSPL_ExecScheduleExecutive WHERE TeamId = ? AND Enabled = 1 AND ExecutiveId <> ? AND LOWER(ExecutiveName) = LOWER(?)",
-            team_id, exclude_executive_id, name,
-        )
-    return cursor.fetchone()[0] > 0
-
-
-@router.post("/executives", response_model=ExecutiveRow)
-def add_executive(body: AddExecutiveRequest, current_user: CurrentUser = Depends(get_current_user)) -> ExecutiveRow:
-    name = body.executive_name.strip()
-    if not name:
-        raise HTTPException(status_code=400, detail="Executive name is required")
-    with get_cursor() as cursor:
-        if _find_duplicate_active_name(cursor, body.team_id, name):
-            raise HTTPException(status_code=409, detail=f"An executive named '{name}' already exists in this team")
-        cursor.execute(
-            "SELECT ISNULL(MAX(SortOrder), 0) + 1 FROM RSPL_ExecScheduleExecutive WHERE TeamId = ?", body.team_id
-        )
-        next_sort_order = cursor.fetchone()[0]
-        cursor.execute(
-            "INSERT INTO RSPL_ExecScheduleExecutive (TeamId, ExecutiveName, SortOrder, Enabled, CreatedByUserId, CreatedAt) "
-            "OUTPUT INSERTED.ExecutiveId VALUES (?, ?, ?, 1, ?, SYSDATETIME())",
-            body.team_id, name, next_sort_order, current_user.user_id,
-        )
-        new_id = cursor.fetchone()[0]
-    return ExecutiveRow(executive_id=new_id, team_id=body.team_id, executive_name=name, sort_order=next_sort_order)
-
-
-@router.put("/executives/{executive_id}")
-def rename_executive(executive_id: int, body: RenameExecutiveRequest, current_user: CurrentUser = Depends(get_current_user)) -> dict:
-    name = body.executive_name.strip()
-    if not name:
-        raise HTTPException(status_code=400, detail="Executive name is required")
-    with get_cursor() as cursor:
-        cursor.execute("SELECT TeamId FROM RSPL_ExecScheduleExecutive WHERE ExecutiveId = ?", executive_id)
-        row = cursor.fetchone()
-        if not row:
-            raise HTTPException(status_code=404, detail="Executive not found")
-        team_id = row[0]
-        if _find_duplicate_active_name(cursor, team_id, name, exclude_executive_id=executive_id):
-            raise HTTPException(status_code=409, detail=f"An executive named '{name}' already exists in this team")
-        cursor.execute(
-            "UPDATE RSPL_ExecScheduleExecutive SET ExecutiveName = ?, LastEditedByUserId = ?, LastEditedAt = SYSDATETIME() "
-            "WHERE ExecutiveId = ?",
-            name, current_user.user_id, executive_id,
-        )
-    return {"success": True}
-
-
-@router.delete("/executives/{executive_id}")
-def delete_executive(executive_id: int, current_user: CurrentUser = Depends(get_current_user)) -> dict:
-    with get_cursor() as cursor:
-        cursor.execute(
-            "UPDATE RSPL_ExecScheduleExecutive SET Enabled = 0, LastEditedByUserId = ?, LastEditedAt = SYSDATETIME() "
-            "WHERE ExecutiveId = ?",
-            current_user.user_id, executive_id,
-        )
-    return {"success": True}
-
-
-@router.post("/executives/{executive_id}/restore")
-def restore_executive(executive_id: int, current_user: CurrentUser = Depends(get_current_user)) -> dict:
-    # Undo of a delete — re-enables the same soft-deleted row (and therefore
-    # its historical cells) rather than creating a new executive.
-    with get_cursor() as cursor:
-        cursor.execute("SELECT TeamId, ExecutiveName FROM RSPL_ExecScheduleExecutive WHERE ExecutiveId = ?", executive_id)
-        row = cursor.fetchone()
-        if not row:
-            raise HTTPException(status_code=404, detail="Executive not found")
-        team_id, name = row
-        # A newer active executive may have since taken this same name in
-        # this team — restoring would otherwise create a second active
-        # row with an identical name.
-        if _find_duplicate_active_name(cursor, team_id, name, exclude_executive_id=executive_id):
-            raise HTTPException(status_code=409, detail=f"Cannot restore — an executive named '{name}' already exists in this team")
-        cursor.execute(
-            "UPDATE RSPL_ExecScheduleExecutive SET Enabled = 1, LastEditedByUserId = ?, LastEditedAt = SYSDATETIME() "
-            "WHERE ExecutiveId = ?",
-            current_user.user_id, executive_id,
-        )
-    return {"success": True}
 
 
 @router.post("/executives/reorder")
@@ -230,9 +239,32 @@ def reorder_executives(body: ReorderExecutivesRequest, current_user: CurrentUser
     with get_cursor() as cursor:
         for index, executive_id in enumerate(body.ordered_executive_ids, start=1):
             cursor.execute(
-                "UPDATE RSPL_ExecScheduleExecutive SET SortOrder = ?, LastEditedByUserId = ?, LastEditedAt = SYSDATETIME() "
-                "WHERE ExecutiveId = ?",
-                index, current_user.user_id, executive_id,
+                "UPDATE RSPL_ExecScheduleExecutiveMeta SET SortOrder = ?, LastEditedByUserId = ?, LastEditedAt = SYSDATETIME() "
+                "WHERE TeamId = ? AND ExecutiveId = ?",
+                index, current_user.user_id, body.team_id, executive_id,
+            )
+            if cursor.rowcount == 0:
+                cursor.execute(
+                    "INSERT INTO RSPL_ExecScheduleExecutiveMeta (TeamId, ExecutiveId, SortOrder, LastEditedByUserId, LastEditedAt) "
+                    "VALUES (?, ?, ?, ?, SYSDATETIME())",
+                    body.team_id, executive_id, index, current_user.user_id,
+                )
+    return {"success": True}
+
+
+@router.put("/executives/{executive_id}/color")
+def set_executive_color(executive_id: int, body: SetExecutiveColorRequest, current_user: CurrentUser = Depends(get_current_user)) -> dict:
+    with get_cursor() as cursor:
+        cursor.execute(
+            "UPDATE RSPL_ExecScheduleExecutiveMeta SET RowColor = ?, LastEditedByUserId = ?, LastEditedAt = SYSDATETIME() "
+            "WHERE TeamId = ? AND ExecutiveId = ?",
+            body.color, current_user.user_id, body.team_id, executive_id,
+        )
+        if cursor.rowcount == 0:
+            cursor.execute(
+                "INSERT INTO RSPL_ExecScheduleExecutiveMeta (TeamId, ExecutiveId, RowColor, LastEditedByUserId, LastEditedAt) "
+                "VALUES (?, ?, ?, ?, SYSDATETIME())",
+                body.team_id, executive_id, body.color, current_user.user_id,
             )
     return {"success": True}
 

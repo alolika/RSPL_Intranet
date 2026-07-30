@@ -69,6 +69,25 @@ class CallHistorySummaryRow(BaseModel):
     first_incoming_call_time: str | None
     last_incoming_call_time: str | None
     total_call_duration: str
+    # Proc_CallHistory's own summary mode (@IsSummary=1) has no
+    # answered/missed breakdown at all — NoOfIncomingCall/NoOfOutGoingCall
+    # above already blend answered and missed together by design (see the
+    # proc's own ABC CTE: CallType IN ('External-incoming',
+    # 'External-incoming_busy', 'External-incoming_missed') for incoming,
+    # ('External-outgoing', 'External-outgoing_missed') for outgoing).
+    # These four counts are computed separately (see
+    # _get_answered_unanswered_counts below) by re-querying
+    # SIPEventRegisterCDR directly with the identical EntityID/date/mobile
+    # resolution the proc itself uses, splitting each existing direction
+    # bucket into its answered vs missed halves — deliberately NOT a single
+    # flat "answered"/"unanswered" pair, so the frontend can combine this
+    # with the existing Call Type (Incoming/Outgoing) filter correctly
+    # (e.g. "Incoming + Unanswered" must only count missed INCOMING calls,
+    # not any missed call regardless of direction).
+    answered_incoming_calls: int
+    missed_incoming_calls: int
+    answered_outgoing_calls: int
+    missed_outgoing_calls: int
 
 
 class CallHistoryDetailRow(BaseModel):
@@ -116,6 +135,72 @@ class AttemptCallRequest(BaseModel):
     executive_name: str
 
 
+def _resolve_entity_id(cursor, entity_id: int, mobile_no: str) -> int:
+    # Mirrors Proc_CallHistory's own resolution step exactly (see "If
+    # @EntityID=0 and @Mobileno<>''" in the proc source): a mobile number
+    # search with no explicit customer picked resolves to whichever
+    # CustomerMaster or CustDependents row owns that number, the same way
+    # the proc does it before building its own WHERE clause.
+    if entity_id == 0 and mobile_no:
+        cursor.execute(
+            "SELECT TOP 1 CustID FROM ("
+            "  SELECT CustID FROM CustomerMaster WHERE Mobileno = ?"
+            "  UNION"
+            "  SELECT CustID FROM CustDependents WHERE DepMobileNo = ?"
+            ") a",
+            mobile_no, mobile_no,
+        )
+        row = cursor.fetchone()
+        if row:
+            return row[0]
+    return entity_id
+
+
+def _get_answered_unanswered_counts(
+    from_date: date, to_date: date, customer_id: int, mobile_no: str
+) -> dict[int, tuple[int, int, int, int]]:
+    """Returns {EntityID: (answered_incoming, missed_incoming, answered_outgoing, missed_outgoing)}.
+
+    Queries synapsecdr.dbo.SIPEventRegisterCDR directly rather than adding a
+    mode to the shared legacy Proc_CallHistory — replicates that proc's own
+    EntityID computation ("case when len(SourceNo)>5 then SourceEntityID
+    else DestinationEntityID end") and date/entity/mobile filtering exactly,
+    so results stay consistent with the NoOfIncomingCall/NoOfOutGoingCall
+    counts the proc already returns, just split by answered vs missed.
+    """
+    with get_cursor() as cursor:
+        resolved_entity_id = _resolve_entity_id(cursor, customer_id, mobile_no)
+
+        where_clauses = ["(s.SourceEntityTypeID = 3 OR s.DestinationEntityTypeID = 3)", "s.CallDate >= ? AND s.CallDate <= ?"]
+        params: list = [from_date, to_date]
+        if resolved_entity_id > 0:
+            where_clauses.append("(CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceEntityID ELSE s.DestinationEntityID END) = ?")
+            params.append(resolved_entity_id)
+        elif mobile_no:
+            where_clauses.append(
+                "RIGHT((CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceNo ELSE s.DestinationNo END), 10) = ?"
+            )
+            params.append(mobile_no)
+
+        cursor.execute(
+            "SELECT "
+            "  (CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceEntityID ELSE s.DestinationEntityID END) AS EntityID, "
+            "  SUM(CASE WHEN s.CallType = 'External-incoming' THEN 1 ELSE 0 END) AS AnsweredIncoming, "
+            "  SUM(CASE WHEN s.CallType IN ('External-incoming_busy', 'External-incoming_missed') THEN 1 ELSE 0 END) AS MissedIncoming, "
+            "  SUM(CASE WHEN s.CallType = 'External-outgoing' THEN 1 ELSE 0 END) AS AnsweredOutgoing, "
+            "  SUM(CASE WHEN s.CallType = 'External-outgoing_missed' THEN 1 ELSE 0 END) AS MissedOutgoing "
+            f"FROM synapsecdr.dbo.SIPEventRegisterCDR s WHERE {' AND '.join(where_clauses)} "
+            "GROUP BY (CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceEntityID ELSE s.DestinationEntityID END)",
+            *params,
+        )
+        rows = rows_to_dicts(cursor)
+
+    return {
+        r["EntityID"]: (r["AnsweredIncoming"] or 0, r["MissedIncoming"] or 0, r["AnsweredOutgoing"] or 0, r["MissedOutgoing"] or 0)
+        for r in rows
+    }
+
+
 @router.get("/call-history/summary", response_model=list[CallHistorySummaryRow])
 def get_call_history_summary(
     from_date: date, to_date: date, customer_id: int = 0, mobile_no: str = ""
@@ -127,6 +212,8 @@ def get_call_history_summary(
         )
         rows = rows_to_dicts(cursor)
 
+    status_counts = _get_answered_unanswered_counts(from_date, to_date, customer_id, mobile_no)
+
     return [
         CallHistorySummaryRow(
             entity_id=r["EntityID"], entity_name=r["EntityName"] or "",
@@ -134,6 +221,10 @@ def get_call_history_summary(
             first_incoming_call_time=r["FirstIncomingCallTime"].isoformat() if r["FirstIncomingCallTime"] else None,
             last_incoming_call_time=r["LastIncomingCallTime"].isoformat() if r["LastIncomingCallTime"] else None,
             total_call_duration=str(r["TotalCallDuration"] or ""),
+            answered_incoming_calls=status_counts.get(r["EntityID"], (0, 0, 0, 0))[0],
+            missed_incoming_calls=status_counts.get(r["EntityID"], (0, 0, 0, 0))[1],
+            answered_outgoing_calls=status_counts.get(r["EntityID"], (0, 0, 0, 0))[2],
+            missed_outgoing_calls=status_counts.get(r["EntityID"], (0, 0, 0, 0))[3],
         )
         for r in rows
     ]
