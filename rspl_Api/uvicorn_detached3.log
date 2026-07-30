@@ -1,0 +1,13 @@
+INFO:     192.168.200.18:55096 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55146 - "GET /support/missed-calls?product=RETAILWARE HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55161 - "POST /support/missed-calls/attempt HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55164 - "POST /support/missed-calls/attempt HTTP/1.1" 409 Conflict
+INFO:     192.168.200.18:55167 - "OPTIONS /support/missed-calls/attempt HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55167 - "POST /support/missed-calls/attempt HTTP/1.1" 409 Conflict
+INFO:     192.168.200.18:55167 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55189 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55265 - "OPTIONS /support/missed-calls?product=&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55265 - "GET /support/missed-calls?product=&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55265 - "GET /support/missed-calls?product=&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55479 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55479 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
