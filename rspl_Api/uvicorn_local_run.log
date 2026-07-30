@@ -1,0 +1,11 @@
+INFO:     Started server process [10152]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:50869 - "GET /support/missed-calls?product=&from_date=2024-06-01&to_date=2025-11-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50872 - "GET /support/missed-calls?product=&from_date=2025-08-01&to_date=2026-07-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50875 - "GET /support/missed-calls?product=&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50878 - "GET /support/missed-calls?product=&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50881 - "GET /support/missed-calls?product=&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50891 - "GET /support/missed-calls?product=&from_date=2025-08-01&to_date=2026-07-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:50894 - "GET /support/missed-calls?product=&from_date=2025-08-01&to_date=2026-07-30 HTTP/1.1" 200 OK
