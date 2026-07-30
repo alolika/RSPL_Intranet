@@ -52,7 +52,7 @@ regardless.
 
 from datetime import date, datetime
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
 from app.db import get_cursor, rows_to_dicts
@@ -357,12 +357,28 @@ def attempt_missed_call(body: AttemptCallRequest) -> dict[str, bool]:
     # client-side stub (`of({success:true}).pipe(delay(150))`, no HTTP call
     # at all) dating back to when SynapseCDR didn't exist on this instance —
     # it exists now, confirmed live via sys.databases.
+    #
+    # The grid's "Click to Attempt" state is computed client-side from
+    # whatever snapshot was last fetched (see missed-call.ts's
+    # displayRows()) — with the grid open in more than one browser/tab, two
+    # people can both see the same call as not-yet-attempted and both click
+    # it. The WHERE clause below makes the UPDATE itself the single
+    # authoritative check (no separate SELECT-then-UPDATE, which would leave
+    # a race window between the two statements): it only succeeds if
+    # ExecutiveName is still blank at the moment this runs. rowcount==0
+    # means someone else's attempt already landed first (or the record
+    # doesn't exist), so this call is rejected as a conflict rather than
+    # silently overwriting whoever got there first — the plain reassignment
+    # this endpoint used to always do unconditionally.
     with get_cursor() as cursor:
         cursor.execute(
-            "UPDATE SynapseCDR.dbo.SIPEventRegisterCDR SET ExecutiveName = ? WHERE RecordNo = ?",
+            "UPDATE SynapseCDR.dbo.SIPEventRegisterCDR SET ExecutiveName = ? "
+            "WHERE RecordNo = ? AND (ExecutiveName IS NULL OR ExecutiveName = '')",
             body.executive_name,
             body.record_no,
         )
+        if cursor.rowcount == 0:
+            raise HTTPException(status_code=409, detail="This call has already been attempted.")
     return {"success": True}
 
 
