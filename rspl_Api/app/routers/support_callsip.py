@@ -156,78 +156,184 @@ def _resolve_entity_id(cursor, entity_id: int, mobile_no: str) -> int:
     return entity_id
 
 
-def _get_answered_unanswered_counts(
-    from_date: date, to_date: date, customer_id: int, mobile_no: str
-) -> dict[int, tuple[int, int, int, int]]:
-    """Returns {EntityID: (answered_incoming, missed_incoming, answered_outgoing, missed_outgoing)}.
+def _display_entity_name(name: str) -> str:
+    """Replicates Proc_CallHistory's own display-name truncation exactly:
+    `Substring(EntityName,0,charindex('-',EntityName))`, falling back to the
+    full name whenever that substring comes back empty (no hyphen at all, or
+    a hyphen as the very first character). T-SQL's SUBSTRING(x, 0, p) with a
+    1-based hyphen position p returns exactly the first (p-1) characters —
+    i.e. Python's `name[:p-1]`, which is just `name.partition('-')[0]`.
+    """
+    before = name.partition("-")[0]
+    return before if before else name
 
-    Queries synapsecdr.dbo.SIPEventRegisterCDR directly rather than adding a
-    mode to the shared legacy Proc_CallHistory — replicates that proc's own
-    EntityID computation ("case when len(SourceNo)>5 then SourceEntityID
-    else DestinationEntityID end") and date/entity/mobile filtering exactly,
-    so results stay consistent with the NoOfIncomingCall/NoOfOutGoingCall
-    counts the proc already returns, just split by answered vs missed.
+
+def _get_sip_extension_lookup() -> dict[int, str]:
+    """Maps UserMaster.UserID -> SIPExtentionNo.
+
+    Proc_CallHistory's own `Extention` column is the internal party's
+    UserID (SourceEntityID/DestinationEntityID), NOT the real SIP extension
+    number staff actually dial/see on their phone — confirmed live these
+    are genuinely different values for the same person (e.g. Avinash Kore
+    is UserID 153 but his real SIPExtentionNo is '75'; UserID 75 itself
+    belongs to a completely unrelated person, Ganesh Taware). An earlier
+    revision of the Extension search compared the search term directly
+    against Extention/UserID, which is exactly why it matched the wrong
+    person's calls — this lookup is what makes the search compare against
+    the real extension number instead.
     """
     with get_cursor() as cursor:
-        resolved_entity_id = _resolve_entity_id(cursor, customer_id, mobile_no)
-
-        where_clauses = ["(s.SourceEntityTypeID = 3 OR s.DestinationEntityTypeID = 3)", "s.CallDate >= ? AND s.CallDate <= ?"]
-        params: list = [from_date, to_date]
-        if resolved_entity_id > 0:
-            where_clauses.append("(CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceEntityID ELSE s.DestinationEntityID END) = ?")
-            params.append(resolved_entity_id)
-        elif mobile_no:
-            where_clauses.append(
-                "RIGHT((CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceNo ELSE s.DestinationNo END), 10) = ?"
-            )
-            params.append(mobile_no)
-
-        cursor.execute(
-            "SELECT "
-            "  (CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceEntityID ELSE s.DestinationEntityID END) AS EntityID, "
-            "  SUM(CASE WHEN s.CallType = 'External-incoming' THEN 1 ELSE 0 END) AS AnsweredIncoming, "
-            "  SUM(CASE WHEN s.CallType IN ('External-incoming_busy', 'External-incoming_missed') THEN 1 ELSE 0 END) AS MissedIncoming, "
-            "  SUM(CASE WHEN s.CallType = 'External-outgoing' THEN 1 ELSE 0 END) AS AnsweredOutgoing, "
-            "  SUM(CASE WHEN s.CallType = 'External-outgoing_missed' THEN 1 ELSE 0 END) AS MissedOutgoing "
-            f"FROM synapsecdr.dbo.SIPEventRegisterCDR s WHERE {' AND '.join(where_clauses)} "
-            "GROUP BY (CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceEntityID ELSE s.DestinationEntityID END)",
-            *params,
-        )
+        cursor.execute("SELECT UserID, SIPExtentionNo FROM UserMaster WHERE SIPExtentionNo IS NOT NULL AND SIPExtentionNo <> ''")
         rows = rows_to_dicts(cursor)
-
-    return {
-        r["EntityID"]: (r["AnsweredIncoming"] or 0, r["MissedIncoming"] or 0, r["AnsweredOutgoing"] or 0, r["MissedOutgoing"] or 0)
-        for r in rows
-    }
+    return {r["UserID"]: r["SIPExtentionNo"] for r in rows}
 
 
 @router.get("/call-history/summary", response_model=list[CallHistorySummaryRow])
 def get_call_history_summary(
-    from_date: date, to_date: date, customer_id: int = 0, mobile_no: str = ""
+    from_date: date, to_date: date, customer_id: int = 0, mobile_no: str = "",
+    extension_search: str = "", executive_search: str = "",
 ) -> list[CallHistorySummaryRow]:
+    # Rewritten (2026-07-30) to bypass the legacy Proc_CallHistory entirely
+    # for this mode, rather than adding yet another read on top of it. The
+    # proc's summary branch built its own filtered rowset into a table
+    # variable (no statistics -> poor cardinality estimates), copying every
+    # wide column including nvarchar(max) RecordingPath/ProcessDescription,
+    # then ran 5 CORRELATED scalar subqueries per distinct EntityID over
+    # that table variable to get NoOfIncomingCall/NoOfOutGoingCall/First-
+    # /LastIncomingCallTime/TotalCallDuration — effectively O(rows x distinct
+    # entities). On top of that, this endpoint used to run a SECOND full
+    # rescan of the same 300K+-row table (_get_answered_unanswered_counts,
+    # now removed) just to get the answered/missed split. Confirmed live
+    # this was the actual bottleneck: a same-day query took ~4.7s and
+    # anything wider than a couple of days (a normal 7-30 day report range)
+    # timed out past the pooled connection's 60s cap and 500'd outright.
+    #
+    # This single query does one pass over SIPEventRegisterCDR (`base`,
+    # narrow projection — no RecordingPath/ProcessDescription/etc.), then a
+    # single set-based GROUP BY (`agg`) for every count/min/max/sum instead
+    # of correlated subqueries, then joins the two. Every column name,
+    # EntityID/Extention/executive computation, and filter matches
+    # Proc_CallHistory's own summary branch exactly (see the proc's stored
+    # definition — same CASE expressions, same CallType buckets, same
+    # `EntityName IS NOT NULL AND EntityName <> ''` guard) so the result
+    # rows are identical in shape and meaning to before; only the answered/
+    # missed split (previously a separate query) is now computed in the
+    # same pass instead of a second one.
+    extra_where = ""
+    extra_params: list = []
     with get_cursor() as cursor:
+        resolved_entity_id = _resolve_entity_id(cursor, customer_id, mobile_no)
+        if resolved_entity_id > 0:
+            extra_where = " AND EntityID = ?"
+            extra_params = [resolved_entity_id]
+        elif mobile_no:
+            extra_where = " AND RIGHT(EntityPhone, 10) = ?"
+            extra_params = [mobile_no]
+
         cursor.execute(
-            "EXEC Proc_CallHistory ?, ?, ?, ?, 1",
-            from_date.strftime("%d-%b-%Y"), to_date.strftime("%d-%b-%Y"), customer_id, mobile_no,
+            f"""
+            WITH base AS (
+                SELECT
+                    CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceEntityID ELSE s.DestinationEntityID END AS EntityID,
+                    CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceNo ELSE s.DestinationNo END AS EntityPhone,
+                    CASE WHEN LEN(s.SourceNo) <= 3 THEN s.SourceEntityID ELSE s.DestinationEntityID END AS Extention,
+                    CASE WHEN LEN(s.SourceNo) <= 3 THEN s.SourceName ELSE s.DestinationName END AS executive,
+                    CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceName ELSE s.DestinationName END AS EntityName,
+                    s.CallTime, s.CallType, s.Duration
+                FROM synapsecdr.dbo.SIPEventRegisterCDR s
+                WHERE (s.SourceEntityTypeID = 3 OR s.DestinationEntityTypeID = 3)
+                  AND s.CallDate >= ? AND s.CallDate <= ?
+            ),
+            filtered AS (
+                SELECT * FROM base
+                WHERE EntityName IS NOT NULL AND EntityName <> '' {extra_where}
+            ),
+            agg AS (
+                SELECT
+                    EntityID,
+                    SUM(CASE WHEN CallType = 'External-incoming' THEN 1 ELSE 0 END) AS AnsweredIncoming,
+                    SUM(CASE WHEN CallType IN ('External-incoming_busy', 'External-incoming_missed') THEN 1 ELSE 0 END) AS MissedIncoming,
+                    SUM(CASE WHEN CallType = 'External-outgoing' THEN 1 ELSE 0 END) AS AnsweredOutgoing,
+                    SUM(CASE WHEN CallType = 'External-outgoing_missed' THEN 1 ELSE 0 END) AS MissedOutgoing,
+                    SUM(CASE WHEN CallType IN ('External-incoming', 'External-incoming_busy', 'External-incoming_missed') THEN 1 ELSE 0 END) AS NoOfIncomingCall,
+                    SUM(CASE WHEN CallType IN ('External-outgoing', 'External-outgoing_missed') THEN 1 ELSE 0 END) AS NoOfOutGoingCall,
+                    MIN(CASE WHEN CallType IN ('External-incoming', 'External-incoming_busy', 'External-incoming_missed') THEN CallTime END) AS FirstIncomingCallTime,
+                    MAX(CASE WHEN CallType IN ('External-incoming', 'External-incoming_busy', 'External-incoming_missed') THEN CallTime END) AS LastIncomingCallTime,
+                    SUM(Duration) AS TotalCallDuration
+                FROM filtered
+                GROUP BY EntityID
+            )
+            SELECT DISTINCT f.EntityID, f.EntityName, f.Extention, f.executive,
+                a.NoOfIncomingCall, a.NoOfOutGoingCall, a.FirstIncomingCallTime, a.LastIncomingCallTime, a.TotalCallDuration,
+                a.AnsweredIncoming, a.MissedIncoming, a.AnsweredOutgoing, a.MissedOutgoing
+            FROM filtered f
+            JOIN agg a ON a.EntityID = f.EntityID
+            """,
+            from_date, to_date, *extra_params,
         )
         rows = rows_to_dicts(cursor)
 
-    status_counts = _get_answered_unanswered_counts(from_date, to_date, customer_id, mobile_no)
+    # Same grouping the old code did: one row per (EntityID, Extention,
+    # executive) combination survives from the query above (matching
+    # Proc_CallHistory's own output shape), every row for a given EntityID
+    # carrying identical agg columns — group them here so the Extension/
+    # Executive searches below can scan every tagged combination, and so a
+    # customer handled by multiple executives collapses to one grid row.
+    by_entity: dict[int, list[dict]] = {}
+    for r in rows:
+        by_entity.setdefault(r["EntityID"], []).append(r)
 
-    return [
-        CallHistorySummaryRow(
-            entity_id=r["EntityID"], entity_name=r["EntityName"] or "",
-            no_of_incoming_call=r["NoOfIncomingCall"] or 0, no_of_outgoing_call=r["NoOfOutGoingCall"] or 0,
-            first_incoming_call_time=r["FirstIncomingCallTime"].isoformat() if r["FirstIncomingCallTime"] else None,
-            last_incoming_call_time=r["LastIncomingCallTime"].isoformat() if r["LastIncomingCallTime"] else None,
-            total_call_duration=str(r["TotalCallDuration"] or ""),
-            answered_incoming_calls=status_counts.get(r["EntityID"], (0, 0, 0, 0))[0],
-            missed_incoming_calls=status_counts.get(r["EntityID"], (0, 0, 0, 0))[1],
-            answered_outgoing_calls=status_counts.get(r["EntityID"], (0, 0, 0, 0))[2],
-            missed_outgoing_calls=status_counts.get(r["EntityID"], (0, 0, 0, 0))[3],
+    # Two independent search fields, per explicit request (replacing the
+    # earlier single auto-detecting box, which searched Extention/UserID
+    # directly instead of the real SIP extension number — see
+    # _get_sip_extension_lookup's own comment). Each narrows the result set
+    # further on top of whatever customer_id/mobile_no already selected;
+    # when both are filled, a customer must match both (AND), not either.
+    matching_entity_ids: set[int] | None = None
+
+    extension_search = extension_search.strip()
+    if extension_search:
+        extension_lookup = _get_sip_extension_lookup()
+        matching_entity_ids = {
+            entity_id
+            for entity_id, group in by_entity.items()
+            if any(extension_lookup.get(g.get("Extention") or 0, "") == extension_search for g in group)
+        }
+
+    executive_search = executive_search.strip()
+    if executive_search:
+        needle = executive_search.lower()
+        exec_matches = {
+            entity_id
+            for entity_id, group in by_entity.items()
+            if any(needle in (g.get("executive") or "").lower() for g in group)
+        }
+        matching_entity_ids = exec_matches if matching_entity_ids is None else (matching_entity_ids & exec_matches)
+
+    result: list[CallHistorySummaryRow] = []
+    for entity_id, group in by_entity.items():
+        if matching_entity_ids is not None and entity_id not in matching_entity_ids:
+            continue
+        # Prefer the row with no specific Extention/executive tag (a stable,
+        # predictable representative when one exists) — every row in the
+        # group carries identical aggregate values regardless, so falling
+        # back to the first row when no such "untagged" row exists is
+        # equally correct, just an arbitrary pick among equals.
+        r = next((g for g in group if not (g.get("Extention") or 0) and not (g.get("executive") or "").strip()), group[0])
+        result.append(
+            CallHistorySummaryRow(
+                entity_id=entity_id, entity_name=_display_entity_name(r["EntityName"] or ""),
+                no_of_incoming_call=r["NoOfIncomingCall"] or 0, no_of_outgoing_call=r["NoOfOutGoingCall"] or 0,
+                first_incoming_call_time=r["FirstIncomingCallTime"].isoformat() if r["FirstIncomingCallTime"] else None,
+                last_incoming_call_time=r["LastIncomingCallTime"].isoformat() if r["LastIncomingCallTime"] else None,
+                total_call_duration=str(r["TotalCallDuration"] or ""),
+                answered_incoming_calls=r["AnsweredIncoming"] or 0,
+                missed_incoming_calls=r["MissedIncoming"] or 0,
+                answered_outgoing_calls=r["AnsweredOutgoing"] or 0,
+                missed_outgoing_calls=r["MissedOutgoing"] or 0,
+            )
         )
-        for r in rows
-    ]
+    return result
 
 
 @router.get("/call-history/detail", response_model=list[CallHistoryDetailRow])
@@ -317,9 +423,30 @@ def _merge_missed_calls_by_customer(rows: list[dict]) -> list[dict]:
 
 @router.get("/missed-calls", response_model=list[MissedCallRow])
 def get_missed_calls(product: str = "", from_date: date | None = None, to_date: date | None = None) -> list[MissedCallRow]:
+    # WITH RECOMPILE (2026-07-30): confirmed live this is a textbook
+    # parameter-sniffing cliff, not a query-design problem — the query
+    # itself is fast. `SELECT * FROM dbo.webfun_SIPMissedCalls(@from,@to)`
+    # alone runs in ~1s even for a full 1-year range, and the exact same
+    # logic run as one ad-hoc batch (function + the two CustomerAttributes
+    # joins this proc also does) also runs in ~1s. But calling the actual
+    # WebProc_SIPMissedCalls stored proc with a 1-year range took 26.7s on
+    # its first execution (using whatever plan was cached from a prior,
+    # much-narrower typical date range — this report is usually run for a
+    # single day or week), then dropped straight back to ~1s on every
+    # subsequent call with that same wide range once SQL Server had a plan
+    # shaped for it. That cliff would come back at random (a narrow-range
+    # call recompiling it back to a narrow-shaped plan) for whichever user
+    # next tries a wide "look back over months" search, which is a normal
+    # thing to do on a *pending* missed-calls report. WITH RECOMPILE forces
+    # a fresh plan sized to the actual parameters every call — measured at
+    # ~0.9s even freshly compiled for the 1-year case, i.e. the compile
+    # overhead this trades in is negligible next to the cliff it avoids.
+    # This only changes how our endpoint invokes the shared proc (an
+    # EXECUTE-statement option, not a proc/schema change) — its logic,
+    # output, and every other caller are untouched.
     with get_cursor() as cursor:
         cursor.execute(
-            "EXEC WebProc_SIPMissedCalls ?, ?, ?",
+            "EXEC WebProc_SIPMissedCalls ?, ?, ? WITH RECOMPILE",
             from_date.isoformat() if from_date else None,
             to_date.isoformat() if to_date else None,
             product,

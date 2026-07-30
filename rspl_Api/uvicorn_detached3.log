@@ -11,3 +11,13 @@ INFO:     192.168.200.18:55265 - "GET /support/missed-calls?product=&from_date=2
 INFO:     192.168.200.18:55265 - "GET /support/missed-calls?product=&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
 INFO:     192.168.200.18:55479 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
 INFO:     192.168.200.18:55479 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56871 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56871 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56906 - "GET /support/missed-calls?product=Retailware&from_date=2026-07-30&to_date=2026-07-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56936 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56937 - "OPTIONS /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no=&search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56939 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56938 - "GET /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no=&search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56965 - "OPTIONS /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no=&search=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56965 - "GET /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no=&search=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:56971 - "GET /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no=&search=15 HTTP/1.1" 200 OK

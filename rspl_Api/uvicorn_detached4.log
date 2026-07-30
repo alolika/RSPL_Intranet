@@ -1,0 +1,13 @@
+INFO:     192.168.200.18:57012 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57022 - "GET /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no=&search=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57032 - "GET /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no=&search=75 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57043 - "OPTIONS /support/call-history/detail?from_date=2026-07-30&to_date=2026-07-30&entity_id=65514&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57043 - "GET /support/call-history/detail?from_date=2026-07-30&to_date=2026-07-30&entity_id=65514&mobile_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57041 - "GET /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no=&search=Avinash HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57046 - "GET /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no=&search=Avin HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57049 - "GET /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no=&search=zzzznotreal HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57052 - "GET /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no=&search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57056 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57057 - "GET /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no=&search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57188 - "GET /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no=&search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57223 - "GET /support/call-history/summary?from_date=2026-07-30&to_date=2026-07-30&customer_id=0&mobile_no=&search=15 HTTP/1.1" 200 OK
