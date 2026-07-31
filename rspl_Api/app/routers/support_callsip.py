@@ -98,6 +98,7 @@ class CallHistoryDetailRow(BaseModel):
     bill_seconds: int
     call_type: str
     received_by: str
+    recording_path: str
 
 
 class MissedCallRow(BaseModel):
@@ -352,10 +353,42 @@ def get_call_history_detail(
     # (same as get_call_history_summary, which never had this bug) forces a
     # clean calendar date in, then reformats it the exact same safe way
     # before it ever reaches the proc.
+    # Rewritten (2026-07-30) to bypass Proc_CallHistory's detail branch (IsSummary=0)
+    # entirely — that SELECT never projects RecordingPath at all (confirmed against
+    # the proc's own stored definition), so there's no way to add the recording
+    # "listen" feature on top of it without a schema/proc change. This query
+    # reproduces that branch's own logic exactly: it built two candidate rows per
+    # underlying call (once treating SourceNo as "the phone field", once
+    # DestinationNo) via a UNION, then kept only whichever one had the real
+    # (length>5) external number — equivalent to picking that value directly with
+    # a CASE, one pass instead of a union of doubled rows.
+    extra_where = ""
+    extra_params: list = []
     with get_cursor() as cursor:
+        resolved_entity_id = _resolve_entity_id(cursor, entity_id, mobile_no)
+        if resolved_entity_id > 0:
+            extra_where = " AND (CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceEntityID ELSE s.DestinationEntityID END) = ?"
+            extra_params = [resolved_entity_id]
+        elif mobile_no:
+            extra_where = " AND RIGHT((CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceNo ELSE s.DestinationNo END), 10) = ?"
+            extra_params = [mobile_no]
+
         cursor.execute(
-            "EXEC Proc_CallHistory ?, ?, ?, ?, 0",
-            from_date.strftime("%d-%b-%Y"), to_date.strftime("%d-%b-%Y"), entity_id, mobile_no,
+            f"""
+            SELECT * FROM (
+                SELECT
+                    s.CallType, s.CallTime,
+                    CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceNo ELSE s.DestinationNo END AS SourceNo,
+                    s.Duration, s.BillSeconds, s.SourceName, s.SourceEntityID,
+                    s.DestinationName AS ReceivedBy, s.RecordingPath
+                FROM synapsecdr.dbo.SIPEventRegisterCDR s
+                WHERE (s.SourceEntityTypeID = 3 OR s.DestinationEntityTypeID = 3)
+                  AND s.CallDate >= ? AND s.CallDate <= ? {extra_where}
+            ) a
+            WHERE LEN(a.SourceNo) > 5
+            ORDER BY CallTime
+            """,
+            from_date, to_date, *extra_params,
         )
         rows = rows_to_dicts(cursor)
 
@@ -364,6 +397,7 @@ def get_call_history_detail(
             source_name=r["SourceName"] or "", call_time=r["CallTime"].isoformat() if r["CallTime"] else "",
             source_no=r["SourceNo"] or "", duration=str(r["Duration"] or ""), bill_seconds=r["BillSeconds"] or 0,
             call_type=r["CallType"] or "", received_by=r["ReceivedBy"] or "",
+            recording_path=r["RecordingPath"] or "",
         )
         for r in rows
     ]

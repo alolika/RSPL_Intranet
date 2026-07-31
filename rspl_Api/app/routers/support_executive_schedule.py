@@ -19,6 +19,10 @@ no migration tooling exists in this repo):
   ExecutiveId here is UserMaster.UserID (the same identity CurrentUser.user_id
   and every other *ByUserId audit column in this app already uses — see
   auth.py's login endpoint, which puts UserMaster.UserID in the JWT `sub`).
+  CellTextColor (varchar(9), nullable, added 2026-07-31) is CellColor's
+  independent counterpart — CellColor is the box's own background,
+  CellTextColor is the entered text/number's color, applied separately in
+  the UI so a user can color the content without changing the box color.
 
 There used to be a third table, RSPL_ExecScheduleExecutive, holding a
 manually maintained roster (add/rename/delete/reorder). Per explicit request
@@ -104,6 +108,7 @@ class CellRow(BaseModel):
     day: int
     text: str
     color: str | None
+    text_color: str | None
 
 
 class CellsResponse(BaseModel):
@@ -117,6 +122,7 @@ class SaveCellInput(BaseModel):
     day: int
     text: str
     color: str | None
+    text_color: str | None
 
 
 class SaveCellsRequest(BaseModel):
@@ -283,14 +289,17 @@ def get_cells(team_id: int, year: int, month: int) -> CellsResponse:
 
     with get_cursor() as cursor:
         cursor.execute(
-            f"SELECT ExecutiveId, CellDate, CellText, CellColor FROM RSPL_ExecScheduleCell "
+            f"SELECT ExecutiveId, CellDate, CellText, CellColor, CellTextColor FROM RSPL_ExecScheduleCell "
             f"WHERE ExecutiveId IN ({placeholders}) AND CellDate BETWEEN ? AND ?",
             *executive_ids, first_day, last_day,
         )
         rows = rows_to_dicts(cursor)
 
     cells = [
-        CellRow(executive_id=r["ExecutiveId"], day=r["CellDate"].day, text=r["CellText"] or "", color=r["CellColor"])
+        CellRow(
+            executive_id=r["ExecutiveId"], day=r["CellDate"].day, text=r["CellText"] or "",
+            color=r["CellColor"], text_color=r["CellTextColor"],
+        )
         for r in rows
     ]
     return CellsResponse(executives=executives, days=days, cells=cells)
@@ -302,15 +311,15 @@ def save_cells(body: SaveCellsRequest, current_user: CurrentUser = Depends(get_c
         for cell in body.cells:
             cell_date = date(body.year, body.month, cell.day)
             cursor.execute(
-                "UPDATE RSPL_ExecScheduleCell SET CellText = ?, CellColor = ?, LastEditedByUserId = ?, LastEditedAt = SYSDATETIME() "
+                "UPDATE RSPL_ExecScheduleCell SET CellText = ?, CellColor = ?, CellTextColor = ?, LastEditedByUserId = ?, LastEditedAt = SYSDATETIME() "
                 "WHERE ExecutiveId = ? AND CellDate = ?",
-                cell.text, cell.color, current_user.user_id, cell.executive_id, cell_date,
+                cell.text, cell.color, cell.text_color, current_user.user_id, cell.executive_id, cell_date,
             )
             if cursor.rowcount == 0:
                 cursor.execute(
-                    "INSERT INTO RSPL_ExecScheduleCell (ExecutiveId, CellDate, CellText, CellColor, LastEditedByUserId, LastEditedAt) "
-                    "VALUES (?, ?, ?, ?, ?, SYSDATETIME())",
-                    cell.executive_id, cell_date, cell.text, cell.color, current_user.user_id,
+                    "INSERT INTO RSPL_ExecScheduleCell (ExecutiveId, CellDate, CellText, CellColor, CellTextColor, LastEditedByUserId, LastEditedAt) "
+                    "VALUES (?, ?, ?, ?, ?, ?, SYSDATETIME())",
+                    cell.executive_id, cell_date, cell.text, cell.color, cell.text_color, current_user.user_id,
                 )
     return {"success": True, "saved_count": len(body.cells)}
 
@@ -343,7 +352,7 @@ def copy_month(body: CopyMonthRequest, current_user: CurrentUser = Depends(get_c
         )
 
         cursor.execute(
-            f"SELECT ExecutiveId, CellDate, CellText, CellColor FROM RSPL_ExecScheduleCell "
+            f"SELECT ExecutiveId, CellDate, CellText, CellColor, CellTextColor FROM RSPL_ExecScheduleCell "
             f"WHERE ExecutiveId IN ({placeholders}) AND CellDate BETWEEN ? AND ?",
             *executive_ids, source_first, source_last,
         )
@@ -358,9 +367,9 @@ def copy_month(body: CopyMonthRequest, current_user: CurrentUser = Depends(get_c
                 continue
             target_date = date(body.target_year, body.target_month, day)
             cursor.execute(
-                "INSERT INTO RSPL_ExecScheduleCell (ExecutiveId, CellDate, CellText, CellColor, LastEditedByUserId, LastEditedAt) "
-                "VALUES (?, ?, ?, ?, ?, SYSDATETIME())",
-                r["ExecutiveId"], target_date, r["CellText"], r["CellColor"], current_user.user_id,
+                "INSERT INTO RSPL_ExecScheduleCell (ExecutiveId, CellDate, CellText, CellColor, CellTextColor, LastEditedByUserId, LastEditedAt) "
+                "VALUES (?, ?, ?, ?, ?, ?, SYSDATETIME())",
+                r["ExecutiveId"], target_date, r["CellText"], r["CellColor"], r["CellTextColor"], current_user.user_id,
             )
             copied += 1
 
