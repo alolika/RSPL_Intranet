@@ -54,6 +54,21 @@ data existed to migrate).
   in this one browser's localStorage" (the previous mechanism, now
   replaced by this). Read on mount, written after every team/month/year
   change the user makes.
+
+- RSPL_ExecScheduleHolidayRule: PK ExecutiveId, one row per executive who has
+  a standing Weekly-Off/Alternate-Saturday-style pattern (imported one-time
+  from D:\\Maruti\\support.xlsx per explicit request — Executive Name matched
+  to UserMaster.Name, with 4 near-identical spellings mapped by hand:
+  "Sandip/Sandeep Patil", "Mahendra Valunj/Walunj", "Vidya Korde/Korade",
+  "Kishor Ahvad/Avhad"). WeeklyOffDay is a weekday name every occurrence of
+  which is a holiday every month (e.g. every Sunday). AlternateOccurrences
+  ('1,3' or '2,4') + AlternateDay (a weekday name) together mean "the 1st and
+  3rd [[or 2nd and 4th]] AlternateDay of the month is also a holiday" — see
+  `_holiday_days_for_month` below. Per explicit request, these computed "H"
+  values always win over whatever's saved in RSPL_ExecScheduleCell for that
+  date — get_cells overlays them on top of the saved text rather than only
+  filling gaps, so a holiday/alternate date always shows "H" regardless of
+  any manual entry, without touching the underlying saved CellText.
 """
 
 from datetime import date, datetime
@@ -144,6 +159,59 @@ def _days_in_month(year: int, month: int) -> int:
     if month == 12:
         return (date(year + 1, 1, 1) - date(year, 12, 1)).days
     return (date(year, month + 1, 1) - date(year, month, 1)).days
+
+
+_WEEKDAY_INDEX = {
+    "monday": 0, "tuesday": 1, "wednesday": 2, "thursday": 3,
+    "friday": 4, "saturday": 5, "sunday": 6,
+}
+
+
+class HolidayRule(BaseModel):
+    executive_id: int
+    weekly_off_day: str
+    alternate_occurrences: str
+    alternate_day: str
+
+
+def _get_holiday_rules(executive_ids: list[int]) -> dict[int, HolidayRule]:
+    if not executive_ids:
+        return {}
+    placeholders = ",".join("?" for _ in executive_ids)
+    with get_cursor() as cursor:
+        cursor.execute(
+            f"SELECT ExecutiveId, WeeklyOffDay, AlternateOccurrences, AlternateDay "
+            f"FROM RSPL_ExecScheduleHolidayRule WHERE ExecutiveId IN ({placeholders})",
+            *executive_ids,
+        )
+        rows = rows_to_dicts(cursor)
+    return {
+        r["ExecutiveId"]: HolidayRule(
+            executive_id=r["ExecutiveId"], weekly_off_day=r["WeeklyOffDay"],
+            alternate_occurrences=r["AlternateOccurrences"], alternate_day=r["AlternateDay"],
+        )
+        for r in rows
+    }
+
+
+def _holiday_days_for_month(rule: HolidayRule, year: int, month: int, days_in_month: int) -> set[int]:
+    """Every occurrence of WeeklyOffDay in the month, plus whichever occurrences
+    (1st/3rd or 2nd/4th, per AlternateOccurrences) of AlternateDay the rule names."""
+    weekly_off_idx = _WEEKDAY_INDEX.get(rule.weekly_off_day.strip().lower())
+    alt_idx = _WEEKDAY_INDEX.get(rule.alternate_day.strip().lower())
+    wanted_occurrences = {int(n) for n in rule.alternate_occurrences.split(",") if n.strip().isdigit()}
+
+    holidays: set[int] = set()
+    alt_occurrence = 0
+    for day in range(1, days_in_month + 1):
+        weekday = date(year, month, day).weekday()
+        if weekly_off_idx is not None and weekday == weekly_off_idx:
+            holidays.add(day)
+        if alt_idx is not None and weekday == alt_idx:
+            alt_occurrence += 1
+            if alt_occurrence in wanted_occurrences:
+                holidays.add(day)
+    return holidays
 
 
 @router.get("/teams", response_model=list[TeamRow])
@@ -295,14 +363,39 @@ def get_cells(team_id: int, year: int, month: int) -> CellsResponse:
         )
         rows = rows_to_dicts(cursor)
 
-    cells = [
-        CellRow(
+    cells_by_key: dict[tuple[int, int], CellRow] = {
+        (r["ExecutiveId"], r["CellDate"].day): CellRow(
             executive_id=r["ExecutiveId"], day=r["CellDate"].day, text=r["CellText"] or "",
             color=r["CellColor"], text_color=r["CellTextColor"],
         )
         for r in rows
-    ]
-    return CellsResponse(executives=executives, days=days, cells=cells)
+    }
+
+    # Holiday/Alternate-day rules always win over whatever's saved for that
+    # date (per explicit request) — this only overrides the CellRow.text
+    # returned here, never the underlying RSPL_ExecScheduleCell row itself,
+    # so no manual data is destroyed, just visually superseded on load.
+    #
+    # Box color: an "H" cell defaults to White rather than falling through to
+    # the row's own background color — but only when no color has ever been
+    # explicitly saved for that date (existing.color falsy). The moment a
+    # user picks a color for that box via the color picker, it gets saved to
+    # RSPL_ExecScheduleCell and existing.color is no longer falsy, so this
+    # leaves their choice alone on every later load instead of resetting it
+    # back to white each time.
+    holiday_rules = _get_holiday_rules(executive_ids)
+    for executive_id, rule in holiday_rules.items():
+        for day in _holiday_days_for_month(rule, year, month, len(days)):
+            key = (executive_id, day)
+            existing = cells_by_key.get(key)
+            if existing:
+                existing.text = "H"
+                if not existing.color:
+                    existing.color = "#ffffff"
+            else:
+                cells_by_key[key] = CellRow(executive_id=executive_id, day=day, text="H", color="#ffffff", text_color=None)
+
+    return CellsResponse(executives=executives, days=days, cells=list(cells_by_key.values()))
 
 
 @router.post("/cells/save")
