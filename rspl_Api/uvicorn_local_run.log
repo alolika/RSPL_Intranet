@@ -158,3 +158,6 @@ INFO:     192.168.200.18:57927 - "GET /marketing/registration/referred-by-custom
 INFO:     192.168.200.18:57928 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
 INFO:     192.168.200.18:57943 - "GET /marketing/registration/lookup-pincode?pin_code=411009 HTTP/1.1" 200 OK
 INFO:     192.168.200.18:57943 - "GET /marketing/registration/cities-districts?state_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57985 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57986 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57987 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
