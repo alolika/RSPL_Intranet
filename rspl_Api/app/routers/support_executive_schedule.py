@@ -34,18 +34,25 @@ have been dropped from the database (it was empty — no historical schedule
 data existed to migrate).
 
 - RSPL_ExecScheduleExecutiveMeta: the roster itself is read-only (from
-  UserMaster), but two things about an executive's presentation on a given
+  UserMaster), but things about an executive's presentation on a given
   team's grid are still genuinely user-editable and must persist: manual
-  row order (drag/move up/down) and a per-row background color. PK
-  (TeamId, ExecutiveId) — deliberately scoped per-team, not just per
-  executive, since "load sequence separately for Retailware and Jwellsoft"
-  was explicit, and it means an executive who ever moved between teams
-  (UserTypeID changed) doesn't drag a stale order/color across with them.
-  A row with no meta entry yet (a brand-new UserMaster user, or one who's
-  simply never been dragged/colored) sorts after every row that DOES have
-  an explicit SortOrder, then alphabetically among itself — see
-  _get_active_executives' ORDER BY. That's what makes "new executives
-  appear at the end by default" true without any extra bookkeeping.
+  row order (drag/move up/down), a per-row background color (RowColor —
+  the day cells' fallback background, see get_cells' cell.color-or-
+  row.rowColor precedence on the frontend), and — added per explicit
+  request — ColumnColor (varchar(9), nullable, 2026-07-31), an
+  independent background color for just that executive's own Executive
+  (name) column cell, deliberately separate from RowColor so a user can
+  color the name column without it bleeding into that row's day cells,
+  and vice versa. PK (TeamId, ExecutiveId) — deliberately scoped per-team,
+  not just per executive, since "load sequence separately for Retailware
+  and Jwellsoft" was explicit, and it means an executive who ever moved
+  between teams (UserTypeID changed) doesn't drag stale order/colors
+  across with them. A row with no meta entry yet (a brand-new UserMaster
+  user, or one who's simply never been dragged/colored) sorts after every
+  row that DOES have an explicit SortOrder, then alphabetically among
+  itself — see _get_active_executives' ORDER BY. That's what makes "new
+  executives appear at the end by default" true without any extra
+  bookkeeping.
 
 - RSPL_ExecScheduleUserState: one row per user (PK UserId), remembering
   which Team/Year/Month they last had open. Per explicit request that
@@ -54,6 +61,24 @@ data existed to migrate).
   in this one browser's localStorage" (the previous mechanism, now
   replaced by this). Read on mount, written after every team/month/year
   change the user makes.
+
+- RSPL_ExecScheduleTemplate: PK (TeamId, ExecutiveId, Day 1-31) — a fixed,
+  reusable "Schedule Template" per explicit request, one-time snapshotted
+  (2026-07-31) from Retailware's (TeamId 2) already-completed August 2026
+  schedule (558 RSPL_ExecScheduleCell rows across 18 executives, copied
+  verbatim: CellText/CellColor/CellTextColor keyed by day-of-month instead
+  of an actual CellDate, so the same template row applies to "the 15th"
+  regardless of which real year/month it's later copied into). No
+  snapshot/regenerate endpoint exists — populating or refreshing this table
+  is a deliberate one-off DB operation, not a user-facing action.
+  copy_month below now sources from this table instead of from whichever
+  month happened to be open when Save As was clicked — see that function's
+  own docstring for why. Holiday/Alternate-day "H" values are deliberately
+  NOT frozen into this template: they're excluded from what CellText
+  normally contains unless a user explicitly typed over one (see get_cells),
+  and _holiday_days_for_month below already recomputes the correct holidays
+  fresh for whatever target month a copy lands on, so nothing extra is
+  needed here for that to keep working.
 
 - RSPL_ExecScheduleHolidayRule: PK ExecutiveId, one row per executive who has
   a standing Weekly-Off/Alternate-Saturday-style pattern (imported one-time
@@ -95,6 +120,7 @@ class ExecutiveRow(BaseModel):
     executive_name: str
     sort_order: int
     row_color: str | None
+    column_color: str | None
 
 
 class ReorderExecutivesRequest(BaseModel):
@@ -282,8 +308,8 @@ def _get_active_executives(team_id: int) -> list[ExecutiveRow]:
     # separate bookkeeping needed.
     with get_cursor() as cursor:
         cursor.execute(
-            "SELECT UserID, Name, SortOrder, RowColor FROM ("
-            "  SELECT u.UserID, u.Name, m.SortOrder, m.RowColor,"
+            "SELECT UserID, Name, SortOrder, RowColor, ColumnColor FROM ("
+            "  SELECT u.UserID, u.Name, m.SortOrder, m.RowColor, m.ColumnColor,"
             "         ROW_NUMBER() OVER (PARTITION BY u.Name ORDER BY u.UserID) AS rn"
             "  FROM UserMaster u"
             "  LEFT JOIN RSPL_ExecScheduleExecutiveMeta m ON m.TeamId = ? AND m.ExecutiveId = u.UserID"
@@ -298,7 +324,8 @@ def _get_active_executives(team_id: int) -> list[ExecutiveRow]:
         rows = rows_to_dicts(cursor)
     return [
         ExecutiveRow(
-            executive_id=r["UserID"], team_id=team_id, executive_name=r["Name"] or "", sort_order=index, row_color=r["RowColor"]
+            executive_id=r["UserID"], team_id=team_id, executive_name=r["Name"] or "", sort_order=index,
+            row_color=r["RowColor"], column_color=r["ColumnColor"],
         )
         for index, r in enumerate(rows, start=1)
     ]
@@ -346,6 +373,28 @@ def set_executive_color(executive_id: int, body: SetExecutiveColorRequest, curre
         if cursor.rowcount == 0:
             cursor.execute(
                 "INSERT INTO RSPL_ExecScheduleExecutiveMeta (TeamId, ExecutiveId, RowColor, LastEditedByUserId, LastEditedAt) "
+                "VALUES (?, ?, ?, ?, SYSDATETIME())",
+                body.team_id, executive_id, body.color, current_user.user_id,
+            )
+    return {"success": True}
+
+
+# Mirrors set_executive_color above exactly, but writes ColumnColor instead
+# of RowColor — an independent background just for this executive's own
+# Executive (name) column cell, per explicit request that Row Color and
+# Column Color work independently and never interfere with each other.
+@router.put("/executives/{executive_id}/column-color")
+def set_executive_column_color(executive_id: int, body: SetExecutiveColorRequest, current_user: CurrentUser = Depends(get_current_user)) -> dict:
+    require_access(current_user.user_id, FORM_EXEC_SCHEDULE, "edit")
+    with get_cursor() as cursor:
+        cursor.execute(
+            "UPDATE RSPL_ExecScheduleExecutiveMeta SET ColumnColor = ?, LastEditedByUserId = ?, LastEditedAt = SYSDATETIME() "
+            "WHERE TeamId = ? AND ExecutiveId = ?",
+            body.color, current_user.user_id, body.team_id, executive_id,
+        )
+        if cursor.rowcount == 0:
+            cursor.execute(
+                "INSERT INTO RSPL_ExecScheduleExecutiveMeta (TeamId, ExecutiveId, ColumnColor, LastEditedByUserId, LastEditedAt) "
                 "VALUES (?, ?, ?, ?, SYSDATETIME())",
                 body.team_id, executive_id, body.color, current_user.user_id,
             )
@@ -430,6 +479,20 @@ def save_cells(body: SaveCellsRequest, current_user: CurrentUser = Depends(get_c
 
 @router.post("/copy-month")
 def copy_month(body: CopyMonthRequest, current_user: CurrentUser = Depends(get_current_user)) -> dict:
+    """"Save As" / "Save as Copy for Selected Month" — per explicit request,
+    this now always copies from the team's stored RSPL_ExecScheduleTemplate
+    snapshot rather than from whichever month happened to be open in the
+    grid when the button was clicked. The request shape, the same-month
+    guard, and the target-month overwrite behavior (confirmed client-side
+    via a confirm() dialog, then a full delete-then-insert here) are all
+    otherwise unchanged from before — only the SELECT's source table
+    changed, from RSPL_ExecScheduleCell (dynamic, whatever source_year/
+    source_month were) to RSPL_ExecScheduleTemplate (fixed, per-team,
+    keyed by day-of-month rather than an actual date). source_year/
+    source_month are kept on the request purely for the equality guard
+    below (still meaningful — it still stops "target == the month I'm
+    currently viewing", now framed as "reapplying the template over the
+    month I'm already on", not because source data comes from there)."""
     require_access(current_user.user_id, FORM_EXEC_SCHEDULE, "edit")
     if (body.source_year, body.source_month) == (body.target_year, body.target_month):
         raise HTTPException(status_code=400, detail="source and target month must differ")
@@ -440,15 +503,12 @@ def copy_month(body: CopyMonthRequest, current_user: CurrentUser = Depends(get_c
     executive_ids = [e.executive_id for e in executives]
     placeholders = ",".join("?" for _ in executive_ids)
 
-    source_days = _days_in_month(body.source_year, body.source_month)
     target_days_count = _days_in_month(body.target_year, body.target_month)
-    source_first = date(body.source_year, body.source_month, 1)
-    source_last = date(body.source_year, body.source_month, source_days)
 
     with get_cursor() as cursor:
         # Clear any existing target-month cells for this team first — Save
-        # As is framed as an intentional "start this month from last month"
-        # overwrite, confirmed via a confirm dialog client-side.
+        # As is framed as an intentional "start this month from the
+        # template" overwrite, confirmed via a confirm dialog client-side.
         target_first = date(body.target_year, body.target_month, 1)
         target_last = date(body.target_year, body.target_month, target_days_count)
         cursor.execute(
@@ -457,15 +517,15 @@ def copy_month(body: CopyMonthRequest, current_user: CurrentUser = Depends(get_c
         )
 
         cursor.execute(
-            f"SELECT ExecutiveId, CellDate, CellText, CellColor, CellTextColor FROM RSPL_ExecScheduleCell "
-            f"WHERE ExecutiveId IN ({placeholders}) AND CellDate BETWEEN ? AND ?",
-            *executive_ids, source_first, source_last,
+            f"SELECT ExecutiveId, Day, CellText, CellColor, CellTextColor FROM RSPL_ExecScheduleTemplate "
+            f"WHERE TeamId = ? AND ExecutiveId IN ({placeholders})",
+            body.team_id, *executive_ids,
         )
-        source_rows = rows_to_dicts(cursor)
+        template_rows = rows_to_dicts(cursor)
 
         copied = 0
-        for r in source_rows:
-            day = r["CellDate"].day
+        for r in template_rows:
+            day = r["Day"]
             # A day that doesn't exist in the target month (e.g. the 31st
             # copied into a 30-day month) is skipped, not coerced.
             if day > target_days_count:
