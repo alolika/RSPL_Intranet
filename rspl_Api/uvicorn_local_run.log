@@ -1329,3 +1329,43 @@ INFO:     Started server process [14612]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     127.0.0.1:61963 - "GET /support/executive-schedule/cells?team_id=2&year=2050&month=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61969 - "POST /support/executive-schedule/copy-month HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61972 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61975 - "GET /support/executive-schedule/cells?team_id=2&year=2050&month=3 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62000 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62000 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62001 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62000 - "OPTIONS /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62001 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62000 - "GET /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62000 - "OPTIONS /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62000 - "GET /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62000 - "OPTIONS /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62000 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62002 - "OPTIONS /support/executive-schedule/cells?team_id=2&year=2026&month=11 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62003 - "OPTIONS /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62002 - "PUT /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62003 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=11 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62005 - "OPTIONS /support/executive-schedule/copy-month HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62005 - "POST /support/executive-schedule/copy-month HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62006 - "OPTIONS /support/executive-schedule/cells/save HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62006 - "POST /support/executive-schedule/cells/save HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62006 - "OPTIONS /support/executive-schedule/cells?team_id=2&year=2026&month=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62007 - "PUT /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62006 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62015 - "PUT /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62014 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62027 - "PUT /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62026 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62042 - "PUT /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62041 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62098 - "PUT /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62097 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62103 - "OPTIONS /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62104 - "PUT /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62103 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62105 - "POST /support/executive-schedule/copy-month HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62108 - "OPTIONS /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62108 - "PUT /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:62107 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=9 HTTP/1.1" 200 OK
