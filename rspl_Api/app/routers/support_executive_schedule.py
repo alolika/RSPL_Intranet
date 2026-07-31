@@ -78,6 +78,7 @@ from pydantic import BaseModel
 
 from app.db import get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
+from app.rights import FORM_EXEC_SCHEDULE, require_access
 
 router = APIRouter(prefix="/support/executive-schedule", tags=["support-executive-schedule"])
 
@@ -215,7 +216,8 @@ def _holiday_days_for_month(rule: HolidayRule, year: int, month: int, days_in_mo
 
 
 @router.get("/teams", response_model=list[TeamRow])
-def get_teams() -> list[TeamRow]:
+def get_teams(current_user: CurrentUser = Depends(get_current_user)) -> list[TeamRow]:
+    require_access(current_user.user_id, FORM_EXEC_SCHEDULE, "view")
     with get_cursor() as cursor:
         cursor.execute(
             "SELECT TeamId, TeamCode, TeamName FROM RSPL_ExecScheduleTeam WHERE Enabled = 1 ORDER BY SortOrder"
@@ -226,6 +228,7 @@ def get_teams() -> list[TeamRow]:
 
 @router.get("/user-state", response_model=UserStateResponse | None)
 def get_user_state(current_user: CurrentUser = Depends(get_current_user)) -> UserStateResponse | None:
+    require_access(current_user.user_id, FORM_EXEC_SCHEDULE, "view")
     with get_cursor() as cursor:
         cursor.execute(
             "SELECT TeamId, SelectedYear, SelectedMonth FROM RSPL_ExecScheduleUserState WHERE UserId = ?",
@@ -239,6 +242,9 @@ def get_user_state(current_user: CurrentUser = Depends(get_current_user)) -> Use
 
 @router.put("/user-state")
 def save_user_state(body: SaveUserStateRequest, current_user: CurrentUser = Depends(get_current_user)) -> dict:
+    # Just-viewing users still get to have their last-open team/month
+    # remembered — this isn't schedule data, so it only needs "view".
+    require_access(current_user.user_id, FORM_EXEC_SCHEDULE, "view")
     with get_cursor() as cursor:
         cursor.execute(
             "UPDATE RSPL_ExecScheduleUserState SET TeamId = ?, SelectedYear = ?, SelectedMonth = ?, LastEditedAt = SYSDATETIME() "
@@ -299,12 +305,14 @@ def _get_active_executives(team_id: int) -> list[ExecutiveRow]:
 
 
 @router.get("/executives", response_model=list[ExecutiveRow])
-def get_executives(team_id: int) -> list[ExecutiveRow]:
+def get_executives(team_id: int, current_user: CurrentUser = Depends(get_current_user)) -> list[ExecutiveRow]:
+    require_access(current_user.user_id, FORM_EXEC_SCHEDULE, "view")
     return _get_active_executives(team_id)
 
 
 @router.post("/executives/reorder")
 def reorder_executives(body: ReorderExecutivesRequest, current_user: CurrentUser = Depends(get_current_user)) -> dict:
+    require_access(current_user.user_id, FORM_EXEC_SCHEDULE, "edit")
     current = _get_active_executives(body.team_id)
     current_ids = {e.executive_id for e in current}
     if set(body.ordered_executive_ids) != current_ids or len(body.ordered_executive_ids) != len(current_ids):
@@ -328,6 +336,7 @@ def reorder_executives(body: ReorderExecutivesRequest, current_user: CurrentUser
 
 @router.put("/executives/{executive_id}/color")
 def set_executive_color(executive_id: int, body: SetExecutiveColorRequest, current_user: CurrentUser = Depends(get_current_user)) -> dict:
+    require_access(current_user.user_id, FORM_EXEC_SCHEDULE, "edit")
     with get_cursor() as cursor:
         cursor.execute(
             "UPDATE RSPL_ExecScheduleExecutiveMeta SET RowColor = ?, LastEditedByUserId = ?, LastEditedAt = SYSDATETIME() "
@@ -344,7 +353,8 @@ def set_executive_color(executive_id: int, body: SetExecutiveColorRequest, curre
 
 
 @router.get("/cells", response_model=CellsResponse)
-def get_cells(team_id: int, year: int, month: int) -> CellsResponse:
+def get_cells(team_id: int, year: int, month: int, current_user: CurrentUser = Depends(get_current_user)) -> CellsResponse:
+    require_access(current_user.user_id, FORM_EXEC_SCHEDULE, "view")
     executives = _get_active_executives(team_id)
     days = list(range(1, _days_in_month(year, month) + 1))
     if not executives:
@@ -400,6 +410,7 @@ def get_cells(team_id: int, year: int, month: int) -> CellsResponse:
 
 @router.post("/cells/save")
 def save_cells(body: SaveCellsRequest, current_user: CurrentUser = Depends(get_current_user)) -> dict:
+    require_access(current_user.user_id, FORM_EXEC_SCHEDULE, "edit")
     with get_cursor() as cursor:
         for cell in body.cells:
             cell_date = date(body.year, body.month, cell.day)
@@ -419,6 +430,7 @@ def save_cells(body: SaveCellsRequest, current_user: CurrentUser = Depends(get_c
 
 @router.post("/copy-month")
 def copy_month(body: CopyMonthRequest, current_user: CurrentUser = Depends(get_current_user)) -> dict:
+    require_access(current_user.user_id, FORM_EXEC_SCHEDULE, "edit")
     if (body.source_year, body.source_month) == (body.target_year, body.target_month):
         raise HTTPException(status_code=400, detail="source and target month must differ")
 

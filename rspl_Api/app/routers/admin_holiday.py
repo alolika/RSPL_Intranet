@@ -27,10 +27,12 @@ rows.
 
 from datetime import date
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
 from app.db import get_cursor, rows_to_dicts
+from app.deps import CurrentUser, get_current_user
+from app.rights import FORM_HOLIDAY_MASTER, require_access
 
 router = APIRouter(prefix="/admin/holidays", tags=["admin-holiday"])
 
@@ -75,7 +77,8 @@ def _validate_range(body: HolidayRequest) -> None:
 
 
 @router.get("", response_model=list[HolidayRow])
-def get_holidays() -> list[HolidayRow]:
+def get_holidays(current_user: CurrentUser = Depends(get_current_user)) -> list[HolidayRow]:
+    require_access(current_user.user_id, FORM_HOLIDAY_MASTER, "view")
     with get_cursor() as cursor:
         cursor.execute("SELECT HolidayId, HolidayDate, ToDate, Day, Event, Enabled FROM RSPL_HolidayMaster ORDER BY HolidayDate")
         rows = rows_to_dicts(cursor)
@@ -83,7 +86,8 @@ def get_holidays() -> list[HolidayRow]:
 
 
 @router.post("", response_model=HolidayRow)
-def add_holiday(body: HolidayRequest) -> HolidayRow:
+def add_holiday(body: HolidayRequest, current_user: CurrentUser = Depends(get_current_user)) -> HolidayRow:
+    require_access(current_user.user_id, FORM_HOLIDAY_MASTER, "edit")
     _validate_range(body)
     day_name = body.holiday_date.strftime("%A")
     with get_cursor() as cursor:
@@ -109,7 +113,8 @@ def add_holiday(body: HolidayRequest) -> HolidayRow:
 # (confirmed live: PUT /title 422'd trying to parse "title" as an int until
 # this was reordered).
 @router.get("/title", response_model=HolidayListTitle)
-def get_holiday_list_title() -> HolidayListTitle:
+def get_holiday_list_title(current_user: CurrentUser = Depends(get_current_user)) -> HolidayListTitle:
+    require_access(current_user.user_id, FORM_HOLIDAY_MASTER, "view")
     with get_cursor() as cursor:
         cursor.execute("SELECT Name FROM RSPL_HolidayMasterSettings WHERE Id = 1")
         row = cursor.fetchone()
@@ -117,7 +122,8 @@ def get_holiday_list_title() -> HolidayListTitle:
 
 
 @router.put("/title", response_model=HolidayListTitle)
-def set_holiday_list_title(body: HolidayListTitle) -> HolidayListTitle:
+def set_holiday_list_title(body: HolidayListTitle, current_user: CurrentUser = Depends(get_current_user)) -> HolidayListTitle:
+    require_access(current_user.user_id, FORM_HOLIDAY_MASTER, "edit")
     name = body.name.strip() or "Holiday List"
     with get_cursor() as cursor:
         cursor.execute(
@@ -129,7 +135,8 @@ def set_holiday_list_title(body: HolidayListTitle) -> HolidayListTitle:
 
 
 @router.put("/{holiday_id}", response_model=HolidayRow)
-def update_holiday(holiday_id: int, body: HolidayRequest) -> HolidayRow:
+def update_holiday(holiday_id: int, body: HolidayRequest, current_user: CurrentUser = Depends(get_current_user)) -> HolidayRow:
+    require_access(current_user.user_id, FORM_HOLIDAY_MASTER, "edit")
     _validate_range(body)
     day_name = body.holiday_date.strftime("%A")
     with get_cursor() as cursor:
@@ -145,7 +152,8 @@ def update_holiday(holiday_id: int, body: HolidayRequest) -> HolidayRow:
 
 
 @router.delete("/{holiday_id}")
-def delete_holiday(holiday_id: int) -> dict:
+def delete_holiday(holiday_id: int, current_user: CurrentUser = Depends(get_current_user)) -> dict:
+    require_access(current_user.user_id, FORM_HOLIDAY_MASTER, "edit")
     with get_cursor() as cursor:
         cursor.execute("UPDATE RSPL_HolidayMaster SET Enabled = 0 WHERE HolidayId = ?", holiday_id)
         if cursor.rowcount == 0:
@@ -157,7 +165,8 @@ def delete_holiday(holiday_id: int) -> dict:
 # delete button (or here) be switched back on again, since delete_holiday
 # above is one-way (Enabled 1 -> 0 only).
 @router.put("/{holiday_id}/status", response_model=HolidayRow)
-def set_holiday_status(holiday_id: int, body: HolidayStatusRequest) -> HolidayRow:
+def set_holiday_status(holiday_id: int, body: HolidayStatusRequest, current_user: CurrentUser = Depends(get_current_user)) -> HolidayRow:
+    require_access(current_user.user_id, FORM_HOLIDAY_MASTER, "edit")
     with get_cursor() as cursor:
         cursor.execute("UPDATE RSPL_HolidayMaster SET Enabled = ? WHERE HolidayId = ?", body.enabled, holiday_id)
         if cursor.rowcount == 0:

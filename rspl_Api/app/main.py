@@ -47,6 +47,7 @@ from app.routers import (
     support_modules,
     support_tt,
     support_visitlog,
+    user_rights,
     vote,
 )
 
@@ -85,6 +86,7 @@ app.include_router(admin_customers.router)
 app.include_router(admin_reports.router)
 app.include_router(admin_leave.router)
 app.include_router(admin_ledger.router)
+app.include_router(user_rights.router)
 app.include_router(marketing.router)
 app.include_router(marketing_enquiry.router)
 app.include_router(marketing_register.router)

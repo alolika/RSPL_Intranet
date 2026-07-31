@@ -57,6 +57,7 @@ from pydantic import BaseModel
 
 from app.db import get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
+from app.rights import FORM_CALL_HISTORY, require_access
 
 router = APIRouter(prefix="/support", tags=["support-callsip"])
 
@@ -193,7 +194,9 @@ def _get_sip_extension_lookup() -> dict[int, str]:
 def get_call_history_summary(
     from_date: date, to_date: date, customer_id: int = 0, mobile_no: str = "",
     extension_search: str = "", executive_search: str = "",
+    current_user: CurrentUser = Depends(get_current_user),
 ) -> list[CallHistorySummaryRow]:
+    require_access(current_user.user_id, FORM_CALL_HISTORY, "view")
     # Rewritten (2026-07-30) to bypass the legacy Proc_CallHistory entirely
     # for this mode, rather than adding yet another read on top of it. The
     # proc's summary branch built its own filtered rowset into a table
@@ -339,8 +342,10 @@ def get_call_history_summary(
 
 @router.get("/call-history/detail", response_model=list[CallHistoryDetailRow])
 def get_call_history_detail(
-    from_date: date, to_date: date, entity_id: int = 0, mobile_no: str = ""
+    from_date: date, to_date: date, entity_id: int = 0, mobile_no: str = "",
+    current_user: CurrentUser = Depends(get_current_user),
 ) -> list[CallHistoryDetailRow]:
+    require_access(current_user.user_id, FORM_CALL_HISTORY, "view")
     # Previously took from_date/to_date as raw strings, passed straight
     # through to the proc on the assumption the linking page's query string
     # already carried dd-MMM-yyyy text. It actually sent
