@@ -94,9 +94,27 @@ data existed to migrate).
   date — get_cells overlays them on top of the saved text rather than only
   filling gaps, so a holiday/alternate date always shows "H" regardless of
   any manual entry, without touching the underlying saved CellText.
+
+Approved-Leave overlay (added per explicit request, no new table — reads
+live from the existing web_leaveapplication table, the same one the Leave
+Application Register itself uses): for any executive currently on this
+team's active roster (only — a leave for someone not in _get_active_executives
+is never looked at), an Approved (HOSanctioned=1 OR CEOSanctioned=1, matching
+admin_leave.py's own Sanctioned filter) and not-cancelled leave date shows
+"L" with the exact same color the Leave Application Register's own calendar
+would show for that entry (yellow #ffff00 for an exact '0.5 (1st Half)'
+match on the leave's FromDate, red #ff0000 for '0.5 (2nd Half)', lime
+#00ff00 otherwise — see _get_approved_leave_overlay, mirroring
+leave-app-register.ts's toEntry() color logic exactly so both features
+agree on the same entry's color). Computed fresh on every get_cells call,
+same as holidays — never written into RSPL_ExecScheduleCell — so approving,
+modifying, or cancelling a leave is reflected the next time the schedule
+loads with no separate sync step, and per explicit request takes priority
+over the Holiday/Alternate-day overlay above when a date is both (applied
+after it, so its text/color unconditionally win on any overlap).
 """
 
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
@@ -239,6 +257,49 @@ def _holiday_days_for_month(rule: HolidayRule, year: int, month: int, days_in_mo
             if alt_occurrence in wanted_occurrences:
                 holidays.add(day)
     return holidays
+
+
+def _get_approved_leave_overlay(executive_ids: list[int], year: int, month: int, days_in_month: int) -> dict[tuple[int, int], tuple[str, str]]:
+    """Approved-leave overlay for the Executive Schedule — see this module's
+    top-of-file docstring for the full rationale. Returns {(executive_id, day):
+    (text, color)}, computed fresh every call, exactly mirroring
+    leave-app-register.ts's toEntry() so an entry shows the same color here
+    as it does in the Leave Application Register itself."""
+    if not executive_ids:
+        return {}
+    placeholders = ",".join("?" for _ in executive_ids)
+    first_day = date(year, month, 1)
+    last_day = date(year, month, days_in_month)
+    with get_cursor() as cursor:
+        cursor.execute(
+            f"SELECT Userid, CAST(FromDate AS DATE) AS FromDate, CAST(ToDate AS DATE) AS ToDate, ForDays "
+            f"FROM web_leaveapplication "
+            f"WHERE Userid IN ({placeholders}) "
+            f"AND (HOSanctioned = 1 OR CEOSanctioned = 1) "
+            f"AND ISNULL(CancelledByApplicant, 0) = 0 AND ISNULL(CancelledbyHO, 0) = 0 "
+            f"AND FromDate <= ? AND ToDate >= ?",
+            *executive_ids, last_day, first_day,
+        )
+        rows = rows_to_dicts(cursor)
+
+    overlay: dict[tuple[int, int], tuple[str, str]] = {}
+    for r in rows:
+        executive_id = r["Userid"]
+        from_date, to_date = r["FromDate"], r["ToDate"]
+        for_days = r["ForDays"] or ""
+        current = max(from_date, first_day)
+        span_end = min(to_date, last_day)
+        while current <= span_end:
+            is_from_day = current == from_date
+            if is_from_day and for_days == "0.5 (1st Half)":
+                color = "#ffff00"
+            elif is_from_day and for_days == "0.5 (2nd Half)":
+                color = "#ff0000"
+            else:
+                color = "#00ff00"
+            overlay[(executive_id, current.day)] = ("L", color)
+            current += timedelta(days=1)
+    return overlay
 
 
 @router.get("/teams", response_model=list[TeamRow])
@@ -453,6 +514,24 @@ def get_cells(team_id: int, year: int, month: int, current_user: CurrentUser = D
                     existing.color = "#ffffff"
             else:
                 cells_by_key[key] = CellRow(executive_id=executive_id, day=day, text="H", color="#ffffff", text_color=None)
+
+    # Approved-Leave overlay — applied AFTER Holiday above, per explicit
+    # request that Leave wins on any date that's both (this loop runs last,
+    # so its text/color unconditionally replace whatever Holiday just set).
+    # Unlike Holiday's color (a neutral white default, only applied if no
+    # color was ever explicitly saved), Leave's color IS the information
+    # this feature exists to show, so it's set unconditionally — otherwise
+    # a cell already colored for unrelated reasons would silently hide an
+    # approved leave.
+    leave_overlay = _get_approved_leave_overlay(executive_ids, year, month, len(days))
+    for (executive_id, day), (text, color) in leave_overlay.items():
+        key = (executive_id, day)
+        existing = cells_by_key.get(key)
+        if existing:
+            existing.text = text
+            existing.color = color
+        else:
+            cells_by_key[key] = CellRow(executive_id=executive_id, day=day, text=text, color=color, text_color=None)
 
     return CellsResponse(executives=executives, days=days, cells=list(cells_by_key.values()))
 

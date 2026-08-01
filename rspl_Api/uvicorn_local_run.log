@@ -1715,3 +1715,94 @@ INFO:     192.168.200.18:52512 - "GET /user-rights/me HTTP/1.1" 200 OK
 INFO:     192.168.200.18:52513 - "GET /support/users HTTP/1.1" 200 OK
 INFO:     192.168.200.18:52514 - "GET /support/tt-action/brief/192212 HTTP/1.1" 200 OK
 INFO:     192.168.200.18:52515 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52637 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52637 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52637 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52638 - "OPTIONS /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52638 - "GET /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52638 - "OPTIONS /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52638 - "GET /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52638 - "OPTIONS /support/executive-schedule/cells?team_id=2&year=2026&month=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52638 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52644 - "OPTIONS /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52646 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52645 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52648 - "OPTIONS /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52648 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52656 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52657 - "GET /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52656 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52656 - "GET /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52656 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=9 HTTP/1.1" 200 OK
+INFO:     Started server process [12836]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     127.0.0.1:52773 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52787 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52796 - "OPTIONS /support/executive-schedule/cells?team_id=2&year=2026&month=7 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52797 - "OPTIONS /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52797 - "PUT /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52796 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=7 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52799 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52799 - "OPTIONS /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52800 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52799 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52799 - "OPTIONS /admin/leave/rows?from_date=2026-07-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52799 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52802 - "OPTIONS /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52802 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52802 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52802 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52802 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52802 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52802 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52802 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52806 - "OPTIONS /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52806 - "GET /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52802 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52802 - "GET /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52802 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=7 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52814 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52815 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52815 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52815 - "GET /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52815 - "GET /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52815 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=7 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52816 - "OPTIONS /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52817 - "PUT /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52816 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52821 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52822 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52824 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52824 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52824 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52824 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52824 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52824 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52824 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52824 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52824 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52885 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52884 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52885 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52920 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52921 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52922 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52922 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52922 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52922 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52922 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52922 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52922 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52922 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52922 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52922 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52925 - "GET /admin/leave/rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     Started server process [5356]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     127.0.0.1:52950 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52957 - "GET /admin/leave/register1-rows?from_date=2026-07-01&to_date=2026-07-31 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52960 - "GET /admin/leave/register1-rows?from_date=2026-06-01&to_date=2026-06-30 HTTP/1.1" 200 OK

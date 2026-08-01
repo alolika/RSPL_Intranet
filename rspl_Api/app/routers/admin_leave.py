@@ -55,19 +55,23 @@ def _row(r: dict) -> LeaveAppRow:
 
 @router.get("/rows", response_model=list[LeaveAppRow])
 def get_leave_app_rows(from_date: date | None = None, to_date: date | None = None) -> list[LeaveAppRow]:
-    # AppDate is a real timestamp (e.g. 2026-07-16 08:50:35), not a bare
-    # date — comparing it with "<= to_date" implicitly compares against
-    # midnight on that day, silently excluding every application submitted
-    # later than 00:00:00 on the end date, i.e. virtually all of them.
-    # Confirmed live: two real applications submitted this morning
-    # (08:49/08:50) were invisible under a filter ending "today" for exactly
-    # this reason. Use an exclusive upper bound at the start of the next day
-    # instead, so the entire end date is included.
+    # This feeds the calendar view (leave-app-register.ts), which renders one
+    # cell per day of the viewed month and needs "every leave whose FromDate/
+    # ToDate range touches this month" — it was filtering on AppDate (when the
+    # application was SUBMITTED) instead, which is a different date entirely.
+    # Confirmed live: 2,735 of 16,677 rows (16%) have an AppDate month that
+    # differs from their FromDate month (applied ahead of time for a future
+    # month), so viewing e.g. August's calendar silently missed every leave
+    # that was actually dated in August but applied for in July. Fixed to an
+    # overlap check against FromDate/ToDate — the leave's own dates — instead.
+    # FromDate/ToDate are datetime columns but confirmed always stored at
+    # midnight; the exclusive DATEADD upper bound is kept anyway as a safe
+    # habit rather than assuming that never changes.
     where = ""
     params: list = []
     if from_date and to_date:
-        where = " WHERE La.Appdate >= ? AND La.Appdate < DATEADD(day, 1, CAST(? AS DATE))"
-        params = [from_date, to_date]
+        where = " WHERE La.FromDate < DATEADD(day, 1, CAST(? AS DATE)) AND La.ToDate >= CAST(? AS DATE)"
+        params = [to_date, from_date]
     with get_cursor() as cursor:
         cursor.execute(
             f"SELECT La.LeaveID, La.UserID, Um.Name, La.AppDate, La.FromDate, La.ToDate, La.ForDays, La.Reason, "
@@ -89,8 +93,15 @@ def get_leave_app_register1_rows(
     where = ""
     params: list = []
     if from_date and to_date:
-        where += " AND La.Fromdate >= ? AND La.Todate <= ?"
-        params += [from_date, to_date]
+        # Was "FromDate >= start AND ToDate <= end" — requires the ENTIRE
+        # leave to fall inside the selected window, so any leave that starts
+        # before or ends after it (crossing into the next/previous month)
+        # vanished from the report entirely. Confirmed live: 227 real leaves
+        # span a month boundary and were invisible in either month's filtered
+        # view for exactly this reason. Fixed to a proper overlap check —
+        # show a leave if any part of it touches the selected window.
+        where += " AND La.Fromdate < DATEADD(day, 1, CAST(? AS DATE)) AND La.Todate >= CAST(? AS DATE)"
+        params += [to_date, from_date]
     if include_subordinate:
         where += " AND (um.userid = ? OR um.ParentEmpID = ?)"
         params += [user_id, current_user.user_id]
