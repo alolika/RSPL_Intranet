@@ -2662,4 +2662,200 @@ INFO:     127.0.0.1:51757 - "GET /support/pending-tickets/all HTTP/1.1" 200 OK
 INFO:     127.0.0.1:51763 - "GET /support/ticket-history/search?tt_no=192459 HTTP/1.1" 200 OK
 INFO:     127.0.0.1:51770 - "GET /support/ticket-history/search?tt_no=19245 HTTP/1.1" 200 OK
 INFO:     127.0.0.1:51776 - "GET /support/ticket-history/search?tt_no=9999999 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:51782 - "GET /support/ti
+INFO:     127.0.0.1:51782 - "GET /support/ticket-history/search?tt_no= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51789 - "OPTIONS /support/ticket-history/search?tt_no=121541 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51789 - "GET /support/ticket-history/search?tt_no=121541 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51791 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51791 - "OPTIONS /support/tt-action/history?tt_no=121541&cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51791 - "GET /support/tt-action/history?tt_no=121541&cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51792 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51794 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51796 - "OPTIONS /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51796 - "GET /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51794 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51794 - "OPTIONS /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51794 - "GET /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51794 - "OPTIONS /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51794 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51794 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51797 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51798 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51796 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51799 - "GET /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51797 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51796 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51800 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51798 - "GET /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51794 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51802 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51807 - "OPTIONS /support/customers?search=s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51807 - "GET /support/customers?search=s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51807 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51809 - "GET /support/customers?search=s HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51809 - "OPTIONS /support/customers?search=sh HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51809 - "GET /support/customers?search=sh HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51809 - "OPTIONS /support/customers?search=sha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51809 - "GET /support/customers?search=sha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51809 - "OPTIONS /support/customers?search=shaha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51809 - "GET /support/customers?search=shaha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51809 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51810 - "OPTIONS /support/customers?search=su HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51810 - "GET /support/customers?search=su HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51810 - "OPTIONS /support/customers?search=subha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51810 - "GET /support/customers?search=subha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51810 - "OPTIONS /support/customers?search=subhash HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51810 - "GET /support/customers?search=subhash HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51810 - "OPTIONS /support/customer-info?cust_id=16304 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51811 - "OPTIONS /support/pending-tickets?cust_id=16304 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51812 - "OPTIONS /support/closed-tickets?cust_id=16304 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51812 - "GET /support/pending-tickets?cust_id=16304 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51811 - "GET /support/customer-info?cust_id=16304 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51810 - "GET /support/closed-tickets?cust_id=16304 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51816 - "GET /support/ticket-history/search?tt_no=121541 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51843 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51844 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51844 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51843 - "OPTIONS /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51844 - "OPTIONS /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51843 - "OPTIONS /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51845 - "OPTIONS /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51845 - "OPTIONS /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51843 - "OPTIONS /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51844 - "OPTIONS /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51846 - "OPTIONS /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51844 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51845 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51843 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51847 - "GET /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51845 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51844 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51846 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51843 - "GET /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51848 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51874 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51876 - "GET /support/customers?search=sh HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51876 - "GET /support/customers?search=sha HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51876 - "OPTIONS /support/customers?search=shahane HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51876 - "GET /support/customers?search=shahane HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51876 - "GET /support/customer-info?cust_id=16304 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51877 - "GET /support/pending-tickets?cust_id=16304 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51878 - "GET /support/closed-tickets?cust_id=16304 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51887 - "OPTIONS /support/ticket-history/search?tt_no=188179 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51887 - "GET /support/ticket-history/search?tt_no=188179 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51887 - "GET /user-rights/me HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:51890 - "OPTIONS /support/tt-action/brief/188179 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51891 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51890 - "GET /support/tt-action/brief/188179 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51905 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51905 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51905 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51905 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51910 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51909 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51910 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51905 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51911 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51909 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51909 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51905 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51910 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51915 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51914 - "GET /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51905 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51914 - "GET /support/pending-tickets?cust_id=16304 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51915 - "GET /support/customer-info?cust_id=16304 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51909 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51905 - "GET /support/closed-tickets?cust_id=16304 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51910 - "GET /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51911 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51923 - "GET /support/ticket-history/search?tt_no=188179 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51925 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51927 - "GET /support/tt-action/brief/188179 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51926 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51928 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51931 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51932 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51930 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51933 - "GET /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51931 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51933 - "GET /support/pending-tickets?cust_id=16304 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51931 - "GET /support/closed-tickets?cust_id=16304 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 382, in get_closed_tickets
+    rows = _tt_details_rows(0, cust_id, 1)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 363, in _tt_details_rows
+    cursor.execute("EXEC webProc_TTDetails ?, ?, ?, '', 0", tt_no, cust_id, closed)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.Error: ('HY000', '[HY000] [Microsoft][ODBC Driver 17 for SQL Server]Connection is busy with results for another command (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:51930 - "GET /support/customer-info?cust_id=16304 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51932 - "GET /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51928 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51929 - "GET /support/customers?search= HTTP/1.1" 200 OK
