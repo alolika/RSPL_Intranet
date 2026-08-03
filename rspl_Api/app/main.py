@@ -6,6 +6,7 @@ from app.db import warm_pool
 from app.routers import (
     admin_content,
     admin_customers,
+    admin_face_inout,
     admin_holiday,
     admin_ledger,
     admin_leave,
@@ -80,6 +81,7 @@ app.include_router(support_modules.router)
 app.include_router(support_executive_schedule.router)
 app.include_router(support_tt.router)
 app.include_router(admin_content.router)
+app.include_router(admin_face_inout.router)
 app.include_router(admin_holiday.router)
 app.include_router(admin_vouchers.router)
 app.include_router(admin_customers.router)

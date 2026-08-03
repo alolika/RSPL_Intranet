@@ -105,6 +105,24 @@ class TicketSummaryRow(BaseModel):
     closed_narration: str | None = None
 
 
+# Feeds the Edit Trouble Ticket form's "Ticket History" TT Number search —
+# one row per issue attached to a matching ticket (same shape webProc_TTDetails
+# already returns), so a ticket with several issues/actions logged against it
+# shows its full history, not just one summary line.
+class TicketHistoryRow(BaseModel):
+    voucher_no: int
+    date: str
+    user_name: str
+    customer_name: str
+    module: str
+    priority: str
+    what_next: str
+    issue: str
+    action: str
+    closed: bool
+    closed_narration: str | None = None
+
+
 class IssueDetailRow(BaseModel):
     module: str
     priority: str
@@ -370,6 +388,50 @@ def get_closed_tickets(cust_id: int) -> list[TicketSummaryRow]:
         )
         for r in rows
     ]
+
+
+# New: Ticket History TT-Number search (Edit Trouble Ticket form's "Ticket
+# History" panel) — lets staff pull up a ticket's complete history by number
+# alone, without needing to already know/select its customer first, and
+# supports partial (substring) matches. Finds candidate VoucherNos with a
+# direct LIKE query against TTMaster first (capped at 20 — a short/broad
+# partial like "1" could otherwise match thousands of rows and turn one
+# search into dozens of stored-proc calls), then reuses webProc_TTDetails
+# (the same proc get_ticket_detail() already calls per-ticket, see below)
+# for each match — that proc returns one row per issue attached to the
+# ticket, which is exactly the "complete history" shape this feature needs.
+@router.get("/ticket-history/search", response_model=list[TicketHistoryRow])
+def search_ticket_history(tt_no: str) -> list[TicketHistoryRow]:
+    query = tt_no.strip()
+    if not query:
+        return []
+    with get_cursor() as cursor:
+        cursor.execute(
+            "SELECT TOP 20 VoucherNo FROM TTMaster "
+            "WHERE CAST(VoucherNo AS VARCHAR(20)) LIKE ? ORDER BY VoucherNo DESC",
+            f"%{query}%",
+        )
+        voucher_nos = [r["VoucherNo"] for r in rows_to_dicts(cursor)]
+
+    results: list[TicketHistoryRow] = []
+    for voucher_no in voucher_nos:
+        for r in _tt_details_rows(voucher_no, 0, 0):
+            results.append(
+                TicketHistoryRow(
+                    voucher_no=r["Voucherno"],
+                    date=r["Date"].isoformat(),
+                    user_name=r["UserName"] or "",
+                    customer_name=(r.get("displayName") or "").strip(),
+                    module=r["Productname"] or "",
+                    priority=r["Priority"] or "",
+                    what_next=r["whatnext"] or "",
+                    issue=r["Issue"] or "",
+                    action=r["Action"] or "",
+                    closed=r["Closed"] == "Yes",
+                    closed_narration=r.get("ClosedNarration"),
+                )
+            )
+    return results
 
 
 # Mirrors the source's rcbTTNo combo (bound to "Select Top 100 Voucherno
