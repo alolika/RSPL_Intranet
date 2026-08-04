@@ -30,6 +30,24 @@ verified the source's call sites supply exactly 40 for both — unlike
 CustEnquiry's Add call and the AMC/CustEnquiryAction procs, these two were
 NOT short-by-N (worth checking every proc call this way; two of four found
 in this project so far were actually broken).
+
+Update (2026-08-04): fixed a real bug — right param COUNT, wrong VALUE.
+@ReferredCustID (the actual FK both procs gate their referral-card
+validation on: `If @ReferredCustID=0 and @ReferralCardNo<>'' -> 'Referral
+card generated but referral customer not selected.'`) was hardcoded to
+literal 0 in both add_customer_registration()/modify_customer_registration()
+below, regardless of what the frontend's Referred By Customer picker
+actually had selected — only the display-name string (@ReferredBy) was ever
+sent, and neither CustRegistrationDetail nor the Angular form even carried
+the numeric ID at all. Both procs only treat a referral as real when
+@ReferredCustID>0 (and then re-derive @ReferredBy themselves from
+CustomerMaster.displayName, ignoring whatever string was passed) — so any
+customer with a Referral Card No filled in would hit that exact message and
+silently fail to save, no matter what was picked. Fixed by adding
+referred_by_customer_id to the request/response contract and threading the
+real ID through to both proc calls; see also the Angular fix for a second,
+independent bug in the same feature (referredByCustomerLabel in
+cust-registration.ts) where the display name itself could go stale.
 """
 
 import re
@@ -101,6 +119,13 @@ class CustRegistrationDetail(BaseModel):
     hardware: str = ""
     campaign_id: int = 0
     referred_by_name: str = ""
+    # The actual FK the stored procs gate their referral-card validation on
+    # (@ReferredCustID) — see add_customer_registration()/
+    # modify_customer_registration() below. referred_by_name alone is not
+    # enough: both procs only treat a referral as "selected" when this ID is
+    # > 0, and (when it is) re-derive referred_by_name themselves from
+    # CustomerMaster.displayName, ignoring whatever string was sent.
+    referred_by_customer_id: int = 0
     assigned_to_name: str = ""
 
 
@@ -310,6 +335,7 @@ def get_cust_registration_detail(cust_id: int) -> dict | None:
         "hardware": e.get("HardwarePatner") or "",
         "campaign_id": int(e.get("Campaign") or 0),
         "referred_by_name": e.get("ReferredByName") or "",
+        "referred_by_customer_id": int(e.get("ReferredCustID") or 0),
         "assigned_to_name": e.get("AssignedToName") or "",
     }
 
@@ -334,7 +360,7 @@ def add_customer_registration(
             body.area, body.pin_code, body.case_type, body.narration, current_user.user_id,
             body.received_by, body.enquiry_source, body.source_detail, body.business_nature, body.segment,
             0, "", 1, body.referral_card_no, body.continent_id, body.country_id, body.state_id,
-            body.district_id, body.city_id, body.zone_id, 1, 0, body.referred_by_name, 0,
+            body.district_id, body.city_id, body.zone_id, 1, body.referred_by_customer_id, body.referred_by_name, 0,
             body.gstin, body.arn, body.provider, body.campaign_id, body.hardware,
         ]
         placeholders = ", ".join("?" for _ in params)
@@ -361,7 +387,7 @@ def modify_customer_registration(
             body.area, body.pin_code, body.case_type, body.narration, current_user.user_id,
             body.received_by, body.enquiry_source, body.source_detail, body.business_nature, body.segment,
             0, "", body.referral_card_no, body.continent_id, body.country_id, body.state_id,
-            body.district_id, body.city_id, body.zone_id, body.enquiry_date, 0, body.referred_by_name, 0,
+            body.district_id, body.city_id, body.zone_id, body.enquiry_date, body.referred_by_customer_id, body.referred_by_name, 0,
             body.gstin, body.arn, body.provider, body.campaign_id, body.hardware,
         ]
         placeholders = ", ".join("?" for _ in params)
