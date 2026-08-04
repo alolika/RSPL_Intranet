@@ -61,10 +61,21 @@ from app.rights import FORM_CALL_HISTORY, require_access
 
 router = APIRouter(prefix="/support", tags=["support-callsip"])
 
+# A registered customer's own EntityID, or ("phone", their number) for an
+# unregistered caller with no EntityID at all — see
+# get_call_history_summary's grouping logic below.
+_GroupKey = int | tuple[str, str]
+
 
 class CallHistorySummaryRow(BaseModel):
     entity_id: int
     entity_name: str
+    # The caller/callee's raw phone number — always populated (see
+    # get_call_history_summary's 2026-08-04 update note), needed for
+    # unregistered rows (entity_id=0) since they have no EntityID for the
+    # detail drill-down to key off of; falls back to matching by this number
+    # instead (get_call_history_detail already supports that).
+    entity_phone: str
     no_of_incoming_call: int
     no_of_outgoing_call: int
     first_incoming_call_time: str | None
@@ -165,7 +176,14 @@ def _display_entity_name(name: str) -> str:
     a hyphen as the very first character). T-SQL's SUBSTRING(x, 0, p) with a
     1-based hyphen position p returns exactly the first (p-1) characters —
     i.e. Python's `name[:p-1]`, which is just `name.partition('-')[0]`.
+
+    A blank name means the call's other party didn't match any known
+    CustomerMaster/CustDependents row at all (an "unregistered" phone number
+    — see get_call_history_summary's 2026-08-04 update note) — shown as
+    "Unregistered" per explicit request, rather than a blank cell.
     """
+    if not name:
+        return "Unregistered"
     before = name.partition("-")[0]
     return before if before else name
 
@@ -215,14 +233,31 @@ def get_call_history_summary(
     # This single query does one pass over SIPEventRegisterCDR (`base`,
     # narrow projection — no RecordingPath/ProcessDescription/etc.), then a
     # single set-based GROUP BY (`agg`) for every count/min/max/sum instead
-    # of correlated subqueries, then joins the two. Every column name,
-    # EntityID/Extention/executive computation, and filter matches
-    # Proc_CallHistory's own summary branch exactly (see the proc's stored
-    # definition — same CASE expressions, same CallType buckets, same
-    # `EntityName IS NOT NULL AND EntityName <> ''` guard) so the result
-    # rows are identical in shape and meaning to before; only the answered/
-    # missed split (previously a separate query) is now computed in the
-    # same pass instead of a second one.
+    # of correlated subqueries, then joins the two. Every column name and
+    # EntityID/Extention/executive computation matches Proc_CallHistory's
+    # own summary branch exactly (see the proc's stored definition — same
+    # CASE expressions, same CallType buckets).
+    #
+    # Update (2026-08-04): deliberately DROPPED the proc's own
+    # `EntityName IS NOT NULL AND EntityName <> ''` guard — per explicit
+    # request/investigation, that guard was silently excluding real calls
+    # from/to phone numbers that don't match any CustomerMaster/
+    # CustDependents row ("unregistered" numbers). Confirmed live: a small
+    # but real slice of SIPEventRegisterCDR (~75 of 46K rows over a month,
+    # 49 distinct phone numbers) has a blank EntityName for exactly this
+    # reason, every one of them a normal-looking external call with a real
+    # phone number, call time, duration, and call type — not junk/malformed
+    # data. These now show with entity_id=0 and entity_name="Unregistered"
+    # (see _display_entity_name) instead of being silently dropped.
+    #
+    # GroupPhone below is what keeps this safe for EXISTING (registered)
+    # rows: it's NULL for every EntityID != 0 row (so GROUP BY/JOIN still
+    # merges all of a real customer's calls purely by EntityID, unchanged —
+    # SQL treats NULL = NULL as equal for grouping purposes), and only
+    # becomes the real EntityPhone when EntityID = 0. Without this, the
+    # `agg` CTE's GROUP BY EntityID alone would have collapsed EVERY
+    # unregistered number in the date range into one combined row (they all
+    # share EntityID=0), hiding the fact that they're 49 unrelated callers.
     extra_where = ""
     extra_params: list = []
     with get_cursor() as cursor:
@@ -231,7 +266,14 @@ def get_call_history_summary(
             extra_where = " AND EntityID = ?"
             extra_params = [resolved_entity_id]
         elif mobile_no:
-            extra_where = " AND RIGHT(EntityPhone, 10) = ?"
+            # RIGHT(?, 10) on the parameter too (matches get_call_attempts's
+            # own established convention below) — EntityPhone can carry a
+            # country-code prefix (e.g. "+919823497562", the raw CDR value
+            # for an unregistered caller passed straight through as
+            # entityPhone — see the 2026-08-04 update note above), which a
+            # bare `RIGHT(EntityPhone, 10) = ?` never matched unless the
+            # caller happened to pass an already-10-digit mobile_no.
+            extra_where = " AND RIGHT(EntityPhone, 10) = RIGHT(?, 10)"
             extra_params = [mobile_no]
 
         cursor.execute(
@@ -249,12 +291,13 @@ def get_call_history_summary(
                   AND s.CallDate >= ? AND s.CallDate <= ?
             ),
             filtered AS (
-                SELECT * FROM base
-                WHERE EntityName IS NOT NULL AND EntityName <> '' {extra_where}
+                SELECT *, CASE WHEN EntityID = 0 THEN EntityPhone ELSE NULL END AS GroupPhone
+                FROM base
+                WHERE 1 = 1 {extra_where}
             ),
             agg AS (
                 SELECT
-                    EntityID,
+                    EntityID, GroupPhone,
                     SUM(CASE WHEN CallType = 'External-incoming' THEN 1 ELSE 0 END) AS AnsweredIncoming,
                     SUM(CASE WHEN CallType IN ('External-incoming_busy', 'External-incoming_missed') THEN 1 ELSE 0 END) AS MissedIncoming,
                     SUM(CASE WHEN CallType = 'External-outgoing' THEN 1 ELSE 0 END) AS AnsweredOutgoing,
@@ -265,27 +308,32 @@ def get_call_history_summary(
                     MAX(CASE WHEN CallType IN ('External-incoming', 'External-incoming_busy', 'External-incoming_missed') THEN CallTime END) AS LastIncomingCallTime,
                     SUM(Duration) AS TotalCallDuration
                 FROM filtered
-                GROUP BY EntityID
+                GROUP BY EntityID, GroupPhone
             )
-            SELECT DISTINCT f.EntityID, f.EntityName, f.Extention, f.executive,
+            SELECT DISTINCT f.EntityID, f.EntityPhone, f.GroupPhone, f.EntityName, f.Extention, f.executive,
                 a.NoOfIncomingCall, a.NoOfOutGoingCall, a.FirstIncomingCallTime, a.LastIncomingCallTime, a.TotalCallDuration,
                 a.AnsweredIncoming, a.MissedIncoming, a.AnsweredOutgoing, a.MissedOutgoing
             FROM filtered f
-            JOIN agg a ON a.EntityID = f.EntityID
+            JOIN agg a ON a.EntityID = f.EntityID AND ISNULL(a.GroupPhone, '') = ISNULL(f.GroupPhone, '')
             """,
             from_date, to_date, *extra_params,
         )
         rows = rows_to_dicts(cursor)
 
-    # Same grouping the old code did: one row per (EntityID, Extention,
-    # executive) combination survives from the query above (matching
-    # Proc_CallHistory's own output shape), every row for a given EntityID
-    # carrying identical agg columns — group them here so the Extension/
-    # Executive searches below can scan every tagged combination, and so a
-    # customer handled by multiple executives collapses to one grid row.
-    by_entity: dict[int, list[dict]] = {}
+    # Same grouping the old code did for registered customers (one row per
+    # (EntityID, Extention, executive) combination survives from the query
+    # above, matching Proc_CallHistory's own output shape) — every row for a
+    # given EntityID+GroupPhone carrying identical agg columns, grouped here
+    # so the Extension/Executive searches below can scan every tagged
+    # combination, and so a customer handled by multiple executives
+    # collapses to one grid row. Unregistered rows (EntityID=0) key by phone
+    # number instead (mirrors _merge_missed_calls_by_customer's own
+    # established entity-or-phone fallback pattern) so 49 unrelated
+    # unregistered callers stay 49 separate rows instead of one combined blob.
+    by_entity: dict[_GroupKey, list[dict]] = {}
     for r in rows:
-        by_entity.setdefault(r["EntityID"], []).append(r)
+        key: _GroupKey = r["EntityID"] if r["EntityID"] else ("phone", r["EntityPhone"])
+        by_entity.setdefault(key, []).append(r)
 
     # Two independent search fields, per explicit request (replacing the
     # earlier single auto-detecting box, which searched Extention/UserID
@@ -293,14 +341,14 @@ def get_call_history_summary(
     # _get_sip_extension_lookup's own comment). Each narrows the result set
     # further on top of whatever customer_id/mobile_no already selected;
     # when both are filled, a customer must match both (AND), not either.
-    matching_entity_ids: set[int] | None = None
+    matching_keys: set[_GroupKey] | None = None
 
     extension_search = extension_search.strip()
     if extension_search:
         extension_lookup = _get_sip_extension_lookup()
-        matching_entity_ids = {
-            entity_id
-            for entity_id, group in by_entity.items()
+        matching_keys = {
+            key
+            for key, group in by_entity.items()
             if any(extension_lookup.get(g.get("Extention") or 0, "") == extension_search for g in group)
         }
 
@@ -308,15 +356,15 @@ def get_call_history_summary(
     if executive_search:
         needle = executive_search.lower()
         exec_matches = {
-            entity_id
-            for entity_id, group in by_entity.items()
+            key
+            for key, group in by_entity.items()
             if any(needle in (g.get("executive") or "").lower() for g in group)
         }
-        matching_entity_ids = exec_matches if matching_entity_ids is None else (matching_entity_ids & exec_matches)
+        matching_keys = exec_matches if matching_keys is None else (matching_keys & exec_matches)
 
     result: list[CallHistorySummaryRow] = []
-    for entity_id, group in by_entity.items():
-        if matching_entity_ids is not None and entity_id not in matching_entity_ids:
+    for key, group in by_entity.items():
+        if matching_keys is not None and key not in matching_keys:
             continue
         # Prefer the row with no specific Extention/executive tag (a stable,
         # predictable representative when one exists) — every row in the
@@ -326,7 +374,8 @@ def get_call_history_summary(
         r = next((g for g in group if not (g.get("Extention") or 0) and not (g.get("executive") or "").strip()), group[0])
         result.append(
             CallHistorySummaryRow(
-                entity_id=entity_id, entity_name=_display_entity_name(r["EntityName"] or ""),
+                entity_id=r["EntityID"] or 0, entity_phone=r["EntityPhone"] or "",
+                entity_name=_display_entity_name(r["EntityName"] or ""),
                 no_of_incoming_call=r["NoOfIncomingCall"] or 0, no_of_outgoing_call=r["NoOfOutGoingCall"] or 0,
                 first_incoming_call_time=r["FirstIncomingCallTime"].isoformat() if r["FirstIncomingCallTime"] else None,
                 last_incoming_call_time=r["LastIncomingCallTime"].isoformat() if r["LastIncomingCallTime"] else None,
@@ -375,7 +424,9 @@ def get_call_history_detail(
             extra_where = " AND (CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceEntityID ELSE s.DestinationEntityID END) = ?"
             extra_params = [resolved_entity_id]
         elif mobile_no:
-            extra_where = " AND RIGHT((CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceNo ELSE s.DestinationNo END), 10) = ?"
+            # RIGHT(?, 10) on the parameter too — see get_call_history_summary's
+            # matching fix/comment above (same latent bug, same fix).
+            extra_where = " AND RIGHT((CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceNo ELSE s.DestinationNo END), 10) = RIGHT(?, 10)"
             extra_params = [mobile_no]
 
         cursor.execute(

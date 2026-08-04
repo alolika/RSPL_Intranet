@@ -75,6 +75,16 @@ emails "Leave Cancellation - Rejected", leaves CancelledbyHO=0, and sets the
 new rejected flag instead. request_ho_cancel_leave's HOD notification (added
 earlier the same day) was already correct for this workflow's first step and
 needed no changes.
+
+Update (2026-08-04): per explicit request, submit_ho_sanction() now also
+sends a SEPARATE email (not a CC — tried CC first via PROC_SENDEMAIL's
+native @CC param, but the follow-up request specifically asked for a
+standalone email instead) to akshayaj@retailware.info, same subject/message
+as the applicant's own email, whenever the HOD's decision approves at least
+one item. Scoped to submit_ho_sanction only (the HOD's Leave Application
+approval step, per the request's own wording) —
+submit_ceo_sanction/submit_ho_cancel_sanction are untouched; revisit the
+same way if this is asked for those too.
 """
 
 from datetime import date, datetime, timedelta
@@ -560,6 +570,23 @@ def submit_ho_sanction(body: SubmitHoSanctionRequest) -> dict[str, bool]:
                     subject,
                     message,
                 )
+
+                # Per explicit request: a genuinely SEPARATE email (not a CC
+                # on the applicant's own email — tried CC first, but the
+                # follow-up request asked for a standalone email instead),
+                # sent to akshayaj@retailware.info whenever this decision
+                # approves at least one item (pure Approved, or a mixed
+                # Approved+Rejected Status Update). Same subject/message as
+                # the applicant's email, its own independent PROC_SENDEMAIL
+                # call/SMSOUTBOX row. A pure Rejected-only decision does NOT
+                # trigger this, since nothing was approved.
+                if approved_descriptions:
+                    cursor.execute(
+                        "EXEC PROC_SENDEMAIL @EMAILID=?, @SUBJECT=?, @MESSAGE=?",
+                        "akshayaj@retailware.info",
+                        subject,
+                        message,
+                    )
 
     return {"success": True}
 
