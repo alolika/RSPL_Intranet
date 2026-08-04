@@ -2859,3 +2859,64 @@ INFO:     192.168.200.18:51930 - "GET /support/customer-info?cust_id=16304 HTTP/
 INFO:     192.168.200.18:51932 - "GET /support/pending-tickets/all HTTP/1.1" 200 OK
 INFO:     192.168.200.18:51928 - "GET /support/priorities HTTP/1.1" 200 OK
 INFO:     192.168.200.18:51929 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60058 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60059 - "OPTIONS /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60060 - "OPTIONS /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60061 - "OPTIONS /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60062 - "GET /user-rights/me HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:60064 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60065 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60063 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60071 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60071 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60072 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60073 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60074 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     192.168.200.18:60071 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60074 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60073 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60071 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60075 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60075 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60071 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60074 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60073 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60076 - "OPTIONS /marketing/registration/customer-name-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60083 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60076 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60086 - "GET /marketing/registration/customer-name-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60084 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60085 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60089 - "OPTIONS /marketing/registration/detail/32187 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60089 - "GET /marketing/registration/detail/32187 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60089 - "OPTIONS /marketing/registration/cities-districts?state_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60089 - "GET /marketing/registration/cities-districts?state_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60099 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60100 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60100 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60102 - "GET /marketing/registration/customer-name-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60101 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60099 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61551 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61551 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61552 - "OPTIONS /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61551 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61551 - "GET /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61551 - "OPTIONS /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61551 - "GET /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61551 - "OPTIONS /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:61551 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     Started server process [11780]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)

@@ -15,6 +15,17 @@ this ships; an admin has to explicitly add a row to dial someone back to
 'view' or 'none'. This is why get_effective_access below returns 'edit'
 rather than 'none' when no row is found.
 
+Per-form default override (Executive Schedule, added later): the above
+"no row = edit" default was flipped to "no row = view" specifically for
+FORM_EXEC_SCHEDULE, per an explicit request that ONLY UserIDs 22/25/66/176
+have edit access and every other user — including anyone added in the
+future — default to view-only. Rather than bulk-inserting a 'view' row for
+every existing user (which a newly added user wouldn't get, silently
+defaulting back to 'edit'), _DEFAULT_ACCESS_OVERRIDES below flips the
+fallback itself for this one form; the 4 named users get an explicit 'edit'
+row exactly as any other rights grant would. Every other form's default is
+unchanged.
+
 Rights-admin allow-list (who can assign rights to OTHERS): a fixed set of
 UserIDs (22 = Amol Jadhav, 25 = Alolika Lanke, 142 = Maruti Sangle) named
 explicitly per request — there's no existing "IsAdmin" flag on UserMaster to
@@ -38,6 +49,13 @@ FORM_LABELS: dict[str, str] = {
 
 RIGHTS_ADMIN_USER_IDS = {22, 25, 142}
 
+# See the "Per-form default override" docstring note above — only
+# FORM_EXEC_SCHEDULE currently overrides the global 'edit' default; every
+# other form falls back to 'edit' via the .get(form_code, "edit") below.
+_DEFAULT_ACCESS_OVERRIDES: dict[str, str] = {
+    FORM_EXEC_SCHEDULE: "view",
+}
+
 _LEVEL_RANK = {"none": 0, "view": 1, "edit": 2}
 
 
@@ -48,7 +66,9 @@ def get_effective_access(user_id: int, form_code: str) -> str:
             user_id, form_code,
         )
         row = cursor.fetchone()
-    return row[0] if row else "edit"
+    if row:
+        return row[0]
+    return _DEFAULT_ACCESS_OVERRIDES.get(form_code, "edit")
 
 
 def require_access(user_id: int, form_code: str, min_level: str) -> None:

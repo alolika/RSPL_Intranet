@@ -103,11 +103,12 @@ def set_right(body: SetRightRequest, current_user: CurrentUser = Depends(get_cur
     return {"success": True}
 
 
-# Resets a user back to the default (no row = 'edit', matching every user's
-# behavior before this feature existed) rather than requiring the admin
-# screen to explicitly set 'edit' — the two end up looking identical from
-# get_effective_access's point of view, but this makes "undo my restriction"
-# an explicit, honest action instead of writing a redundant row.
+# Resets a user back to this form's default (no row = 'edit' for most forms,
+# but 'view' for Executive Schedule — see app.rights._DEFAULT_ACCESS_OVERRIDES)
+# rather than requiring the admin screen to explicitly set that level itself
+# — the two end up looking identical from get_effective_access's point of
+# view, but this makes "undo my override" an explicit, honest action instead
+# of writing a redundant row.
 @router.delete("/admin/{user_id}/{form_code}")
 def reset_right(user_id: int, form_code: str, current_user: CurrentUser = Depends(get_current_user)) -> dict:
     require_rights_admin(current_user.user_id)
