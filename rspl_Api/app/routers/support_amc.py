@@ -489,6 +489,49 @@ def get_thanks_note_reasons() -> list[LookupOption]:
         return [LookupOption(label=r["ReasonsForThankYouNote"], value=r["ID"]) for r in rows_to_dicts(cursor)]
 
 
+class AddThanksNoteReasonRequest(BaseModel):
+    reason: str
+
+
+class AddThanksNoteReasonResponse(BaseModel):
+    success: bool
+    message: str
+
+
+# New "Thanks Note" admin form (Marketing menu, per explicit request) — the
+# first WRITE path into web_ThanksNoteActionReasons; get_thanks_note_reasons
+# above was, until now, this table's only consumer anywhere in this app
+# (CustEnquiryAction's Thanks-Note-reasons multi-select). No stored proc
+# backs this table, so this is a plain INSERT.
+#
+# Duplicate handling mirrors this app's own established precedent
+# (support_modules.py's add_customer_dependent: a pre-INSERT SELECT check,
+# returning {success:false, message} rather than an HTTPException) instead
+# of inventing a new shape. Plain `=` after trimming, not LOWER(...) — the
+# database's own default collation (confirmed live: SQL_Latin1_General_CP1_
+# CI_AS) is already case-insensitive, matching every other plain-equality
+# text comparison already in this codebase.
+@router.post("/thanks-note-reasons", response_model=AddThanksNoteReasonResponse)
+def add_thanks_note_reason(body: AddThanksNoteReasonRequest, current_user: CurrentUser = Depends(get_current_user)) -> AddThanksNoteReasonResponse:
+    reason = body.reason.strip()
+    if not reason:
+        return AddThanksNoteReasonResponse(success=False, message="Please enter a reason before saving.")
+
+    with get_cursor() as cursor:
+        cursor.execute(
+            "SELECT TOP 1 1 FROM web_ThanksNoteActionReasons WHERE LTRIM(RTRIM(ReasonsForThankYouNote)) = ?",
+            reason,
+        )
+        if cursor.fetchone():
+            return AddThanksNoteReasonResponse(success=False, message="This reason already exists.")
+
+        cursor.execute(
+            "INSERT INTO web_ThanksNoteActionReasons (ReasonsForThankYouNote, Disabled, IsSynctoCloud) VALUES (?, 0, 0)",
+            reason,
+        )
+    return AddThanksNoteReasonResponse(success=True, message="Saved successfully.")
+
+
 @router.get("/special-ratings", response_model=list[str])
 def get_special_ratings() -> list[str]:
     with get_cursor() as cursor:

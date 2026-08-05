@@ -4574,3 +4574,325 @@ INFO:     192.168.200.18:51673 - "GET /support/executive-schedule/teams HTTP/1.1
 INFO:     192.168.200.18:51674 - "GET /user-rights/me HTTP/1.1" 200 OK
 INFO:     192.168.200.18:51674 - "GET /support/executive-schedule/user-state HTTP/1.1" 200 OK
 INFO:     192.168.200.18:51674 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51770 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51770 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51773 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51774 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51770 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51772 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51933 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51933 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51933 - "OPTIONS /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51933 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51934 - "GET /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51934 - "OPTIONS /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51934 - "GET /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51934 - "OPTIONS /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51934 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51966 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51966 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51966 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51966 - "GET /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51966 - "GET /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51966 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51972 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51973 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51973 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51973 - "GET /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51973 - "GET /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51973 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51980 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51980 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51980 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51980 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51980 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51983 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51984 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51983 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51980 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51982 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51988 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51990 - "GET /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51988 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51988 - "GET /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51988 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52078 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52078 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52078 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52079 - "GET /support/executive-schedule/teams HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52079 - "GET /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52079 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52363 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52363 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52363 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52363 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52365 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52366 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52367 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52365 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52367 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52363 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52366 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52366 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52366 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52363 - "OPTIONS /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52367 - "OPTIONS /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52365 - "OPTIONS /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52366 - "OPTIONS /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52370 - "OPTIONS /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52371 - "OPTIONS /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52367 - "OPTIONS /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52363 - "OPTIONS /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52367 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52371 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52366 - "GET /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52363 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52370 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52367 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52366 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52371 - "GET /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52365 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52375 - "OPTIONS /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52374 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52375 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52390 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52389 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52391 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52389 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52391 - "GET /support/pending-tickets/all HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 447, in get_all_pending_tickets
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT TM.VoucherNo AS VoucherNo, LTRIM(RTRIM(CM.DisplayName)) AS DisplayName "
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        "FROM TTMaster TM INNER JOIN CustomerMaster CM ON CM.CustID = TM.CustID "
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        "WHERE TM.Closed = 0 ORDER BY TM.VoucherNo DESC"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+pyodbc.Error: ('HY000', '[HY000] [Microsoft][ODBC Driver 17 for SQL Server]Connection is busy with results for another command (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:52389 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\support.py", line 338, in get_customer_info
+    cursor.execute("EXEC webProc_TTCustInfo ?", cust_id)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.Error: ('HY000', '[HY000] [Microsoft][ODBC Driver 17 for SQL Server]Connection is busy with results for another command (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:52392 - "GET /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52387 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52390 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52388 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52572 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52573 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52573 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52572 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52572 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52573 - "OPTIONS /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52572 - "OPTIONS /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52574 - "OPTIONS /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52575 - "OPTIONS /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52576 - "OPTIONS /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52574 - "OPTIONS /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52572 - "OPTIONS /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52577 - "OPTIONS /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52577 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52572 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52575 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52574 - "GET /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52577 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52575 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52576 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52573 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52572 - "GET /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53287 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53288 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53287 - "OPTIONS /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53289 - "OPTIONS /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53287 - "OPTIONS /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53290 - "OPTIONS /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53287 - "OPTIONS /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53289 - "OPTIONS /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53290 - "OPTIONS /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53289 - "OPTIONS /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53287 - "OPTIONS /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53289 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53291 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53290 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53292 - "GET /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53291 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53288 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53291 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53292 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53290 - "GET /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53287 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53289 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53342 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53343 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53342 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53344 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53347 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53342 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53346 - "GET /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53347 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53344 - "GET /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53345 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53343 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53356 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53357 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53356 - "GET /support/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53358 - "GET /support/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53359 - "GET /support/next-persons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53356 - "GET /support/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53360 - "GET /support/closed-narrations?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53359 - "GET /support/customer-info?cust_id=0 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53358 - "GET /support/pending-tickets/all HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53361 - "GET /support/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53357 - "GET /support/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53365 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     Started server process [20452]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     127.0.0.1:53403 - "GET /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53409 - "POST /support/amc/thanks-note-reasons HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:53432 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53432 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53470 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53471 - "GET /user-rights/me HTTP/1.1" 200 OK
