@@ -89,11 +89,29 @@ data existed to migrate).
   which is a holiday every month (e.g. every Sunday). AlternateOccurrences
   ('1,3' or '2,4') + AlternateDay (a weekday name) together mean "the 1st and
   3rd [[or 2nd and 4th]] AlternateDay of the month is also a holiday" — see
-  `_holiday_days_for_month` below. Per explicit request, these computed "H"
-  values always win over whatever's saved in RSPL_ExecScheduleCell for that
-  date — get_cells overlays them on top of the saved text rather than only
-  filling gaps, so a holiday/alternate date always shows "H" regardless of
-  any manual entry, without touching the underlying saved CellText.
+  `_holiday_days_for_month` below. These computed "H" values win over
+  whatever's saved in RSPL_ExecScheduleCell for that date UNLESS a manual
+  override has been saved there — see the 2026-08-05 update below, which
+  reverses the original "H always wins unconditionally" policy for exactly
+  that one case.
+
+  Update (2026-08-05): manual override of a Holiday date, per explicit
+  request — an executive who actually worked a Holiday (e.g. came in and
+  should show "Office", not "H") can now type over that cell, and the typed
+  value persists across reloads instead of get_cells silently replacing it
+  back with "H" every time (which is what the original "H always wins"
+  policy above did, and is exactly the bug this request describes). A saved
+  RSPL_ExecScheduleCell row with genuinely non-empty CellText for that
+  (ExecutiveId, CellDate) now counts as the override and is left alone by
+  the Holiday overlay in get_cells; a row that exists only because a color
+  was picked (text still blank) does NOT count, so Holiday still applies to
+  it. Clearing an override's text back to blank and saving is how a user
+  reverts that date back to showing the Holiday default again — no separate
+  "remove override" action was added, since blank-CellText already meant
+  "nothing saved here" everywhere else in this table. The Approved-Leave
+  overlay further below is completely unaffected by this — it still
+  unconditionally wins over whatever Holiday (or a Holiday override) left
+  in place, exactly as before.
 
 Approved-Leave overlay (added per explicit request, no new table — reads
 live from the existing web_leaveapplication table, the same one the Leave
@@ -491,10 +509,18 @@ def get_cells(team_id: int, year: int, month: int, current_user: CurrentUser = D
         for r in rows
     }
 
-    # Holiday/Alternate-day rules always win over whatever's saved for that
-    # date (per explicit request) — this only overrides the CellRow.text
-    # returned here, never the underlying RSPL_ExecScheduleCell row itself,
-    # so no manual data is destroyed, just visually superseded on load.
+    # Holiday/Alternate-day rules win over whatever's saved for that date —
+    # UNLESS a manual override has been saved (see the 2026-08-05 update in
+    # the module docstring: an executive who actually worked a Holiday date
+    # can now type over it, e.g. "Office", and that value must stick across
+    # reloads instead of being silently re-replaced by "H" every time). A
+    # saved row with genuinely non-empty CellText IS that override — a row
+    # that exists only because a color was picked (text still blank) is
+    # NOT, so Holiday still applies to it; clearing an override's text back
+    # to blank is how a user reverts a cell to the Holiday default again.
+    # This only ever overrides the CellRow.text returned here, never the
+    # underlying RSPL_ExecScheduleCell row itself, so no manual data is ever
+    # destroyed, just visually superseded on load when no override exists.
     #
     # Box color: an "H" cell defaults to White rather than falling through to
     # the row's own background color — but only when no color has ever been
@@ -508,6 +534,8 @@ def get_cells(team_id: int, year: int, month: int, current_user: CurrentUser = D
         for day in _holiday_days_for_month(rule, year, month, len(days)):
             key = (executive_id, day)
             existing = cells_by_key.get(key)
+            if existing and existing.text:
+                continue
             if existing:
                 existing.text = "H"
                 if not existing.color:

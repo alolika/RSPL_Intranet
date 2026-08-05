@@ -22,6 +22,7 @@ from app.routers import (
     auth,
     developer,
     general,
+    general_attendance_sheet,
     general_dashboards,
     general_leave,
     general_mycaller,
@@ -67,6 +68,7 @@ app.include_router(developer.router)
 app.include_router(vote.router)
 app.include_router(gst.router)
 app.include_router(general.router)
+app.include_router(general_attendance_sheet.router)
 app.include_router(general_dashboards.router)
 app.include_router(general_leave.router)
 app.include_router(general_schedule.router)

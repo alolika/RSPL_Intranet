@@ -85,6 +85,12 @@ one item. Scoped to submit_ho_sanction only (the HOD's Leave Application
 approval step, per the request's own wording) —
 submit_ceo_sanction/submit_ho_cancel_sanction are untouched; revisit the
 same way if this is asked for those too.
+
+Update (2026-08-04, later same day): per explicit follow-up request, this
+now IS asked for submit_ho_cancel_sanction() too (Leave Sanction
+Cancellation's HOD-approval step) — same separate-email-to-akshayaj@,
+approve-only pattern, applied there as well. submit_ceo_sanction remains
+untouched.
 """
 
 from datetime import date, datetime, timedelta
@@ -719,8 +725,25 @@ def submit_ho_cancel_sanction(body: SubmitHoCancelSanctionRequest) -> dict[str, 
                 subject,
                 message,
             )
-        # NOTE: source also emails hardcoded akshayaj@retailware.info + amc2@retailware.info here —
-        # kept stubbed, same policy as every other hardcoded-broadcast email in this module; only
-        # the applicant's own approved/rejected email above is wired for real.
+
+            # Per explicit request (2026-08-04, same pattern as
+            # submit_ho_sanction's own akshayaj@ email above): a genuinely
+            # separate email — not a CC — to akshayaj@retailware.info,
+            # same subject/message as the applicant's, whenever the HOD
+            # APPROVES a leave cancellation. Not sent on reject (only
+            # "approved" was asked for), and amc2@retailware.info stays
+            # stubbed — the source also emailed that address here, but it
+            # wasn't part of this request; revisit the same way if asked.
+            if body.decision == "approve":
+                cursor.execute(
+                    "EXEC PROC_SENDEMAIL @EMAILID=?, @SUBJECT=?, @MESSAGE=?",
+                    "akshayaj@retailware.info",
+                    subject,
+                    message,
+                )
+        # NOTE: source also emails hardcoded amc2@retailware.info here —
+        # kept stubbed, same policy as every other hardcoded-broadcast email
+        # in this module; only the applicant's own approved/rejected email
+        # and the akshayaj@ approval copy above are wired for real.
 
     return {"success": True}
