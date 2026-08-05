@@ -4896,3 +4896,51 @@ INFO:     192.168.200.18:53432 - "GET /user-rights/me HTTP/1.1" 200 OK
 INFO:     192.168.200.18:53432 - "GET /user-rights/me HTTP/1.1" 200 OK
 INFO:     192.168.200.18:53470 - "GET /user-rights/me HTTP/1.1" 200 OK
 INFO:     192.168.200.18:53471 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     Started server process [8684]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     127.0.0.1:53490 - "GET /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53496 - "OPTIONS /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53496 - "POST /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53501 - "OPTIONS /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53500 - "OPTIONS /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53502 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53501 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53500 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53504 - "OPTIONS /marketing/register/search?mode=shop_id&value=97725 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53504 - "GET /marketing/register/search?mode=shop_id&value=97725 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53504 - "OPTIONS /marketing/register/actions/97725 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53504 - "GET /marketing/register/actions/97725 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53507 - "OPTIONS /support/amc/competitors HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53509 - "OPTIONS /support/amc/special-ratings HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53510 - "OPTIONS /marketing/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53507 - "OPTIONS /marketing/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53511 - "OPTIONS /marketing/register/customer-info/97725 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53509 - "OPTIONS /support/amc/action-stages HTTP/1.1" 200 OK
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Navnath\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+INFO:     192.168.200.18:53504 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53508 - "GET /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53509 - "GET /support/amc/competitors HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53507 - "GET /support/amc/special-ratings HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53512 - "GET /marketing/register/customer-info/97725 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53511 - "GET /marketing/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53504 - "GET /marketing/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53508 - "GET /support/amc/action-stages HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53508 - "OPTIONS /support/amc/enquiry-action-context?cust_id=97725&ref_action_id=3 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53508 - "GET /support/amc/enquiry-action-context?cust_id=97725&ref_action_id=3 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53528 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53529 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53529 - "POST /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53535 - "POST /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53543 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53544 - "GET /user-rights/me HTTP/1.1" 200 OK
