@@ -51,8 +51,11 @@ regardless.
 """
 
 from datetime import date, datetime
+from pathlib import Path
+from urllib.parse import urlparse
 
-from fastapi import APIRouter, Depends, HTTPException
+import requests
+from fastapi import APIRouter, Depends, Header, HTTPException, Response
 from pydantic import BaseModel
 
 from app.db import get_cursor, rows_to_dicts
@@ -60,6 +63,12 @@ from app.deps import CurrentUser, get_current_user
 from app.rights import FORM_CALL_HISTORY, require_access
 
 router = APIRouter(prefix="/support", tags=["support-callsip"])
+
+# The only host RecordingPath values ever legitimately point at (the
+# internal Asterisk/Synapse PBX's own Apache file server) — download_call_recording
+# re-validates against this before proxying a fetch, so a corrupted/malicious
+# RecordingPath value can never turn that endpoint into an open SSRF proxy.
+_RECORDING_HOST = "192.168.200.188"
 
 # A registered customer's own EntityID, or ("phone", their number) for an
 # unregistered caller with no EntityID at all — see
@@ -103,6 +112,7 @@ class CallHistorySummaryRow(BaseModel):
 
 
 class CallHistoryDetailRow(BaseModel):
+    record_no: int
     source_name: str
     call_time: str
     source_no: str
@@ -433,7 +443,7 @@ def get_call_history_detail(
             f"""
             SELECT * FROM (
                 SELECT
-                    s.CallType, s.CallTime,
+                    s.RecordNo, s.CallType, s.CallTime,
                     CASE WHEN LEN(s.SourceNo) > 5 THEN s.SourceNo ELSE s.DestinationNo END AS SourceNo,
                     s.Duration, s.BillSeconds, s.SourceName, s.SourceEntityID,
                     s.DestinationName AS ReceivedBy, s.RecordingPath
@@ -450,6 +460,7 @@ def get_call_history_detail(
 
     return [
         CallHistoryDetailRow(
+            record_no=r["RecordNo"],
             source_name=r["SourceName"] or "", call_time=r["CallTime"].isoformat() if r["CallTime"] else "",
             source_no=r["SourceNo"] or "", duration=str(r["Duration"] or ""), bill_seconds=r["BillSeconds"] or 0,
             call_type=r["CallType"] or "", received_by=r["ReceivedBy"] or "",
@@ -457,6 +468,123 @@ def get_call_history_detail(
         )
         for r in rows
     ]
+
+
+@router.get("/call-recording/download")
+def download_call_recording(
+    record_no: int, inline: bool = False, range_header: str | None = Header(default=None, alias="Range")
+) -> Response:
+    """Proxies a call recording through this API instead of linking the
+    browser straight at the PBX's own file server (192.168.200.188:6751,
+    a plain Apache instance). Confirmed live (curl) that server: returns the
+    file fine over HTTP with Accept-Ranges/Content-Length, but sends no
+    Content-Disposition header (so a direct link just plays the file inline
+    rather than downloading it) and no CORS headers at all (so a same-origin
+    fetch()+blob download — the standard reliable way to force a save dialog
+    with a real filename in every browser — can't reach it cross-origin
+    either). Fetching it server-side sidesteps both: the browser sees a
+    same-origin response from this API with an explicit Content-Disposition
+    (attachment by default; inline=true for the "Listen" player), which
+    behaves reliably regardless of what the upstream PBX server itself sends.
+
+    Also used for inline playback (?inline=true), not just downloads — a
+    plain <audio src="..."> element can't attach an Authorization header
+    (only Angular's HttpClient can, via auth.interceptor.ts), so this
+    endpoint takes no auth dependency at all, same established precedent as
+    support.py's download_attachment for TT attachments. This doesn't
+    reduce actual exposure: the raw RecordingPath this proxies is already
+    fully unauthenticated at the source (confirmed live — any direct request
+    to the PBX server needs no credentials today), so gating this proxy
+    behind a token staff's own browser can't supply would only break
+    playback, not protect anything already exposed. The SSRF guard below
+    (re-validating the DB-resolved URL against _RECORDING_HOST) remains the
+    real access control on what this endpoint can ever be used to fetch.
+
+    Takes record_no, never a raw URL — RecordingPath is looked up here from
+    the DB and re-validated against _RECORDING_HOST before being fetched, so
+    this can never become an open server-side-request-forgery proxy for an
+    arbitrary caller-supplied address.
+
+    This requires the API process to reach 192.168.200.188 on the office
+    intranet, same as every other page in this app that talks to internal
+    infrastructure — if a deployment's API host isn't on that network (e.g.
+    a cloud-hosted API in front of an on-prem PBX), this endpoint will
+    correctly report the recording server as unreachable rather than hang or
+    500 unhelpfully.
+
+    Range requests ARE forwarded (2026-08-06 update) — this was the actual
+    cause of a real "plays with no sound" bug, not just a missing seek-bar
+    nicety as an earlier version of this comment assumed. Confirmed live:
+    the upstream PBX server properly answers a `Range: bytes=0-1023` request
+    with `206 Partial Content` + `Content-Range`, but this endpoint used to
+    ignore the browser's own Range header entirely and always answer `200`
+    with the complete file regardless. <audio>'s media pipeline (Chrome
+    confirmed) still issues byte-range requests against a resource even when
+    it hasn't yet seen an Accept-Ranges advertisement, and receiving a full
+    200 body back where a 206 partial response was expected desyncs its
+    internal byte-offset bookkeeping — it ends up demuxing PCM samples from
+    the wrong offset into an already-primed decode buffer, which typically
+    decodes as silence or noise while the *duration* (read once from
+    whatever bytes it did buffer first) stays correct, so the seek bar keeps
+    advancing normally even though no coherent audio is playing. Forwarding
+    the real Range header to the upstream server and passing its real
+    200/206 status, Content-Range, and Accept-Ranges back through fixes this
+    at the source instead of masking it.
+    """
+    with get_cursor() as cursor:
+        cursor.execute(
+            "SELECT RecordingPath FROM SynapseCDR.dbo.SIPEventRegisterCDR WHERE RecordNo = ?", record_no
+        )
+        row = cursor.fetchone()
+    if not row or not row[0]:
+        raise HTTPException(status_code=404, detail="No recording is available for this call.")
+
+    recording_url: str = row[0]
+    parsed = urlparse(recording_url)
+    if parsed.scheme != "http" or parsed.hostname != _RECORDING_HOST:
+        raise HTTPException(
+            status_code=502, detail="This call's recording path is not from the recognized recording server."
+        )
+
+    upstream_request_headers = {"Range": range_header} if range_header else {}
+    try:
+        upstream = requests.get(recording_url, headers=upstream_request_headers, timeout=20)
+    except requests.RequestException:
+        raise HTTPException(
+            status_code=502,
+            detail=(
+                "Could not reach the recording server. This feature only works from the office network "
+                "— please check your connection and try again."
+            ),
+        )
+
+    if upstream.status_code == 404:
+        raise HTTPException(
+            status_code=404, detail="The recording file could not be found on the recording server (it may have been purged)."
+        )
+    if upstream.status_code not in (200, 206):
+        raise HTTPException(
+            status_code=502, detail=f"The recording server returned an unexpected error (HTTP {upstream.status_code})."
+        )
+
+    filename = Path(parsed.path).name or f"recording-{record_no}.wav"
+    disposition = "inline" if inline else "attachment"
+    response_headers = {
+        "Content-Disposition": f'{disposition}; filename="{filename}"',
+        # Advertised unconditionally (not just echoed back on a 206) so the
+        # browser knows up front, from the very first request, that it's
+        # safe to issue ranged requests against this resource at all.
+        "Accept-Ranges": "bytes",
+    }
+    if "Content-Range" in upstream.headers:
+        response_headers["Content-Range"] = upstream.headers["Content-Range"]
+
+    return Response(
+        content=upstream.content,
+        status_code=upstream.status_code,
+        media_type=upstream.headers.get("Content-Type", "audio/x-wav"),
+        headers=response_headers,
+    )
 
 
 def _merge_missed_calls_by_customer(rows: list[dict]) -> list[dict]:

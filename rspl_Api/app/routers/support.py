@@ -88,6 +88,13 @@ class LookupOption(BaseModel):
 class CustInfoItem(BaseModel):
     field: str
     description: str
+    # webProc_TTCustInfo's own Action column ('Details' on the Status
+    # panel's AMC Date row, 'Call'/'Email' on General's PhoneNo/Email rows)
+    # — previously dropped entirely, which is why the AMC Date "Details"
+    # button never existed on this port even though the source data always
+    # signaled it should. Only AMC Date's 'Details' is wired to anything
+    # today; Call/Email are carried through but not yet acted on.
+    action: str = ""
 
 
 class CustomerInfo(BaseModel):
@@ -138,13 +145,17 @@ class IssueDetailRow(BaseModel):
     # rows at once — see WebProc_AddModifyTTDetails's closing check.
     closed_by: int = 0
     # Mirrors IssueDetail.aspx's rcbNarration — sourced from the same
-    # /closed-narrations list as the standalone IssueDetail popup. The
-    # source also let rcbNarration accept free text and auto-create a new
-    # RSPL_TTClosedNarrationMaster row via webProc_AddTTCloseNarration; not
-    # carried forward here, same as closed_by staying a strict picklist
-    # rather than free text — narration selection follows that same
-    # existing-options-only pattern for consistency.
+    # /closed-narrations list as the standalone IssueDetail popup. When the
+    # frontend sends closed_narration_text instead (user typed a new
+    # narration rather than picking an existing one), _resolve_closed_narration_id
+    # resolves/creates the real row via webProc_AddTTCloseNarration and this
+    # id is ignored.
     closed_narration_id: int = 0
+    # Set when the user typed a brand new narration instead of selecting an
+    # existing one — resolved server-side (find-or-create against
+    # RSPL_TTClosedNarrationMaster via webProc_AddTTCloseNarration) before
+    # the row is saved, same as the legacy rcbNarration free-text behavior.
+    closed_narration_text: str | None = None
 
 
 class CreateTicketRequest(BaseModel):
@@ -200,6 +211,7 @@ class UpdateIssueRow(BaseModel):
     closed: bool
     closed_by: int = 0
     closed_narration_id: int = 0
+    closed_narration_text: str | None = None
     is_existing: bool
     # The module name as it was when this row was loaded from
     # get_ticket_detail — only meaningful when is_existing is True. Lets
@@ -240,6 +252,7 @@ class SaveIssueDetailRequest(BaseModel):
     closed: bool
     closed_by: int
     closed_narration_id: int
+    closed_narration_text: str | None = None
 
 
 class TicketBrief(BaseModel):
@@ -350,12 +363,70 @@ def get_customer_info(cust_id: int) -> CustomerInfo:
 
     def items(info_type: int) -> list[CustInfoItem]:
         return [
-            CustInfoItem(field=r["Field"], description=str(r["Description"] or ""))
+            CustInfoItem(field=r["Field"], description=str(r["Description"] or ""), action=(r.get("Action") or "").strip())
             for r in rows
             if r["InfoType"] == info_type
         ]
 
     return CustomerInfo(general=items(1), status=items(2), report=items(3), disabled=disabled)
+
+
+class AmcDetailInfo(BaseModel):
+    cust_id: int
+    software_name: str
+    amc_due_date: str | None
+    amc_amount: float
+    basic_amc_amt: float
+    assessable_value: float
+    amc_percent: float
+    service_tax: float
+    gst_tax: float
+    cess_charge: float
+    krishi_cess_charge: float
+    net_amc_value: float
+    ledger_balance: float
+    sale_date: str | None
+
+
+@router.get("/amc-details", response_model=AmcDetailInfo | None)
+def get_amc_details(cust_id: int) -> AmcDetailInfo | None:
+    """Feeds the Create Trouble Ticket form's "Details" button next to the
+    Status panel's AMC Date row. webProc_TTCustInfo's own Action column on
+    that specific row is literally 'Details' (confirmed live) — the source
+    always signaled this button should exist there; get_customer_info above
+    now carries that column through as CustInfoItem.action instead of
+    silently dropping it, which is what let this button be added at all.
+
+    VWAMCForAllCustomers is the same view AMCPending's own list report reads
+    (support_amc.get_amc_rows, mode=AMCPending) — confirmed live that its
+    AMCDueDate for a given customer matches webProc_TTCustInfo's "AMC Date"
+    value exactly for the same CustID, so this is the correct, already-
+    proven-correct source for "complete AMC details", not a new/separate
+    proc. Unlike get_amc_rows (a filtered multi-customer list), this is a
+    single exact-CustID lookup with the view's fuller financial breakdown
+    (GST/Cess/KrishiCess/NetAMCVal aren't surfaced by AmcRow at all)."""
+    with get_cursor() as cursor:
+        cursor.execute("SELECT * FROM VWAMCForAllCustomers WHERE Custid = ?", cust_id)
+        rows = rows_to_dicts(cursor)
+    if not rows:
+        return None
+    r = rows[0]
+    return AmcDetailInfo(
+        cust_id=r["Custid"],
+        software_name=r.get("Softwarename") or "",
+        amc_due_date=r["AMCDueDate"].isoformat() if r.get("AMCDueDate") else None,
+        amc_amount=float(r.get("AMCAmount") or 0),
+        basic_amc_amt=float(r.get("BasicAMCAmt") or 0),
+        assessable_value=float(r.get("Assvalue") or 0),
+        amc_percent=float(r.get("AMCPer") or 0),
+        service_tax=float(r.get("ServiceTax") or 0),
+        gst_tax=float(r.get("GSTTax") or 0),
+        cess_charge=float(r.get("CessCharge") or 0),
+        krishi_cess_charge=float(r.get("KrishiCessCharge") or 0),
+        net_amc_value=float(r.get("NetAMCVal") or 0),
+        ledger_balance=float(r.get("Ledgerbalance") or 0),
+        sale_date=r["SaleDate"].isoformat() if r.get("SaleDate") else None,
+    )
 
 
 def _tt_details_rows(tt_no: int, cust_id: int, closed: int) -> list[dict]:
@@ -484,6 +555,30 @@ def get_ticket_detail(tt_no: int) -> TicketDetailResponse | None:
     )
 
 
+def _resolve_closed_narration_id(cursor, closed_narration_id: int, closed_narration_text: str | None) -> int:
+    """Mirrors rcbNarration's free-text path: webProc_AddTTCloseNarration
+    finds an existing RSPL_TTClosedNarrationMaster row by exact text match,
+    or creates one (ClosedID isn't an identity column — the proc computes
+    MAX(ClosedID)+1 itself), and returns it either way. Only called when the
+    frontend sends typed text (the user didn't pick an existing option);
+    otherwise the picked closed_narration_id is used as-is."""
+    text = (closed_narration_text or "").strip()
+    if not text:
+        return closed_narration_id
+    cursor.execute("EXEC webProc_AddTTCloseNarration ?", text)
+    rows = rows_to_dicts(cursor)
+    return rows[0]["ClosedID"] if rows else closed_narration_id
+
+
+def _require_closed_by(closed: bool, closed_by: int) -> None:
+    # Mirrors btnAddAction_Click's own guard ("Please select closed by") —
+    # enforced here too (not just in the Angular form) so a row can never be
+    # saved as closed without a real Closed By, regardless of what the
+    # client sent.
+    if closed and not closed_by:
+        raise HTTPException(status_code=400, detail="Please select Closed By for every issue marked Closed.")
+
+
 @router.put("/tickets/{tt_no}")
 def update_ticket(
     tt_no: int, body: UpdateTicketRequest, current_user: CurrentUser = Depends(get_current_user)
@@ -507,6 +602,8 @@ def update_ticket(
     under the new one instead of updated in place."""
     if not body.issues:
         raise HTTPException(status_code=400, detail="Please add at least one issue detail before updating.")
+    for issue in body.issues:
+        _require_closed_by(issue.closed, issue.closed_by)
     with get_cursor() as cursor:
         for issue in body.issues:
             renamed = issue.is_existing and issue.original_module is not None and issue.original_module != issue.module
@@ -516,11 +613,12 @@ def update_ticket(
                     tt_no, issue.original_module,
                 )
             add_flag = 0 if (issue.is_existing and not renamed) else 1
+            closed_narration_id = _resolve_closed_narration_id(cursor, issue.closed_narration_id, issue.closed_narration_text)
             cursor.execute(
                 "EXEC WebProc_AddModifyTTDetails ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?",
                 add_flag, tt_no, issue.module, issue.issue, issue.action, issue.closed,
                 issue.priority, issue.what_next, body.called_by, current_user.user_id,
-                issue.exe_version_no or "0", issue.closed_by, issue.closed_narration_id,
+                issue.exe_version_no or "0", issue.closed_by, closed_narration_id,
             )
     return {"voucherNo": tt_no, "message": f"Ticket {tt_no} updated successfully."}
 
@@ -529,6 +627,8 @@ def update_ticket(
 def create_ticket(
     body: CreateTicketRequest, current_user: CurrentUser = Depends(get_current_user)
 ) -> dict[str, object]:
+    for issue in body.issues:
+        _require_closed_by(issue.closed, issue.closed_by)
     with get_cursor() as cursor:
         cursor.execute(
             "EXEC WebProc_AddTTMaster ?, ?, ?, 0, ?, '', ?",
@@ -541,11 +641,12 @@ def create_ticket(
         message = master_rows[0]["ResultMessage"]
 
         for issue in body.issues:
+            closed_narration_id = _resolve_closed_narration_id(cursor, issue.closed_narration_id, issue.closed_narration_text)
             cursor.execute(
                 "EXEC WebProc_AddModifyTTDetails 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?",
                 voucher_no, issue.module, issue.issue, issue.action, issue.closed,
                 issue.priority, issue.what_next, body.called_by, current_user.user_id,
-                issue.exe_version_no or "0", issue.closed_by, issue.closed_narration_id,
+                issue.exe_version_no or "0", issue.closed_by, closed_narration_id,
             )
 
     return {"voucherNo": voucher_no, "message": message}
@@ -662,12 +763,14 @@ def get_issue_detail_full(tt_no: int) -> IssueDetailFull | None:
 def save_issue_detail(
     body: SaveIssueDetailRequest, current_user: CurrentUser = Depends(get_current_user)
 ) -> dict[str, bool]:
+    _require_closed_by(body.closed, body.closed_by)
     with get_cursor() as cursor:
+        closed_narration_id = _resolve_closed_narration_id(cursor, body.closed_narration_id, body.closed_narration_text)
         cursor.execute(
             "EXEC WebProc_AddModifyTTDetails 0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?",
             body.tt_no, body.module, body.issue, body.action, body.closed,
             body.priority, body.what_next, "", current_user.user_id,
-            body.exe_version_no or "0", body.closed_by, body.closed_narration_id,
+            body.exe_version_no or "0", body.closed_by, closed_narration_id,
         )
     return {"success": True}
 

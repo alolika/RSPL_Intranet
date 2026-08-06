@@ -61,6 +61,13 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    # Starlette's CORS default exposes no custom response headers to
+    # cross-origin JS at all (the browser receives them over the wire, but
+    # fetch/XHR's Headers API can't see them) — Content-Disposition needs to
+    # be readable client-side so file-download flows like
+    # support_callsip.download_call_recording can use the server's real
+    # filename instead of inventing their own.
+    expose_headers=["Content-Disposition"],
 )
 
 app.include_router(auth.router)
