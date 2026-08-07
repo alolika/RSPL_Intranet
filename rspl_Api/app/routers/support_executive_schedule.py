@@ -91,27 +91,44 @@ data existed to migrate).
   3rd [[or 2nd and 4th]] AlternateDay of the month is also a holiday" — see
   `_holiday_days_for_month` below. These computed "H" values win over
   whatever's saved in RSPL_ExecScheduleCell for that date UNLESS a manual
-  override has been saved there — see the 2026-08-05 update below, which
-  reverses the original "H always wins unconditionally" policy for exactly
-  that one case.
+  override has been saved there — see the two updates below for how "manual
+  override" is actually detected, and why.
 
-  Update (2026-08-05): manual override of a Holiday date, per explicit
-  request — an executive who actually worked a Holiday (e.g. came in and
-  should show "Office", not "H") can now type over that cell, and the typed
-  value persists across reloads instead of get_cells silently replacing it
-  back with "H" every time (which is what the original "H always wins"
-  policy above did, and is exactly the bug this request describes). A saved
-  RSPL_ExecScheduleCell row with genuinely non-empty CellText for that
-  (ExecutiveId, CellDate) now counts as the override and is left alone by
-  the Holiday overlay in get_cells; a row that exists only because a color
-  was picked (text still blank) does NOT count, so Holiday still applies to
-  it. Clearing an override's text back to blank and saving is how a user
-  reverts that date back to showing the Holiday default again — no separate
-  "remove override" action was added, since blank-CellText already meant
-  "nothing saved here" everywhere else in this table. The Approved-Leave
-  overlay further below is completely unaffected by this — it still
-  unconditionally wins over whatever Holiday (or a Holiday override) left
-  in place, exactly as before.
+  Update (2026-08-05): a manual-override exception was added so a saved,
+  non-blank CellText would be left alone instead of being replaced by "H"
+  (meant for an executive who actually worked a Holiday, e.g. "Office").
+  **Reverted (2026-08-07)**: that exception meant ANY previously-saved text
+  suppressed the Holiday marker, not just a deliberate override — and
+  RSPL_ExecScheduleCell already held pre-existing, mostly-generic values
+  (bare "1" shift counts, entered under the pre-08-05 "H always wins"
+  policy, before anyone needed to think about a date's holiday status) on
+  529 of 535 non-blank August cells for holiday-rule executives, confirmed
+  live via LastEditedAt. The exception silently suppressed "H" almost
+  everywhere it should have applied, which is a worse outcome than the
+  original "silently overwritten Office entry" complaint it was built to
+  fix. Rule-always-wins was restored as an intermediate step.
+
+  Update (2026-08-07, later same day): manual override reinstated, per
+  explicit request, with the 08-05 version's flaw fixed. The problem was
+  never "an override exists" — it's that "any saved text" was too broad a
+  definition of "override" and swept up hundreds of pre-existing rows that
+  were never a deliberate choice to work through a holiday. This version
+  narrows the definition: a cell counts as a deliberate override ONLY if
+  its LastEditedAt is on/after _OVERRIDE_ELIGIBLE_FROM (this DB server's
+  SYSDATETIME() at the moment this fix shipped, captured once as a fixed
+  constant below — NOT "now" recomputed per-request, which would make
+  every cell's eligibility silently drift forward on every page load).
+  Every real save through save_cells() sets LastEditedAt = SYSDATETIME(),
+  so any cell a user actually types into from this point forward is
+  correctly detected as an override with zero ongoing maintenance; every
+  one of the 535 legacy rows keeps its old LastEditedAt (all but 6 predate
+  even the 08-05 attempt), so none of them can retroactively re-trigger
+  this bug again. Scoped strictly per (ExecutiveId, CellDate) — saving one
+  cell has no effect on any other cell's Holiday/override status, and nothing
+  about _holiday_days_for_month, the rule data, or any other overlay changed.
+  The Approved-Leave overlay further below is unaffected by any of this — it
+  always unconditionally wins over whatever Holiday (override or not) left
+  in place, before and after every update above.
 
 Approved-Leave overlay (added per explicit request, no new table — reads
 live from the existing web_leaveapplication table, the same one the Leave
@@ -142,6 +159,14 @@ from app.deps import CurrentUser, get_current_user
 from app.rights import FORM_EXEC_SCHEDULE, require_access
 
 router = APIRouter(prefix="/support/executive-schedule", tags=["support-executive-schedule"])
+
+# See the "Update (2026-08-07, later same day)" note in the module docstring
+# above — a cell only counts as a deliberate Holiday override if it was
+# (re)saved at/after this fixed moment (this DB's own SYSDATETIME() when
+# the fix shipped), not merely "has any saved text." A fixed constant, not
+# datetime.now(): recomputing "now" on every request would make cells edited
+# between requests silently flip in and out of eligibility.
+_OVERRIDE_ELIGIBLE_FROM = datetime(2026, 8, 7, 11, 36, 49)
 
 
 class TeamRow(BaseModel):
@@ -495,7 +520,7 @@ def get_cells(team_id: int, year: int, month: int, current_user: CurrentUser = D
 
     with get_cursor() as cursor:
         cursor.execute(
-            f"SELECT ExecutiveId, CellDate, CellText, CellColor, CellTextColor FROM RSPL_ExecScheduleCell "
+            f"SELECT ExecutiveId, CellDate, CellText, CellColor, CellTextColor, LastEditedAt FROM RSPL_ExecScheduleCell "
             f"WHERE ExecutiveId IN ({placeholders}) AND CellDate BETWEEN ? AND ?",
             *executive_ids, first_day, last_day,
         )
@@ -508,19 +533,25 @@ def get_cells(team_id: int, year: int, month: int, current_user: CurrentUser = D
         )
         for r in rows
     }
+    # A cell counts as a deliberate Holiday override only if it was actually
+    # (re)saved at/after _OVERRIDE_ELIGIBLE_FROM — see that constant's
+    # comment and the module docstring's 2026-08-07 update for why "has any
+    # saved text" alone (the 08-05 version's rule) is NOT used here: it
+    # swept up hundreds of pre-existing rows that were never a deliberate
+    # choice to work through a holiday. Kept as a separate lookup (not a
+    # CellRow field) since LastEditedAt is purely an internal eligibility
+    # check, not part of this endpoint's public response shape.
+    override_eligible = {
+        (r["ExecutiveId"], r["CellDate"].day)
+        for r in rows
+        if r["LastEditedAt"] and r["LastEditedAt"] >= _OVERRIDE_ELIGIBLE_FROM
+    }
 
     # Holiday/Alternate-day rules win over whatever's saved for that date —
-    # UNLESS a manual override has been saved (see the 2026-08-05 update in
-    # the module docstring: an executive who actually worked a Holiday date
-    # can now type over it, e.g. "Office", and that value must stick across
-    # reloads instead of being silently re-replaced by "H" every time). A
-    # saved row with genuinely non-empty CellText IS that override — a row
-    # that exists only because a color was picked (text still blank) is
-    # NOT, so Holiday still applies to it; clearing an override's text back
-    # to blank is how a user reverts a cell to the Holiday default again.
-    # This only ever overrides the CellRow.text returned here, never the
+    # UNLESS that specific cell is a deliberate override (in override_eligible
+    # above). This only overrides the CellRow.text returned here, never the
     # underlying RSPL_ExecScheduleCell row itself, so no manual data is ever
-    # destroyed, just visually superseded on load when no override exists.
+    # destroyed, just visually superseded on load when no override applies.
     #
     # Box color: an "H" cell defaults to White rather than falling through to
     # the row's own background color — but only when no color has ever been
@@ -534,7 +565,7 @@ def get_cells(team_id: int, year: int, month: int, current_user: CurrentUser = D
         for day in _holiday_days_for_month(rule, year, month, len(days)):
             key = (executive_id, day)
             existing = cells_by_key.get(key)
-            if existing and existing.text:
+            if existing and existing.text and key in override_eligible:
                 continue
             if existing:
                 existing.text = "H"
