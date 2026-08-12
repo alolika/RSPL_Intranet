@@ -157,11 +157,33 @@ class PendingSanctionItem(BaseModel):
     already_rejected: bool
 
 
+class LeaveDateEmployee(BaseModel):
+    name: str
+    day_type: str  # "Full Day" | "1st Half" | "2nd Half"
+    reason: str
+    status: str  # "Sanctioned" | "Rejected" | "Pending"
+    from_date: str  # ISO date — the employee's own leave span, may cover more than this one grouped date
+    to_date: str
+
+
+class LeaveDateGroup(BaseModel):
+    """One calendar date covered by this article's leave item(s), plus every
+    employee (company-wide, not just this applicant) with a non-cancelled
+    leave application spanning that date — gives the approver visibility
+    into who else is already out that day, whether it's a full or half day
+    for each of them, their reason, and their HOD-sanction status."""
+
+    date: str
+    employees: list[LeaveDateEmployee]
+    total: int
+
+
 class LeaveSanctionArticle(BaseModel):
     applicant_name: str
     ho_name: str
     ho_enabled: bool
     items: list[PendingSanctionItem]
+    date_groups: list[LeaveDateGroup] = []
 
 
 class SubmitSanctionRequest(BaseModel):
@@ -490,11 +512,14 @@ def _get_sanction_article(article_id: int) -> LeaveSanctionArticle:
         ho_enabled = bool(user_row[1]) if user_row else False
 
         cursor.execute(
-            "SELECT SrNo, HO, HOSanctioned, HORejected FROM web_leaveapplication WHERE UserID = ? AND ArticleID = ?",
+            "SELECT SrNo, HO, HOSanctioned, HORejected, FromDate, ToDate "
+            "FROM web_leaveapplication WHERE UserID = ? AND ArticleID = ?",
             applicant_user_id,
             article_id,
         )
         leave_rows = {r["SrNo"]: r for r in rows_to_dicts(cursor)}
+
+        date_groups = _get_leave_date_groups(cursor, leave_rows.values())
 
     ho_name = next(iter(leave_rows.values()))["HO"].strip() if leave_rows else ""
 
@@ -508,7 +533,93 @@ def _get_sanction_article(article_id: int) -> LeaveSanctionArticle:
         for r in article_rows
     ]
 
-    return LeaveSanctionArticle(applicant_name=applicant_name, ho_name=ho_name, ho_enabled=ho_enabled, items=items)
+    return LeaveSanctionArticle(
+        applicant_name=applicant_name, ho_name=ho_name, ho_enabled=ho_enabled, items=items, date_groups=date_groups
+    )
+
+
+def _get_leave_date_groups(cursor, leave_rows) -> list[LeaveDateGroup]:
+    """For every calendar date covered by this article's own leave item(s),
+    find every employee (company-wide) with a non-cancelled leave
+    application spanning that date and group them for display. Bounded by
+    the article's own (always short) date span — not an unbounded report
+    query."""
+
+    leave_rows = [r for r in leave_rows if r.get("FromDate") and r.get("ToDate")]
+    if not leave_rows:
+        return []
+
+    requested_dates: set[date] = set()
+    for r in leave_rows:
+        d = r["FromDate"].date()
+        end = r["ToDate"].date()
+        while d <= end:
+            requested_dates.add(d)
+            d += timedelta(days=1)
+
+    min_date = min(r["FromDate"] for r in leave_rows)
+    max_date = max(r["ToDate"] for r in leave_rows)
+
+    cursor.execute(
+        """
+        SELECT L.FromDate, L.ToDate, L.ForDays, L.Reason, L.HOSanctioned, L.HORejected, U.Name
+        FROM web_leaveapplication L INNER JOIN UserMaster U ON L.UserID = U.UserID
+        WHERE L.CancelledByApplicant = 0 AND L.CancelledbyHO = 0
+          AND L.FromDate <= ? AND L.ToDate >= ?
+        """,
+        max_date,
+        min_date,
+    )
+    company_rows = rows_to_dicts(cursor)
+
+    # name -> employee-detail dict, per date; keyed by name so the same
+    # employee doesn't appear twice for one date even if they have
+    # overlapping rows
+    employees_by_date: dict[date, dict[str, LeaveDateEmployee]] = {d: {} for d in requested_dates}
+    for cr in company_rows:
+        cr_from, cr_to = cr["FromDate"].date(), cr["ToDate"].date()
+        name = cr["Name"]
+        detail = LeaveDateEmployee(
+            name=name,
+            day_type=_day_type_label(cr["ForDays"] or ""),
+            reason=cr["Reason"] or "",
+            status=_sanction_status_label(bool(cr["HOSanctioned"]), bool(cr["HORejected"])),
+            from_date=cr_from.isoformat(),
+            to_date=cr_to.isoformat(),
+        )
+        for d in requested_dates:
+            if cr_from <= d <= cr_to:
+                employees_by_date[d].setdefault(name, detail)
+
+    return [
+        LeaveDateGroup(
+            date=d.isoformat(),
+            employees=[employees_by_date[d][name] for name in sorted(employees_by_date[d])],
+            total=len(employees_by_date[d]),
+        )
+        for d in sorted(requested_dates)
+    ]
+
+
+def _sanction_status_label(sanctioned: bool, rejected: bool) -> str:
+    if sanctioned:
+        return "Sanctioned"
+    if rejected:
+        return "Rejected"
+    return "Pending"
+
+
+def _day_type_label(for_days: str) -> str:
+    """ForDays is free text built at submission time, e.g. "1" (full day),
+    "2" (2 full days), or "0.5 (1st Half)"/"0.5 (2nd Half)" — see
+    submit_leave_application's `for_days` construction above. Only the
+    half-day marker matters for display; anything else is a full day."""
+
+    if "1st Half" in for_days:
+        return "1st Half"
+    if "2nd Half" in for_days:
+        return "2nd Half"
+    return "Full Day"
 
 
 @router.get("/sanction-article/{article_id}", response_model=LeaveSanctionArticle)

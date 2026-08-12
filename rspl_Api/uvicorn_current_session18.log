@@ -1,0 +1,7 @@
+INFO:     Will watch for changes in these directories: ['D:\\Maruti_workspace\\rspl_Api']
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     Started reloader process [10852] using WatchFiles
+INFO:     Started server process [15408]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     192.168.200.18:59453 - "GET /docs HTTP/1.1" 200 OK

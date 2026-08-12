@@ -1,0 +1,62 @@
+INFO:     Will watch for changes in these directories: ['D:\\Maruti_workspace\\rspl_Api']
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     Started reloader process [5488] using WatchFiles
+INFO:     Started server process [15156]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:53787 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54085 - "OPTIONS /engineering-hub/reports/engineering-effort HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54085 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54086 - "GET /engineering-hub/reports/engineering-effort HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\routers\enghub_reports.py'. Reloading...
+ INFO:     192.168.200.18:54089 - "OPTIONS /engineering-hub/reports/engineering-effort?date_from=2026-08-03T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54089 - "GET /engineering-hub/reports/engineering-effort?date_from=2026-08-03T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54089 - "OPTIONS /engineering-hub/reports/engineering-effort?date_from=2026-08-03T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54089 - "GET /engineering-hub/reports/engineering-effort?date_from=2026-08-03T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54092 - "OPTIONS /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54093 - "OPTIONS /engineering-hub/reports/engineering-effort?product_id=12&date_from=2026-08-03T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54092 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54093 - "GET /engineering-hub/reports/engineering-effort?product_id=12&date_from=2026-08-03T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54094 - "OPTIONS /engineering-hub/reports/engineering-effort?product_id=12&module_id=12&date_from=2026-08-03T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54094 - "GET /engineering-hub/reports/engineering-effort?product_id=12&module_id=12&date_from=2026-08-03T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54094 - "OPTIONS /engineering-hub/reports/engineering-effort?product_id=12&module_id=12&date_from=2026-08-03T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54094 - "GET /engineering-hub/reports/engineering-effort?product_id=12&module_id=12&date_from=2026-08-03T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54094 - "OPTIONS /engineering-hub/reports/engineering-effort?product_id=12&module_id=12&date_from=2026-08-03T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54094 - "GET /engineering-hub/reports/engineering-effort?product_id=12&module_id=12&date_from=2026-08-03T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54094 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54100 - "GET /engineering-hub/reports/engineering-effort HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54094 - "OPTIONS /engineering-hub/reports/engineering-effort?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54094 - "GET /engineering-hub/reports/engineering-effort?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54100 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54100 - "OPTIONS /engineering-hub/reports/engineering-effort?product_id=12&module_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54100 - "GET /engineering-hub/reports/engineering-effort?product_id=12&module_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54100 - "OPTIONS /engineering-hub/reports/engineering-effort?product_id=12&module_id=12&date_from=2026-08-03T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54100 - "GET /engineering-hub/reports/engineering-effort?product_id=12&module_id=12&date_from=2026-08-03T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54100 - "GET /engineering-hub/reports/engineering-effort?product_id=12&module_id=12&date_from=2026-08-03T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54100 - "GET /engineering-hub/reports/engineering-effort?product_id=12&module_id=12&date_from=2026-08-03T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54100 - "GET /engineering-hub/reports/engineering-effort?product_id=12&module_id=12&date_from=2026-08-03T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54104 - "OPTIONS /engineering-hub/reports/engineering-effort?product_id=12&module_id=12&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54104 - "GET /engineering-hub/reports/engineering-effort?product_id=12&module_id=12&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54104 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54111 - "GET /engineering-hub/reports/engineering-effort HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54111 - "OPTIONS /engineering-hub/reports/engineering-effort?date_from=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54111 - "GET /engineering-hub/reports/engineering-effort?date_from=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54111 - "OPTIONS /engineering-hub/reports/engineering-effort?date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54111 - "GET /engineering-hub/reports/engineering-effort?date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54111 - "OPTIONS /engineering-hub/reports/engineering-effort?date_from=2026-08-08T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54111 - "GET /engineering-hub/reports/engineering-effort?date_from=2026-08-08T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54111 - "OPTIONS /engineering-hub/reports/engineering-effort?date_from=2026-08-08T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54111 - "GET /engineering-hub/reports/engineering-effort?date_from=2026-08-08T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54115 - "OPTIONS /engineering-hub/reports/engineering-effort?product_id=12&date_from=2026-08-08T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54111 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54115 - "GET /engineering-hub/reports/engineering-effort?product_id=12&date_from=2026-08-08T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54115 - "OPTIONS /engineering-hub/reports/engineering-effort?product_id=12&module_id=14&date_from=2026-08-08T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54115 - "GET /engineering-hub/reports/engineering-effort?product_id=12&module_id=14&date_from=2026-08-08T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54115 - "OPTIONS /engineering-hub/reports/engineering-effort?product_id=12&module_id=13&date_from=2026-08-08T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54115 - "GET /engineering-hub/reports/engineering-effort?product_id=12&module_id=13&date_from=2026-08-08T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54115 - "OPTIONS /engineering-hub/reports/engineering-effort?product_id=12&module_id=12&date_from=2026-08-08T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54115 - "GET /engineering-hub/reports/engineering-effort?product_id=12&module_id=12&date_from=2026-08-08T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54117 - "GET /engineering-hub/reports/engineering-effort?product_id=12&date_from=2026-08-08T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54117 - "GET /engineering-hub/reports/engineering-effort?date_from=2026-08-08T18:30:00.000Z&date_to=2026-08-08T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54117 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54124 - "GET /engineering-hub/reports/engineering-effort HTTP/1.1" 200 OK

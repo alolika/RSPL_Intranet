@@ -21,6 +21,15 @@ from app.routers import (
     admin_vouchers,
     auth,
     developer,
+    enghub_activities,
+    enghub_attachments,
+    enghub_decisions,
+    enghub_devitems,
+    enghub_features,
+    enghub_masters,
+    enghub_releases,
+    enghub_reports,
+    enghub_tasks,
     general,
     general_attendance_sheet,
     general_dashboards,
@@ -117,6 +126,15 @@ app.include_router(agile_backlog.router)
 app.include_router(agile_test.router)
 app.include_router(agile_dashboard.router)
 app.include_router(agile_appreciation.router)
+app.include_router(enghub_masters.router)
+app.include_router(enghub_features.router)
+app.include_router(enghub_devitems.router)
+app.include_router(enghub_tasks.router)
+app.include_router(enghub_activities.router)
+app.include_router(enghub_decisions.router)
+app.include_router(enghub_releases.router)
+app.include_router(enghub_attachments.router)
+app.include_router(enghub_reports.router)
 
 
 @app.on_event("startup")

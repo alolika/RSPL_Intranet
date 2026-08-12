@@ -136,19 +136,39 @@ Application Register itself uses): for any executive currently on this
 team's active roster (only — a leave for someone not in _get_active_executives
 is never looked at), an Approved (HOSanctioned=1 OR CEOSanctioned=1, matching
 admin_leave.py's own Sanctioned filter) and not-cancelled leave date shows
-"L" with the exact same color the Leave Application Register's own calendar
-would show for that entry (yellow #ffff00 for an exact '0.5 (1st Half)'
-match on the leave's FromDate, red #ff0000 for '0.5 (2nd Half)', lime
-#00ff00 otherwise — see _get_approved_leave_overlay, mirroring
-leave-app-register.ts's toEntry() color logic exactly so both features
-agree on the same entry's color). Computed fresh on every get_cells call,
-same as holidays — never written into RSPL_ExecScheduleCell — so approving,
-modifying, or cancelling a leave is reflected the next time the schedule
-loads with no separate sync step, and per explicit request takes priority
-over the Holiday/Alternate-day overlay above when a date is both (applied
-after it, so its text/color unconditionally win on any overlap).
+its color-coded label text (originally a bare "L", see the two updates below
+for how this evolved) with the exact same color the Leave Application
+Register's own calendar would show for that entry (yellow #ffff00 for an
+exact '0.5 (1st Half)' match on the leave's FromDate, red #ff0000 for '0.5
+(2nd Half)', lime #00ff00 otherwise — see _get_approved_leave_overlay,
+mirroring leave-app-register.ts's toEntry() color logic exactly so both
+features agree on the same entry's color). Computed fresh on every get_cells
+call, same as holidays — never written into RSPL_ExecScheduleCell — so
+approving, modifying, or cancelling a leave is reflected the next time the
+schedule loads with no separate sync step, and per explicit request takes
+priority over the Holiday/Alternate-day overlay above when a date is both
+(applied after it, so its text/color unconditionally win on any overlap).
+
+Update (2026-08-12): a leave date that already carries genuine user-entered
+text (e.g. a Customer Visit note) no longer has that text silently replaced
+by the leave marker — both are combined, on separate lines, so a Half-Day
+Leave and a Half-Day Customer Visit on the same date are both visible at
+once. See the "Update (2026-08-12)" comment right above the overlay's
+application in get_cells for the full detail on what counts as "genuine
+text" (specifically excludes the auto-Holiday "H" marker, which still loses
+to Leave outright, unchanged).
+
+Update (2026-08-12, later same day): the overlay's text is no longer a bare
+"L" — it now spells out "L (1st Half)"/"L (2nd Half)"/"L (Full Day)" (kept
+compact — a longer "1st Half Leave" form was tried first, then shortened per
+a follow-up request, since this grid's cells are narrow) so the half is
+always readable directly from the cell's text, not just inferred from its
+color (see _get_approved_leave_overlay). Determined strictly from the real
+ForDays value on web_leaveapplication, same source as
+before — never guessed or inferred from screen position.
 """
 
+import re
 from datetime import date, datetime, timedelta
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -302,12 +322,23 @@ def _holiday_days_for_month(rule: HolidayRule, year: int, month: int, days_in_mo
     return holidays
 
 
-def _get_approved_leave_overlay(executive_ids: list[int], year: int, month: int, days_in_month: int) -> dict[tuple[int, int], tuple[str, str]]:
+def _get_approved_leave_overlay(
+    executive_ids: list[int], year: int, month: int, days_in_month: int
+) -> dict[tuple[int, int], tuple[str, str]]:
     """Approved-leave overlay for the Executive Schedule — see this module's
     top-of-file docstring for the full rationale. Returns {(executive_id, day):
-    (text, color)}, computed fresh every call, exactly mirroring
+    (label, color)}, computed fresh every call. `color` exactly mirrors
     leave-app-register.ts's toEntry() so an entry shows the same color here
-    as it does in the Leave Application Register itself."""
+    as it does in the Leave Application Register itself.
+
+    Update (2026-08-12): `label` spells out "L (1st Half)"/"L (2nd Half)"/
+    "L (Full Day)" — replaces the old bare single-letter "L" marker (which
+    relied on color alone to distinguish 1st vs 2nd half), per explicit
+    request that the half be readable from the cell's text itself, not
+    inferred from color/position. Kept compact (not "1st Half Leave" etc,
+    tried first and shortened per follow-up request — this grid's cells are
+    narrow). Determined strictly from ForDays (the real stored leave data —
+    see the "0.5 (1st Half)"/"0.5 (2nd Half)" checks below), never guessed."""
     if not executive_ids:
         return {}
     placeholders = ",".join("?" for _ in executive_ids)
@@ -333,16 +364,90 @@ def _get_approved_leave_overlay(executive_ids: list[int], year: int, month: int,
         current = max(from_date, first_day)
         span_end = min(to_date, last_day)
         while current <= span_end:
+            # The "0.5 (1st Half)"/"0.5 (2nd Half)" ForDays values only ever
+            # describe a single-day leave in real data (from_date == to_date
+            # — a half day can't span multiple calendar days) — the
+            # is_from_day guard is defensive: it only matters for a
+            # theoretical multi-day span, where every day past the first
+            # falls through to Full Day rather than misreading a half-day
+            # marker onto a date it was never about.
+            #
+            # Update (2026-08-12): shortened from "1st Half Leave"/"2nd Half
+            # Leave"/"Full Day Leave" to "L (1st Half)"/"L (2nd Half)"/"L
+            # (Full Day)" per explicit request — the longer form didn't fit
+            # this grid's narrow cells well. "L" keeps this system's existing
+            # single-letter Leave convention; the half is still always
+            # stated in words, never left to color alone.
+            #
+            # Update (2026-08-12, later still): Full Day reverted to the
+            # bare "L" (original convention, color alone signals it's a
+            # full-day leave via lime #00ff00) per explicit follow-up
+            # request — only the two HALF-day labels need to spell out which
+            # half in words; a plain full-day leave doesn't need a
+            # "(Full Day)" qualifier stated as text.
             is_from_day = current == from_date
             if is_from_day and for_days == "0.5 (1st Half)":
-                color = "#ffff00"
+                color, label = "#ffff00", "L (1st Half)"
             elif is_from_day and for_days == "0.5 (2nd Half)":
-                color = "#ff0000"
+                color, label = "#ff0000", "L (2nd Half)"
             else:
-                color = "#00ff00"
-            overlay[(executive_id, current.day)] = ("L", color)
+                color, label = "#00ff00", "L"
+            overlay[(executive_id, current.day)] = (label, color)
             current += timedelta(days=1)
     return overlay
+
+
+def _is_bare_number(text: str) -> bool:
+    """Mirrors executive-schedule.ts's parseCellNumber — True if `text`, as a
+    whole, parses as a plain number (the per-day installation/duty count
+    convention this grid already uses for the Total/Installation Capacity
+    columns). Used by get_cells to keep a duty count from ever being
+    combined with a leave marker (see the call site's own comment) —
+    intentionally the exact same "is this a number" definition the frontend
+    Total calculation already uses, so nothing about what counts as a
+    number for the totals is redefined here, only reused."""
+    try:
+        float(text.strip())
+        return True
+    except ValueError:
+        return False
+
+
+def _is_redundant_half_day_note(manual_text: str, label: str) -> bool:
+    """True if `manual_text` (an existing manually-saved cell note) adds no
+    real information beyond what the half-day leave `label` (e.g.
+    "L (2nd Half)") already states. Used by get_cells to decide whether to
+    drop a manual note instead of combining it, so a half-day leave doesn't
+    show the same fact twice. Only meaningful for a half-day label —
+    callers must check "Half" in label themselves.
+
+    Covers three shapes, all confirmed to occur with real data:
+    1. A bare "L" — some cells still carry this from before the automatic
+       overlay existed, when a user typed "L" by hand to mean Leave.
+    2. A note that's just restating "1st half"/"2nd half"/"half day" in
+       different casing/spacing (e.g. "2nd half").
+    3. The note IS the overlay's own label, byte-for-byte apart from
+       whitespace (e.g. "L (2nd Half)\\n") — happens when a user
+       double-clicks a leave cell (which shows the computed label in the
+       textarea) and blurs after only adding trailing whitespace/a newline,
+       which is enough for onCellBlur's `original !== cell.text` check to
+       treat it as a real edit and persist it — confirmed live, see the
+       2026-08-12 update in this module's docstring. Comparing against the
+       label directly (not just a fixed phrase list) catches this and any
+       future case shaped the same way."""
+    normalized = re.sub(r"[^a-z0-9]+", " ", manual_text.strip().lower()).strip()
+    if normalized in ("l", "half day", "half"):
+        return True
+    if normalized == re.sub(r"[^a-z0-9]+", " ", label.strip().lower()).strip():
+        return True
+    # The specific half this label names, e.g. "L (2nd Half)" -> "2nd half"
+    # -> normalized "2nd half" — matches a note that just repeats it.
+    match = re.search(r"\((1st|2nd) half\)", label, re.IGNORECASE)
+    if match:
+        half_phrase = f"{match.group(1)} half".lower()
+        if normalized == half_phrase:
+            return True
+    return False
 
 
 @router.get("/teams", response_model=list[TeamRow])
@@ -560,6 +665,15 @@ def get_cells(team_id: int, year: int, month: int, current_user: CurrentUser = D
     # RSPL_ExecScheduleCell and existing.color is no longer falsy, so this
     # leaves their choice alone on every later load instead of resetting it
     # back to white each time.
+    # Tracks which cells got their "H" from THIS loop (an automatic marker,
+    # not something a user actually typed) — see the Approved-Leave overlay
+    # below, which needs to tell "this cell's text is just the auto-Holiday
+    # marker" (safe to fully replace, unchanged existing behavior) apart from
+    # "this cell has a real user-entered note, e.g. a Customer Visit" (must
+    # be preserved alongside Leave, not silently destroyed by it — see
+    # below). Not added to when the override_eligible `continue` fires,
+    # since that path deliberately leaves genuine saved text in place.
+    holiday_auto_days: set[tuple[int, int]] = set()
     holiday_rules = _get_holiday_rules(executive_ids)
     for executive_id, rule in holiday_rules.items():
         for day in _holiday_days_for_month(rule, year, month, len(days)):
@@ -573,24 +687,77 @@ def get_cells(team_id: int, year: int, month: int, current_user: CurrentUser = D
                     existing.color = "#ffffff"
             else:
                 cells_by_key[key] = CellRow(executive_id=executive_id, day=day, text="H", color="#ffffff", text_color=None)
+            holiday_auto_days.add(key)
 
     # Approved-Leave overlay — applied AFTER Holiday above, per explicit
-    # request that Leave wins on any date that's both (this loop runs last,
-    # so its text/color unconditionally replace whatever Holiday just set).
+    # request that Leave wins on any date that's both (this loop runs last).
     # Unlike Holiday's color (a neutral white default, only applied if no
     # color was ever explicitly saved), Leave's color IS the information
     # this feature exists to show, so it's set unconditionally — otherwise
     # a cell already colored for unrelated reasons would silently hide an
     # approved leave.
+    #
+    # Update (2026-08-12): per explicit request, a cell that ALSO carries
+    # genuine user-entered text (most commonly a Customer Visit note typed
+    # in by a support user) no longer has that text silently overwritten by
+    # the leave marker — both are combined so a Half-Day Leave and a
+    # Half-Day Customer Visit on the same date are both visible at once,
+    # neither hiding the other. "Genuine user-entered text" specifically
+    # excludes the auto-Holiday "H" marker just set above (holiday_auto_days)
+    # — Leave still wins outright over an auto-Holiday day exactly as
+    # before this change, since "H" isn't something a user actually wrote.
+    # The Total/Installation Capacity calculation is unaffected either way:
+    # it only ever counted a cell whose ENTIRE text was a bare number (see
+    # parseCellNumber in executive-schedule.ts), so a combined
+    # "L (1st Half)\n<note>" value contributes 0 exactly like the old
+    # bare "L" already did — no behavior change there.
+    #
+    # Update (2026-08-12, later same day): the overlay's own text (`label`
+    # below) now always spells out "L (1st Half)"/"L (2nd Half)"/"L (Full
+    # Day)" — see _get_approved_leave_overlay's own docstring — instead of
+    # the old single-letter "L" that relied on color alone to distinguish
+    # which half. Applies uniformly whether or not the cell also
+    # has a combined note, so the half is always readable from the text
+    # itself, never left to be inferred from color/position.
     leave_overlay = _get_approved_leave_overlay(executive_ids, year, month, len(days))
-    for (executive_id, day), (text, color) in leave_overlay.items():
+    for (executive_id, day), (label, color) in leave_overlay.items():
         key = (executive_id, day)
         existing = cells_by_key.get(key)
-        if existing:
-            existing.text = text
+        manual_text = (existing.text or "").strip() if existing and key not in holiday_auto_days else ""
+        # Update (2026-08-12, later still): per explicit request, a bare
+        # number (e.g. "1", "4" — the per-day installation/duty count used
+        # only for the Total/Installation Capacity columns, see
+        # parseCellNumber in executive-schedule.ts) is never combined with a
+        # leave marker, for BOTH full-day and half-day leave. The Leave
+        # Register never shows a duty count next to a leave entry, so this
+        # grid shouldn't either — a cell with an approved leave should show
+        # ONLY the leave entry (plus any genuine Customer Visit note, still
+        # combined exactly as before — this only strips numbers, nothing
+        # else). Applied before the half-day-specific check below since it's
+        # unconditional across both leave types.
+        if manual_text and _is_bare_number(manual_text):
+            manual_text = ""
+        # Update (2026-08-12, later still): per explicit request, scoped to
+        # HALF-DAY leave only (label contains "Half") — pre-existing manual
+        # text that adds no real information beyond what the overlay's own
+        # "L (1st Half)"/"L (2nd Half)" label already states (a bare "L", or
+        # a note that's just restating "1st half"/"2nd half"/"half day" in
+        # different casing/spacing) is dropped instead of being appended as
+        # a redundant-looking second line — see _is_redundant_half_day_note.
+        # Full-day leave is deliberately left exactly as it already was —
+        # including a bare "L" manual note, which still combines as
+        # "L\nL" — per explicit instruction not to touch that logic.
+        is_half_day = "Half" in label
+        if is_half_day and manual_text and _is_redundant_half_day_note(manual_text, label):
+            manual_text = ""
+        if manual_text:
+            existing.text = f"{label}\n{manual_text}"
+            existing.color = color
+        elif existing:
+            existing.text = label
             existing.color = color
         else:
-            cells_by_key[key] = CellRow(executive_id=executive_id, day=day, text=text, color=color, text_color=None)
+            cells_by_key[key] = CellRow(executive_id=executive_id, day=day, text=label, color=color, text_color=None)
 
     return CellsResponse(executives=executives, days=days, cells=list(cells_by_key.values()))
 

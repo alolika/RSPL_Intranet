@@ -1,0 +1,778 @@
+INFO:     Will watch for changes in these directories: ['D:\\Maruti_workspace\\rspl_Api']
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     Started reloader process [14952] using WatchFiles
+INFO:     Started server process [6640]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     192.168.200.18:63367 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63377 - "GET /engineering-hub/tasks?include_closed=true HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63380 - "GET /engineering-hub/tasks?include_closed=true&date_from=2099-01-01 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63389 - "GET /engineering-hub/tasks?include_closed=true&date_to=2000-01-01 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63392 - "GET /engineering-hub/tasks?include_closed=true&date_from=2026-01-01 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63400 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63401 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63399 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63402 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63398 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63400 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63401 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63403 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63402 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63399 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63413 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63418 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63416 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63415 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63414 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63417 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63413 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\enghub_devitems.py", line 116, in get_development_items_lookup
+    cursor.execute("SELECT DevItemId, Title FROM EngHub_DevelopmentItem ORDER BY DevItemId DESC")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.Error: ('HY000', '[HY000] [Microsoft][ODBC Driver 17 for SQL Server]Connection is busy with results for another command (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:63418 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63416 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63415 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63429 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63431 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63432 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63433 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63430 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63429 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\enghub_devitems.py", line 116, in get_development_items_lookup
+    cursor.execute("SELECT DevItemId, Title FROM EngHub_DevelopmentItem ORDER BY DevItemId DESC")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.Error: ('HY000', '[HY000] [Microsoft][ODBC Driver 17 for SQL Server]Connection is busy with results for another command (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:63434 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63431 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63432 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63433 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63442 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63445 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63446 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63444 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63443 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63447 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63442 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63445 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63444 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63446 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63455 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63452 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63454 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63456 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63453 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63457 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63455 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63452 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63456 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63454 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63462 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63464 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63465 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63467 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63463 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63466 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63464 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63462 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63465 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63467 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63479 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63481 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&date_from=2026-07-31T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63481 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&date_from=2026-07-31T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63481 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&date_from=2026-07-31T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63481 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&date_from=2026-07-31T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&date_from=2026-07-31T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&date_from=2026-07-31T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&date_from=2026-07-31T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&date_from=2026-07-31T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&date_from=2026-07-31T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&date_from=2026-07-31T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&date_from=2026-07-31T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "OPTIONS /engineering-hub/tasks?include_closed=false&product_ids=12&date_from=2026-07-31T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "GET /engineering-hub/tasks?include_closed=false&product_ids=12&date_from=2026-07-31T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&date_from=2026-07-31T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&date_from=2026-07-31T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "OPTIONS /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63485 - "OPTIONS /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63486 - "OPTIONS /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63486 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63485 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63485 - "OPTIONS /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63486 - "OPTIONS /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63485 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63486 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "OPTIONS /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63485 - "OPTIONS /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "OPTIONS /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63485 - "OPTIONS /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63489 - "OPTIONS /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "OPTIONS /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63488 - "OPTIONS /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63485 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63486 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63487 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63488 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63489 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63485 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63487 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63486 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63488 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "OPTIONS /engineering-hub/tasks?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63482 - "GET /engineering-hub/tasks?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63493 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63493 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&date_from=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63493 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&date_from=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63493 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63493 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63511 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63513 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63514 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63512 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63510 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63511 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63515 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63513 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63512 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63514 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63522 - "GET /engineering-hub/tasks?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63524 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63525 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63526 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63526 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63524 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63527 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63528 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63525 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63529 - "GET /engineering-hub/modules/lookup HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\enghub_masters.py", line 232, in get_modules_lookup
+    cursor.execute("SELECT ModuleId, Name FROM EngHub_Module WHERE Enabled = 1 ORDER BY Name")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.Error: ('HY000', '[HY000] [Microsoft][ODBC Driver 17 for SQL Server]Connection is busy with results for another command (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:63526 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63524 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63528 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63527 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63527 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63527 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63527 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63527 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63528 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63527 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63528 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63528 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63527 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63528 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63528 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63527 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63528 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63527 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63530 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&feature_ids=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63530 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&feature_ids=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63530 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&feature_ids=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63530 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&feature_ids=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63530 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&feature_ids=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63537 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&feature_ids=15&date_from=2026-08-01T18:30:00.000Z&date_to=2026-08-08T18:29:59.999Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63537 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&feature_ids=15&date_from=2026-08-01T18:30:00.000Z&date_to=2026-08-08T18:29:59.999Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63537 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&feature_ids=15&date_from=2026-08-01T18:30:00.000Z&date_to=2026-08-08T18:29:59.999Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63537 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&feature_ids=15&date_from=2026-08-01T18:30:00.000Z&date_to=2026-08-08T18:29:59.999Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63537 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&feature_ids=15&date_from=2026-08-01T18:30:00.000Z&date_to=2026-08-08T18:29:59.999Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63537 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&feature_ids=15&date_from=2026-08-01T18:30:00.000Z&date_to=2026-08-08T18:29:59.999Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63537 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&feature_ids=15&date_from=2026-08-02T18:30:00.000Z&date_to=2026-08-08T18:29:59.999Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63537 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&feature_ids=15&date_from=2026-08-02T18:30:00.000Z&date_to=2026-08-08T18:29:59.999Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63537 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&feature_ids=15&date_from=2026-08-02T18:30:00.000Z&date_to=2026-08-08T18:29:59.999Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63537 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12&feature_ids=15&date_from=2026-08-02T18:30:00.000Z&date_to=2026-08-08T18:29:59.999Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63539 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63539 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63539 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63539 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63539 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63539 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63539 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63539 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63540 - "OPTIONS /engineering-hub/tasks?include_closed=false&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63540 - "GET /engineering-hub/tasks?include_closed=false&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63543 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63543 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63543 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63543 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63543 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63543 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63543 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63543 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63543 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63642 - "OPTIONS /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63643 - "OPTIONS /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63644 - "OPTIONS /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63643 - "OPTIONS /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63642 - "OPTIONS /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63645 - "OPTIONS /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63646 - "OPTIONS /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63647 - "OPTIONS /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63644 - "OPTIONS /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63643 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63647 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63643 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63646 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63642 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63644 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63645 - "GET /engineering-hub/modules/lookup HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\enghub_masters.py", line 232, in get_modules_lookup
+    cursor.execute("SELECT ModuleId, Name FROM EngHub_Module WHERE Enabled = 1 ORDER BY Name")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.Error: ('HY000', '[HY000] [Microsoft][ODBC Driver 17 for SQL Server]Connection is busy with results for another command (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:63647 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63643 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63646 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63642 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63659 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63662 - "GET /engineering-hub/tasks?feature_ids=15&task_type_ids=4&status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63667 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63667 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63667 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63667 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63667 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63667 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63667 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63667 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63667 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63667 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63667 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63667 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63667 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63667 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63683 - "OPTIONS /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63684 - "OPTIONS /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63685 - "OPTIONS /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63686 - "OPTIONS /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63687 - "OPTIONS /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63683 - "OPTIONS /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63688 - "OPTIONS /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63684 - "OPTIONS /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63683 - "OPTIONS /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63683 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63683 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63687 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63688 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63684 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63686 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63685 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63687 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63683 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63688 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63684 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63684 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63683 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63688 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63687 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63685 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63686 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63684 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63683 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63688 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63687 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63695 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63695 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63695 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63695 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63695 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15&dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15&dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15&dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15&dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63697 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15&dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63700 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15&dev_item_ids=9&task_type_ids=2&task_type_ids=6&task_type_ids=1&task_type_ids=5&task_type_ids=4&task_type_ids=3 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63700 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15&dev_item_ids=9&task_type_ids=2&task_type_ids=6&task_type_ids=1&task_type_ids=5&task_type_ids=4&task_type_ids=3 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63700 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15&dev_item_ids=9&task_type_ids=2&task_type_ids=6&task_type_ids=1&task_type_ids=5&task_type_ids=4&task_type_ids=3 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63700 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15&dev_item_ids=9&task_type_ids=2&task_type_ids=6&task_type_ids=1&task_type_ids=5&task_type_ids=4&task_type_ids=3 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63700 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15&dev_item_ids=9&task_type_ids=2&task_type_ids=6&task_type_ids=1&task_type_ids=5&task_type_ids=4&task_type_ids=3 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63700 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&module_ids=12&feature_ids=15&dev_item_ids=9&task_type_ids=2&task_type_ids=6&task_type_ids=1&task_type_ids=5&task_type_ids=4&task_type_ids=3 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63700 - "OPTIONS /engineering-hub/tasks?include_closed=false&module_ids=12&feature_ids=15&dev_item_ids=9&task_type_ids=2&task_type_ids=6&task_type_ids=1&task_type_ids=5&task_type_ids=4&task_type_ids=3 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63700 - "GET /engineering-hub/tasks?include_closed=false&module_ids=12&feature_ids=15&dev_item_ids=9&task_type_ids=2&task_type_ids=6&task_type_ids=1&task_type_ids=5&task_type_ids=4&task_type_ids=3 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63700 - "GET /engineering-hub/tasks?include_closed=false&module_ids=12&feature_ids=15&dev_item_ids=9&task_type_ids=2&task_type_ids=6&task_type_ids=1&task_type_ids=5&task_type_ids=4&task_type_ids=3 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63731 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63734 - "GET /engineering-hub/tasks?assigned_to_user_id=24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63737 - "GET /engineering-hub/tasks?assigned_to_user_id=24&feature_ids=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63740 - "GET /engineering-hub/tasks?feature_ids=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63744 - "GET /engineering-hub/tasks?assigned_to_user_id=24&developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63747 - "GET /engineering-hub/tasks?developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63755 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63759 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63758 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63760 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63756 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63757 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63759 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63755 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63760 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63758 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63771 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63772 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63767 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63769 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63768 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63772 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63770 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63771 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63767 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63769 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63784 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63781 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63783 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63786 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63782 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63785 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63784 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63781 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63783 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63786 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63789 - "OPTIONS /engineering-hub/tasks?include_closed=false&dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63789 - "GET /engineering-hub/tasks?include_closed=false&dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63790 - "OPTIONS /engineering-hub/tasks?include_closed=false&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63790 - "GET /engineering-hub/tasks?include_closed=false&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63790 - "GET /engineering-hub/tasks?include_closed=false&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63791 - "OPTIONS /engineering-hub/tasks?include_closed=false&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63791 - "GET /engineering-hub/tasks?include_closed=false&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63791 - "GET /engineering-hub/tasks?include_closed=false&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63792 - "GET /engineering-hub/tasks?include_closed=false&task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63793 - "OPTIONS /engineering-hub/tasks?include_closed=false&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63793 - "GET /engineering-hub/tasks?include_closed=false&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63793 - "GET /engineering-hub/tasks?include_closed=false&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63793 - "GET /engineering-hub/tasks?include_closed=false&product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63794 - "OPTIONS /engineering-hub/tasks/12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63794 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63803 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63804 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63805 - "GET /engineering-hub/tasks/12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63812 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63805 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63803 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63794 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63804 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63812 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63811 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63805 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63803 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63794 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63794 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63794 - "OPTIONS /engineering-hub/tasks?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63794 - "GET /engineering-hub/tasks?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63822 - "OPTIONS /engineering-hub/tasks?include_closed=false&developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63822 - "GET /engineering-hub/tasks?include_closed=false&developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63822 - "GET /engineering-hub/tasks?include_closed=false&developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63822 - "GET /engineering-hub/tasks?include_closed=false&developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63822 - "GET /engineering-hub/tasks?include_closed=false&developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63822 - "GET /engineering-hub/tasks?include_closed=false&developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63822 - "GET /engineering-hub/tasks?include_closed=false&developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63822 - "GET /engineering-hub/tasks?include_closed=false&developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63822 - "GET /engineering-hub/tasks?include_closed=false&developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63823 - "OPTIONS /engineering-hub/tasks?include_closed=false&developer_user_ids=131&developer_user_ids=24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63823 - "GET /engineering-hub/tasks?include_closed=false&developer_user_ids=131&developer_user_ids=24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63826 - "GET /engineering-hub/tasks?include_closed=false&developer_user_ids=131&developer_user_ids=24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63828 - "OPTIONS /engineering-hub/tasks?include_closed=false&date_from=2026-08-05T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63828 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-05T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63828 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-05T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63828 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-05T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63828 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-05T18:30:00.000Z&date_to=2026-08-06T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63829 - "OPTIONS /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63829 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63829 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63829 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63829 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63829 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63829 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63829 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63829 - "OPTIONS /engineering-hub/tasks?include_closed=false&date_from=2026-08-01T18:30:00.000Z&date_to=2026-08-08T18:29:59.999Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63829 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-01T18:30:00.000Z&date_to=2026-08-08T18:29:59.999Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63829 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-01T18:30:00.000Z&date_to=2026-08-08T18:29:59.999Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63829 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-01T18:30:00.000Z&date_to=2026-08-08T18:29:59.999Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63832 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63833 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63831 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63830 - "GET /engineering-hub/tasks/12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63830 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63832 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63833 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63835 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63831 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63836 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63830 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63832 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63833 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63835 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63835 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63835 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-01T18:30:00.000Z&date_to=2026-08-08T18:29:59.999Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63835 - "OPTIONS /engineering-hub/development-items/9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63835 - "OPTIONS /engineering-hub/tasks?include_closed=true&dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63842 - "OPTIONS /engineering-hub/releases/for-entity?dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63844 - "OPTIONS /engineering-hub/activities?dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63835 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63845 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63843 - "GET /engineering-hub/development-items/9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63843 - "OPTIONS /engineering-hub/features/15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63844 - "GET /engineering-hub/activities?dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63844 - "OPTIONS /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63842 - "GET /engineering-hub/releases/for-entity?dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63842 - "OPTIONS /engineering-hub/decisions?dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63843 - "GET /engineering-hub/features/15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63844 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63842 - "GET /engineering-hub/decisions?dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63847 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63849 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63848 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63849 - "OPTIONS /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63847 - "OPTIONS /engineering-hub/features/lookup?module_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63850 - "OPTIONS /engineering-hub/development-items/lookup?feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63847 - "GET /engineering-hub/features/lookup?module_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63849 - "GET /engineering-hub/development-items/lookup?feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63850 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63847 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63850 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63848 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63852 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63849 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63850 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63847 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63853 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63852 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63848 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63856 - "GET /engineering-hub/tasks?developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63862 - "GET /engineering-hub/tasks?feature_ids=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63868 - "GET /engineering-hub/tasks?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63871 - "GET /engineering-hub/tasks?assigned_to_user_id=24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63877 - "OPTIONS /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63877 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63878 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63878 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63878 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63878 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63878 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63878 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63878 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63878 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63878 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63878 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63883 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63900 - "OPTIONS /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-24T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63900 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-24T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63900 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-24T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63900 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-24T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63900 - "OPTIONS /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63911 - "OPTIONS /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63910 - "OPTIONS /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63909 - "OPTIONS /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63900 - "OPTIONS /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63913 - "OPTIONS /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63912 - "OPTIONS /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63911 - "OPTIONS /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63909 - "OPTIONS /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63910 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63911 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63910 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63900 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63909 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63912 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63913 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63911 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63910 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63900 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63909 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63914 - "OPTIONS /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-19T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63914 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-19T18:30:00.000Z HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\routers\enghub_tasks.py'. Reloading...
+INFO:     192.168.200.18:63915 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63915 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63915 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63915 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63915 - "GET /engineering-hub/tasks?include_closed=false&date_from=2026-08-07T18:30:00.000Z&date_to=2026-08-07T18:30:00.000Z HTTP/1.1" 200 OK

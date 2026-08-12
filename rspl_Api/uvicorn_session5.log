@@ -1,0 +1,32 @@
+INFO:     Will watch for changes in these directories: ['D:\\Maruti_workspace\\rspl_Api']
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     Started reloader process [13504] using WatchFiles
+INFO:     Started server process [14164]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:54158 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54171 - "GET /engineering-hub/reports/feature-effort HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54177 - "GET /engineering-hub/reports/feature-effort?product_id=12 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54183 - "GET /engineering-hub/reports/feature-effort?product_id=999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54189 - "GET /engineering-hub/reports/feature-effort?feature_id=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54195 - "GET /engineering-hub/reports/feature-effort?product_id=12&module_id=12&feature_id=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54201 - "GET /engineering-hub/reports/feature-effort?product_id=12&feature_id=9999 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54554 - "OPTIONS /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54555 - "OPTIONS /engineering-hub/reports/feature-effort HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54555 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54554 - "GET /engineering-hub/reports/feature-effort HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\routers\enghub_reports.py'. Reloading...
+ INFO:     192.168.200.18:54600 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54601 - "GET /engineering-hub/reports/feature-effort HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54613 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54614 - "GET /engineering-hub/reports/feature-effort HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54620 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54621 - "GET /engineering-hub/reports/feature-effort HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54627 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54628 - "GET /engineering-hub/reports/feature-effort HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54637 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54638 - "GET /engineering-hub/reports/feature-effort HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54642 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54643 - "GET /engineering-hub/reports/feature-effort HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54652 - "OPTIONS /engineering-hub/reports/feature-effort/15/entries HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54652 - "GET /engineering-hub/reports/feature-effort/15/entries HTTP/1.1" 404 Not Found

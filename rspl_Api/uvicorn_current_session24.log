@@ -1,0 +1,29 @@
+INFO:     Will watch for changes in these directories: ['D:\\Maruti_workspace\\rspl_Api']
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     Started reloader process [1812] using WatchFiles
+INFO:     Started server process [17840]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     192.168.200.18:49275 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49284 - "POST /engineering-hub/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49287 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49290 - "POST /engineering-hub/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49296 - "GET /engineering-hub/modules/lookup?product_id=16 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49299 - "POST /engineering-hub/features HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49302 - "GET /engineering-hub/features/20/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49305 - "PUT /engineering-hub/features/20/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49308 - "GET /engineering-hub/features/20/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49312 - "PUT /engineering-hub/features/20/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49315 - "GET /engineering-hub/features/20/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49327 - "PUT /engineering-hub/features/20/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49330 - "GET /engineering-hub/features/20/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49346 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49346 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49365 - "POST /engineering-hub/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49368 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49371 - "POST /engineering-hub/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49374 - "GET /engineering-hub/modules/lookup?product_id=17 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49377 - "POST /engineering-hub/features HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49380 - "PUT /engineering-hub/features/21/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49383 - "GET /engineering-hub/features/21/ticket HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\routers\enghub_devitems.py'. Reloading...

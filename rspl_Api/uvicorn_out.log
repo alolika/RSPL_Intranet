@@ -1,0 +1,552 @@
+INFO:     192.168.200.18:57191 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57194 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57194 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57194 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57194 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57197 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57198 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57199 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57194 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57197 - "GET /general/dashboards/holiday-list HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57199 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57201 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57198 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57210 - "OPTIONS /engineering-hub/dashboard/summary HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57211 - "OPTIONS /engineering-hub/dashboard/recent-activity HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57198 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57211 - "GET /engineering-hub/dashboard/recent-activity HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57210 - "GET /engineering-hub/dashboard/summary HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57211 - "OPTIONS /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57213 - "OPTIONS /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57214 - "OPTIONS /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57213 - "OPTIONS /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57211 - "OPTIONS /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57213 - "OPTIONS /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57214 - "OPTIONS /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57216 - "OPTIONS /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57215 - "OPTIONS /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57211 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57210 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57213 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57216 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57215 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57214 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57211 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57217 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57213 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57216 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57214 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57215 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57223 - "GET /engineering-hub/dashboard/recent-activity HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57221 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57222 - "GET /engineering-hub/dashboard/summary HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57222 - "OPTIONS /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57223 - "OPTIONS /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57223 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57224 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57225 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57222 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57222 - "OPTIONS /engineering-hub/development-items?include_closed=true HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57222 - "GET /engineering-hub/development-items?include_closed=true HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57230 - "GET /engineering-hub/dashboard/recent-activity HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57228 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57229 - "GET /engineering-hub/dashboard/summary HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57230 - "OPTIONS /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57230 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57232 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57233 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57229 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57237 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57239 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57236 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57238 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57238 - "GET /engineering-hub/development-items?include_closed=true HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57243 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57244 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57245 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57238 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57245 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57246 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57244 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57243 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57243 - "GET /engineering-hub/development-items?include_closed=true HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57248 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57250 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57249 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57247 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57250 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57251 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57249 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57248 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57248 - "GET /engineering-hub/development-items?include_closed=true HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57254 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57256 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57255 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57253 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57257 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57260 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57259 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57258 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57257 - "OPTIONS /engineering-hub/dev-item-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57263 - "OPTIONS /engineering-hub/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57262 - "OPTIONS /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57262 - "GET /engineering-hub/dev-item-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57260 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57259 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57263 - "GET /engineering-hub/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57264 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57262 - "OPTIONS /engineering-hub/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57262 - "OPTIONS /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57257 - "GET /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57264 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57264 - "OPTIONS /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57264 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57262 - "GET /engineering-hub/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57262 - "OPTIONS /engineering-hub/features/lookup?module_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57262 - "GET /engineering-hub/features/lookup?module_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57266 - "OPTIONS /engineering-hub/development-items HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57266 - "POST /engineering-hub/development-items HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57269 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57267 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57266 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57268 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57269 - "OPTIONS /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57267 - "OPTIONS /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57272 - "OPTIONS /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57273 - "OPTIONS /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57274 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57268 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57273 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57272 - "GET /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57272 - "OPTIONS /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57269 - "GET /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57269 - "OPTIONS /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57267 - "GET /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57267 - "OPTIONS /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57272 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57269 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57267 - "GET /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57277 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57281 - "OPTIONS /engineering-hub/development-items/lookup?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57278 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57276 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57279 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57280 - "GET /engineering-hub/features/lookup?module_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57277 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57281 - "GET /engineering-hub/development-items/lookup?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57281 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57282 - "OPTIONS /engineering-hub/tasks HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57282 - "POST /engineering-hub/tasks HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57282 - "OPTIONS /engineering-hub/tasks/18/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57282 - "PUT /engineering-hub/tasks/18/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57285 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57283 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57286 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57284 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57282 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57285 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57283 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57286 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57287 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57284 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57288 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57289 - "OPTIONS /engineering-hub/tasks?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57289 - "GET /engineering-hub/tasks?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57290 - "OPTIONS /engineering-hub/tasks/18/assign HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57290 - "POST /engineering-hub/tasks/18/assign HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57290 - "GET /engineering-hub/tasks?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57291 - "OPTIONS /engineering-hub/activities/work-log HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57291 - "POST /engineering-hub/activities/work-log HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57291 - "GET /engineering-hub/tasks?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57294 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57292 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57291 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57293 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57293 - "GET /engineering-hub/development-items?include_closed=true HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57296 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57297 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57298 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57295 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57300 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57302 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57299 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57301 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57302 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57305 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57304 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57301 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57300 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57306 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57302 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57304 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57305 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57300 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57307 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57300 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57304 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57307 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57305 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57309 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57308 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57313 - "GET /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57311 - "GET /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57310 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57313 - "GET /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57312 - "GET /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57311 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57309 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57311 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57313 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57309 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57312 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57316 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57315 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57318 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57317 - "GET /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57319 - "GET /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57320 - "GET /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57317 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57318 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57320 - "GET /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57333 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57335 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57332 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57334 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57338 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57337 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57339 - "GET /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57340 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57341 - "GET /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57342 - "GET /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57339 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57338 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57342 - "GET /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57363 - "OPTIONS /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57363 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57364 - "GET /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57365 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57367 - "GET /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57366 - "GET /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57368 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57370 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57369 - "GET /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57385 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57387 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57389 - "GET /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57386 - "GET /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57388 - "GET /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57386 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57389 - "GET /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57388 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57388 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57389 - "GET /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57385 - "GET /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57386 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57387 - "GET /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57389 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57386 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57387 - "GET /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57395 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57396 - "GET /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57397 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57399 - "GET /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57398 - "GET /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57399 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57397 - "GET /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57398 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57406 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57408 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57407 - "GET /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57410 - "GET /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57409 - "GET /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57410 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57407 - "GET /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57409 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57420 - "OPTIONS /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57423 - "OPTIONS /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57422 - "OPTIONS /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57424 - "OPTIONS /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57421 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57422 - "GET /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57423 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57420 - "GET /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57423 - "OPTIONS /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57424 - "GET /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57424 - "OPTIONS /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57420 - "OPTIONS /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57423 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57424 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57420 - "GET /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57448 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57452 - "GET /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57451 - "GET /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57452 - "GET /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57449 - "GET /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57450 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57449 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57452 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57452 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57461 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57463 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57468 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57471 - "GET /engineering-hub/features?include_disabled=true HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57477 - "GET /engineering-hub/features?include_disabled=true&product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57480 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57483 - "GET /engineering-hub/features?include_disabled=true&product_id=999999 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57489 - "OPTIONS /engineering-hub/development-items?include_closed=true&feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57486 - "OPTIONS /engineering-hub/activities?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57488 - "OPTIONS /engineering-hub/features/19/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57487 - "OPTIONS /engineering-hub/releases/for-entity?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57490 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57486 - "GET /engineering-hub/features/19/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57487 - "GET /engineering-hub/development-items?include_closed=true&feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57491 - "GET /engineering-hub/features/19 HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57488 - "GET /engineering-hub/activities?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57489 - "GET /engineering-hub/releases/for-entity?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57489 - "OPTIONS /engineering-hub/decisions?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57489 - "GET /engineering-hub/decisions?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57489 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57486 - "GET /engineering-hub/features/19/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57487 - "GET /engineering-hub/development-items?include_closed=true&feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57488 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57490 - "GET /engineering-hub/releases/for-entity?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57498 - "GET /engineering-hub/activities?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57498 - "OPTIONS /engineering-hub/attachments?entity_type=Feature&entity_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57498 - "GET /engineering-hub/attachments?entity_type=Feature&entity_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57490 - "GET /engineering-hub/decisions?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57490 - "OPTIONS /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57498 - "OPTIONS /engineering-hub/features?include_disabled=false&product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57498 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57490 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57488 - "GET /engineering-hub/features?include_disabled=false&product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57488 - "OPTIONS /engineering-hub/features/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57498 - "OPTIONS /engineering-hub/features/14/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57490 - "OPTIONS /engineering-hub/development-items?include_closed=true&feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57501 - "OPTIONS /engineering-hub/releases/for-entity?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57500 - "OPTIONS /engineering-hub/activities?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57502 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57498 - "GET /engineering-hub/features/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57501 - "GET /engineering-hub/features/14/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57500 - "GET /engineering-hub/development-items?include_closed=true&feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57501 - "OPTIONS /engineering-hub/attachments?entity_type=Feature&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57490 - "GET /engineering-hub/activities?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57488 - "GET /engineering-hub/releases/for-entity?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57488 - "OPTIONS /engineering-hub/decisions?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57501 - "GET /engineering-hub/attachments?entity_type=Feature&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57488 - "GET /engineering-hub/decisions?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57503 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57504 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57505 - "GET /engineering-hub/features?include_disabled=false&product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57505 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57504 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57506 - "GET /engineering-hub/features/19/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57503 - "GET /engineering-hub/development-items?include_closed=true&feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57508 - "GET /engineering-hub/activities?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57507 - "GET /engineering-hub/releases/for-entity?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57506 - "GET /engineering-hub/attachments?entity_type=Feature&entity_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57507 - "GET /engineering-hub/decisions?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57507 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57506 - "GET /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57504 - "GET /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57508 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57503 - "GET /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57506 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57504 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57503 - "GET /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57503 - "OPTIONS /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57504 - "OPTIONS /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57506 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57504 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57503 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57503 - "OPTIONS /engineering-hub/dashboard/summary HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57504 - "OPTIONS /engineering-hub/dashboard/recent-activity HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57503 - "GET /engineering-hub/dashboard/recent-activity HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57504 - "GET /engineering-hub/dashboard/summary HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57504 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57506 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57503 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57503 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57506 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57503 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57504 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57510 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57510 - "GET /general/dashboards/holiday-list HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57506 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57503 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57504 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57513 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57516 - "GET /engineering-hub/dashboard/recent-activity HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57504 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57515 - "GET /engineering-hub/dashboard/summary HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57516 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57518 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57515 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57517 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57517 - "OPTIONS /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57518 - "OPTIONS /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57516 - "OPTIONS /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57520 - "OPTIONS /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57521 - "OPTIONS /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57516 - "OPTIONS /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57518 - "OPTIONS /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57521 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57520 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57517 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57518 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57516 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57521 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57522 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57517 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57520 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57518 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57523 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57521 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57522 - "OPTIONS /engineering-hub/tasks/18/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57517 - "OPTIONS /engineering-hub/tasks/18 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57518 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57523 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57521 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57517 - "GET /engineering-hub/tasks/18/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57520 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57522 - "GET /engineering-hub/tasks/18 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57522 - "OPTIONS /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57517 - "OPTIONS /engineering-hub/development-items/lookup?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57520 - "OPTIONS /engineering-hub/features/lookup?module_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57523 - "OPTIONS /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57520 - "GET /engineering-hub/development-items/lookup?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57517 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57522 - "GET /engineering-hub/features/lookup?module_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57523 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57518 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57522 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57517 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57523 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57520 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57524 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57518 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57522 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57517 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57525 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57520 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57525 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57520 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57524 - "GET /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57517 - "GET /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57518 - "GET /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57522 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57524 - "GET /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57517 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57525 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57517 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57525 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57522 - "GET /engineering-hub/development-items?include_closed=true&feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57524 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57518 - "GET /engineering-hub/features/19/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57517 - "GET /engineering-hub/activities?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57526 - "GET /engineering-hub/releases/for-entity?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57518 - "GET /engineering-hub/attachments?entity_type=Feature&entity_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57526 - "GET /engineering-hub/decisions?feature_id=19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57528 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57530 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57527 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57529 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57529 - "OPTIONS /engineering-hub/development-items?include_closed=true HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57529 - "GET /engineering-hub/development-items?include_closed=true HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57530 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57529 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57531 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57528 - "GET /engineering-hub/development-items/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57533 - "GET /engineering-hub/activities?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57532 - "GET /engineering-hub/releases/for-entity?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57528 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57533 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57531 - "GET /engineering-hub/decisions?dev_item_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57677 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57675 - "OPTIONS /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57674 - "OPTIONS /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57676 - "OPTIONS /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57675 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57677 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57674 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57676 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57674 - "OPTIONS /engineering-hub/dev-item-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57677 - "OPTIONS /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57675 - "OPTIONS /engineering-hub/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57675 - "GET /engineering-hub/dev-item-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57677 - "GET /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57679 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57674 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57680 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57681 - "GET /engineering-hub/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57681 - "OPTIONS /engineering-hub/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57680 - "OPTIONS /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57681 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57680 - "GET /engineering-hub/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57680 - "OPTIONS /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57680 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57682 - "OPTIONS /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57684 - "OPTIONS /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57684 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57685 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57682 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57683 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57685 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57682 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57685 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57685 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57690 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57688 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57689 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57687 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57688 - "OPTIONS /engineering-hub/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57688 - "GET /engineering-hub/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57689 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57688 - "GET /engineering-hub/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57688 - "OPTIONS /engineering-hub/modules?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57688 - "GET /engineering-hub/modules?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57693 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57694 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57695 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57688 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57694 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57693 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57695 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57696 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57694 - "OPTIONS /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57699 - "OPTIONS /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57697 - "OPTIONS /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57698 - "OPTIONS /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57694 - "OPTIONS /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57699 - "OPTIONS /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57697 - "OPTIONS /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57698 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57693 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57697 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57694 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57696 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57699 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57698 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57693 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57694 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57697 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57700 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57699 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57704 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57701 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57703 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57702 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57709 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57708 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57710 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57707 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57712 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57716 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57711 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+INFO:     192.168.200.18:57713 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57715 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57716 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57712 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57717 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57715 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57713 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:57714 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK

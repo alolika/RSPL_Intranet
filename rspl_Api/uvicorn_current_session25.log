@@ -1,0 +1,291 @@
+INFO:     Will watch for changes in these directories: ['D:\\Maruti_workspace\\rspl_Api']
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     Started reloader process [6924] using WatchFiles
+INFO:     Started server process [13860]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     192.168.200.18:49414 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49420 - "GET /engineering-hub/tickets?search=18305 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49426 - "GET /engineering-hub/tickets HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49434 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49434 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49445 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49445 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49446 - "OPTIONS /engineering-hub/tickets?search=kaka HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49446 - "GET /engineering-hub/tickets?search=kaka HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49446 - "OPTIONS /engineering-hub/tickets?search=kak HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49446 - "GET /engineering-hub/tickets?search=kak HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49446 - "OPTIONS /engineering-hub/tickets?search=k HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49446 - "GET /engineering-hub/tickets?search=k HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49446 - "OPTIONS /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49446 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49448 - "OPTIONS /engineering-hub/tickets?search=1251 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49448 - "GET /engineering-hub/tickets?search=1251 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49453 - "OPTIONS /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49452 - "OPTIONS /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49454 - "OPTIONS /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49454 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49452 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49453 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49453 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49453 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49455 - "OPTIONS /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49455 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49456 - "OPTIONS /engineering-hub/features HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49456 - "POST /engineering-hub/features HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49456 - "OPTIONS /engineering-hub/features/22/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49456 - "PUT /engineering-hub/features/22/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49456 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49457 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49458 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49457 - "OPTIONS /engineering-hub/features/22 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49456 - "OPTIONS /engineering-hub/development-items?include_closed=true&feature_id=22 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49464 - "OPTIONS /engineering-hub/features/22/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49465 - "OPTIONS /engineering-hub/releases/for-entity?feature_id=22 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49465 - "OPTIONS /engineering-hub/activities?feature_id=22 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49458 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49457 - "GET /engineering-hub/features/22/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49464 - "GET /engineering-hub/features/22 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49464 - "OPTIONS /engineering-hub/attachments?entity_type=Feature&entity_id=22 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49456 - "GET /engineering-hub/development-items?include_closed=true&feature_id=22 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49465 - "GET /engineering-hub/releases/for-entity?feature_id=22 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49466 - "GET /engineering-hub/activities?feature_id=22 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49466 - "OPTIONS /engineering-hub/decisions?feature_id=22 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49464 - "GET /engineering-hub/attachments?entity_type=Feature&entity_id=22 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49466 - "GET /engineering-hub/decisions?feature_id=22 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49471 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49470 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49469 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49473 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49472 - "GET /engineering-hub/features/22 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49474 - "GET /engineering-hub/features/22/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49474 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49474 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49480 - "GET /engineering-hub/tickets?search=1830 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49482 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49483 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "OPTIONS /engineering-hub/features/15/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49482 - "OPTIONS /engineering-hub/features/15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49483 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49482 - "GET /engineering-hub/features/15/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "GET /engineering-hub/features/15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49482 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49483 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49483 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "GET /engineering-hub/features/22/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49482 - "GET /engineering-hub/features/22 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49482 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49482 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49483 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "OPTIONS /engineering-hub/features/19/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49482 - "OPTIONS /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49483 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "GET /engineering-hub/features/19 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49482 - "GET /engineering-hub/features/19/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49482 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49483 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "OPTIONS /engineering-hub/features/14/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49482 - "OPTIONS /engineering-hub/features/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49483 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "GET /engineering-hub/features/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49482 - "GET /engineering-hub/features/14/ticket HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49482 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49482 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49482 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49481 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49483 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49491 - "OPTIONS /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49490 - "OPTIONS /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49489 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49491 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49490 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49494 - "OPTIONS /engineering-hub/dev-item-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49495 - "OPTIONS /engineering-hub/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49496 - "OPTIONS /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49493 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49496 - "GET /engineering-hub/dev-item-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49494 - "GET /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49497 - "GET /engineering-hub/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49495 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49495 - "OPTIONS /engineering-hub/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49495 - "GET /engineering-hub/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49497 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49529 - "GET /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49535 - "POST /engineering-hub/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49538 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49541 - "POST /engineering-hub/modules HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49544 - "GET /engineering-hub/modules/lookup?product_id=18 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49547 - "POST /engineering-hub/features HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49552 - "POST /engineering-hub/development-items HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49555 - "GET /engineering-hub/development-items/11 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49574 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49577 - "GET /engineering-hub/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49575 - "GET /engineering-hub/dev-item-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49576 - "GET /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49578 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49576 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49578 - "GET /engineering-hub/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49594 - "GET /engineering-hub/dev-item-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49593 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49596 - "GET /engineering-hub/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49595 - "GET /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49597 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49595 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49597 - "GET /engineering-hub/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49620 - "GET /engineering-hub/tickets?search=183051 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49661 - "OPTIONS /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49663 - "OPTIONS /engineering-hub/dev-item-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49662 - "OPTIONS /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49661 - "OPTIONS /engineering-hub/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49672 - "OPTIONS /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49663 - "GET /engineering-hub/dev-item-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49672 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49661 - "GET /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49662 - "GET /engineering-hub/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49670 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49670 - "OPTIONS /engineering-hub/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49662 - "OPTIONS /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49670 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49662 - "GET /engineering-hub/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49662 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49670 - "GET /engineering-hub/dev-item-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49672 - "GET /engineering-hub/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49661 - "GET /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49663 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49661 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49663 - "GET /engineering-hub/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49663 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49670 - "GET /engineering-hub/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49661 - "GET /engineering-hub/dev-item-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49672 - "GET /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49662 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49672 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49662 - "GET /engineering-hub/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49761 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49787 - "OPTIONS /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49788 - "OPTIONS /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49787 - "OPTIONS /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49788 - "OPTIONS /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49787 - "OPTIONS /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49790 - "OPTIONS /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49789 - "OPTIONS /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49791 - "OPTIONS /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49787 - "OPTIONS /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49787 - "OPTIONS /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49790 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49789 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49791 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49792 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49787 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49790 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49789 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49788 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49792 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49791 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49791 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49792 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49788 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49793 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49794 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49796 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49797 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49798 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49795 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49793 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49794 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49796 - "GET /engineering-hub/user-current-task HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\enghub_activities.py", line 436, in get_current_task
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT t.TaskId, t.Title FROM EngHub_UserCurrentTask c "
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        "JOIN EngHub_Task t ON t.TaskId = c.TaskId WHERE c.UserId = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        user.user_id,
+        ^^^^^^^^^^^^^
+    )
+    ^
+pyodbc.Error: ('HY000', '[HY000] [Microsoft][ODBC Driver 17 for SQL Server]Connection is busy with results for another command (0) (SQLExecDirectW)')
+INFO:     192.168.200.18:49797 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49803 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49804 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49805 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\routers\enghub_tasks.py'. Reloading...

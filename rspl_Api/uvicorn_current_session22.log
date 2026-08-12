@@ -1,0 +1,1354 @@
+INFO:     Will watch for changes in these directories: ['D:\\Maruti_workspace\\rspl_Api']
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     Started reloader process [12016] using WatchFiles
+INFO:     Started server process [17636]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     192.168.200.18:64591 - "GET /engineering-hub/health HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:64597 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64600 - "GET /engineering-hub/activities/browse?activity_type_ids=1&activity_type_ids=10 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64619 - "OPTIONS /engineering-hub/activity-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64620 - "OPTIONS /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64621 - "OPTIONS /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64620 - "OPTIONS /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64621 - "OPTIONS /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64619 - "OPTIONS /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64622 - "OPTIONS /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64623 - "OPTIONS /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64620 - "OPTIONS /engineering-hub/activities/browse HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64620 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64623 - "GET /engineering-hub/activity-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64619 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64621 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64622 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64624 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64620 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64619 - "GET /engineering-hub/activities/browse HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64623 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64639 - "GET /engineering-hub/activities/browse HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64642 - "GET /engineering-hub/activities/browse?feature_ids=15&task_type_ids=1&status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64645 - "GET /engineering-hub/activities/browse?date_from=2026-08-08&date_to=2026-08-08 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64648 - "GET /engineering-hub/activities/browse?developer_user_ids=131&activity_type_ids=1 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64735 - "OPTIONS /engineering-hub/activities/browse?activity_type_ids=6 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64735 - "GET /engineering-hub/activities/browse?activity_type_ids=6 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64744 - "OPTIONS /engineering-hub/activities/browse?module_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64744 - "GET /engineering-hub/activities/browse?module_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64746 - "OPTIONS /engineering-hub/activities/browse?module_ids=12&dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64746 - "GET /engineering-hub/activities/browse?module_ids=12&dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64746 - "GET /engineering-hub/activities/browse?module_ids=12&dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64746 - "GET /engineering-hub/activities/browse?module_ids=12&dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64746 - "GET /engineering-hub/activities/browse?module_ids=12&dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64746 - "GET /engineering-hub/activities/browse?module_ids=12&dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "OPTIONS /engineering-hub/activities/browse?module_ids=12&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?module_ids=12&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?module_ids=12&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?module_ids=12&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?module_ids=12&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?module_ids=12&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?module_ids=12&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?module_ids=12&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?module_ids=12&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?module_ids=12&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "OPTIONS /engineering-hub/activities/browse?module_ids=12&module_ids=14&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?module_ids=12&module_ids=14&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?module_ids=12&module_ids=14&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?module_ids=12&module_ids=14&dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "OPTIONS /engineering-hub/activities/browse?dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?dev_item_ids=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "OPTIONS /engineering-hub/activities/browse?dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64747 - "GET /engineering-hub/activities/browse?dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64749 - "OPTIONS /engineering-hub/activities/browse?dev_item_ids=9&task_type_ids=6 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64749 - "GET /engineering-hub/activities/browse?dev_item_ids=9&task_type_ids=6 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64749 - "GET /engineering-hub/activities/browse?dev_item_ids=9&task_type_ids=6 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64749 - "GET /engineering-hub/activities/browse?dev_item_ids=9&task_type_ids=6 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64749 - "GET /engineering-hub/activities/browse?dev_item_ids=9&task_type_ids=6 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64752 - "OPTIONS /engineering-hub/activities/browse?dev_item_ids=9&task_type_ids=6&task_type_ids=1 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64752 - "GET /engineering-hub/activities/browse?dev_item_ids=9&task_type_ids=6&task_type_ids=1 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64759 - "OPTIONS /engineering-hub/activities/browse?dev_item_ids=9&task_type_ids=6&task_type_ids=1&status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64759 - "GET /engineering-hub/activities/browse?dev_item_ids=9&task_type_ids=6&task_type_ids=1&status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64759 - "GET /engineering-hub/activities/browse?dev_item_ids=9&task_type_ids=6&task_type_ids=1&status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64759 - "GET /engineering-hub/activities/browse?dev_item_ids=9&task_type_ids=6&task_type_ids=1&status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64759 - "GET /engineering-hub/activities/browse?dev_item_ids=9&task_type_ids=6&task_type_ids=1&status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64760 - "GET /engineering-hub/activities/browse?dev_item_ids=9&task_type_ids=6&task_type_ids=1&status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64760 - "GET /engineering-hub/activities/browse?dev_item_ids=9&task_type_ids=6&task_type_ids=1&status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64764 - "OPTIONS /engineering-hub/activities/browse?status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64764 - "GET /engineering-hub/activities/browse?status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64764 - "GET /engineering-hub/activities/browse?status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64764 - "GET /engineering-hub/activities/browse?status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64765 - "GET /engineering-hub/activities/browse?status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64764 - "GET /engineering-hub/activities/browse?status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64764 - "OPTIONS /engineering-hub/activities/browse?status_ids=10 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64764 - "GET /engineering-hub/activities/browse?status_ids=10 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64764 - "GET /engineering-hub/activities/browse?status_ids=10 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64764 - "GET /engineering-hub/activities/browse?status_ids=10 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64764 - "GET /engineering-hub/activities/browse?status_ids=10 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64766 - "GET /engineering-hub/activities/browse?status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64767 - "GET /engineering-hub/activities/browse?status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64767 - "GET /engineering-hub/activities/browse?status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64767 - "GET /engineering-hub/activities/browse?status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64768 - "GET /engineering-hub/activities/browse?status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64771 - "OPTIONS /engineering-hub/activities/browse?developer_user_ids=24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64771 - "GET /engineering-hub/activities/browse?developer_user_ids=24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64771 - "GET /engineering-hub/activities/browse?developer_user_ids=24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64771 - "GET /engineering-hub/activities/browse?developer_user_ids=24 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64773 - "OPTIONS /engineering-hub/activities/browse?developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64773 - "GET /engineering-hub/activities/browse?developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64773 - "GET /engineering-hub/activities/browse?developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64774 - "OPTIONS /engineering-hub/activities/browse?developer_user_ids=131&date_from=2026-08-08&date_to=2026-08-08 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64774 - "GET /engineering-hub/activities/browse?developer_user_ids=131&date_from=2026-08-08&date_to=2026-08-08 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64774 - "GET /engineering-hub/activities/browse?developer_user_ids=131&date_from=2026-08-08&date_to=2026-08-08 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64774 - "OPTIONS /engineering-hub/activities/browse?date_from=2026-08-08&date_to=2026-08-08 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64774 - "GET /engineering-hub/activities/browse?date_from=2026-08-08&date_to=2026-08-08 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64776 - "OPTIONS /engineering-hub/activities/browse?logged_by_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64776 - "GET /engineering-hub/activities/browse?logged_by_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64779 - "OPTIONS /engineering-hub/activities/browse HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64779 - "GET /engineering-hub/activities/browse HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64782 - "OPTIONS /engineering-hub/activities/browse?logged_by_user_ids=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64782 - "GET /engineering-hub/activities/browse?logged_by_user_ids=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64882 - "OPTIONS /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64881 - "OPTIONS /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64881 - "OPTIONS /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64882 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64881 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64883 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64881 - "OPTIONS /engineering-hub/features/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64882 - "OPTIONS /engineering-hub/development-items?include_closed=true&feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64885 - "OPTIONS /engineering-hub/features/14/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64886 - "OPTIONS /engineering-hub/releases/for-entity?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64887 - "OPTIONS /engineering-hub/activities?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64883 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64887 - "GET /engineering-hub/development-items?include_closed=true&feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64885 - "GET /engineering-hub/features/14/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64886 - "GET /engineering-hub/features/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64886 - "OPTIONS /engineering-hub/attachments?entity_type=Feature&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64881 - "GET /engineering-hub/activities?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64882 - "GET /engineering-hub/releases/for-entity?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64882 - "OPTIONS /engineering-hub/decisions?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64886 - "GET /engineering-hub/attachments?entity_type=Feature&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64882 - "GET /engineering-hub/decisions?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64886 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64882 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64881 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64893 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64894 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64896 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64895 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64895 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64896 - "GET /engineering-hub/features/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64898 - "GET /engineering-hub/activities?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64896 - "GET /engineering-hub/attachments?entity_type=Feature&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64898 - "GET /engineering-hub/decisions?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64897 - "GET /engineering-hub/features/14/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64899 - "GET /engineering-hub/releases/for-entity?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64894 - "GET /engineering-hub/development-items?include_closed=true&feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64899 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64894 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64897 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\routers\enghub_features.py'. Reloading...
+INFO:     192.168.200.18:64938 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64938 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64938 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64940 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64941 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64941 - "GET /general/dashboards/holiday-list HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_dashboards.py", line 122, in get_holiday_list
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT HolidayDate, ToDate, Day, Event FROM RSPL_HolidayMaster WHERE Enabled = 1 ORDER BY HolidayDate"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'RSPL_HolidayMaster'. (208) (SQLExecDirectW)")
+INFO:     192.168.200.18:64938 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\general_dashboards.py", line 144, in get_holiday_list_title
+    cursor.execute("SELECT Name FROM RSPL_HolidayMasterSettings WHERE Id = 1")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'RSPL_HolidayMasterSettings'. (208) (SQLExecDirectW)")
+INFO:     192.168.200.18:64940 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64939 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\user_rights.py", line 27, in get_my_rights
+    return MyRightsResponse(forms={code: get_effective_access(current_user.user_id, code) for code in FORM_LABELS})
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\app\rights.py", line 66, in get_effective_access
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT AccessLevel FROM RSPL_UserFormRights WHERE UserId = ? AND FormCode = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        user_id, form_code,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'RSPL_UserFormRights'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+INFO:     192.168.200.18:64940 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\user_rights.py", line 27, in get_my_rights
+    return MyRightsResponse(forms={code: get_effective_access(current_user.user_id, code) for code in FORM_LABELS})
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\app\rights.py", line 66, in get_effective_access
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT AccessLevel FROM RSPL_UserFormRights WHERE UserId = ? AND FormCode = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        user_id, form_code,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'RSPL_UserFormRights'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+INFO:     192.168.200.18:64945 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64946 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64947 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64944 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\user_rights.py", line 27, in get_my_rights
+    return MyRightsResponse(forms={code: get_effective_access(current_user.user_id, code) for code in FORM_LABELS})
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\app\rights.py", line 66, in get_effective_access
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT AccessLevel FROM RSPL_UserFormRights WHERE UserId = ? AND FormCode = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        user_id, form_code,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'RSPL_UserFormRights'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+INFO:     192.168.200.18:64951 - "OPTIONS /engineering-hub/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64951 - "GET /engineering-hub/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64952 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\user_rights.py", line 27, in get_my_rights
+    return MyRightsResponse(forms={code: get_effective_access(current_user.user_id, code) for code in FORM_LABELS})
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\app\rights.py", line 66, in get_effective_access
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT AccessLevel FROM RSPL_UserFormRights WHERE UserId = ? AND FormCode = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        user_id, form_code,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'RSPL_UserFormRights'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+INFO:     192.168.200.18:64951 - "GET /engineering-hub/products HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64951 - "OPTIONS /engineering-hub/modules?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64951 - "GET /engineering-hub/modules?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64953 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64955 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64954 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64951 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\user_rights.py", line 27, in get_my_rights
+    return MyRightsResponse(forms={code: get_effective_access(current_user.user_id, code) for code in FORM_LABELS})
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\app\rights.py", line 66, in get_effective_access
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT AccessLevel FROM RSPL_UserFormRights WHERE UserId = ? AND FormCode = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        user_id, form_code,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'RSPL_UserFormRights'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+INFO:     192.168.200.18:64957 - "OPTIONS /engineering-hub/features/14/assign HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64957 - "POST /engineering-hub/features/14/assign HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64957 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64961 - "POST /engineering-hub/features/14/assign HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64961 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64966 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64961 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\user_rights.py", line 27, in get_my_rights
+    return MyRightsResponse(forms={code: get_effective_access(current_user.user_id, code) for code in FORM_LABELS})
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\app\rights.py", line 66, in get_effective_access
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT AccessLevel FROM RSPL_UserFormRights WHERE UserId = ? AND FormCode = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        user_id, form_code,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'RSPL_UserFormRights'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+INFO:     192.168.200.18:64965 - "GET /engineering-hub/features/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64963 - "GET /engineering-hub/features/14/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64962 - "GET /engineering-hub/releases/for-entity?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64964 - "GET /engineering-hub/development-items?include_closed=true&feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64966 - "GET /engineering-hub/activities?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64963 - "GET /engineering-hub/attachments?entity_type=Feature&entity_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64966 - "GET /engineering-hub/decisions?feature_id=14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64977 - "OPTIONS /engineering-hub/dev-item-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64974 - "OPTIONS /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64976 - "OPTIONS /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64975 - "OPTIONS /engineering-hub/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64975 - "GET /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64977 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64976 - "GET /engineering-hub/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64976 - "OPTIONS /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64977 - "OPTIONS /engineering-hub/features/lookup?module_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64973 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\user_rights.py", line 27, in get_my_rights
+    return MyRightsResponse(forms={code: get_effective_access(current_user.user_id, code) for code in FORM_LABELS})
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\app\rights.py", line 66, in get_effective_access
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT AccessLevel FROM RSPL_UserFormRights WHERE UserId = ? AND FormCode = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        user_id, form_code,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'RSPL_UserFormRights'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+INFO:     192.168.200.18:64974 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64978 - "GET /engineering-hub/dev-item-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64977 - "GET /engineering-hub/modules/lookup?product_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64976 - "GET /engineering-hub/features/lookup?module_id=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64976 - "OPTIONS /engineering-hub/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64977 - "OPTIONS /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64976 - "GET /engineering-hub/tickets?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64977 - "GET /engineering-hub/customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64978 - "OPTIONS /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64976 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64978 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64977 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\user_rights.py", line 27, in get_my_rights
+    return MyRightsResponse(forms={code: get_effective_access(current_user.user_id, code) for code in FORM_LABELS})
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\app\rights.py", line 66, in get_effective_access
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT AccessLevel FROM RSPL_UserFormRights WHERE UserId = ? AND FormCode = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        user_id, form_code,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'RSPL_UserFormRights'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+INFO:     192.168.200.18:64974 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64976 - "OPTIONS /engineering-hub/development-items/9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64975 - "OPTIONS /engineering-hub/tasks?include_closed=true&dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64980 - "OPTIONS /engineering-hub/activities?dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64979 - "OPTIONS /engineering-hub/releases/for-entity?dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64978 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64974 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\user_rights.py", line 27, in get_my_rights
+    return MyRightsResponse(forms={code: get_effective_access(current_user.user_id, code) for code in FORM_LABELS})
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\app\rights.py", line 66, in get_effective_access
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT AccessLevel FROM RSPL_UserFormRights WHERE UserId = ? AND FormCode = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        user_id, form_code,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'RSPL_UserFormRights'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+INFO:     192.168.200.18:64975 - "GET /engineering-hub/development-items/9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64975 - "OPTIONS /engineering-hub/features/15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64976 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64976 - "OPTIONS /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64980 - "GET /engineering-hub/releases/for-entity?dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64979 - "GET /engineering-hub/activities?dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64979 - "OPTIONS /engineering-hub/decisions?dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64975 - "GET /engineering-hub/features/15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64976 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64979 - "GET /engineering-hub/decisions?dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64983 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64982 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64984 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64981 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\user_rights.py", line 27, in get_my_rights
+    return MyRightsResponse(forms={code: get_effective_access(current_user.user_id, code) for code in FORM_LABELS})
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\app\rights.py", line 66, in get_effective_access
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT AccessLevel FROM RSPL_UserFormRights WHERE UserId = ? AND FormCode = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        user_id, form_code,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'RSPL_UserFormRights'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+INFO:     192.168.200.18:64983 - "OPTIONS /engineering-hub/development-items?include_closed=true&feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64986 - "OPTIONS /engineering-hub/releases/for-entity?feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64985 - "OPTIONS /engineering-hub/activities?feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64987 - "OPTIONS /engineering-hub/features/15/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64982 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64984 - "GET /user-rights/me HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2596, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1029, in run
+    result = context.run(func, *args)
+  File "D:\Maruti_workspace\rspl_Api\app\routers\user_rights.py", line 27, in get_my_rights
+    return MyRightsResponse(forms={code: get_effective_access(current_user.user_id, code) for code in FORM_LABELS})
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Maruti_workspace\rspl_Api\app\rights.py", line 66, in get_effective_access
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "SELECT AccessLevel FROM RSPL_UserFormRights WHERE UserId = ? AND FormCode = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        user_id, form_code,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'RSPL_UserFormRights'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+INFO:     192.168.200.18:64983 - "GET /engineering-hub/features/15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64983 - "OPTIONS /engineering-hub/attachments?entity_type=Feature&entity_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64986 - "GET /engineering-hub/development-items?include_closed=true&feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64985 - "GET /engineering-hub/features/15/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64987 - "GET /engineering-hub/activities?feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64987 - "OPTIONS /engineering-hub/decisions?feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64983 - "GET /engineering-hub/attachments?entity_type=Feature&entity_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64982 - "GET /engineering-hub/releases/for-entity?feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64987 - "GET /engineering-hub/decisions?feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64994 - "POST /engineering-hub/attachments?entity_type=Feature&entity_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64994 - "GET /engineering-hub/attachments?entity_type=Feature&entity_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64995 - "GET /engineering-hub/attachments/6/download HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65003 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65004 - "GET /engineering-hub/development-items?include_closed=true&feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65005 - "GET /engineering-hub/features/15/assignment-history HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65002 - "GET /engineering-hub/features/15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65006 - "GET /engineering-hub/releases/for-entity?feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65007 - "GET /engineering-hub/activities?feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65007 - "GET /engineering-hub/decisions?feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65006 - "GET /engineering-hub/attachments?entity_type=Feature&entity_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65006 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65007 - "GET /engineering-hub/dev-item-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65002 - "GET /engineering-hub/origin-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65004 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65003 - "GET /engineering-hub/development-items/9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65005 - "GET /engineering-hub/priorities HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65013 - "OPTIONS /engineering-hub/tickets?search=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65013 - "GET /engineering-hub/tickets?search=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65013 - "OPTIONS /engineering-hub/development-items HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65013 - "POST /engineering-hub/development-items HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65013 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65016 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65015 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65016 - "OPTIONS /engineering-hub/development-items/8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65013 - "OPTIONS /engineering-hub/tasks?include_closed=true&dev_item_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65017 - "OPTIONS /engineering-hub/releases/for-entity?dev_item_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65018 - "OPTIONS /engineering-hub/activities?dev_item_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65015 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65013 - "GET /engineering-hub/development-items/8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65018 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65018 - "OPTIONS /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65016 - "GET /engineering-hub/activities?dev_item_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65016 - "OPTIONS /engineering-hub/decisions?dev_item_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65017 - "GET /engineering-hub/releases/for-entity?dev_item_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65013 - "GET /engineering-hub/features/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65018 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65016 - "GET /engineering-hub/decisions?dev_item_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65016 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65013 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65015 - "GET /engineering-hub/activities?dev_item_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65018 - "GET /engineering-hub/development-items/8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65017 - "GET /engineering-hub/releases/for-entity?dev_item_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65015 - "GET /engineering-hub/features/14 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65018 - "GET /engineering-hub/decisions?dev_item_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65017 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65015 - "GET /engineering-hub/development-items?include_closed=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65017 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65018 - "GET /engineering-hub/statuses?entity_type=DevelopmentItem HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65018 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65015 - "GET /engineering-hub/tasks?include_closed=true&dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65017 - "GET /engineering-hub/development-items/9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65024 - "GET /engineering-hub/activities?dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65025 - "GET /engineering-hub/releases/for-entity?dev_item_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65017 - "GET /engineering-hub/features/15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65015 - "GET /engineering-hub/attachments?entity_type=DevelopmentItem&entity_id=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65024 - "GET /engineering-hub/decisions?dev_item_id=9 HTTP/1.1" 200 OK

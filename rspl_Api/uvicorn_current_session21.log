@@ -1,0 +1,26 @@
+INFO:     Will watch for changes in these directories: ['D:\\Maruti_workspace\\rspl_Api']
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     Started reloader process [10372] using WatchFiles
+INFO:     Started server process [17760]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     192.168.200.18:64425 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64439 - "GET /engineering-hub/activities/browse HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64445 - "GET /engineering-hub/tasks?include_closed=true HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64448 - "GET /engineering-hub/activities/browse HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64493 - "GET /engineering-hub/activities/browse?feature_ids=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64499 - "GET /engineering-hub/activities/browse?task_type_ids=4 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64505 - "GET /engineering-hub/activities/browse?developer_user_ids=131 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64508 - "GET /engineering-hub/activities/browse?dev_item_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64511 - "GET /engineering-hub/activities/browse?status_ids=9 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64520 - "GET /engineering-hub/activities/browse?date_to=2026-08-08 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64523 - "GET /engineering-hub/activities/browse?feature_ids=15&task_type_ids=1 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64526 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64548 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64554 - "GET /engineering-hub/activities?feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64557 - "GET /engineering-hub/development-items?feature_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64560 - "GET /engineering-hub/features HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64565 - "GET /engineering-hub/activities/browse?module_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64568 - "GET /engineering-hub/activities/browse?product_ids=12 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64571 - "GET /engineering-hub/activities/browse?product_ids=999999 HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\routers\enghub_activities.py'. Reloading...
