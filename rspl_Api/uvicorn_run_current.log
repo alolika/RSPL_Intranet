@@ -19,3 +19,13 @@ INFO:     192.168.200.18:51555 - "GET /support/executive-schedule/teams HTTP/1.1
 INFO:     192.168.200.18:51555 - "GET /support/executive-schedule/user-state HTTP/1.1" 200 OK
 INFO:     192.168.200.18:51555 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
 INFO:     127.0.0.1:51572 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=8 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51707 - "OPTIONS /general/leave/sanction-article/15188 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51707 - "GET /general/leave/sanction-article/15188 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51742 - "OPTIONS /support/executive-schedule/cells?team_id=2&year=2026&month=7 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51743 - "OPTIONS /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51742 - "PUT /support/executive-schedule/user-state HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51743 - "GET /support/executive-schedule/cells?team_id=2&year=2026&month=7 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51768 - "OPTIONS /support/executive-schedule/cells/save HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51768 - "POST /support/executive-schedule/cells/save HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51769 - "POST /support/executive-schedule/cells/save HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51769 - "POST /support/executive-schedule/cells/save HTTP/1.1" 200 OK

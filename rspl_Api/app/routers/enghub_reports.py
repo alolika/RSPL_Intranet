@@ -653,6 +653,7 @@ class RecentActivityRow(BaseModel):
     duration_minutes: int | None = None
     occurred_at: str
     logged_by_name: str
+    task_name: str | None = None
 
 
 @router.get("/dashboard/recent-activity", response_model=list[RecentActivityRow])
@@ -660,10 +661,11 @@ def get_recent_activity() -> list[RecentActivityRow]:
     with get_cursor() as cursor:
         cursor.execute(
             "SELECT TOP 20 a.ActivityId, at.Name AS ActivityTypeName, a.Description, a.DurationMinutes, "
-            "a.OccurredAt, u.Name AS LoggedByName "
+            "a.OccurredAt, u.Name AS LoggedByName, t.Title AS TaskName "
             "FROM EngHub_Activity a "
             "JOIN EngHub_ActivityType at ON at.ActivityTypeId = a.ActivityTypeId "
             "JOIN UserMaster u ON u.UserID = a.LoggedByUserId "
+            "LEFT JOIN EngHub_Task t ON t.TaskId = a.TaskId "
             "ORDER BY a.OccurredAt DESC"
         )
         rows = rows_to_dicts(cursor)
@@ -671,7 +673,7 @@ def get_recent_activity() -> list[RecentActivityRow]:
         RecentActivityRow(
             activity_id=r["ActivityId"], activity_type_name=r["ActivityTypeName"] or "", description=r["Description"],
             duration_minutes=r["DurationMinutes"], occurred_at=r["OccurredAt"].isoformat() if r["OccurredAt"] else "",
-            logged_by_name=r["LoggedByName"] or "",
+            logged_by_name=r["LoggedByName"] or "", task_name=r["TaskName"],
         )
         for r in rows
     ]
