@@ -62,3 +62,80 @@ INFO:     192.168.200.18:64678 - "GET /support/amc/special-ratings HTTP/1.1" 200
 INFO:     192.168.200.18:64678 - "OPTIONS /support/amc/enquiry-action-context?cust_id=97901&ref_action_id=2 HTTP/1.1" 200 OK
 INFO:     192.168.200.18:64678 - "GET /support/amc/enquiry-action-context?cust_id=97901&ref_action_id=2 HTTP/1.1" 200 OK
 INFO:     192.168.200.18:64696 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65449 - "GET /support/amc/competitors HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65451 - "GET /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65450 - "GET /marketing/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65453 - "GET /support/amc/action-stages HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65452 - "GET /marketing/register/customer-info/97901 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65448 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65448 - "GET /marketing/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65452 - "GET /support/amc/special-ratings HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65452 - "GET /support/amc/enquiry-action-context?cust_id=97901&ref_action_id=2 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65452 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65452 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65469 - "OPTIONS /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65470 - "OPTIONS /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65469 - "GET /marketing/enquiry/customers-for-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65470 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65452 - "GET /marketing/register/lookup/contact-persons?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49985 - "OPTIONS /marketing/register/search?mode=shop_id&value=97898 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49985 - "GET /marketing/register/search?mode=shop_id&value=97898 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49985 - "OPTIONS /marketing/register/actions/97898 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49985 - "GET /marketing/register/actions/97898 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49985 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49990 - "OPTIONS /support/amc/action-stages HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49991 - "OPTIONS /marketing/register/customer-info/97898 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49992 - "OPTIONS /marketing/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49993 - "OPTIONS /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49994 - "OPTIONS /support/amc/competitors HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49997 - "GET /support/amc/action-stages HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49996 - "GET /marketing/register/customer-info/97898 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49998 - "GET /support/amc/competitors HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49992 - "GET /support/amc/thanks-note-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49993 - "GET /marketing/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49995 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49995 - "OPTIONS /marketing/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49993 - "OPTIONS /support/amc/special-ratings HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49995 - "GET /support/amc/special-ratings HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49993 - "GET /marketing/salesmen HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49993 - "OPTIONS /support/amc/enquiry-action-context?cust_id=97898&ref_action_id=1 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49993 - "GET /support/amc/enquiry-action-context?cust_id=97898&ref_action_id=1 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49993 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49995 - "OPTIONS /support/missed-calls?product=Retailware&from_date=2026-08-18&to_date=2026-08-18 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49993 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49995 - "GET /support/missed-calls?product=Retailware&from_date=2026-08-18&to_date=2026-08-18 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53852 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53852 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53852 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53852 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53852 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53855 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53854 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53856 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53854 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53852 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53855 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53925 - "OPTIONS /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53924 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:53925 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54175 - "OPTIONS /general/leave/sanction-article/NaN HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54175 - "GET /general/leave/sanction-article/NaN HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:54195 - "GET /general/leave/sanction-article/NaN HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:54195 - "GET /general/leave/sanction-article/NaN HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:54195 - "GET /general/leave/sanction-article/NaN HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:54195 - "GET /general/leave/sanction-article/NaN HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:54195 - "GET /general/leave/sanction-article/NaN HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:54195 - "GET /general/leave/sanction-article/NaN HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:54216 - "GET /general/leave/sanction-article/NaN HTTP/1.1" 422 Unprocessable Content
+INFO:     192.168.200.18:54671 - "GET /general/leave-sanction-article?article_id=15206 HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:54730 - "GET /general/leave/sanction-article/15206 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54835 - "OPTIONS /general/leave/sanction-article/15206 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54835 - "GET /general/leave/sanction-article/15206 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54943 - "GET /general/leave/cancel-sanction-request?leave_id=15024&user_id=177&sr_no=1 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54997 - "OPTIONS /general/leave/cancel-sanction-request?leave_id=15024&user_id=177&sr_no=1 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54997 - "GET /general/leave/cancel-sanction-request?leave_id=15024&user_id=177&sr_no=1 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55195 - "GET /general/leave/cancel-sanction-request?leave_id=15024&user_id=177&sr_no=1 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55195 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55198 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55198 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:55198 - "GET /general/leave/sanction-article/15206 HTTP/1.1" 200 OK
