@@ -5,25 +5,41 @@ before this backend was written: the per-campaign "inform" checkbox loop
 (which called webProc_AddCustomer/webProc_ModifyCustomer once per checked
 campaign in the source — a real legacy quirk, not replicated) collapses to
 a single MultiSelect whose first selection is sent as one @Campaign value;
-and the GSTIN auto-fill button calls an external LicenseInfo COM API
-(GSTIN_TaxPayerSearch, hardcoded creds) that has no equivalent in this
-stack — the auto-fill (name/address/pincode from a live government lookup)
-genuinely isn't available without that external API.
+and the GSTIN auto-fill button originally called an external LicenseInfo COM
+API (GSTIN_TaxPayerSearch, hardcoded creds) via a WinForms-style web
+reference that has no direct equivalent in this stack.
 
 Update (2026-07-28): verify_gstin() was hardcoded to always return
 {"verified": False} regardless of input — every GSTIN, valid or not, showed
-"Invalid GST No", which is what was actually reported as a bug. Since the
-real government lookup is still unavailable (same limitation as above), what
-CAN be verified locally is the GSTIN's own structure: the standard 15-char
-format (2-digit state code + 10-char PAN + entity code + literal 'Z' + a
-checksum digit) and its checksum, which follows a published, standard MOD-36
-algorithm (verified here against a real, widely-published example GSTIN,
-27AAPFU0939F1ZV, used across Indian GST documentation). A syntactically
-valid, correctly-checksummed GSTIN now reports verified=True; a malformed one
-or one with a broken checksum correctly reports verified=False. This does
-NOT confirm the GSTIN is actually registered to a real business (that still
-needs the missing external API) — it confirms the number itself is
-well-formed, which is what was actually broken.
+"Invalid GST No", which is what was actually reported as a bug. At the time,
+the real government lookup was still unavailable, so what COULD be verified
+locally was just the GSTIN's own structure: the standard 15-char format
+(2-digit state code + 10-char PAN + entity code + literal 'Z' + a checksum
+digit) and its checksum, a published, standard MOD-36 algorithm (verified
+against a real, widely-published example GSTIN, 27AAPFU0939F1ZV, used across
+Indian GST documentation).
+
+Update (2026-08-18): real business-detail auto-fill wired up after all —
+the "external LicenseInfo COM API" mentioned above turned out to just be a
+plain SOAP web service (http://myretailware.com/service/license.asmx,
+GSTIN_TaxPayerSearch), reachable from this stack via a raw HTTP+XML POST
+(see _gstin_taxpayer_search()/_parse_taxpayer_result() below) — no COM
+interop needed, that was purely a legacy VB/.NET calling convention. It's
+Retailware's own internal license server (presumably itself proxying the
+government GST system), not a third-party API, using the same shared
+service account (ajit/ajit99/SoftwareID 1/ClientID 11110) the legacy source
+already had hardcoded — confirmed live and reachable. verify_gstin() now
+does local checksum validation first (cheap reject for malformed input),
+then calls this service and maps its pipe-delimited response (see
+_parse_taxpayer_result()'s docstring for the exact index layout, copied
+from CustRegistration.aspx.vb) to business name / address / pincode / area,
+plus resolves state/district NAME strings the service returns to this app's
+own geo_StateMaster/Geo_DistrictMaster IDs via a plain exact-match lookup
+(same convention already used by /lookup-pincode below). If the external
+call itself fails (network/timeout), verified still reports true (checksum
+passed) but a separate gstApiError explains why no details came back —
+kept distinct from a genuine "not a registered GSTIN" response, which still
+reports verified=False like before.
 
 webProc_AddCustomer and webProc_ModifyCustomer are both 40-param procs;
 verified the source's call sites supply exactly 40 for both — unlike
@@ -53,6 +69,10 @@ cust-registration.ts) where the display name itself could go stale.
 import re
 from datetime import date, datetime
 
+import xml.etree.ElementTree as ET
+from xml.sax.saxutils import escape
+
+import requests
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
@@ -436,13 +456,130 @@ def _is_valid_gstin(gstin: str) -> bool:
     return bool(_GSTIN_FORMAT_RE.match(gstin)) and _gstin_checksum(gstin[:14]) == gstin[14]
 
 
+_LICENSE_SOAP_URL = "http://myretailware.com/service/license.asmx"
+_LICENSE_SOAP_ACTION = "http://www.retailware.in/GSTIN_TaxPayerSearch"
+# Retailware's own internal license-server service account, used verbatim
+# from the legacy source (Section_Marketing/CustRegistration.aspx.vb,
+# lnkbtnCheckGSTVarification_Click) — not a per-deployment secret, this is
+# the one shared account the original ASP.NET app always used for this call.
+_LICENSE_LOGIN_USER = "ajit"
+_LICENSE_LOGIN_PASSWORD = "ajit99"
+_LICENSE_SOFTWARE_ID = "1"
+_LICENSE_CLIENT_ID = "11110"
+
+
+def _gstin_taxpayer_search(gstin: str, username: str) -> str:
+    """Calls the same internal SOAP endpoint the legacy app used for GST
+    business-detail lookup (there is no government/third-party API involved
+    — this proxies through Retailware's own license server). Raises on any
+    transport/HTTP failure; returns "" if the service responds with no
+    result element."""
+    envelope = (
+        '<?xml version="1.0" encoding="utf-8"?>'
+        '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '
+        'xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">'
+        "<soap:Body>"
+        '<GSTIN_TaxPayerSearch xmlns="http://www.retailware.in/">'
+        f"<LoginUserName>{_LICENSE_LOGIN_USER}</LoginUserName>"
+        f"<LoginPassword>{_LICENSE_LOGIN_PASSWORD}</LoginPassword>"
+        f"<SoftwareID>{_LICENSE_SOFTWARE_ID}</SoftwareID>"
+        f"<ClientID>{_LICENSE_CLIENT_ID}</ClientID>"
+        "<HDNumber></HDNumber>"
+        "<MachineName>SERVER</MachineName>"
+        f"<UserName>{escape(username)}</UserName>"
+        f"<GSTIN>{escape(gstin)}</GSTIN>"
+        "<IsPipeResponse>1</IsPipeResponse>"
+        "</GSTIN_TaxPayerSearch>"
+        "</soap:Body>"
+        "</soap:Envelope>"
+    )
+    resp = requests.post(
+        _LICENSE_SOAP_URL,
+        data=envelope.encode("utf-8"),
+        headers={"Content-Type": "text/xml; charset=utf-8", "SOAPAction": _LICENSE_SOAP_ACTION},
+        timeout=15,
+    )
+    resp.raise_for_status()
+    root = ET.fromstring(resp.content)
+    for el in root.iter():
+        if el.tag.endswith("GSTIN_TaxPayerSearchResult"):
+            return el.text or ""
+    return ""
+
+
+def _parse_taxpayer_result(raw: str) -> dict:
+    # Mirrors the legacy VB parsing exactly (CustRegistration.aspx.vb,
+    # lnkbtnCheckGSTVarification_Click): pipe-delimited, index 0 = success
+    # flag ("1"), 4 = business name, 9-17 = address fragments (joined with
+    # ",", blanks skipped), 16 = pincode, 17 = area, 18 = state name,
+    # 12 = district name. Indices 16/17 are deliberately reused (they land
+    # inside the address join AND are pulled out as their own fields) —
+    # that's the original app's own behavior, not a bug introduced here.
+    parts = raw.split("|")
+    if len(parts) < 19 or parts[0] != "1":
+        return {"success": False}
+    address_parts = [parts[i].strip() for i in range(9, 18) if parts[i].strip()]
+    return {
+        "success": True,
+        "name": parts[4].strip(),
+        "address1": ",".join(address_parts),
+        "pin_code": parts[16].strip(),
+        "area": parts[17].strip(),
+        "state_name": parts[18].strip(),
+        "district_name": parts[12].strip(),
+    }
+
+
 @router.get("/verify-gstin")
-def verify_gstin(gstin: str) -> dict:
-    # See module docstring: this confirms the GSTIN is well-formed (correct
-    # 15-char structure + checksum), not that it's registered to a real
-    # business — the real government lookup (name/address/pincode auto-fill)
-    # still needs the missing external LicenseInfo API.
-    return {"verified": _is_valid_gstin(gstin)}
+def verify_gstin(gstin: str, current_user: CurrentUser = Depends(get_current_user)) -> dict:
+    # First confirms the GSTIN is well-formed (correct 15-char structure +
+    # checksum) purely locally — cheap, and avoids spending an external call
+    # on obviously-malformed input. Only a checksum-valid GSTIN goes on to
+    # the real business-detail lookup below.
+    if not _is_valid_gstin(gstin):
+        return {"verified": False}
+
+    gstin_clean = gstin.strip().upper()
+    try:
+        raw = _gstin_taxpayer_search(gstin_clean, current_user.username)
+    except Exception as exc:
+        # Format is valid but the external lookup itself failed (network,
+        # timeout, malformed SOAP response) — report the format-check as
+        # still good rather than falsely saying "Invalid", but surface the
+        # lookup failure separately so the UI can tell the two apart.
+        return {"verified": True, "gstApiError": f"Business-details lookup failed: {exc}"}
+
+    parsed = _parse_taxpayer_result(raw)
+    if not parsed["success"]:
+        # The external service itself says this GSTIN isn't a real
+        # registered business — matches the legacy app's "Invalid GSTN No"
+        # for this exact case (StrResult(0) <> 1).
+        return {"verified": False}
+
+    state_id = 0
+    district_id = 0
+    with get_cursor() as cursor:
+        if parsed["state_name"]:
+            cursor.execute("SELECT StateID FROM geo_StateMaster WHERE StateName = ?", parsed["state_name"])
+            row = cursor.fetchone()
+            state_id = row[0] if row else 0
+        if parsed["district_name"] and state_id:
+            cursor.execute(
+                "SELECT DistrictID FROM Geo_DistrictMaster WHERE DistrictName = ? AND StateID = ?",
+                parsed["district_name"], state_id,
+            )
+            row = cursor.fetchone()
+            district_id = row[0] if row else 0
+
+    return {
+        "verified": True,
+        "name": parsed["name"],
+        "address1": parsed["address1"],
+        "pinCode": parsed["pin_code"],
+        "area": parsed["area"],
+        "stateId": state_id or None,
+        "districtId": district_id or None,
+    }
 
 
 @router.get("/lookup-pincode")
