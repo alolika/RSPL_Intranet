@@ -1,0 +1,14 @@
+INFO:     Started server process [14236]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:60276 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60281 - "POST /general/leave/application HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60288 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60287 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60287 - "OPTIONS /general/leave/cancel-my/15115 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60287 - "POST /general/leave/cancel-my/15115 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60287 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60287 - "OPTIONS /general/leave/cancel-my/15116 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60287 - "POST /general/leave/cancel-my/15116 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60287 - "GET /general/leave/my-pending HTTP/1.1" 200 OK

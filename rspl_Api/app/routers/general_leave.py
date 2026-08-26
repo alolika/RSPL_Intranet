@@ -96,6 +96,8 @@ untouched.
 from datetime import date, datetime, timedelta
 from typing import Literal
 
+import logging
+
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
@@ -104,6 +106,7 @@ from app.db import get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
 
 router = APIRouter(prefix="/general/leave", tags=["general-leave"])
+_logger = logging.getLogger(__name__)
 
 
 class LookupOption(BaseModel):
@@ -220,6 +223,36 @@ class SubmitHoCancelSanctionRequest(BaseModel):
     remark: str
 
 
+# Legacy LeaveSanction.aspx.vb hardcoded this same number as the Accounts
+# Department's WhatsApp recipient on approval (not a per-user lookup).
+_ACCOUNTS_WHATSAPP_NUMBER = "9850041982"
+
+
+def _send_whatsapp_safe(cursor, mobile_no: str | None, message: str) -> None:
+    """Ports the legacy VB app's literal `Exec PROC_SendWhatsApp
+    '<mobile>','<message>',0,0,0,0,0,'',0,1` call (same proc, same 10
+    positional args: MediaType=0, CustId=0, TransType=0, VoucherNo=0,
+    MasterSMSID=0, ImageUrl='', SMSPriority=0, SMSAPIId=1) — restores the
+    WhatsApp notifications the source app sent alongside its leave emails,
+    which were dropped during migration.
+
+    Swallows any failure so a WhatsApp problem (bad number, WhatsApp API
+    down, etc.) can never roll back the leave application / sanction update
+    it's attached to, matching the calling endpoints' existing pattern of
+    firing notifications only after the real DB write has already
+    succeeded."""
+    if not mobile_no:
+        return
+    try:
+        cursor.execute(
+            "EXEC PROC_SendWhatsApp ?, ?, 0, 0, 0, 0, 0, '', 0, 1",
+            mobile_no,
+            message,
+        )
+    except Exception:
+        _logger.exception("PROC_SendWhatsApp failed for mobile_no=%r", mobile_no)
+
+
 # --- Shared lookups ---
 
 
@@ -313,13 +346,14 @@ def submit_leave_application(
                 sr_no,
             )
 
-        inform_to_emails: list[str] = []
+        inform_to_rows: list[dict] = []
         if body.inform_to_user_ids:
             placeholders = ", ".join("?" for _ in body.inform_to_user_ids)
             cursor.execute(
-                f"SELECT Email FROM UserMaster WHERE UserID IN ({placeholders})", *body.inform_to_user_ids
+                f"SELECT Email, MobileNo FROM UserMaster WHERE UserID IN ({placeholders})", *body.inform_to_user_ids
             )
-            inform_to_emails = [r["Email"] for r in rows_to_dicts(cursor) if r["Email"]]
+            inform_to_rows = rows_to_dicts(cursor)
+            inform_to_emails = [r["Email"] for r in inform_to_rows if r["Email"]]
             if inform_to_emails:
                 cursor.execute(
                     "UPDATE web_leaveapplication SET InformTo = ? WHERE UserId = ? AND ArticleID = ?",
@@ -327,12 +361,20 @@ def submit_leave_application(
                     current_user.user_id,
                     article_id,
                 )
+        else:
+            inform_to_emails = []
 
         ho_email = None
+        ho_mobile = None
         if body.ho_user_id:
-            cursor.execute("SELECT Email FROM UserMaster WHERE UserID = ?", body.ho_user_id)
+            cursor.execute("SELECT Email, MobileNo FROM UserMaster WHERE UserID = ?", body.ho_user_id)
             row = cursor.fetchone()
             ho_email = row[0] if row and row[0] else None
+            ho_mobile = row[1] if row and row[1] else None
+
+        cursor.execute("SELECT MobileNo FROM UserMaster WHERE UserID = ?", current_user.user_id)
+        applicant_row = cursor.fetchone()
+        applicant_mobile = applicant_row[0] if applicant_row and applicant_row[0] else None
 
         summary = "\n".join(
             f"{current_user.username} has applied for leave for {row.days} day(s)"
@@ -344,14 +386,14 @@ def submit_leave_application(
         # The HOD gets the action-link email (they must sanction/reject); Inform To is
         # notification-only. If the HOD is also in Inform To, they only get the HOD
         # version — dedupe so they don't get a second, action-less copy.
+        sanction_link = f"{settings.frontend_base_url}/leave-sanction?si={article_id}"
+        ho_subject = f"Leave Application - {current_user.username} (Approval Required)"
+        ho_message = (
+            f"{summary}\n\n"
+            f"Please click the link below to review and sanction/reject this leave request:\n"
+            f"{sanction_link}"
+        )
         if ho_email:
-            sanction_link = f"{settings.frontend_base_url}/leave-sanction?si={article_id}"
-            ho_subject = f"Leave Application - {current_user.username} (Approval Required)"
-            ho_message = (
-                f"{summary}\n\n"
-                f"Please click the link below to review and sanction/reject this leave request:\n"
-                f"{sanction_link}"
-            )
             cursor.execute(
                 "EXEC PROC_SENDEMAIL @EMAILID=?, @SUBJECT=?, @MESSAGE=?, @USERID=?",
                 ho_email,
@@ -361,9 +403,9 @@ def submit_leave_application(
             )
 
         inform_only_emails = [e for e in dict.fromkeys(inform_to_emails) if e != ho_email]
+        inform_subject = f"Leave Application - {current_user.username} (For Your Information)"
+        inform_message = f"{summary}\n\nThis is for your information only; no action is required from you."
         if inform_only_emails:
-            inform_subject = f"Leave Application - {current_user.username} (For Your Information)"
-            inform_message = f"{summary}\n\nThis is for your information only; no action is required from you."
             for email in inform_only_emails:
                 cursor.execute(
                     "EXEC PROC_SENDEMAIL @EMAILID=?, @SUBJECT=?, @MESSAGE=?, @USERID=?",
@@ -372,6 +414,21 @@ def submit_leave_application(
                     inform_message,
                     current_user.user_id,
                 )
+
+        # WhatsApp restoration (ported from the legacy VB app's
+        # Exec PROC_SendWhatsApp calls, dropped during migration): applicant
+        # gets a confirmation copy, HOD gets the same action-link message as
+        # their email, Inform To gets the same info-only message as theirs.
+        # Each contact channel (email vs WhatsApp) is gated independently on
+        # whichever contact info that person actually has on file.
+        applicant_whatsapp_message = f"Your leave application has been submitted:\n\n{summary}"
+        _send_whatsapp_safe(cursor, applicant_mobile, applicant_whatsapp_message)
+        _send_whatsapp_safe(cursor, ho_mobile, ho_message)
+        inform_only_mobiles = [
+            m for m in dict.fromkeys(r["MobileNo"] for r in inform_to_rows if r["MobileNo"]) if m != ho_mobile
+        ]
+        for mobile in inform_only_mobiles:
+            _send_whatsapp_safe(cursor, mobile, inform_message)
 
     return {"success": True}
 
@@ -639,6 +696,18 @@ def submit_ho_sanction(body: SubmitHoSanctionRequest) -> dict[str, bool]:
         desc_by_sr_no = {r["SrNo"]: r["Description"] or "" for r in article_rows}
         applicant_user_id = article_rows[0]["UserID"] if article_rows else 0
 
+        cursor.execute(
+            "SELECT SrNo, ForDays, FromDate, ToDate, Reason, HO, InformTo FROM web_leaveapplication WHERE ArticleID = ?",
+            body.article_id,
+        )
+        leave_rows_for_article = rows_to_dicts(cursor)
+        leave_detail_by_sr_no = {r["SrNo"]: r for r in leave_rows_for_article}
+        # InformTo is a comma-separated list of emails written once at submission
+        # time (see submit_leave_application) and is the same across every row of
+        # this article — take it from whichever row has it set.
+        inform_to_raw = next((r["InformTo"] for r in leave_rows_for_article if r.get("InformTo")), "")
+        inform_to_emails_at_sanction = [e.strip() for e in inform_to_raw.split(",") if e.strip()]
+
         for decision in body.decisions:
             if decision.decision == "approve":
                 cursor.execute(
@@ -660,27 +729,28 @@ def submit_ho_sanction(body: SubmitHoSanctionRequest) -> dict[str, bool]:
                 rejected_descriptions.append(desc_by_sr_no.get(decision.sr_no, ""))
 
         if approved_descriptions or rejected_descriptions:
-            cursor.execute("SELECT Email FROM UserMaster WHERE UserID = ?", applicant_user_id)
+            cursor.execute("SELECT Email, Name FROM UserMaster WHERE UserID = ?", applicant_user_id)
             row = cursor.fetchone()
             applicant_email = row[0] if row and row[0] else None
+            applicant_name = row[1] if row and row[1] else ""
+
+            if approved_descriptions and rejected_descriptions:
+                subject = "Leave Application - Status Update"
+            elif approved_descriptions:
+                subject = "Leave Application - Approved"
+            else:
+                subject = "Leave Application - Rejected"
+
+            sections = []
+            if approved_descriptions:
+                sections.append("Approved:\n" + "\n".join(f"- {d}" for d in approved_descriptions))
+            if rejected_descriptions:
+                sections.append("Rejected:\n" + "\n".join(f"- {d}" for d in rejected_descriptions))
+            if body.remark.strip():
+                sections.append(f"Remark: {body.remark.strip()}")
+            message = "\n\n".join(sections)
 
             if applicant_email:
-                if approved_descriptions and rejected_descriptions:
-                    subject = "Leave Application - Status Update"
-                elif approved_descriptions:
-                    subject = "Leave Application - Approved"
-                else:
-                    subject = "Leave Application - Rejected"
-
-                sections = []
-                if approved_descriptions:
-                    sections.append("Approved:\n" + "\n".join(f"- {d}" for d in approved_descriptions))
-                if rejected_descriptions:
-                    sections.append("Rejected:\n" + "\n".join(f"- {d}" for d in rejected_descriptions))
-                if body.remark.strip():
-                    sections.append(f"Remark: {body.remark.strip()}")
-                message = "\n\n".join(sections)
-
                 cursor.execute(
                     "EXEC PROC_SENDEMAIL @EMAILID=?, @SUBJECT=?, @MESSAGE=?",
                     applicant_email,
@@ -704,6 +774,58 @@ def submit_ho_sanction(body: SubmitHoSanctionRequest) -> dict[str, bool]:
                         subject,
                         message,
                     )
+
+            # WhatsApp restoration (ported from the legacy VB app's
+            # `Exec PROC_SendWhatsApp '9850041982','HO Sanctioned Leave of
+            # <name>...'` call): only fires on approval, matching the source
+            # app's own behavior (the "Not Sanctioned" branch there has no
+            # WhatsApp call either) — same akshayaj@ trigger condition as
+            # the email above.
+            if approved_descriptions:
+                approved_sr_nos = [d.sr_no for d in body.decisions if d.decision == "approve"]
+                detail_lines: list[str] = []
+                ho_name_for_msg = ""
+                for sr_no in approved_sr_nos:
+                    detail = leave_detail_by_sr_no.get(sr_no)
+                    if not detail:
+                        continue
+                    ho_name_for_msg = (detail.get("HO") or "").strip() or ho_name_for_msg
+                    detail_lines.append(
+                        f"{detail['ForDays']}\n"
+                        f"From: {detail['FromDate']:%d-%b-%Y} To: {detail['ToDate']:%d-%b-%Y}\n"
+                        f"Reason: {detail['Reason']}"
+                    )
+                accounts_message = f"HO Sanctioned Leave of {applicant_name}\n" + "\n".join(detail_lines)
+                if ho_name_for_msg:
+                    accounts_message += f"\n{ho_name_for_msg} [HO] has sanctioned leave."
+                _send_whatsapp_safe(cursor, _ACCOUNTS_WHATSAPP_NUMBER, accounts_message)
+
+                # Also notify the same Inform To people who were notified at
+                # submission time — both email (matches the legacy source's
+                # own InformTo email on sanction, which had been missed when
+                # WhatsApp was first restored here) and WhatsApp, resolved
+                # back to a mobile number via their email (InformTo only ever
+                # stored emails). Both reuse the same subject/message already
+                # built above for the applicant's own approval email.
+                for email in inform_to_emails_at_sanction:
+                    cursor.execute(
+                        "EXEC PROC_SENDEMAIL @EMAILID=?, @SUBJECT=?, @MESSAGE=?",
+                        email,
+                        subject,
+                        message,
+                    )
+
+                if inform_to_emails_at_sanction:
+                    placeholders = ", ".join("?" for _ in inform_to_emails_at_sanction)
+                    cursor.execute(
+                        f"SELECT MobileNo FROM UserMaster WHERE Email IN ({placeholders})",
+                        *inform_to_emails_at_sanction,
+                    )
+                    inform_to_mobiles_at_sanction = dict.fromkeys(
+                        r["MobileNo"] for r in rows_to_dicts(cursor) if r["MobileNo"]
+                    )
+                    for mobile in inform_to_mobiles_at_sanction:
+                        _send_whatsapp_safe(cursor, mobile, f"{subject}\n\n{message}")
 
     return {"success": True}
 

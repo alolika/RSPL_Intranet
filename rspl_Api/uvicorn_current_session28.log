@@ -1,0 +1,42 @@
+INFO:     Started server process [8168]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:60036 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60046 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60047 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60047 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60046 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60046 - "OPTIONS /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60047 - "OPTIONS /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60048 - "OPTIONS /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60046 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60048 - "GET /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60047 - "GET /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60056 - "OPTIONS /general/leave/application HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60056 - "POST /general/leave/application HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60058 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60059 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60060 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60056 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60059 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60060 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60058 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60089 - "OPTIONS /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60088 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60089 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60092 - "OPTIONS /general/leave/request-ho-cancel HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60092 - "POST /general/leave/request-ho-cancel HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60092 - "GET /general/leave/my-pending HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60093 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60095 - "GET /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60096 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60094 - "GET /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60103 - "OPTIONS /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60105 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60104 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60108 - "OPTIONS /admin/leave/rows?from_date=2026-09-01&to_date=2026-09-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60108 - "GET /admin/leave/rows?from_date=2026-09-01&to_date=2026-09-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60115 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60115 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60116 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK

@@ -1,0 +1,28 @@
+INFO:     Started server process [15196]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:60143 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60167 - "GET / HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:60167 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:60174 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60174 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60174 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60177 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60177 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60174 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60177 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60179 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60174 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60174 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60174 - "OPTIONS /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60179 - "OPTIONS /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60177 - "OPTIONS /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60174 - "GET /general/leave/inform-to-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60177 - "GET /general/leave/ho-enabled HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60179 - "GET /general/leave/ho-options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60182 - "POST /general/leave/application HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60185 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60183 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60182 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:60184 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
