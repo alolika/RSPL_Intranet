@@ -54,3 +54,9 @@ INFO:     192.168.200.18:49750 - "GET /general/leave/sanction-article/14900 HTTP
 INFO:     192.168.200.18:49753 - "GET /general/leave/sanction-article/15250 HTTP/1.1" 200 OK
 INFO:     192.168.200.18:49756 - "GET /general/leave/sanction-article/15300 HTTP/1.1" 200 OK
 INFO:     192.168.200.18:49769 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49780 - "OPTIONS /general/leave/sanction-article/15150 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49780 - "GET /general/leave/sanction-article/15150 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:55334 - "OPTIONS /general/leave/sanction-article/15206 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:55335 - "GET /general/leave/sanction-article/15206 HTTP/1.1" 200 OK
+INFO:     192.168.200.49:55337 - "OPTIONS /general/leave/ho-sanction HTTP/1.1" 200 OK
+INFO:     192.168.200.49:55338 - "POST /general/leave/ho-sanction HTTP/1.1" 200 OK
