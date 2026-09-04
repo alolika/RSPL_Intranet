@@ -1,0 +1,56 @@
+INFO:     Started server process [15092]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:49543 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49556 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49635 - "GET /health HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49645 - "OPTIONS /general/leave/sanction-article/15206 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49645 - "GET /general/leave/sanction-article/15206 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49673 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49673 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49673 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49677 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49678 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49679 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49680 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49677 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49679 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49678 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49681 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49680 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49694 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49695 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49691 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49695 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49692 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49692 - "GET /general/leave/sanction-article/15206 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49692 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49701 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49692 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49700 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49699 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49699 - "GET /general/leave/sanction-article/15206 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49708 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49708 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49711 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49709 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49710 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49710 - "GET /general/leave/sanction-article/15206 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49718 - "OPTIONS /admin/leave/rows?from_date=2026-09-01&to_date=2026-09-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49717 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49718 - "GET /admin/leave/rows?from_date=2026-09-01&to_date=2026-09-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49719 - "OPTIONS /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49719 - "GET /admin/leave/rows?from_date=2026-08-01&to_date=2026-08-31 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49723 - "GET /general/leave/sanction-article/15200 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49729 - "GET /general/leave/sanction-article/15205 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49732 - "GET /general/leave/sanction-article/15206 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49735 - "GET /general/leave/sanction-article/15207 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49738 - "GET /general/leave/sanction-article/15210 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49741 - "GET /general/leave/sanction-article/15150 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49744 - "GET /general/leave/sanction-article/15100 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49747 - "GET /general/leave/sanction-article/15000 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49750 - "GET /general/leave/sanction-article/14900 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49753 - "GET /general/leave/sanction-article/15250 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49756 - "GET /general/leave/sanction-article/15300 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:49769 - "GET /health HTTP/1.1" 200 OK
