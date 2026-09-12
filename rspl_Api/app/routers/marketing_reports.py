@@ -589,7 +589,19 @@ def get_lead_record_filters() -> dict:
             "WHERE lm.MasterValue <> '' ORDER BY lm.MasterValue"
         )
         enquiry_sources = [r["MasterValue"] for r in rows_to_dicts(cursor)]
-    return {"users": users, "salesmen": salesmen, "cities": cities, "districts": districts, "enquiry_sources": enquiry_sources}
+        # Same shape as Enquiry Source above, joined on Web_Enquiry.sourcetype2
+        # instead — the second Enquiry Source picker added to Customer
+        # Registration (Web_Enquiry.sourcetype2, same EnquirySourceType master).
+        cursor.execute(
+            "SELECT DISTINCT lm.MasterValue FROM Web_Enquiry E "
+            "INNER JOIN Web_LittleMaster lm ON lm.Id = E.sourcetype2 AND lm.MasterName = 'EnquirySourceType' "
+            "WHERE lm.MasterValue <> '' ORDER BY lm.MasterValue"
+        )
+        enquiry_sources_2 = [r["MasterValue"] for r in rows_to_dicts(cursor)]
+    return {
+        "users": users, "salesmen": salesmen, "cities": cities, "districts": districts,
+        "enquiry_sources": enquiry_sources, "enquiry_sources_2": enquiry_sources_2,
+    }
 
 
 @router.get("/lead-record/users", response_model=list[LookupOption])
@@ -646,6 +658,7 @@ def get_lead_record_cities(search: str = "") -> list[LookupOption]:
 def get_lead_records(
     received_by: int = 0, assigned_to: int = 0, salesman: int = 0, from_date: date | None = None,
     to_date: date | None = None, city: str = "", district: str = "", enquiry_source: str = "",
+    enquiry_source_2: str = "",
 ) -> list[LeadRecordRow]:
     with get_cursor() as cursor:
         cursor.execute(
@@ -659,6 +672,24 @@ def get_lead_records(
     # it matches exactly what the dropdown/table both show.
     if enquiry_source:
         rows = [r for r in rows if (r.get("Enquiry Source") or "") == enquiry_source]
+    if enquiry_source_2:
+        # Unlike Enquiry Source, the proc's own SELECT list has no
+        # sourcetype2 column at all to filter on directly (confirmed via its
+        # definition). Resolved with one extra query — matched by VALUE
+        # server-side (a single parameter) rather than building an `IN
+        # (CustID, CustID, ...)` list from the proc's own (often large,
+        # unfiltered-by-default) result: that hit SQL Server's ~2100
+        # parameter limit the first time this was tried against a broad
+        # date range with no other filters set.
+        with get_cursor() as cursor:
+            cursor.execute(
+                "SELECT E.CustID FROM Web_Enquiry E "
+                "INNER JOIN Web_LittleMaster lm ON lm.Id = E.sourcetype2 AND lm.MasterName = 'EnquirySourceType' "
+                "WHERE lm.MasterValue = ?",
+                enquiry_source_2,
+            )
+            matching_cust_ids = {r[0] for r in cursor.fetchall()}
+        rows = [r for r in rows if r["CustId"] in matching_cust_ids]
     return [
         LeadRecordRow(
             cust_id=r["CustId"], display_name=r["Displayname"] or "", cust_address=r["CustAddress"] or "",
