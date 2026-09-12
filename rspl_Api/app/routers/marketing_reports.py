@@ -576,7 +576,20 @@ def get_lead_record_filters() -> dict:
         cities = [{"label": r["CityName"], "value": r["CityID"]} for r in rows_to_dicts(cursor)]
         cursor.execute("SELECT DistrictID, DistrictName FROM Geo_DistrictMaster ORDER BY DistrictName")
         districts = [{"label": r["DistrictName"], "value": r["DistrictID"]} for r in rows_to_dicts(cursor)]
-    return {"users": users, "salesmen": salesmen, "cities": cities, "districts": districts}
+        # Distinct values actually present in the lead data (not the full
+        # EnquirySourceType master) — same join WebProc_LeadRecords1 itself
+        # uses for its "Enquiry Source" column (Web_Enquiry.SourceType ->
+        # Web_LittleMaster.Id where MasterName='EnquirySourceType') — so the
+        # dropdown never offers a value that would return zero rows. Plain
+        # text, no real ID behind it (same as Tour Report's visitTypes /
+        # modesOfTravel), so returned as a plain string list, not LookupOption.
+        cursor.execute(
+            "SELECT DISTINCT lm.MasterValue FROM Web_Enquiry E "
+            "INNER JOIN Web_LittleMaster lm ON lm.Id = E.SourceType AND lm.MasterName = 'EnquirySourceType' "
+            "WHERE lm.MasterValue <> '' ORDER BY lm.MasterValue"
+        )
+        enquiry_sources = [r["MasterValue"] for r in rows_to_dicts(cursor)]
+    return {"users": users, "salesmen": salesmen, "cities": cities, "districts": districts, "enquiry_sources": enquiry_sources}
 
 
 @router.get("/lead-record/users", response_model=list[LookupOption])
@@ -632,7 +645,7 @@ def get_lead_record_cities(search: str = "") -> list[LookupOption]:
 @router.get("/lead-records", response_model=list[LeadRecordRow])
 def get_lead_records(
     received_by: int = 0, assigned_to: int = 0, salesman: int = 0, from_date: date | None = None,
-    to_date: date | None = None, city: str = "", district: str = "",
+    to_date: date | None = None, city: str = "", district: str = "", enquiry_source: str = "",
 ) -> list[LeadRecordRow]:
     with get_cursor() as cursor:
         cursor.execute(
@@ -640,6 +653,12 @@ def get_lead_records(
             received_by, assigned_to, salesman, from_date or "", to_date or "", city, district,
         )
         rows = rows_to_dicts(cursor)
+    # WebProc_LeadRecords1 itself has no Enquiry Source parameter (confirmed
+    # via its definition) — filtered here instead of touching the proc, same
+    # as its "Enquiry Source" column value (Web_LittleMaster.MasterValue) so
+    # it matches exactly what the dropdown/table both show.
+    if enquiry_source:
+        rows = [r for r in rows if (r.get("Enquiry Source") or "") == enquiry_source]
     return [
         LeadRecordRow(
             cust_id=r["CustId"], display_name=r["Displayname"] or "", cust_address=r["CustAddress"] or "",

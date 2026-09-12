@@ -1,0 +1,55 @@
+INFO:     Started server process [7424]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:51804 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51804 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51804 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51814 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51813 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51812 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51811 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51814 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51812 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51813 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51811 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51813 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51824 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51830 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51840 - "OPTIONS /marketing/reports/lead-record/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51839 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51840 - "GET /marketing/reports/lead-record/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51850 - "OPTIONS /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51851 - "OPTIONS /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51852 - "OPTIONS /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51851 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51849 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51850 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51852 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51855 - "OPTIONS /marketing/registration/customer-name-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51853 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51854 - "GET /marketing/registration/lookups HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51857 - "GET /marketing/registration/customer-name-search?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51855 - "GET /marketing/registration/potential-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51856 - "GET /marketing/registration/referred-by-customers?search= HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51856 - "OPTIONS /marketing/registration/detail/32187 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51856 - "GET /marketing/registration/detail/32187 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51856 - "OPTIONS /marketing/registration/cities-districts?state_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51856 - "GET /marketing/registration/cities-districts?state_id=15 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51877 - "GET /marketing/reports/lead-record/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51876 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51935 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51936 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51935 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51935 - "OPTIONS /marketing/reports/lead-record/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51935 - "GET /marketing/reports/lead-record/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51936 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51947 - "GET /marketing/reports/lead-record/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51946 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51947 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51954 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51954 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51955 - "GET /marketing/reports/lead-record/filters HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51961 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51961 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51962 - "GET /marketing/reports/lead-record/filters HTTP/1.1" 200 OK

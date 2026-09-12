@@ -81,6 +81,15 @@ from app.deps import CurrentUser, get_current_user
 
 router = APIRouter(prefix="/marketing/registration", tags=["marketing-registration"])
 
+# Web_Enquiry.sourceDate is NOT NULL (confirmed live — an attempted NULL
+# write throws a real 23000 IntegrityError and aborts the whole add/modify
+# request even though the main proc already succeeded). The column's own
+# established "unset" convention, from WebProc_AddCustEnquiry's own
+# `@sourcedate datetime=''` default, is this sentinel — reused here instead
+# of NULL whenever Enquiry Source 2 Date is left blank, and already what
+# get_cust_registration_detail() below treats as "no date" on the way back out.
+_NO_SOURCE_DATE = date(1900, 1, 1)
+
 
 class LookupOption(BaseModel):
     label: str
@@ -131,6 +140,18 @@ class CustRegistrationDetail(BaseModel):
     enquiry_date: date
     received_by: int = 0
     enquiry_source: int = 0
+    # Web_Enquiry.sourcetype2/sourceDate — a second Enquiry Source + its own
+    # date, same EnquirySourceType master as enquiry_source above. Neither
+    # webProc_AddCustomer/webProc_ModifyCustomer nor the WebProc_AddCustEnquiry
+    # call embedded in webProc_AddCustomer's own body ever pass these through
+    # (confirmed via OBJECT_DEFINITION — webProc_AddCustomer hardcodes its
+    # inner EXEC WebProc_AddCustEnquiry call's args and stops one short of the
+    # proc's own @sourcetype2/@sourcedate params, which is why they've always
+    # defaulted to 0/''), so both are threaded through here via a follow-up
+    # UPDATE Web_Enquiry after the main proc call succeeds — same established
+    # pattern as this endpoint's own Proc_AssignCampaignToCust follow-up below.
+    enquiry_source_2: int = 0
+    enquiry_source_2_date: date | None = None
     source_detail: str = ""
     business_nature: int = 0
     segment: int = 0
@@ -347,6 +368,25 @@ def get_cust_registration_detail(cust_id: int) -> dict | None:
         "enquiry_date": e["EnquiryDate"].date().isoformat() if e.get("EnquiryDate") else datetime.now().date().isoformat(),
         "received_by": int(e.get("ReceivedBy") or 0),
         "enquiry_source": int(e.get("Sourcetype") or 0),
+        # Webproc_ViewEnquiry's result has both a resolved-name "SourceType2"
+        # (from an explicit isnull(...) subquery alias) and the raw numeric
+        # "sourcetype2" (from its trailing E.* expansion) — same duplicate-ish
+        # shape as the already-known Providers/Providers1 case, except here
+        # the two only differ by case, which pyodbc's dict(zip(...)) keeps as
+        # two distinct keys rather than collapsing them. The raw ID is what
+        # this form's <p-select> needs (matches enquiry_source above).
+        "enquiry_source_2": int(e.get("sourcetype2") or 0),
+        # sourceDate's column default (@sourcedate datetime='' on
+        # WebProc_AddCustEnquiry — an empty string implicitly converts to SQL
+        # Server's epoch, 1900-01-01) means every pre-existing row has this
+        # exact value even though the field was never actually set/used
+        # before this feature — treated the same as "no date" rather than a
+        # real saved date.
+        "enquiry_source_2_date": (
+            e["sourceDate"].date().isoformat()
+            if e.get("sourceDate") and e["sourceDate"].date() != date(1900, 1, 1)
+            else None
+        ),
         "source_detail": e.get("SourceNarration") or "",
         "business_nature": int(e.get("NatureOfBusiness") or 0),
         "segment": int(e.get("Segment") or 0),
@@ -392,6 +432,17 @@ def add_customer_registration(
     if r.get("Campaign") and int(r.get("Campaign") or 0) > 0:
         with get_cursor() as cursor:
             cursor.execute("EXEC Proc_AssignCampaignToCust ?, ?", r["Campaign"], r["CustID"])
+    if r.get("Success") and r.get("CustID"):
+        # webProc_AddCustomer's own internal WebProc_AddCustEnquiry call never
+        # passes @sourcetype2/@sourcedate (see CustRegistrationDetail's
+        # enquiry_source_2 comment) — set here directly on the row it just
+        # created, same follow-up-after-the-proc shape as the campaign
+        # assignment above.
+        with get_cursor() as cursor:
+            cursor.execute(
+                "UPDATE Web_Enquiry SET sourcetype2 = ?, sourceDate = ? WHERE CustID = ?",
+                body.enquiry_source_2, body.enquiry_source_2_date or _NO_SOURCE_DATE, r["CustID"],
+            )
     return {"success": bool(r.get("Success")), "custId": r.get("CustID") or 0, "message": r.get("ResultMessage") or ""}
 
 
@@ -419,6 +470,16 @@ def modify_customer_registration(
     if r.get("Campaign") and int(r.get("Campaign") or 0) > 0:
         with get_cursor() as cursor:
             cursor.execute("EXEC Proc_AssignCampaignToCust ?, ?", r["Campaign"], r["CustID"])
+    if r.get("Success"):
+        # webProc_ModifyCustomer's own UPDATE Web_Enquiry statements never
+        # touch sourcetype2/sourceDate either (see enquiry_source_2's
+        # comment on CustRegistrationDetail) — same follow-up fix as add
+        # above, keyed on the customer id the request already carries.
+        with get_cursor() as cursor:
+            cursor.execute(
+                "UPDATE Web_Enquiry SET sourcetype2 = ?, sourceDate = ? WHERE CustID = ?",
+                body.enquiry_source_2, body.enquiry_source_2_date or _NO_SOURCE_DATE, body.cust_id,
+            )
     return {"success": bool(r.get("Success")), "message": r.get("ResultMessage") or ""}
 
 
