@@ -14,6 +14,7 @@ from pydantic import BaseModel
 
 from app.db import first_row_or_none, get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
+from app.routers.enghub_menu_rights import require_menu
 from app.enghub_common import AssignmentHistoryRow, AssignRequest, assign_role, get_assignment_history
 
 router = APIRouter(prefix="/engineering-hub", tags=["engineering-hub-features"])
@@ -156,6 +157,7 @@ class FeatureForm(BaseModel):
 
 @router.post("/features")
 def save_feature(row: FeatureForm, user: CurrentUser = Depends(get_current_user)) -> dict:
+    require_menu(user.user_id, "FEATURES")
     with get_cursor() as cursor:
         if row.feature_id == 0:
             cursor.execute(

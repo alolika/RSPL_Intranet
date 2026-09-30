@@ -14,6 +14,7 @@ from pydantic import BaseModel
 
 from app.db import first_row_or_none, get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
+from app.routers.enghub_menu_rights import require_menu
 
 router = APIRouter(prefix="/engineering-hub", tags=["engineering-hub-development-items"])
 
@@ -173,6 +174,7 @@ class DevItemForm(BaseModel):
 
 @router.post("/development-items")
 def save_development_item(row: DevItemForm, user: CurrentUser = Depends(get_current_user)) -> dict:
+    require_menu(user.user_id, "DEV_ITEMS")
     with get_cursor() as cursor:
         if row.dev_item_id == 0:
             cursor.execute(

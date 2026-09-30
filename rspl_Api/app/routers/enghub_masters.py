@@ -20,6 +20,7 @@ from pydantic import BaseModel
 
 from app.db import first_row_or_none, get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
+from app.routers.enghub_menu_rights import require_menu
 
 router = APIRouter(prefix="/engineering-hub", tags=["engineering-hub-masters"])
 
@@ -236,6 +237,7 @@ def get_modules_lookup(product_id: int | None = None) -> list[LookupOption]:
 
 @router.post("/modules")
 def save_module(row: ModuleRow, user: CurrentUser = Depends(get_current_user)) -> dict:
+    require_menu(user.user_id, "MASTERS")
     with get_cursor() as cursor:
         if row.module_id == 0:
             cursor.execute(
