@@ -28,11 +28,6 @@ router = APIRouter(prefix="/engineering-hub/menu-rights", tags=["engineering-hub
 # Rights page, per explicit request.
 MENU_RIGHTS_ADMIN_USER_IDS = {24, 142}
 
-# Menus that only MENU_RIGHTS_ADMIN_USER_IDS may ever have (per explicit
-# request) — never shown to anyone else even if a row somehow exists, and
-# the admin PUT refuses to grant them to anyone else.
-ADMIN_ONLY_MENUS = {"MASTERS", "FEATURES", "DEV_ITEMS"}
-
 # Must match MENU_* codes in the Angular engineering-hub-nav.ts exactly.
 # Order here is the order shown on the Menu Rights page.
 MENU_LABELS: dict[str, str] = {
@@ -56,13 +51,11 @@ class MyMenusResponse(BaseModel):
 class MenuOption(BaseModel):
     code: str
     label: str
-    admin_only: bool
 
 
 class UserMenuRow(BaseModel):
     user_id: int
     name: str
-    is_admin: bool
     menus: list[str]
 
 
@@ -79,12 +72,6 @@ def _require_admin(user_id: int) -> None:
         raise HTTPException(status_code=403, detail="You do not have permission to manage Engineering Hub menu rights.")
 
 
-def _allowed(user_id: int, menu_code: str) -> bool:
-    """Whether `menu_code` may apply to this user at all (admin-only menus
-    are ignored for everyone else, regardless of what rows exist)."""
-    return menu_code in MENU_LABELS and (menu_code not in ADMIN_ONLY_MENUS or _is_admin(user_id))
-
-
 def require_menu(user_id: int, menu_code: str) -> None:
     """403 unless the user has been granted `menu_code`.
     Used by the create/save endpoints behind the inline "+" buttons (Module,
@@ -93,7 +80,7 @@ def require_menu(user_id: int, menu_code: str) -> None:
     with get_cursor() as cursor:
         cursor.execute("SELECT 1 FROM EngHub_UserMenuRights WHERE UserId = ? AND MenuCode = ?", user_id, menu_code)
         granted = cursor.fetchone() is not None
-    if not granted or not _allowed(user_id, menu_code):
+    if not granted:
         raise HTTPException(status_code=403, detail=f"You do not have rights to the {MENU_LABELS[menu_code]} menu.")
 
 
@@ -104,14 +91,13 @@ def get_my_menus(current_user: CurrentUser = Depends(get_current_user)) -> MyMen
         granted = {r[0] for r in cursor.fetchall()}
     # Filter through MENU_LABELS so a stale/unknown code in the table is
     # ignored, and the result keeps the canonical menu order.
-    uid = current_user.user_id
-    return MyMenusResponse(is_admin=_is_admin(uid), menus=[code for code in MENU_LABELS if code in granted and _allowed(uid, code)])
+    return MyMenusResponse(is_admin=_is_admin(current_user.user_id), menus=[code for code in MENU_LABELS if code in granted])
 
 
 @router.get("/admin/menus", response_model=list[MenuOption])
 def list_menus(current_user: CurrentUser = Depends(get_current_user)) -> list[MenuOption]:
     _require_admin(current_user.user_id)
-    return [MenuOption(code=code, label=label, admin_only=code in ADMIN_ONLY_MENUS) for code, label in MENU_LABELS.items()]
+    return [MenuOption(code=code, label=label) for code, label in MENU_LABELS.items()]
 
 
 # Every enabled user, each with their granted menus (empty list = sees
@@ -131,8 +117,7 @@ def list_users(current_user: CurrentUser = Depends(get_current_user)) -> list[Us
         UserMenuRow(
             user_id=u["UserID"],
             name=u["Name"] or "",
-            is_admin=_is_admin(u["UserID"]),
-            menus=[code for code in MENU_LABELS if code in by_user.get(u["UserID"], set()) and _allowed(u["UserID"], code)],
+            menus=[code for code in MENU_LABELS if code in by_user.get(u["UserID"], set())],
         )
         for u in users
     ]
@@ -147,9 +132,6 @@ def set_user_menus(user_id: int, body: SetMenusRequest, current_user: CurrentUse
     unknown = [m for m in body.menus if m not in MENU_LABELS]
     if unknown:
         raise HTTPException(status_code=400, detail=f"Unknown menu code(s): {', '.join(unknown)}")
-    blocked = [MENU_LABELS[m] for m in body.menus if not _allowed(user_id, m)]
-    if blocked:
-        raise HTTPException(status_code=400, detail=f"Only Menu Rights admins can have: {', '.join(blocked)}")
     with get_cursor() as cursor:
         cursor.execute("SELECT 1 FROM UserMaster WHERE UserID = ?", user_id)
         if cursor.fetchone() is None:
