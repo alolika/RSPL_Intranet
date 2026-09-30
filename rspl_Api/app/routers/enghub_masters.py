@@ -18,7 +18,7 @@ file, never client-supplied.
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
-from app.db import get_cursor, rows_to_dicts
+from app.db import first_row_or_none, get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
 
 router = APIRouter(prefix="/engineering-hub", tags=["engineering-hub-masters"])
@@ -239,16 +239,20 @@ def save_module(row: ModuleRow, user: CurrentUser = Depends(get_current_user)) -
     with get_cursor() as cursor:
         if row.module_id == 0:
             cursor.execute(
-                "INSERT INTO EngHub_Module (ProductId, Name, Description, Enabled, CreatedByUserId) VALUES (?, ?, ?, ?, ?)",
+                "INSERT INTO EngHub_Module (ProductId, Name, Description, Enabled, CreatedByUserId) VALUES (?, ?, ?, ?, ?); "
+                "SELECT SCOPE_IDENTITY() AS Id",
                 row.product_id, row.name, row.description, row.enabled, user.user_id,
             )
+            new_id = int(first_row_or_none(cursor)["Id"])
         else:
             cursor.execute(
                 "UPDATE EngHub_Module SET Name=?, Description=?, Enabled=?, LastEditedByUserId=?, LastEditedAt=SYSUTCDATETIME() "
                 "WHERE ModuleId=?",
                 row.name, row.description, row.enabled, user.user_id, row.module_id,
             )
-    return {"success": True}
+            new_id = row.module_id
+    # module_id lets the Add Task page's inline "+" select the Module it just created.
+    return {"success": True, "module_id": new_id}
 
 
 # ---------------------------------------------------------------------------
