@@ -109,6 +109,7 @@ def get_cursor() -> Generator[pyodbc.Cursor, None, None]:
     warm_pool()
     conn = _pool.get()
     healthy = True
+    cursor = None
     try:
         cursor = conn.cursor()
         yield cursor
@@ -121,6 +122,21 @@ def get_cursor() -> Generator[pyodbc.Cursor, None, None]:
             pass
         raise
     finally:
+        # Close the cursor HERE, on this thread, before the connection goes
+        # back to the pool. Callers keep their `with get_cursor() as cursor`
+        # variable alive until their function returns, so previously the
+        # statement handle outlived the pool slot: a concurrent request could
+        # draw the same connection while this cursor was still open (or while
+        # its handle was being freed by garbage collection on this thread),
+        # and SQL Server (no MARS) rejected the second request with "Connection
+        # is busy with results for another command" -> a random 500 on
+        # lookups fired in parallel on page load (Engineering Hub's Add Task
+        # Status/Dev Item dropdowns coming up empty until a manual refresh).
+        if cursor is not None:
+            try:
+                cursor.close()
+            except pyodbc.Error:
+                healthy = False
         if healthy:
             _pool.put(conn)
         else:
