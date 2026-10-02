@@ -1,48 +1,6 @@
-INFO:     Started server process [576]
+INFO:     Started server process [8280]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
-INFO:     192.168.200.18:53073 - "OPTIONS /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53074 - "OPTIONS /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53073 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53074 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53083 - "GET /docs HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53074 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53073 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53073 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53074 - "OPTIONS /engineering-hub/dashboard/summary HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53075 - "OPTIONS /engineering-hub/dashboard/recent-activity HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53073 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53075 - "GET /engineering-hub/dashboard/recent-activity HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53073 - "GET /engineering-hub/dashboard/summary HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53073 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53075 - "OPTIONS /engineering-hub/menu-rights/admin/menus HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53074 - "OPTIONS /engineering-hub/menu-rights/admin/users HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53073 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53074 - "GET /engineering-hub/menu-rights/admin/menus HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53075 - "GET /engineering-hub/menu-rights/admin/users HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53075 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53074 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53074 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53074 - "GET /engineering-hub/menu-rights/admin/menus HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53075 - "GET /engineering-hub/menu-rights/admin/users HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53099 - "OPTIONS /engineering-hub/menu-rights/admin/2 HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53099 - "PUT /engineering-hub/menu-rights/admin/2 HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53100 - "PUT /engineering-hub/menu-rights/admin/2 HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53100 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53110 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53110 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53110 - "GET /engineering-hub/menu-rights/admin/menus HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53100 - "GET /engineering-hub/menu-rights/admin/users HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53111 - "PUT /engineering-hub/menu-rights/admin/2 HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53111 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53117 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53117 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53117 - "GET /engineering-hub/menu-rights/admin/menus HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53111 - "GET /engineering-hub/menu-rights/admin/users HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53118 - "PUT /engineering-hub/menu-rights/admin/2 HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53118 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53124 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53124 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53124 - "GET /engineering-hub/menu-rights/admin/menus HTTP/1.1" 200 OK
-INFO:     192.168.200.18:53118 - "GET /engineering-hub/menu-rights/admin/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54864 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:54877 - "GET /docs HTTP/1.1" 200 OK
