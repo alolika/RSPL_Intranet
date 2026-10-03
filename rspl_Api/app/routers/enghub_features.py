@@ -15,7 +15,7 @@ from pydantic import BaseModel
 from app.db import first_row_or_none, get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
 from app.routers.enghub_menu_rights import require_menu
-from app.enghub_common import AssignmentHistoryRow, AssignRequest, assign_role, get_assignment_history
+from app.enghub_common import AssignmentHistoryRow, AssignRequest, assign_role, get_assignment_history, utc_iso
 
 router = APIRouter(prefix="/engineering-hub", tags=["engineering-hub-features"])
 
@@ -238,7 +238,7 @@ def get_feature_ticket(feature_id: int) -> FeatureTicketRow | None:
         feature_ticket_id=row["FeatureTicketId"], ticket_voucher_no=row["TicketVoucherNo"],
         ticket_date=str(row["TicketDate"]) if row["TicketDate"] else None, ticket_customer_name=row["CustomerName"],
         added_by_user_id=row["AddedByUserId"], added_by_name=row["AddedByName"] or "",
-        added_at=row["AddedAt"].isoformat() if row["AddedAt"] else "",
+        added_at=utc_iso(row["AddedAt"]) if row["AddedAt"] else "",
     )
 
 

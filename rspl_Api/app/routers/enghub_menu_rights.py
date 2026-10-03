@@ -40,6 +40,10 @@ MENU_LABELS: dict[str, str] = {
     "RELEASES": "Releases",
     "REPORTS": "Reports",
     "MASTERS": "Masters",
+    # Not a menu — a right shown on the same page: lets the user pick any
+    # developer on the Dashboard. Without it the Dashboard shows only the
+    # user's own work (enforced in enghub_developer_dashboard.py too).
+    "DASHBOARD_ALL_USERS": "Dashboard: View All Developers",
 }
 
 
@@ -70,6 +74,13 @@ def _is_admin(user_id: int) -> bool:
 def _require_admin(user_id: int) -> None:
     if not _is_admin(user_id):
         raise HTTPException(status_code=403, detail="You do not have permission to manage Engineering Hub menu rights.")
+
+
+def has_menu(user_id: int, menu_code: str) -> bool:
+    """True if the user has been granted `menu_code` (a row exists)."""
+    with get_cursor() as cursor:
+        cursor.execute("SELECT 1 FROM EngHub_UserMenuRights WHERE UserId = ? AND MenuCode = ?", user_id, menu_code)
+        return cursor.fetchone() is not None
 
 
 def require_menu(user_id: int, menu_code: str) -> None:

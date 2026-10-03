@@ -17,7 +17,7 @@ from pydantic import BaseModel
 
 from app.db import first_row_or_none, get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
-from app.enghub_common import require_current_assignee
+from app.enghub_common import require_current_assignee, utc_iso
 
 router = APIRouter(prefix="/engineering-hub", tags=["engineering-hub-activities"])
 
@@ -67,7 +67,7 @@ def _row_to_activity(r: dict) -> ActivityRow:
         description=r["Description"], duration_minutes=r["DurationMinutes"],
         old_status_id=r["OldStatusId"], old_status_name=r["OldStatusName"],
         new_status_id=r["NewStatusId"], new_status_name=r["NewStatusName"],
-        occurred_at=r["OccurredAt"].isoformat() if r["OccurredAt"] else "",
+        occurred_at=utc_iso(r["OccurredAt"]) if r["OccurredAt"] else "",
         logged_by_user_id=r["LoggedByUserId"], logged_by_name=r["LoggedByName"] or "",
     )
 
@@ -394,7 +394,7 @@ def get_participants(activity_id: int) -> list[ParticipantRow]:
         ParticipantRow(
             activity_participant_id=r["ActivityParticipantId"], user_id=r["UserId"], user_name=r["UserName"] or "",
             participation_status=r["ParticipationStatus"], added_by_user_id=r["AddedByUserId"],
-            added_by_name=r["AddedByName"] or "", responded_at=r["RespondedAt"].isoformat() if r["RespondedAt"] else None,
+            added_by_name=r["AddedByName"] or "", responded_at=utc_iso(r["RespondedAt"]) if r["RespondedAt"] else None,
         )
         for r in rows
     ]

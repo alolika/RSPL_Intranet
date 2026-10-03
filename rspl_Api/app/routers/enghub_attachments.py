@@ -20,6 +20,7 @@ from pydantic import BaseModel
 
 from app.db import first_row_or_none, get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
+from app.enghub_common import utc_iso
 
 router = APIRouter(prefix="/engineering-hub", tags=["engineering-hub-attachments"])
 
@@ -81,7 +82,7 @@ def _row_to_attachment(r: dict) -> AttachmentRow:
         attachment_id=r["AttachmentId"], entity_type=r["EntityType"], entity_id=r["EntityId"],
         file_name=r["FileName"] or "", file_size_bytes=r["FileSizeBytes"], content_type=r["ContentType"],
         uploaded_by_user_id=r["UploadedByUserId"], uploaded_by_name=r["UploadedByName"] or "",
-        uploaded_at=r["UploadedAt"].isoformat() if r["UploadedAt"] else "",
+        uploaded_at=utc_iso(r["UploadedAt"]) if r["UploadedAt"] else "",
     )
 
 

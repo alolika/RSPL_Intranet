@@ -17,6 +17,7 @@ from pydantic import BaseModel
 
 from app.db import first_row_or_none, get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
+from app.enghub_common import utc_iso
 
 router = APIRouter(prefix="/engineering-hub", tags=["engineering-hub-decisions"])
 
@@ -77,7 +78,7 @@ def _row_to_decision(r: dict) -> DecisionRow:
         status_id=r["StatusId"], status_name=r["StatusName"] or "",
         customer_id=r["CustomerId"], customer_name=r["CustomerName"],
         created_by_user_id=r["CreatedByUserId"], created_by_name=r["CreatedByName"] or "",
-        created_at=r["CreatedAt"].isoformat() if r["CreatedAt"] else "",
+        created_at=utc_iso(r["CreatedAt"]) if r["CreatedAt"] else "",
     )
 
 

@@ -7,12 +7,14 @@ Owner (see enghub_common.py). "My Tasks" filters on the caller's current
 AssignmentHistory row rather than a static AssignedTo column.
 """
 
+from datetime import date
+
 from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel
 
 from app.db import first_row_or_none, get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
-from app.enghub_common import AssignmentHistoryRow, AssignRequest, assign_role, get_assignment_history, require_current_assignee
+from app.enghub_common import AssignmentHistoryRow, AssignRequest, assign_role, get_assignment_history, require_current_assignee, utc_iso
 
 router = APIRouter(prefix="/engineering-hub", tags=["engineering-hub-tasks"])
 
@@ -43,6 +45,8 @@ class TaskRow(BaseModel):
     developer_user_id: int | None = None
     developer_name: str | None = None
     closed_at: str | None = None
+    # Optional plain calendar date "YYYY-MM-DD" (DATE column — no time/zone).
+    expected_deadline: str | None = None
 
 
 # Actual time spent = SUM(DurationMinutes) across every EngHub_Activity logged
@@ -55,7 +59,7 @@ _TASK_SELECT = """
     SELECT t.TaskId, t.DevItemId, d.Title AS DevItemTitle, d.FeatureId, f.Name AS FeatureName,
            f.ModuleId, p.ProductId,
            t.TaskTypeId, tt.Name AS TaskTypeName, t.Title, t.Description,
-           t.StatusId, s.Name AS StatusName, s.IsTerminal, t.EstimatedHours, t.ClosedAt,
+           t.StatusId, s.Name AS StatusName, s.IsTerminal, t.EstimatedHours, t.ClosedAt, t.ExpectedDeadline,
            dev.UserId AS DeveloperUserId, devu.Name AS DeveloperName,
            act.TotalMinutes AS ActualMinutes
     FROM EngHub_Task t
@@ -96,7 +100,8 @@ def _row_to_task(r: dict) -> TaskRow:
         actual_hours=float(r["ActualMinutes"]) / 60.0 if r["ActualMinutes"] is not None else 0.0,
         actual_minutes=int(r["ActualMinutes"]) if r["ActualMinutes"] is not None else 0,
         developer_user_id=r["DeveloperUserId"], developer_name=r["DeveloperName"],
-        closed_at=r["ClosedAt"].isoformat() if r["ClosedAt"] else None,
+        closed_at=utc_iso(r["ClosedAt"]) if r["ClosedAt"] else None,
+        expected_deadline=str(r["ExpectedDeadline"])[:10] if r["ExpectedDeadline"] else None,
     )
 
 
@@ -198,18 +203,26 @@ class TaskForm(BaseModel):
     description: str
     status_id: int
     estimated_hours: float | None = None
+    # Optional "YYYY-MM-DD"; None/empty clears it.
+    expected_deadline: str | None = None
 
 
 @router.post("/tasks")
 def save_task(row: TaskForm, user: CurrentUser = Depends(get_current_user)) -> dict:
+    deadline = None
+    if row.expected_deadline:
+        try:
+            deadline = date.fromisoformat(row.expected_deadline[:10])
+        except ValueError:
+            raise HTTPException(status_code=400, detail="Expected Deadline must be a date (YYYY-MM-DD)")
     with get_cursor() as cursor:
         if row.task_id == 0:
             cursor.execute(
                 "INSERT INTO EngHub_Task (DevItemId, TaskTypeId, Title, Description, StatusId, "
-                "EstimatedHours, CreatedByUserId) VALUES (?, ?, ?, ?, ?, ?, ?); "
+                "EstimatedHours, ExpectedDeadline, CreatedByUserId) VALUES (?, ?, ?, ?, ?, ?, ?, ?); "
                 "SELECT SCOPE_IDENTITY() AS Id",
                 row.dev_item_id, row.task_type_id, row.title, row.description, row.status_id,
-                row.estimated_hours, user.user_id,
+                row.estimated_hours, deadline, user.user_id,
             )
             new_id = int(first_row_or_none(cursor)["Id"])
         else:
@@ -220,9 +233,10 @@ def save_task(row: TaskForm, user: CurrentUser = Depends(get_current_user)) -> d
             require_current_assignee(cursor, "Task", row.task_id, "Developer", user)
             cursor.execute(
                 "UPDATE EngHub_Task SET DevItemId=?, TaskTypeId=?, Title=?, Description=?, StatusId=?, "
-                "EstimatedHours=?, LastEditedByUserId=?, LastEditedAt=SYSUTCDATETIME() WHERE TaskId=?",
+                "EstimatedHours=?, ExpectedDeadline=?, LastEditedByUserId=?, LastEditedAt=SYSUTCDATETIME() "
+                "WHERE TaskId=?",
                 row.dev_item_id, row.task_type_id, row.title, row.description, row.status_id,
-                row.estimated_hours, user.user_id, row.task_id,
+                row.estimated_hours, deadline, user.user_id, row.task_id,
             )
             new_id = row.task_id
     return {"success": True, "task_id": new_id}
@@ -312,7 +326,7 @@ def get_task_ticket(task_id: int) -> TaskTicketRow | None:
         task_ticket_id=row["TaskTicketId"], ticket_voucher_no=row["TicketVoucherNo"],
         ticket_date=str(row["TicketDate"]) if row["TicketDate"] else None, ticket_customer_name=row["CustomerName"],
         added_by_user_id=row["AddedByUserId"], added_by_name=row["AddedByName"] or "",
-        added_at=row["AddedAt"].isoformat() if row["AddedAt"] else "",
+        added_at=utc_iso(row["AddedAt"]) if row["AddedAt"] else "",
     )
 
 

@@ -12,6 +12,14 @@ from pydantic import BaseModel
 from app.db import first_row_or_none, get_cursor, rows_to_dicts
 from app.deps import CurrentUser
 
+def utc_iso(dt) -> str:
+    """Every EngHub_* timestamp column defaults to SYSUTCDATETIME() (UTC), but
+    pyodbc returns it as a naive datetime and .isoformat() then has no zone —
+    browsers parse that as LOCAL time, so IST users saw every time 5h30m early.
+    The trailing 'Z' marks it UTC so the frontend's date pipe converts it."""
+    return dt.isoformat() + "Z"
+
+
 
 class AssignRequest(BaseModel):
     role_type: str
@@ -91,8 +99,8 @@ def get_assignment_history(entity_type: str, entity_id: int) -> list[AssignmentH
             assignment_history_id=r["AssignmentHistoryId"], role_type=r["RoleType"],
             user_id=r["UserId"], user_name=r["UserName"] or "",
             assigned_by_user_id=r["AssignedByUserId"], assigned_by_name=r["AssignedByName"] or "",
-            assigned_at=r["AssignedAt"].isoformat() if r["AssignedAt"] else "",
-            unassigned_at=r["UnassignedAt"].isoformat() if r["UnassignedAt"] else None,
+            assigned_at=utc_iso(r["AssignedAt"]) if r["AssignedAt"] else "",
+            unassigned_at=utc_iso(r["UnassignedAt"]) if r["UnassignedAt"] else None,
             comments=r["Comments"],
         )
         for r in rows

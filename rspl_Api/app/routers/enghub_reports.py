@@ -19,6 +19,7 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 
 from app.db import get_cursor, rows_to_dicts
+from app.enghub_common import utc_iso
 
 router = APIRouter(prefix="/engineering-hub", tags=["engineering-hub-reports"])
 
@@ -239,7 +240,7 @@ def get_feature_effort_entries(
         rows = rows_to_dicts(cursor, limit=500)
     return [
         FeatureEffortEntryRow(
-            activity_id=r["ActivityId"], occurred_at=r["OccurredAt"].isoformat() if r["OccurredAt"] else "",
+            activity_id=r["ActivityId"], occurred_at=utc_iso(r["OccurredAt"]) if r["OccurredAt"] else "",
             task_title=r["ResolvedTaskTitle"], activity_type_name=r["ActivityTypeName"] or "",
             duration_minutes=r["DurationMinutes"] or 0, logged_by_name=r["LoggedByName"],
         )
@@ -286,7 +287,7 @@ def get_interruptions(date_from: str | None = None, date_to: str | None = None) 
         rows = rows_to_dicts(cursor, limit=500)
     return [
         InterruptionRow(
-            activity_id=r["ActivityId"], occurred_at=r["OccurredAt"].isoformat() if r["OccurredAt"] else "",
+            activity_id=r["ActivityId"], occurred_at=utc_iso(r["OccurredAt"]) if r["OccurredAt"] else "",
             reason_name=r["ReasonName"] or "", interrupted_task_title=r["InterruptedTaskTitle"] or "",
             new_task_title=r["NewTaskTitle"] or "", requested_by_name=r["RequestedByName"] or "", comments=r["Comments"],
             duration_minutes=r["DurationMinutes"],
@@ -393,7 +394,7 @@ def get_testing_effort_entries(
         rows = rows_to_dicts(cursor, limit=500)
     return [
         FeatureEffortEntryRow(
-            activity_id=r["ActivityId"], occurred_at=r["OccurredAt"].isoformat() if r["OccurredAt"] else "",
+            activity_id=r["ActivityId"], occurred_at=utc_iso(r["OccurredAt"]) if r["OccurredAt"] else "",
             task_title=r["ResolvedTaskTitle"], activity_type_name=r["ActivityTypeName"] or "",
             duration_minutes=r["DurationMinutes"] or 0, logged_by_name=r["LoggedByName"],
         )
@@ -412,6 +413,16 @@ class PendingAgeingRow(BaseModel):
     status_name: str
     age_days: int
     created_at: str
+    # One row per pending (non-terminal) Task of the Development Item; all
+    # task_* fields are None for a Dev Item with no pending Task (it still
+    # gets one row so it doesn't vanish from the report).
+    task_id: int | None = None
+    task_title: str | None = None
+    task_status_name: str | None = None
+    expected_deadline: str | None = None  # "YYYY-MM-DD"
+    # Days past the Task's Expected Deadline as of today: None = no deadline
+    # set, 0 = not overdue yet (deadline today or later), N > 0 = N days late.
+    overdue_days: int | None = None
 
 
 @router.get("/reports/pending-ageing", response_model=list[PendingAgeingRow])
@@ -420,7 +431,7 @@ def get_pending_ageing(
     module_id: int | None = None,
     feature_id: int | None = None,
     dev_item_id: int | None = None,
-    age_days_gt: int | None = None,
+    overdue_days_gt: int | None = None,
 ) -> list[PendingAgeingRow]:
     params: list = []
     where = "WHERE s.IsTerminal = 0"
@@ -436,20 +447,36 @@ def get_pending_ageing(
     if dev_item_id is not None:
         where += " AND d.DevItemId = ?"
         params.append(dev_item_id)
-    if age_days_gt is not None:
-        where += " AND DATEDIFF(day, d.CreatedAt, SYSUTCDATETIME()) > ?"
-        params.append(age_days_gt)
+    if overdue_days_gt is not None:
+        where += " AND t.ExpectedDeadline IS NOT NULL AND DATEDIFF(day, t.ExpectedDeadline, CAST(GETDATE() AS DATE)) > ?"
+        params.append(overdue_days_gt)
+    # "Today" is the DB server's local calendar date (GETDATE(), IST here) —
+    # ExpectedDeadline is a plain local calendar date too, so both sides of
+    # the DATEDIFF are in the same zone.
     with get_cursor() as cursor:
         cursor.execute(
             f"""
             SELECT d.DevItemId, d.Title, f.Name AS FeatureName, s.Name AS StatusName,
-                   DATEDIFF(day, d.CreatedAt, SYSUTCDATETIME()) AS AgeDays, d.CreatedAt
+                   DATEDIFF(day, d.CreatedAt, SYSUTCDATETIME()) AS AgeDays, d.CreatedAt,
+                   t.TaskId, t.Title AS TaskTitle, t.StatusName AS TaskStatusName, t.ExpectedDeadline,
+                   CASE
+                       WHEN t.ExpectedDeadline IS NULL THEN NULL
+                       WHEN t.ExpectedDeadline >= CAST(GETDATE() AS DATE) THEN 0
+                       ELSE DATEDIFF(day, t.ExpectedDeadline, CAST(GETDATE() AS DATE))
+                   END AS OverdueDays
             FROM EngHub_DevelopmentItem d
             JOIN EngHub_Feature f ON f.FeatureId = d.FeatureId
             JOIN EngHub_Module mo ON mo.ModuleId = f.ModuleId
             JOIN EngHub_Status s ON s.StatusId = d.StatusId
+            LEFT JOIN (
+                SELECT tk.TaskId, tk.DevItemId, tk.Title, tk.ExpectedDeadline, ts.Name AS StatusName
+                FROM EngHub_Task tk
+                JOIN EngHub_Status ts ON ts.StatusId = tk.StatusId
+                WHERE ts.IsTerminal = 0
+            ) t ON t.DevItemId = d.DevItemId
             {where}
-            ORDER BY AgeDays DESC
+            ORDER BY CASE WHEN t.ExpectedDeadline IS NULL THEN 1 ELSE 0 END,
+                     OverdueDays DESC, AgeDays DESC, d.DevItemId, t.TaskId
             """,
             *params,
         )
@@ -458,7 +485,10 @@ def get_pending_ageing(
         PendingAgeingRow(
             dev_item_id=r["DevItemId"], title=r["Title"] or "", feature_name=r["FeatureName"] or "",
             status_name=r["StatusName"] or "", age_days=r["AgeDays"] or 0,
-            created_at=r["CreatedAt"].isoformat() if r["CreatedAt"] else "",
+            created_at=utc_iso(r["CreatedAt"]) if r["CreatedAt"] else "",
+            task_id=r["TaskId"], task_title=r["TaskTitle"], task_status_name=r["TaskStatusName"],
+            expected_deadline=str(r["ExpectedDeadline"])[:10] if r["ExpectedDeadline"] else None,
+            overdue_days=r["OverdueDays"],
         )
         for r in rows
     ]
@@ -672,7 +702,7 @@ def get_recent_activity() -> list[RecentActivityRow]:
     return [
         RecentActivityRow(
             activity_id=r["ActivityId"], activity_type_name=r["ActivityTypeName"] or "", description=r["Description"],
-            duration_minutes=r["DurationMinutes"], occurred_at=r["OccurredAt"].isoformat() if r["OccurredAt"] else "",
+            duration_minutes=r["DurationMinutes"], occurred_at=utc_iso(r["OccurredAt"]) if r["OccurredAt"] else "",
             logged_by_name=r["LoggedByName"] or "", task_name=r["TaskName"],
         )
         for r in rows

@@ -24,6 +24,7 @@ from app.routers import (
     enghub_activities,
     enghub_attachments,
     enghub_decisions,
+    enghub_developer_dashboard,
     enghub_devitems,
     enghub_features,
     enghub_masters,
@@ -136,6 +137,7 @@ app.include_router(enghub_decisions.router)
 app.include_router(enghub_releases.router)
 app.include_router(enghub_attachments.router)
 app.include_router(enghub_reports.router)
+app.include_router(enghub_developer_dashboard.router)
 app.include_router(enghub_menu_rights.router)
 
 

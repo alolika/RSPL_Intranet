@@ -791,6 +791,8 @@ BEGIN TRY
         ('Task',             'In Progress',  2, 0),
         ('Task',             'Blocked',      3, 0),
         ('Task',             'Done',         4, 1),
+        ('Task',             'Hold',         5, 0),
+        ('Task',             'Cancelled',    6, 1),
         ('Decision',         'Active',       1, 0),
         ('Decision',         'Under Review', 2, 0),
         ('Decision',         'Superseded',   3, 1),

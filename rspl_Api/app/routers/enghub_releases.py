@@ -14,6 +14,7 @@ from pydantic import BaseModel
 
 from app.db import first_row_or_none, get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
+from app.enghub_common import utc_iso
 
 router = APIRouter(prefix="/engineering-hub", tags=["engineering-hub-releases"])
 
@@ -48,7 +49,7 @@ def _row_to_release(r: dict) -> ReleaseRow:
         description=r["Description"], product_id=r["ProductId"], product_name=r["ProductName"],
         status_id=r["StatusId"], status_name=r["StatusName"] or "",
         created_by_user_id=r["CreatedByUserId"], created_by_name=r["CreatedByName"] or "",
-        created_at=r["CreatedAt"].isoformat() if r["CreatedAt"] else "",
+        created_at=utc_iso(r["CreatedAt"]) if r["CreatedAt"] else "",
     )
 
 
@@ -163,7 +164,7 @@ def get_release_mappings(release_id: int) -> list[ReleaseMappingRow]:
             feature_id=r["FeatureId"], feature_name=r["FeatureName"],
             dev_item_id=r["DevItemId"], dev_item_title=r["DevItemTitle"],
             mapped_by_user_id=r["MappedByUserId"], mapped_by_name=r["MappedByName"] or "",
-            mapped_at=r["MappedAt"].isoformat() if r["MappedAt"] else "",
+            mapped_at=utc_iso(r["MappedAt"]) if r["MappedAt"] else "",
         )
         for r in rows
     ]

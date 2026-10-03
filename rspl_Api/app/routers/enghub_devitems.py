@@ -15,6 +15,7 @@ from pydantic import BaseModel
 from app.db import first_row_or_none, get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
 from app.routers.enghub_menu_rights import require_menu
+from app.enghub_common import utc_iso
 
 router = APIRouter(prefix="/engineering-hub", tags=["engineering-hub-development-items"])
 
@@ -102,7 +103,7 @@ def _row_to_dev_item(r: dict) -> DevItemRow:
         customer_name=(r["CustomerName"] or "").strip() or None,
         priority_id=r["PriorityId"], priority_name=r["PriorityName"],
         status_id=r["StatusId"], status_name=r["StatusName"] or "", is_terminal=bool(r["IsTerminal"]),
-        closed_at=r["ClosedAt"].isoformat() if r["ClosedAt"] else None,
+        closed_at=utc_iso(r["ClosedAt"]) if r["ClosedAt"] else None,
         actual_minutes=int(r["ActualMinutes"]) if r["ActualMinutes"] is not None else 0,
     )
 
