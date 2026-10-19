@@ -13,7 +13,10 @@ no new endpoint needed for it), 2 "Sales Team DashBoard", 5 "AMC Dashboard"
 This router covers the two genuinely new ones.
 """
 
-from fastapi import APIRouter, Depends
+from datetime import date, datetime
+from decimal import Decimal
+
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
 from app.db import get_cursor, rows_to_dicts
@@ -94,6 +97,57 @@ def get_sales_team_dashboard(current_user: CurrentUser = Depends(get_current_use
 @router.get("/amc", response_model=list[DashboardTile])
 def get_amc_dashboard(current_user: CurrentUser = Depends(get_current_user)) -> list[DashboardTile]:
     return _run_tiles(5, current_user)
+
+
+class AmcDetailResult(BaseModel):
+    columns: list[str]
+    rows: list[dict]
+
+
+_AMC_DETAIL_COLUMNS = {"Pending AMC", "Expected AMC", "CYAMCReceived"}
+# Helper columns the proc returns for sorting/linking, not for display.
+_AMC_DETAIL_HIDDEN = {"EXPDT", "Custid"}
+
+
+# Amount columns the proc pre-formats as "18,673" in some branches
+# (CYAMCReceived / Expected AMC) — sent as numbers so totals/export work.
+_AMC_DETAIL_AMOUNT_COLUMNS = {"AMC Amt", "Assessable Value"}
+
+
+def _json_value(v, key: str = ""):
+    if key in _AMC_DETAIL_AMOUNT_COLUMNS and isinstance(v, str):
+        try:
+            return float(v.replace(",", ""))
+        except ValueError:
+            return v
+    if isinstance(v, Decimal):
+        return float(v)
+    if isinstance(v, (datetime, date)):
+        return v.isoformat()
+    return v
+
+
+# AMC Dashboard's month-cell drill-down — the legacy click-through to
+# RSPL_AMCDashBoard_Analysis_Details (customer-wise list behind one amount
+# cell). `month` is the forecast row's Month value ("Apr".."Mar") or
+# "Total Till Overdue"; the proc has no branch for the plain "Total" row.
+@router.get("/amc/details", response_model=AmcDetailResult)
+def get_amc_dashboard_details(
+    column: str, month: str, current_user: CurrentUser = Depends(get_current_user)
+) -> AmcDetailResult:
+    if column not in _AMC_DETAIL_COLUMNS:
+        raise HTTPException(status_code=400, detail="Unsupported column")
+    with get_cursor() as cursor:
+        cursor.execute(
+            "EXEC RSPL_AMCDashBoard_Analysis_Details @SelectedColumnName = ?, @ValueColumn = ?, @userid = ?, @Orderby = ''",
+            column, month, current_user.user_id,
+        )
+        raw = rows_to_dicts(cursor)
+    if column == "Pending AMC":
+        raw.sort(key=lambda r: (r.get("EXPDT") or datetime.min, r.get("Customer") or ""))
+    columns = [c for c in (raw[0].keys() if raw else []) if c not in _AMC_DETAIL_HIDDEN]
+    rows = [{k: _json_value(v, k) for k, v in r.items()} for r in raw]
+    return AmcDetailResult(columns=columns, rows=rows)
 
 
 # Home.master's own DashBoard.aspx.vb (the main post-login landing page, not
