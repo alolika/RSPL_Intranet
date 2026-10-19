@@ -23,12 +23,13 @@ adjacent memory). Stubbed here (no actual send) rather than re-asking, per the
 established default for this category of side effect.
 """
 
-from datetime import date
+from datetime import date, datetime
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
 from app.db import get_cursor, rows_to_dicts
+from app.deps import CurrentUser, get_current_user
 
 router = APIRouter(prefix="/marketing/register", tags=["marketing-register"])
 
@@ -289,6 +290,105 @@ def get_enquiry_register_actions(cust_id: int) -> list[EnquiryRegisterActionRow]
         )
         for r in rows
     ]
+
+
+class EnquiryActionEdit(BaseModel):
+    action_stage_id: int
+    action_date: date | None = None
+    action_time: str = ""
+    description: str = ""
+    remark: str = ""
+    assigned_to: int = 0
+    sales_person_id: int = 0
+    quotation_amt: float = 0
+    completed: bool = False
+    completed_by: int = 0
+    completion_date: date | None = None
+    completion_time: str = ""
+    completed_remark: str = ""
+
+
+def _hhmm(v) -> str:
+    return v.strftime("%H:%M") if isinstance(v, datetime) else ""
+
+
+def _time_param(hhmm: str) -> datetime | None:
+    # ActionTime/CompletionTime are datetime columns holding only a time on
+    # the 1900-01-01 dummy date (same shape the legacy procs store).
+    try:
+        h, m = (int(x) for x in hhmm.split(":")[:2])
+        return datetime(1900, 1, 1, h, m)
+    except (ValueError, AttributeError):
+        return None
+
+
+# "Edit" button on Customer Enquiry - Action's action-history sub-grid: loads
+# one specific action by ActionId. The legacy Ismodify flow
+# (support_amc.get_enquiry_action_for_modify) only ever loaded the
+# customer's latest action and locked most fields, so it can't serve this.
+@router.get("/actions/{cust_id}/{action_id}", response_model=EnquiryActionEdit)
+def get_enquiry_action_for_edit(cust_id: int, action_id: int) -> EnquiryActionEdit:
+    with get_cursor() as cursor:
+        cursor.execute(
+            "SELECT ActionStageID, ActionDate, ActionTime, ActionDescription, ActionRemark, AssignedTo, SalesManID, "
+            "QuotationAmount, ActionCompleted, CompletedBy, CompletionDate, CompletionTime, CompletedRemark "
+            "FROM Web_EnquiryAction WHERE CustID = ? AND ActionId = ?",
+            cust_id, action_id,
+        )
+        rows = rows_to_dicts(cursor)
+    if not rows:
+        raise HTTPException(status_code=404, detail="Action not found")
+    r = rows[0]
+    completed = bool(r["ActionCompleted"])
+    return EnquiryActionEdit(
+        action_stage_id=r["ActionStageID"] or 0,
+        action_date=r["ActionDate"].date() if r["ActionDate"] else None,
+        action_time=_hhmm(r["ActionTime"]),
+        description=r["ActionDescription"] or "",
+        remark=r["ActionRemark"] or "",
+        assigned_to=r["AssignedTo"] or 0,
+        sales_person_id=r["SalesManID"] or 0,
+        quotation_amt=float(r["QuotationAmount"] or 0),
+        completed=completed,
+        completed_by=(r["CompletedBy"] or 0) if completed else 0,
+        completion_date=r["CompletionDate"].date() if completed and r["CompletionDate"] else None,
+        completion_time=_hhmm(r["CompletionTime"]) if completed else "",
+        completed_remark=r["CompletedRemark"] or "",
+    )
+
+
+@router.put("/actions/{cust_id}/{action_id}")
+def update_enquiry_action(
+    cust_id: int, action_id: int, body: EnquiryActionEdit, current_user: CurrentUser = Depends(get_current_user)
+) -> dict[str, bool]:
+    if not body.action_stage_id or not body.action_date or not body.description.strip() or not body.assigned_to:
+        raise HTTPException(status_code=400, detail="Action Stage, Action Date, Description and Assigned To are required.")
+    now = datetime.now()
+    sets = [
+        "ActionStageID = ?", "ActionDate = ?", "ActionTime = ?", "ActionDescription = ?", "ActionRemark = ?",
+        "AssignedTo = ?", "SalesManID = ?", "QuotationAmount = ?", "QuotationAmt = ?",
+        "ModificationDate = ?", "ModificationTime = ?", "ModificationUserID = ?",
+    ]
+    params: list = [
+        body.action_stage_id, datetime.combine(body.action_date, datetime.min.time()),
+        _time_param(body.action_time) or datetime(1900, 1, 1, now.hour, now.minute),
+        body.description.strip(), body.remark, body.assigned_to, body.sales_person_id,
+        body.quotation_amt, body.quotation_amt,
+        datetime.combine(now.date(), datetime.min.time()), now, current_user.user_id,
+    ]
+    with get_cursor() as cursor:
+        cursor.execute("SELECT ActionCompleted FROM Web_EnquiryAction WHERE CustID = ? AND ActionId = ?", cust_id, action_id)
+        row = cursor.fetchone()
+        if not row:
+            raise HTTPException(status_code=404, detail="Action not found")
+        # Only open (not yet closed) actions are editable, per explicit request.
+        if row[0]:
+            raise HTTPException(status_code=400, detail="This action is already closed and cannot be edited.")
+        cursor.execute(
+            f"UPDATE Web_EnquiryAction SET {', '.join(sets)} WHERE CustID = ? AND ActionId = ?",
+            *params, cust_id, action_id,
+        )
+    return {"success": True}
 
 
 @router.post("/whatsapp/{cust_id}")
