@@ -377,13 +377,25 @@ def update_enquiry_action(
         datetime.combine(now.date(), datetime.min.time()), now, current_user.user_id,
     ]
     with get_cursor() as cursor:
-        cursor.execute("SELECT ActionCompleted FROM Web_EnquiryAction WHERE CustID = ? AND ActionId = ?", cust_id, action_id)
+        cursor.execute(
+            "SELECT ActionCompleted, CreationDate FROM Web_EnquiryAction WHERE CustID = ? AND ActionId = ?", cust_id, action_id
+        )
         row = cursor.fetchone()
         if not row:
             raise HTTPException(status_code=404, detail="Action not found")
-        # Only open (not yet closed) actions are editable, per explicit request.
+        # Per explicit request: an action (open or closed) is editable only on
+        # the same day it was created — not the day after, not a past one.
+        if not row[1] or row[1].date() != now.date():
+            raise HTTPException(status_code=400, detail="Only actions created today can be edited.")
+        # Completion fields only apply to an already-closed action — editing
+        # never opens or closes an action (that stays the Close flow's job).
         if row[0]:
-            raise HTTPException(status_code=400, detail="This action is already closed and cannot be edited.")
+            sets += ["CompletedBy = ?", "CompletionDate = ?", "CompletionTime = ?", "CompletedRemark = ?"]
+            params += [
+                body.completed_by or None,
+                datetime.combine(body.completion_date, datetime.min.time()) if body.completion_date else None,
+                _time_param(body.completion_time), body.completed_remark,
+            ]
         cursor.execute(
             f"UPDATE Web_EnquiryAction SET {', '.join(sets)} WHERE CustID = ? AND ActionId = ?",
             *params, cust_id, action_id,
