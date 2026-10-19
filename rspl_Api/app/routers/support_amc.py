@@ -185,6 +185,21 @@ def get_ledger_groups() -> list[LookupOption]:
         return [LookupOption(label=r["Name"], value=r["LedgerGroupId"]) for r in rows_to_dicts(cursor)]
 
 
+@router.get("/customer-search", response_model=list[str])
+def search_amc_customers(q: str = "") -> list[str]:
+    """Type-ahead for AMC Followup's Customer Name box — only customers that
+    actually appear in VWAMCForAllCustomers (~0.1s)."""
+    q = q.strip()
+    if len(q) < 2:
+        return []
+    with get_cursor() as cursor:
+        cursor.execute(
+            "SELECT DISTINCT TOP 20 Displayname FROM VWAMCForAllCustomers WHERE Displayname LIKE ? ORDER BY Displayname",
+            f"%{q}%",
+        )
+        return [r[0] for r in cursor.fetchall() if r[0]]
+
+
 @router.get("/rows", response_model=list[AmcRow])
 def get_amc_rows(
     mode: str,
@@ -195,7 +210,11 @@ def get_amc_rows(
     from_expiry_date: date | None = None,
     to_expiry_date: date | None = None,
     user_id: int = 0,
+    limit: int = 0,
 ) -> list[AmcRow]:
+    # limit>0 -> TOP N (AMC Followup opens with the first 50 so the page is
+    # instant; the full 11k+ row view takes ~5-6s). 0 = no cap (searches/export).
+    top = f"TOP {int(limit)} " if limit > 0 else ""
     with get_cursor() as cursor:
         if mode == "AMCPending":
             where = " WHERE 1 = 1"
@@ -223,7 +242,7 @@ def get_amc_rows(
                 params.append(_dmy(from_expiry_date))
 
             cursor.execute(
-                f"SELECT '' ActionDescription, '' ActionDate, 0 LedgerGroupBalance, * FROM VWAMCForAllCustomers{where} ORDER BY DisplayName",
+                f"SELECT {top}'' ActionDescription, '' ActionDate, 0 LedgerGroupBalance, * FROM VWAMCForAllCustomers{where} ORDER BY DisplayName",
                 *params,
             )
             rows = rows_to_dicts(cursor)
