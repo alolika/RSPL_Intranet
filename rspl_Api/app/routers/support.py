@@ -820,6 +820,13 @@ def add_tt_action(
 @router.get("/tt-action/history", response_model=list[TtActionRow])
 def get_tt_actions(tt_no: int, cust_id: int) -> list[TtActionRow]:
     with get_cursor() as cursor:
+        # webproc_GetTTAction filters on CustID AND TTNo. Create Trouble
+        # Ticket's "Search by TT No" tab has no customer selected and sends
+        # cust_id=0, which matched nothing — resolve the ticket's own customer.
+        if not cust_id:
+            cursor.execute("SELECT CustID FROM TTMaster WHERE Voucherno = ?", tt_no)
+            row = cursor.fetchone()
+            cust_id = row[0] if row and row[0] else 0
         cursor.execute("EXEC webproc_GetTTAction ?, ?", tt_no, cust_id)
         rows = rows_to_dicts(cursor)
 
