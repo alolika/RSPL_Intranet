@@ -58,7 +58,7 @@ import requests
 from fastapi import APIRouter, Depends, Header, HTTPException, Response
 from pydantic import BaseModel
 
-from app.db import get_cursor, rows_to_dicts
+from app.db import cdr_import_cursor, get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
 from app.rights import FORM_CALL_HISTORY, require_access
 
@@ -662,7 +662,10 @@ def get_missed_calls(product: str = "", from_date: date | None = None, to_date: 
     # This only changes how our endpoint invokes the shared proc (an
     # EXECUTE-statement option, not a proc/schema change) — its logic,
     # output, and every other caller are untouched.
-    with get_cursor() as cursor:
+    # cdr_import_cursor (2026-10-22): this proc used to run the SynapseCDR
+    # call-log import first, and concurrent runs locked each other out until
+    # the whole API hung — see app/db.py.
+    with cdr_import_cursor() as cursor:
         cursor.execute(
             "EXEC WebProc_SIPMissedCalls ?, ?, ? WITH RECOMPILE",
             from_date.isoformat() if from_date else None,

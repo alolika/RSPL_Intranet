@@ -26,7 +26,7 @@ from datetime import datetime
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
-from app.db import get_cursor, rows_to_dicts
+from app.db import cdr_import_cursor, get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
 
 router = APIRouter(prefix="/support", tags=["support-modules"])
@@ -429,7 +429,9 @@ def get_support_coordinator_reports() -> list[DashboardTile]:
         rows: list[dict] = []
         if proc:
             try:
-                with get_cursor() as cursor:
+                # Several tile procs run the SynapseCDR call-log import
+                # first (same lock-up as Missed Calls, see app/db.py).
+                with cdr_import_cursor() as cursor:
                     cursor.execute(f"EXEC {proc}")
                     rows = rows_to_dicts(cursor)
             except Exception:

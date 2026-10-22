@@ -1,8 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from app.config import settings
-from app.db import warm_pool
+from app.db import DatabaseBusyError, warm_pool
 from app.routers import (
     admin_content,
     admin_customers,
@@ -139,6 +140,17 @@ app.include_router(enghub_attachments.router)
 app.include_router(enghub_reports.router)
 app.include_router(enghub_developer_dashboard.router)
 app.include_router(enghub_menu_rights.router)
+
+
+@app.exception_handler(DatabaseBusyError)
+def _database_busy(request: Request, exc: DatabaseBusyError) -> JSONResponse:
+    # A fast, explicit "try again shortly" instead of a request that hangs
+    # until the proxy gives up — see _POOL_WAIT_SECONDS in app/db.py.
+    return JSONResponse(
+        status_code=503,
+        content={"detail": "The server is busy right now. Please try again in a minute."},
+        headers={"Retry-After": "30"},
+    )
 
 
 @app.on_event("startup")

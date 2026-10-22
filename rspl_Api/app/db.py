@@ -19,10 +19,24 @@ from app.config import settings
 # load, that overhead alone added multiple seconds to every page — this was
 # the dominant cause of the app feeling slow everywhere, not any one page's
 # queries.
-_POOL_SIZE = 5
+_POOL_SIZE = 10
 _pool: "queue.Queue[pyodbc.Connection]" = queue.Queue()
 _pool_lock = threading.Lock()
 _pool_ready = False
+
+# How long a request waits for a free pooled connection before giving up
+# with DatabaseBusyError (-> HTTP 503, see main.py). Previously _pool.get()
+# waited forever: confirmed live (2026-10-22) that 5 Missed Calls requests
+# blocking each other on SynapseCDR held all 5 connections, every other
+# request then queued behind them indefinitely, and once FastAPI's worker
+# threads were all parked in that queue the whole API hung — even /health,
+# which never touches the database. A fast 503 keeps one stuck report from
+# taking every other page down with it.
+_POOL_WAIT_SECONDS = 20
+
+
+class DatabaseBusyError(RuntimeError):
+    """No database connection (or import gate slot) became free in time."""
 
 
 def _connection_string() -> str:
@@ -95,22 +109,34 @@ def warm_pool() -> None:
 
 
 @contextmanager
-def get_cursor() -> Generator[pyodbc.Cursor, None, None]:
+def get_cursor(autocommit: bool = False) -> Generator[pyodbc.Cursor, None, None]:
     """Yields a cursor from the connection pool; commits on success, rolls
     back on error. A connection that errors is discarded and replaced with a
     fresh one rather than returned to the pool, so a dropped/stale connection
     (e.g. after a long idle period) self-heals instead of poisoning every
     future request that happens to draw it.
 
+    `autocommit=True` runs each statement in its own transaction, the way
+    the legacy ADO.NET pages did — see cdr_import_cursor() for why that
+    matters. The connection is switched back before returning to the pool.
+
+    Raises DatabaseBusyError if no connection frees up within
+    _POOL_WAIT_SECONDS.
+
     Every caller uses parameterized queries (`?` placeholders) — unlike the
     source app's string-concatenated SQL, which is deliberately not carried
     forward.
     """
     warm_pool()
-    conn = _pool.get()
+    try:
+        conn = _pool.get(timeout=_POOL_WAIT_SECONDS)
+    except queue.Empty:
+        raise DatabaseBusyError("All database connections are busy.") from None
     healthy = True
     cursor = None
     try:
+        if autocommit:
+            conn.autocommit = True
         cursor = conn.cursor()
         yield cursor
         conn.commit()
@@ -137,6 +163,11 @@ def get_cursor() -> Generator[pyodbc.Cursor, None, None]:
                 cursor.close()
             except pyodbc.Error:
                 healthy = False
+        if autocommit and healthy:
+            try:
+                conn.autocommit = False
+            except pyodbc.Error:
+                healthy = False
         if healthy:
             _pool.put(conn)
         else:
@@ -145,6 +176,39 @@ def get_cursor() -> Generator[pyodbc.Cursor, None, None]:
             except pyodbc.Error:
                 pass
             _replenish_pool_async()
+
+
+# One at a time, across the whole process, for procs that (re)run the
+# SynapseCDR call-log import synapsecdr.dbo.procSIP_SIPEventRegisterCDRAdd
+# before reading — WebProc_SIPMissedCalls and the Support Co-ordinator
+# Dashboard tiles. Confirmed live (2026-10-22): concurrent runs of that import
+# block each other on SIPEventRegisterCDR, each hits conn.timeout, and with
+# autocommit off each one's work is rolled back entirely, so the backlog
+# never shrinks and the next caller starts the same import over — a loop
+# that held the whole pool for 30+ minutes.
+_CDR_IMPORT_GATE = threading.BoundedSemaphore(1)
+_CDR_IMPORT_WAIT_SECONDS = 30
+
+
+@contextmanager
+def cdr_import_cursor() -> Generator[pyodbc.Cursor, None, None]:
+    """get_cursor() for procs that run the SynapseCDR import: one caller at a
+    time (others wait up to _CDR_IMPORT_WAIT_SECONDS, then DatabaseBusyError),
+    and autocommit so each import statement commits as it completes — a run
+    cut short by the query timeout keeps its progress instead of rolling all
+    of it back, matching the legacy ADO.NET pages' behavior.
+
+    Since 22-Oct-2026 the SQL Agent job 'Get data from SIP' runs the import
+    (database/missed_calls_job_apply.sql) and WebProc_SIPMissedCalls no
+    longer calls it; this stays as the safety net if that is rolled back,
+    and for the dashboard procs that still call it."""
+    if not _CDR_IMPORT_GATE.acquire(timeout=_CDR_IMPORT_WAIT_SECONDS):
+        raise DatabaseBusyError("Call-log report is busy.")
+    try:
+        with get_cursor(autocommit=True) as cursor:
+            yield cursor
+    finally:
+        _CDR_IMPORT_GATE.release()
 
 
 def rows_to_dicts(cursor: pyodbc.Cursor, limit: int | None = None) -> list[dict[str, Any]]:
