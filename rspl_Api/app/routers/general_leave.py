@@ -697,7 +697,8 @@ def submit_ho_sanction(body: SubmitHoSanctionRequest) -> dict[str, bool]:
         applicant_user_id = article_rows[0]["UserID"] if article_rows else 0
 
         cursor.execute(
-            "SELECT SrNo, ForDays, FromDate, ToDate, Reason, HO, InformTo FROM web_leaveapplication WHERE ArticleID = ?",
+            "SELECT SrNo, ForDays, FromDate, ToDate, Reason, HO, InformTo, HOSanctioned, HORejected "
+            "FROM web_leaveapplication WHERE ArticleID = ?",
             body.article_id,
         )
         leave_rows_for_article = rows_to_dicts(cursor)
@@ -708,7 +709,20 @@ def submit_ho_sanction(body: SubmitHoSanctionRequest) -> dict[str, bool]:
         inform_to_raw = next((r["InformTo"] for r in leave_rows_for_article if r.get("InformTo")), "")
         inform_to_emails_at_sanction = [e.strip() for e in inform_to_raw.split(",") if e.strip()]
 
-        for decision in body.decisions:
+        # Per explicit request: an approved leave item is final — it can't be
+        # rejected afterwards, and approving it again is a no-op (no repeat
+        # emails/WhatsApp). Re-rejecting an already rejected item is likewise
+        # skipped. The page shows the matching message before submitting;
+        # this just keeps a direct/stale request from overriding it.
+        def _already_decided(d) -> bool:
+            row = leave_detail_by_sr_no.get(d.sr_no) or {}
+            if row.get("HOSanctioned"):
+                return True
+            return d.decision != "approve" and bool(row.get("HORejected"))
+
+        decisions = [d for d in body.decisions if not _already_decided(d)]
+
+        for decision in decisions:
             if decision.decision == "approve":
                 cursor.execute(
                     "UPDATE web_leaveapplication SET HoSanctioned = 1, HOSanctionedDate = ?, HORejected = 0 "
@@ -782,7 +796,7 @@ def submit_ho_sanction(body: SubmitHoSanctionRequest) -> dict[str, bool]:
             # WhatsApp call either) — same akshayaj@ trigger condition as
             # the email above.
             if approved_descriptions:
-                approved_sr_nos = [d.sr_no for d in body.decisions if d.decision == "approve"]
+                approved_sr_nos = [d.sr_no for d in decisions if d.decision == "approve"]
                 detail_lines: list[str] = []
                 ho_name_for_msg = ""
                 for sr_no in approved_sr_nos:
