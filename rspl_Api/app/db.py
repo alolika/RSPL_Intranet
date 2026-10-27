@@ -103,8 +103,22 @@ def warm_pool() -> None:
     with _pool_lock:
         if _pool_ready:
             return
-        for _ in range(_POOL_SIZE):
-            _pool.put(_new_connection())
+        # Open all of them before publishing any, so a failure partway through
+        # doesn't leave stray connections in the pool that the next retry
+        # would then add to (growing it past _POOL_SIZE).
+        opened: list[pyodbc.Connection] = []
+        try:
+            for _ in range(_POOL_SIZE):
+                opened.append(_new_connection())
+        except pyodbc.Error:
+            for conn in opened:
+                try:
+                    conn.close()
+                except pyodbc.Error:
+                    pass
+            raise
+        for conn in opened:
+            _pool.put(conn)
         _pool_ready = True
 
 
