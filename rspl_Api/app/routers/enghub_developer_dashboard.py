@@ -280,7 +280,7 @@ def get_developer_dashboard(
             FROM EngHub_Task t
             JOIN EngHub_Status s ON s.StatusId = t.StatusId
             JOIN EngHub_DevelopmentItem d ON d.DevItemId = t.DevItemId
-            LEFT JOIN EngHub_Priority pr ON pr.PriorityId = d.PriorityId
+            LEFT JOIN EngHub_Priority pr ON pr.PriorityId = ISNULL(t.PriorityId, d.PriorityId)
             JOIN EngHub_AssignmentHistory ah ON ah.EntityType = 'Task' AND ah.EntityId = t.TaskId
                  AND ah.RoleType = 'Developer' AND ah.UnassignedAt IS NULL
             WHERE ah.UserId = ? AND s.IsTerminal = 0
