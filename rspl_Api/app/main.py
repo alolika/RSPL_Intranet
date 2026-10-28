@@ -1,11 +1,7 @@
-<<<<<<< HEAD
+import logging
 import os
 
-=======
-import logging
-
 import pyodbc
->>>>>>> 811590d2c6e1f8bea3cc284a30cc66dee0601de9
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
