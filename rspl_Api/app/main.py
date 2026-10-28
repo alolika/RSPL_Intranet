@@ -1,5 +1,6 @@
 import logging
 import os
+import threading
 
 import pyodbc
 from fastapi import FastAPI, Request
@@ -177,10 +178,17 @@ def _warm_db_pool() -> None:
     # DB (wrong DB_SERVER, firewall) took the whole container down and the
     # proxy answered 502 for everything, /health included. get_cursor()
     # retries warm_pool() on the next request anyway.
-    try:
-        warm_pool()
-    except pyodbc.Error as exc:
-        logging.getLogger(__name__).error("DB pool warm-up failed at startup: %s", exc)
+    # Runs in a background thread: uvicorn doesn't accept any request until
+    # startup returns, so opening all pooled connections inline kept the
+    # proxy answering 502 (even /health) for as long as the DB took to
+    # connect — minutes, against the live DB.
+    def _warm() -> None:
+        try:
+            warm_pool()
+        except pyodbc.Error as exc:
+            logging.getLogger(__name__).error("DB pool warm-up failed at startup: %s", exc)
+
+    threading.Thread(target=_warm, name="db-pool-warmup", daemon=True).start()
 
 
 @app.get("/health")
