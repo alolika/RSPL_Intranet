@@ -2,7 +2,7 @@
 
 **Date found:** 2026-07-22
 **Status: RESOLVED (2026-07-22)** — all 3 affected features confirmed working live.
-**Server affected:** `retailware.no-ip.org,1954` / database `Worldnettech`
+**Server affected:** `47.247.158.18,1954` / database `Worldnettech`
 **Linked server target:** `myretailware.database.windows.net,1433` (Azure SQL),
 catalog `License_Retailware`, login `myretailware`
 
