@@ -1,0 +1,24 @@
+﻿.\.venv\Scripts\python.exe : INFO:     Started server process [720]
+At line:1 char:335
++ ... e\rspl_Api; .\.venv\Scripts\python.exe -m uvicorn app.main:app --host ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (INFO:     Started server process [720]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:51314 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:51325 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51333 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51336 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51335 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51332 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51337 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51334 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51339 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51341 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51348 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51349 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51347 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:51350 - "GET /engineering-hub/developer-dashboard?user_id=25&date_from=2026-10-28&date_to=2026-10-28 HTTP/1.1" 200 OK
