@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import os
 
+=======
+import logging
+
+import pyodbc
+>>>>>>> 811590d2c6e1f8bea3cc284a30cc66dee0601de9
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -171,7 +177,14 @@ def _warm_db_pool() -> None:
     # seconds, confirmed live — see app/db.py) once here, while the server is
     # starting up, instead of on whichever user's request happens to be the
     # first one to touch the database.
-    warm_pool()
+    # Must not be fatal: an exception here aborts startup, so an unreachable
+    # DB (wrong DB_SERVER, firewall) took the whole container down and the
+    # proxy answered 502 for everything, /health included. get_cursor()
+    # retries warm_pool() on the next request anyway.
+    try:
+        warm_pool()
+    except pyodbc.Error as exc:
+        logging.getLogger(__name__).error("DB pool warm-up failed at startup: %s", exc)
 
 
 @app.get("/health")
