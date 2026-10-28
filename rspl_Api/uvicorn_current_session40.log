@@ -1,0 +1,18 @@
+INFO:     Started server process [29244]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.49:50733 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.49:50735 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.49:50735 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.49:50733 - "OPTIONS /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.49:50743 - "OPTIONS /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.49:50733 - "OPTIONS /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.49:50744 - "OPTIONS /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.49:50745 - "OPTIONS /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.49:50735 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.49:50744 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.49:50745 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.49:50743 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.49:50743 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.49:50733 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK

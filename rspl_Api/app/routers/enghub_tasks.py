@@ -39,6 +39,8 @@ class TaskRow(BaseModel):
     status_id: int
     status_name: str
     is_terminal: bool
+    priority_id: int | None = None
+    priority_name: str | None = None
     estimated_hours: float | None = None
     actual_hours: float = 0.0
     actual_minutes: int = 0
@@ -59,7 +61,9 @@ _TASK_SELECT = """
     SELECT t.TaskId, t.DevItemId, d.Title AS DevItemTitle, d.FeatureId, f.Name AS FeatureName,
            f.ModuleId, p.ProductId,
            t.TaskTypeId, tt.Name AS TaskTypeName, t.Title, t.Description,
-           t.StatusId, s.Name AS StatusName, s.IsTerminal, t.EstimatedHours, t.ClosedAt, t.ExpectedDeadline,
+           t.StatusId, s.Name AS StatusName, s.IsTerminal,
+           t.PriorityId, pr.Name AS PriorityName,
+           t.EstimatedHours, t.ClosedAt, t.ExpectedDeadline,
            dev.UserId AS DeveloperUserId, devu.Name AS DeveloperName,
            act.TotalMinutes AS ActualMinutes
     FROM EngHub_Task t
@@ -69,6 +73,7 @@ _TASK_SELECT = """
     JOIN EngHub_Product p ON p.ProductId = m.ProductId
     JOIN EngHub_TaskType tt ON tt.TaskTypeId = t.TaskTypeId
     JOIN EngHub_Status s ON s.StatusId = t.StatusId
+    LEFT JOIN EngHub_Priority pr ON pr.PriorityId = t.PriorityId
     LEFT JOIN EngHub_AssignmentHistory dev ON dev.EntityType = 'Task' AND dev.EntityId = t.TaskId
         AND dev.RoleType = 'Developer' AND dev.UnassignedAt IS NULL
     LEFT JOIN UserMaster devu ON devu.UserID = dev.UserId
@@ -96,6 +101,7 @@ def _row_to_task(r: dict) -> TaskRow:
         task_type_id=r["TaskTypeId"], task_type_name=r["TaskTypeName"] or "",
         title=r["Title"] or "", description=r["Description"] or "",
         status_id=r["StatusId"], status_name=r["StatusName"] or "", is_terminal=bool(r["IsTerminal"]),
+        priority_id=r["PriorityId"], priority_name=r["PriorityName"],
         estimated_hours=float(r["EstimatedHours"]) if r["EstimatedHours"] is not None else None,
         actual_hours=float(r["ActualMinutes"]) / 60.0 if r["ActualMinutes"] is not None else 0.0,
         actual_minutes=int(r["ActualMinutes"]) if r["ActualMinutes"] is not None else 0,
@@ -109,6 +115,7 @@ def _row_to_task(r: dict) -> TaskRow:
 def get_tasks(
     dev_item_id: int | None = None,
     assigned_to_user_id: int | None = None,
+    unassigned_only: bool = False,
     include_closed: bool = False,
     product_ids: list[int] | None = Query(None),
     module_ids: list[int] | None = Query(None),
@@ -128,6 +135,8 @@ def get_tasks(
     if assigned_to_user_id is not None:
         where.append("dev.UserId = ?")
         params.append(assigned_to_user_id)
+    if unassigned_only:
+        where.append("dev.UserId IS NULL")
     _in_clause(where, params, "p.ProductId", product_ids)
     _in_clause(where, params, "f.ModuleId", module_ids)
     _in_clause(where, params, "d.FeatureId", feature_ids)
@@ -202,6 +211,7 @@ class TaskForm(BaseModel):
     title: str
     description: str
     status_id: int
+    priority_id: int | None = None
     estimated_hours: float | None = None
     # Optional "YYYY-MM-DD"; None/empty clears it.
     expected_deadline: str | None = None
@@ -219,10 +229,10 @@ def save_task(row: TaskForm, user: CurrentUser = Depends(get_current_user)) -> d
         if row.task_id == 0:
             cursor.execute(
                 "INSERT INTO EngHub_Task (DevItemId, TaskTypeId, Title, Description, StatusId, "
-                "EstimatedHours, ExpectedDeadline, CreatedByUserId) VALUES (?, ?, ?, ?, ?, ?, ?, ?); "
+                "PriorityId, EstimatedHours, ExpectedDeadline, CreatedByUserId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?); "
                 "SELECT SCOPE_IDENTITY() AS Id",
                 row.dev_item_id, row.task_type_id, row.title, row.description, row.status_id,
-                row.estimated_hours, deadline, user.user_id,
+                row.priority_id, row.estimated_hours, deadline, user.user_id,
             )
             new_id = int(first_row_or_none(cursor)["Id"])
         else:
@@ -233,10 +243,10 @@ def save_task(row: TaskForm, user: CurrentUser = Depends(get_current_user)) -> d
             require_current_assignee(cursor, "Task", row.task_id, "Developer", user)
             cursor.execute(
                 "UPDATE EngHub_Task SET DevItemId=?, TaskTypeId=?, Title=?, Description=?, StatusId=?, "
-                "EstimatedHours=?, ExpectedDeadline=?, LastEditedByUserId=?, LastEditedAt=SYSUTCDATETIME() "
+                "PriorityId=?, EstimatedHours=?, ExpectedDeadline=?, LastEditedByUserId=?, LastEditedAt=SYSUTCDATETIME() "
                 "WHERE TaskId=?",
                 row.dev_item_id, row.task_type_id, row.title, row.description, row.status_id,
-                row.estimated_hours, deadline, user.user_id, row.task_id,
+                row.priority_id, row.estimated_hours, deadline, user.user_id, row.task_id,
             )
             new_id = row.task_id
     return {"success": True, "task_id": new_id}

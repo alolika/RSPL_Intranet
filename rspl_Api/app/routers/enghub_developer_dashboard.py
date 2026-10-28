@@ -72,6 +72,7 @@ class OpenTaskRow(BaseModel):
     title: str
     dev_item_title: str
     status_name: str
+    priority_name: str | None = None
     estimated_hours: float | None = None
     spent_minutes: int
     expected_deadline: str | None = None
@@ -269,7 +270,8 @@ def get_developer_dashboard(
         # Open tasks currently assigned to the user (as Developer).
         cursor.execute(
             """
-            SELECT t.TaskId, t.Title, d.Title AS DevItemTitle, s.Name AS StatusName, t.EstimatedHours,
+            SELECT t.TaskId, t.Title, d.Title AS DevItemTitle, s.Name AS StatusName,
+                   pr.Name AS PriorityName, t.EstimatedHours,
                    t.ExpectedDeadline,
                    CASE WHEN t.ExpectedDeadline IS NULL THEN NULL
                         WHEN t.ExpectedDeadline >= CAST(SYSDATETIME() AS DATE) THEN 0
@@ -278,6 +280,7 @@ def get_developer_dashboard(
             FROM EngHub_Task t
             JOIN EngHub_Status s ON s.StatusId = t.StatusId
             JOIN EngHub_DevelopmentItem d ON d.DevItemId = t.DevItemId
+            LEFT JOIN EngHub_Priority pr ON pr.PriorityId = d.PriorityId
             JOIN EngHub_AssignmentHistory ah ON ah.EntityType = 'Task' AND ah.EntityId = t.TaskId
                  AND ah.RoleType = 'Developer' AND ah.UnassignedAt IS NULL
             WHERE ah.UserId = ? AND s.IsTerminal = 0
@@ -288,7 +291,7 @@ def get_developer_dashboard(
         open_task_list = [
             OpenTaskRow(
                 task_id=x["TaskId"], title=x["Title"] or "", dev_item_title=x["DevItemTitle"] or "",
-                status_name=x["StatusName"] or "",
+                status_name=x["StatusName"] or "", priority_name=x["PriorityName"],
                 estimated_hours=float(x["EstimatedHours"]) if x["EstimatedHours"] is not None else None,
                 spent_minutes=x["Spent"] or 0,
                 expected_deadline=str(x["ExpectedDeadline"])[:10] if x["ExpectedDeadline"] else None,

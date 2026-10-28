@@ -1,12 +1,16 @@
+import os
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
 from app.db import DatabaseBusyError, warm_pool
 from app.routers import (
     admin_content,
     admin_customers,
+    admin_face,
     admin_face_inout,
     admin_holiday,
     admin_ledger,
@@ -59,6 +63,7 @@ from app.routers import (
     support_callsip,
     support_executive_schedule,
     support_modules,
+    support_sentimeter,
     support_tt,
     support_visitlog,
     user_rights,
@@ -66,6 +71,11 @@ from app.routers import (
 )
 
 app = FastAPI(title="RSPL API", version="0.1.0")
+
+# Serve face reference photos uploaded during enrolment.
+_face_photos_dir = os.path.join(os.path.dirname(__file__), "..", "face_photos")
+os.makedirs(_face_photos_dir, exist_ok=True)
+app.mount("/face-photos", StaticFiles(directory=_face_photos_dir), name="face-photos")
 
 app.add_middleware(
     CORSMiddleware,
@@ -99,10 +109,12 @@ app.include_router(support_visitlog.router)
 app.include_router(support_callsip.router)
 app.include_router(support_amc.router)
 app.include_router(support_modules.router)
+app.include_router(support_sentimeter.router)
 app.include_router(support_executive_schedule.router)
 app.include_router(support_tt.router)
 app.include_router(admin_content.router)
 app.include_router(admin_face_inout.router)
+app.include_router(admin_face.router)
 app.include_router(admin_holiday.router)
 app.include_router(admin_vouchers.router)
 app.include_router(admin_customers.router)

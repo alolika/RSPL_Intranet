@@ -251,15 +251,25 @@ loop in get_cells for the actual grouping logic.
 """
 
 from calendar import monthrange
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 from itertools import groupby
+
+_IST = timezone(timedelta(hours=5, minutes=30))
+
+
+def _utc_iso_to_ist_hhmm(iso: str) -> str:
+    """Convert a stored UTC ISO string (e.g. '2026-10-24T05:00:44Z') to IST 'HH:MM'."""
+    try:
+        return datetime.fromisoformat(iso.replace("Z", "+00:00")).astimezone(_IST).strftime("%H:%M")
+    except Exception:
+        return ""
 
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
 from app.db import get_cursor, rows_to_dicts
 from app.deps import CurrentUser, get_current_user
-from app.routers.support_executive_schedule import _get_approved_leave_overlay, _get_holiday_rules, _holiday_days_for_month
+from app.routers.support_executive_schedule import _WEEKDAY_INDEX, _get_approved_leave_overlay, _get_holiday_rules, _holiday_days_for_month
 from app.rights import FORM_EMPLOYEE_ATTENDANCE_SHEET, require_access
 
 router = APIRouter(prefix="/general/attendance-sheet", tags=["general-attendance-sheet"])
@@ -365,7 +375,7 @@ def _approved_leave_status_for_date(employee_ids: list[int], target_date: date) 
     return result
 
 
-def _get_present_day_overlay(employees: list["EmployeeOption"], year: int, month: int, days_in_month: int) -> dict[tuple[int, int], str]:
+def _get_present_day_overlay(employees: list["EmployeeOption"], year: int, month: int, days_in_month: int) -> tuple[dict[tuple[int, int], str], dict[tuple[int, int], str], dict[tuple[int, int], str]]:
     """Present (P) overlay from Face In/Out device records — see this
     module's 2026-08-05 update note. A genuine punch (non-blank [In] or
     [Out]) counts; a row that exists but has both blank (e.g. a
@@ -394,7 +404,7 @@ def _get_present_day_overlay(employees: list["EmployeeOption"], year: int, month
     supersedes both.)
     """
     if not employees:
-        return {}
+        return {}, {}, {}
     employee_ids = [e.employee_id for e in employees]
     placeholders = ",".join("?" for _ in employee_ids)
     with get_cursor() as cursor:
@@ -403,38 +413,75 @@ def _get_present_day_overlay(employees: list["EmployeeOption"], year: int, month
 
     face_id_to_employee = {r["FaceID"]: r["UserID"] for r in mapping_rows if r["FaceID"]}
     nagar_id_to_employee = {r["EmployeeID"]: r["UserID"] for r in mapping_rows if r["EmployeeID"]}
-    if not face_id_to_employee and not nagar_id_to_employee:
-        return {}
 
     first_day = date(year, month, 1)
     last_day = date(year, month, days_in_month)
     punch_filter = "(LTRIM(RTRIM(ISNULL([In], ''))) <> '' OR LTRIM(RTRIM(ISNULL([Out], ''))) <> '')"
 
     overlay: dict[tuple[int, int], str] = {}
+    in_time_overlay: dict[tuple[int, int], str] = {}
+    out_time_overlay: dict[tuple[int, int], str] = {}
 
     if face_id_to_employee:
         face_placeholders = ",".join("?" for _ in face_id_to_employee)
         with get_cursor() as cursor:
             cursor.execute(
-                f"SELECT FaceId, [Date] FROM FaceInOut "
+                f"SELECT FaceId, [Date], "
+                f"LTRIM(RTRIM(ISNULL([In], ''))) AS InTime, "
+                f"LTRIM(RTRIM(ISNULL([Out], ''))) AS OutTime "
+                f"FROM FaceInOut "
                 f"WHERE FaceId IN ({face_placeholders}) AND [Date] BETWEEN ? AND ? AND {punch_filter}",
                 *face_id_to_employee.keys(), first_day, last_day,
             )
             for r in rows_to_dicts(cursor):
-                overlay[(face_id_to_employee[r["FaceId"]], r["Date"].day)] = "P"
+                key = (face_id_to_employee[r["FaceId"]], r["Date"].day)
+                overlay[key] = "P"
+                if r["InTime"]:
+                    in_time_overlay[key] = r["InTime"]
+                if r["OutTime"]:
+                    out_time_overlay[key] = r["OutTime"]
 
     if nagar_id_to_employee:
         nagar_placeholders = ",".join("?" for _ in nagar_id_to_employee)
         with get_cursor() as cursor:
             cursor.execute(
-                f"SELECT [Employee ID], [Date] FROM FaceInOut_Nagar "
+                f"SELECT [Employee ID], [Date], "
+                f"LTRIM(RTRIM(ISNULL([In], ''))) AS InTime, "
+                f"LTRIM(RTRIM(ISNULL([Out], ''))) AS OutTime "
+                f"FROM FaceInOut_Nagar "
                 f"WHERE [Employee ID] IN ({nagar_placeholders}) AND [Date] BETWEEN ? AND ? AND {punch_filter}",
                 *nagar_id_to_employee.keys(), first_day, last_day,
             )
             for r in rows_to_dicts(cursor):
-                overlay[(nagar_id_to_employee[r["Employee ID"]], r["Date"].day)] = "P"
+                key = (nagar_id_to_employee[r["Employee ID"]], r["Date"].day)
+                overlay[key] = "P"
+                if r["InTime"]:
+                    in_time_overlay[key] = r["InTime"]
+                if r["OutTime"]:
+                    out_time_overlay[key] = r["OutTime"]
 
-    return overlay
+    # FaceAttendance — face-recognition auto-attendance. Uses UserID directly.
+    # ArrivalTime = In, DepartureTime = Out; both UTC ISO, converted to IST HH:MM.
+    emp_placeholders = ",".join("?" for _ in employee_ids)
+    with get_cursor() as cursor:
+        cursor.execute(
+            f"SELECT UserID, AttendanceDate, ArrivalTime, DepartureTime FROM FaceAttendance "
+            f"WHERE UserID IN ({emp_placeholders}) AND AttendanceDate BETWEEN ? AND ?",
+            *employee_ids, first_day, last_day,
+        )
+        for r in rows_to_dicts(cursor):
+            d = r["AttendanceDate"]
+            day = d.day if hasattr(d, "day") else date.fromisoformat(str(d)).day
+            key = (r["UserID"], day)
+            overlay[key] = "P"
+            ist_in = _utc_iso_to_ist_hhmm(r["ArrivalTime"] or "")
+            if ist_in:
+                in_time_overlay[key] = ist_in
+            ist_out = _utc_iso_to_ist_hhmm(r["DepartureTime"] or "")
+            if ist_out:
+                out_time_overlay[key] = ist_out
+
+    return overlay, in_time_overlay, out_time_overlay
 
 
 def _get_exec_schedule_present_overlay(employee_ids: list[int], year: int, month: int, days_in_month: int) -> dict[tuple[int, int], str]:
@@ -492,6 +539,8 @@ class AttendanceCell(BaseModel):
     employee_id: int
     day: int
     status: str
+    in_time: str | None = None
+    out_time: str | None = None
 
 
 class AttendanceCellsResponse(BaseModel):
@@ -519,16 +568,34 @@ def get_attendance_cells(
     days = list(range(1, monthrange(year, month)[1] + 1))
     cells_by_key: dict[tuple[int, int], str] = {(r["EmployeeId"], r["Day"]): r["Status"] or "" for r in stored_rows}
 
-    # Holiday/Alternate-day overlay — see this module's 2026-08-05 update
-    # note. Computed fresh every call, never written to
-    # RSPL_EmployeeAttendanceSheet, and wins over whatever's actually
-    # stored for that date (matching the exact precedent this logic is
-    # reused from).
+    # Holiday/Alternate-day + Weekly Off overlay — see this module's
+    # 2026-08-05 update note. WeeklyOffDay occurrences → "WO"; alternate
+    # Saturday/other occurrences → "H". Employees without a holiday rule
+    # get Sunday as their default weekly-off day.
     employee_ids = [e.employee_id for e in employees]
     holiday_rules = _get_holiday_rules(employee_ids)
+
+    # Default Sunday weekly-off for employees with no rule in the table.
+    employees_with_rule = set(holiday_rules.keys())
+    for employee_id in employee_ids:
+        if employee_id not in employees_with_rule:
+            for day in range(1, len(days) + 1):
+                if date(year, month, day).weekday() == 6:  # 6 = Sunday
+                    cells_by_key[(employee_id, day)] = "WO"
+
     for employee_id, rule in holiday_rules.items():
-        for day in _holiday_days_for_month(rule, year, month, len(days)):
-            cells_by_key[(employee_id, day)] = "H"
+        weekly_off_idx = _WEEKDAY_INDEX.get(rule.weekly_off_day.strip().lower())
+        alt_idx = _WEEKDAY_INDEX.get(rule.alternate_day.strip().lower())
+        wanted = {int(n) for n in rule.alternate_occurrences.split(",") if n.strip().isdigit()}
+        alt_occurrence = 0
+        for day in range(1, len(days) + 1):
+            weekday = date(year, month, day).weekday()
+            if weekly_off_idx is not None and weekday == weekly_off_idx:
+                cells_by_key[(employee_id, day)] = "WO"
+            if alt_idx is not None and weekday == alt_idx:
+                alt_occurrence += 1
+                if alt_occurrence in wanted:
+                    cells_by_key[(employee_id, day)] = "H"
 
     # Public Holiday (PH) overlay — see this module's 2026-08-05 (Public
     # Holiday) update note. Same priority tier as Holiday/Alternate-day (H)
@@ -546,7 +613,7 @@ def get_attendance_cells(
     # Schedule are peers at the same priority tier (both applied here,
     # before Approved Leave below); see this module's 2026-08-05 update
     # notes for the full priority-order rationale.
-    present_overlay = _get_present_day_overlay(employees, year, month, len(days))
+    present_overlay, in_time_overlay, out_time_overlay = _get_present_day_overlay(employees, year, month, len(days))
     for (employee_id, day), status in present_overlay.items():
         cells_by_key[(employee_id, day)] = status
 
@@ -597,7 +664,7 @@ def get_attendance_cells(
     leave_after_month = _approved_leave_status_for_date(employee_ids, last_day_date + timedelta(days=1))
 
     for employee_id in employee_ids:
-        holiday_days = sorted(day for day in days if cells_by_key.get((employee_id, day)) in ("H", "PH"))
+        holiday_days = sorted(day for day in days if cells_by_key.get((employee_id, day)) in ("H", "PH", "WO"))
         for _, group in groupby(enumerate(holiday_days), key=lambda pair: pair[1] - pair[0]):
             run = [day for _, day in group]
             run_start, run_end = run[0], run[-1]
@@ -630,5 +697,8 @@ def get_attendance_cells(
             if not cells_by_key.get(key):
                 cells_by_key[key] = "A"
 
-    cells = [AttendanceCell(employee_id=k[0], day=k[1], status=v) for k, v in cells_by_key.items()]
+    cells = [
+        AttendanceCell(employee_id=k[0], day=k[1], status=v, in_time=in_time_overlay.get(k), out_time=out_time_overlay.get(k))
+        for k, v in cells_by_key.items()
+    ]
     return AttendanceCellsResponse(employees=employees, days=days, cells=cells)
