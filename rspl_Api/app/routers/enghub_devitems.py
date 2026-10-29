@@ -110,17 +110,26 @@ def _row_to_dev_item(r: dict) -> DevItemRow:
 
 @router.get("/development-items", response_model=list[DevItemRow])
 def get_development_items(
-    feature_id: int | None = None, status_id: int | None = None, include_closed: bool = False
+    feature_id: int | None = None, status_id: int | None = None, include_closed: bool = False,
+    product_id: int | None = None, module_id: int | None = None,
 ) -> list[DevItemRow]:
     where: list[str] = []
     params: list = []
+    if product_id is not None:
+        where.append("m.ProductId = ?")
+        params.append(product_id)
+    if module_id is not None:
+        where.append("f.ModuleId = ?")
+        params.append(module_id)
     if feature_id is not None:
         where.append("d.FeatureId = ?")
         params.append(feature_id)
     if status_id is not None:
         where.append("d.StatusId = ?")
         params.append(status_id)
-    if not include_closed:
+    # An explicitly chosen status wins over the default open-only filter, so
+    # picking a terminal status (e.g. Closed) actually shows those rows.
+    if not include_closed and status_id is None:
         where.append("s.IsTerminal = 0")
     sql = _DEV_ITEM_SELECT
     if where:
