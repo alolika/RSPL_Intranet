@@ -1,0 +1,99 @@
+﻿.\.venv\Scripts\python.exe : INFO:     Started server process [9160]
+At line:1 char:335
++ ... e\rspl_Api; .\.venv\Scripts\python.exe -m uvicorn app.main:app --host ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (INFO:     Started server process [9160]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:65153 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65167 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65180 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65181 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65184 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65183 - "GET /user-rights/me HTTP/1.1" 200 OK
+D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\pydantic\_internal\_generate_schema.py:2274: 
+UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'dateFrom' was provided to the `Field()` function, 
+which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached to a 
+model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias 
+using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\pydantic\_internal\_generate_schema.py:2274: 
+UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'dateTo' was provided to the `Field()` function, 
+which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached to a 
+model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias 
+using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\pydantic\_internal\_generate_schema.py:2274: 
+UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'customerName' was provided to the `Field()` 
+function, which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached 
+to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias 
+using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\pydantic\_internal\_generate_schema.py:2274: 
+UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'executiveName' was provided to the `Field()` 
+function, which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached 
+to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias 
+using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\pydantic\_internal\_generate_schema.py:2274: 
+UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'softwareNames' was provided to the `Field()` 
+function, which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached 
+to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias 
+using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+INFO:     192.168.200.18:65188 - "GET /support/sentimeter/admin/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65186 - "GET /support/sentimeter/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65191 - "GET /support/sentimeter/data?date_from=2026-08-01&date_to=2026-10-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65189 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65230 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65231 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65234 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65232 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65238 - "GET /support/sentimeter/admin/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65236 - "GET /support/sentimeter/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65242 - "GET /support/sentimeter/data?date_from=2026-08-01&date_to=2026-10-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65240 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65291 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65292 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65296 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65295 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65299 - "GET /support/sentimeter/admin/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65298 - "GET /support/sentimeter/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65300 - "GET /support/sentimeter/data?date_from=2026-08-01&date_to=2026-10-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65297 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65350 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65351 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65353 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65352 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65357 - "GET /support/sentimeter/admin/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65355 - "GET /support/sentimeter/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65360 - "GET /support/sentimeter/data?date_from=2026-08-01&date_to=2026-10-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65359 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 200 OK
+D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\pydantic\_internal\_generate_schema.py:2274: 
+UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'localMood' was provided to the `Field()` function, 
+which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached to a 
+model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias 
+using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\pydantic\_internal\_generate_schema.py:2274: 
+UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'pageSize' was provided to the `Field()` function, 
+which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached to a 
+model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias 
+using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\pydantic\_internal\_generate_schema.py:2274: 
+UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'viewMode' was provided to the `Field()` function, 
+which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached to a 
+model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias 
+using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+INFO:     192.168.200.18:65363 - "POST /support/sentimeter/analytics/keyword-calls HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65365 - "POST /support/sentimeter/analytics/keyword-calls HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65370 - "POST /support/sentimeter/analytics/keyword-calls HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65382 - "GET /support/sentimeter/data?date_from=2026-08-01&date_to=2026-10-30&software=RETAILWARE&software=RETAILWAREPRO HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65380 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65448 - "POST /support/sentimeter/analytics/keyword-calls HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65450 - "POST /support/sentimeter/analytics/keyword-calls HTTP/1.1" 200 OK

@@ -58,3 +58,82 @@ INFO:     192.168.200.18:63869 - "GET /engineering-hub/development-items/lookup 
 INFO:     192.168.200.18:63871 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
 INFO:     192.168.200.18:63874 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
 INFO:     192.168.200.18:63875 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&developer_user_ids=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64852 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64853 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64855 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64858 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64860 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64862 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64866 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64867 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64868 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64870 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64873 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64875 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64876 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&developer_user_ids=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64932 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64933 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64936 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64937 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64942 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64943 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64944 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64949 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64946 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64947 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64951 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64953 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64955 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&developer_user_ids=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64962 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64963 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64967 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64968 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64970 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64969 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64973 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64972 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64975 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64980 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64979 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64981 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64983 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&developer_user_ids=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64991 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64996 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64994 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64993 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64992 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:64999 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65004 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:65008 - "GET /support/sentimeter/admin/me HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:65001 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65007 - "GET /support/sentimeter/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65009 - "GET /support/sentimeter/data?date_from=2026-08-01&date_to=2026-10-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65016 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65017 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65022 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:65021 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65026 - "GET /support/sentimeter/admin/me HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:65020 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65025 - "GET /support/sentimeter/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65028 - "GET /support/sentimeter/data?date_from=2026-08-01&date_to=2026-10-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65033 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:65034 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:65036 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:65038 - "GET /support/sentimeter/data?date_from=2026-08-01&date_to=2026-10-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65040 - "GET /support/sentimeter/data?date_from=2026-08-01&date_to=2026-10-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65045 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:65052 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65053 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65057 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65058 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:65063 - "GET /support/sentimeter/admin/me HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:65056 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65062 - "GET /support/sentimeter/options HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65061 - "GET /support/sentimeter/data?date_from=2026-08-01&date_to=2026-10-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65069 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:65070 - "GET /support/sentimeter/data?date_from=2026-08-01&date_to=2026-10-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65077 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:65078 - "GET /support/sentimeter/data?date_from=2026-08-01&date_to=2026-10-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:65080 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:65084 - "GET /support/sentimeter/admin/keyword-exclusions HTTP/1.1" 404 Not Found
+INFO:     192.168.200.18:65082 - "GET /support/sentimeter/data?date_from=2026-08-01&date_to=2026-10-30 HTTP/1.1" 200 OK
