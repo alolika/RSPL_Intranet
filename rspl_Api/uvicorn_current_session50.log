@@ -1,0 +1,47 @@
+﻿.\.venv\Scripts\python.exe : INFO:     Started server process [2652]
+At line:1 char:335
++ ... e\rspl_Api; .\.venv\Scripts\python.exe -m uvicorn app.main:app --host ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (INFO:     Started server process [2652]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:63477 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63484 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63488 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:63491 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63500 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:63501 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 401 Unauthorized
+INFO:     192.168.200.18:63512 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63516 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63521 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63522 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63524 - "GET /general/dashboards/holiday-list HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63525 - "GET /general/dashboards/holiday-list-title HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63523 - "GET /general/dashboards/software-client-count HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63530 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63532 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63538 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63539 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63541 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63540 - "GET /engineering-hub/developer-dashboard?user_id=142&date_from=2026-10-30&date_to=2026-10-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63542 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63551 - "GET /engineering-hub/interruption-reasons HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63549 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63550 - "GET /engineering-hub/statuses?entity_type=Task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63553 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63554 - "GET /engineering-hub/modules/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63552 - "GET /user-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63558 - "GET /engineering-hub/features/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63559 - "GET /engineering-hub/development-items/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63564 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&developer_user_ids=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63563 - "GET /engineering-hub/user-current-task HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63562 - "GET /engineering-hub/task-types HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63566 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63572 - "POST /engineering-hub/activities/interruption HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63574 - "POST /engineering-hub/activities/work-log HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63576 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&developer_user_ids=142 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63583 - "POST /engineering-hub/activities/work-log HTTP/1.1" 200 OK
+INFO:     192.168.200.18:63585 - "GET /engineering-hub/tasks?include_closed=false&assigned_to_user_id=142&developer_user_ids=142 HTTP/1.1" 200 OK

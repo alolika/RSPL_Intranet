@@ -12,6 +12,8 @@ No running timers anywhere (PRD explicitly excludes them) — every duration
 is a fixed amount the caller already knows, never a started/stopped clock.
 """
 
+from datetime import date, timedelta
+
 from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel
 
@@ -251,11 +253,25 @@ class WorkLogRequest(BaseModel):
     duration_minutes: int
     new_status_id: int | None = None
     description: str | None = None
+    # Local (server/IST) calendar date the work was done on; omitted = today.
+    # May be up to WORK_LOG_MAX_DAYS_BACK days in the past; future dates are allowed.
+    work_date: date | None = None
+
+
+WORK_LOG_MAX_DAYS_BACK = 15
 
 
 @router.post("/activities/work-log")
 def log_work(body: WorkLogRequest, user: CurrentUser = Depends(get_current_user)) -> dict:
     with get_cursor() as cursor:
+        cursor.execute("SELECT CAST(SYSDATETIME() AS DATE) AS Today")
+        today = date.fromisoformat(str(first_row_or_none(cursor)["Today"])[:10])
+        work_date = body.work_date or today
+        if work_date < today - timedelta(days=WORK_LOG_MAX_DAYS_BACK):
+            raise HTTPException(
+                status_code=400, detail=f"Work date can be at most {WORK_LOG_MAX_DAYS_BACK} days in the past."
+            )
+
         cursor.execute("SELECT StatusId FROM EngHub_Task WHERE TaskId = ?", body.task_id)
         task = first_row_or_none(cursor)
         if task is None:
@@ -269,12 +285,16 @@ def log_work(body: WorkLogRequest, user: CurrentUser = Depends(get_current_user)
         new_status_id = body.new_status_id
 
         activity_type_id = _activity_type_id(cursor, "Work Logged")
+        # OccurredAt = now, shifted by whole days to the chosen work date, so its
+        # local calendar date is work_date (reports/dashboard group on that).
+        # CreatedAt still records when the entry was actually made.
         cursor.execute(
             "INSERT INTO EngHub_Activity (ActivityTypeId, TaskId, Description, DurationMinutes, "
-            "OldStatusId, NewStatusId, LoggedByUserId) VALUES (?, ?, ?, ?, ?, ?, ?); "
+            "OldStatusId, NewStatusId, LoggedByUserId, OccurredAt) VALUES (?, ?, ?, ?, ?, ?, ?, "
+            "DATEADD(day, DATEDIFF(day, CAST(SYSDATETIME() AS DATE), CAST(? AS DATE)), SYSUTCDATETIME())); "
             "SELECT SCOPE_IDENTITY() AS Id",
             activity_type_id, body.task_id, body.description, body.duration_minutes,
-            old_status_id if new_status_id else None, new_status_id, user.user_id,
+            old_status_id if new_status_id else None, new_status_id, user.user_id, work_date.isoformat(),
         )
         new_id = int(first_row_or_none(cursor)["Id"])
 

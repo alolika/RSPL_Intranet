@@ -292,3 +292,8 @@ INFO:     192.168.200.18:59021 - "GET /engineering-hub/releases/for-entity?featu
 INFO:     192.168.200.18:59023 - "GET /engineering-hub/activities?feature_id=50 HTTP/1.1" 200 OK
 INFO:     192.168.200.18:59025 - "GET /engineering-hub/attachments?entity_type=Feature&entity_id=50 HTTP/1.1" 200 OK
 INFO:     192.168.200.18:59027 - "GET /engineering-hub/decisions?feature_id=50 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59286 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59292 - "GET /engineering-hub/users HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59291 - "GET /engineering-hub/products/lookup HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59293 - "GET /engineering-hub/features?include_disabled=false HTTP/1.1" 200 OK
+INFO:     192.168.200.18:59294 - "GET /engineering-hub/menu-rights/me HTTP/1.1" 200 OK
