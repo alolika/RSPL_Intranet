@@ -1,0 +1,45 @@
+﻿.\.venv\Scripts\python.exe : INFO:     Started server process [16356]
+At line:1 char:335
++ ... e\rspl_Api; .\.venv\Scripts\python.exe -m uvicorn app.main:app --host ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (INFO:     Started server process [16356]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://192.168.200.18:8010 (Press CTRL+C to quit)
+INFO:     192.168.200.18:52485 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52497 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52505 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\pydantic\_internal\_generate_schema.py:2274: 
+UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'dateFrom' was provided to the `Field()` function, 
+which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached to a 
+model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias 
+using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\pydantic\_internal\_generate_schema.py:2274: 
+UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'dateTo' was provided to the `Field()` function, 
+which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached to a 
+model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias 
+using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\pydantic\_internal\_generate_schema.py:2274: 
+UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'customerName' was provided to the `Field()` 
+function, which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached 
+to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias 
+using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\pydantic\_internal\_generate_schema.py:2274: 
+UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'executiveName' was provided to the `Field()` 
+function, which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached 
+to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias 
+using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+D:\Maruti_workspace\rspl_Api\.venv\Lib\site-packages\pydantic\_internal\_generate_schema.py:2274: 
+UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'softwareNames' was provided to the `Field()` 
+function, which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached 
+to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias 
+using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+INFO:     192.168.200.18:52520 - "GET /support/sentimeter/data?date_from=2026-08-01&date_to=2026-10-30 HTTP/1.1" 200 OK
+INFO:     192.168.200.18:52519 - "POST /support/sentimeter/analytics/keywords HTTP/1.1" 200 OK
