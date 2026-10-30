@@ -10,8 +10,9 @@ parameters, multi-select filters are passed as JSON arrays.
 Endpoints (prefix /support/sentimeter)
 --------------------------------------
 GET   /options                         usp_Sentimeter_GetFilterOptions
-POST  /analytics/keywords              usp_Sentimeter_GetKeywordAnalytics
-POST  /analytics/keyword-calls         usp_Sentimeter_GetKeywordCalls (compact/expanded)
+POST  /analytics/keywords              usp_Sentimeter_GetKeywordAnalytics (call count, distinct customers, avg duration)
+POST  /analytics/keyword-calls         usp_Sentimeter_GetKeywordCalls (compact/expanded, + v1.4 columnFilters)
+POST  /analytics/keyword-calls/filter-options  usp_Sentimeter_GetKeywordCallFilterOptions (v1.4)
 POST  /calls/content                   usp_Sentimeter_GetCallContent (one field, on demand)
 GET   /admin/keyword-exclusions        usp_Sentimeter_GetKeywordExclusions
 POST  /admin/keyword-exclusions        usp_Sentimeter_AddKeywordExclusion
@@ -29,6 +30,7 @@ import json
 import math
 import re
 from datetime import date, datetime
+from typing import Literal
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel, Field
@@ -140,10 +142,85 @@ def get_keyword_analytics(filters: SentimeterFilters, user: CurrentUser = Depend
     rows = _run_proc("EXEC dbo.usp_Sentimeter_GetKeywordAnalytics ?, ?, ?, ?, ?, ?, ?", filters.proc_params())
     items: dict[str, dict] = {}
     for r in rows:
-        item = items.setdefault(r["keywordKey"], {"keyword": r["keyword"], "callCount": 0, "moodCounts": {}})
+        item = items.get(r["keywordKey"])
+        if item is None:
+            avg = r["averageDurationSeconds"]
+            avg = float(avg) if avg is not None else None
+            item = items[r["keywordKey"]] = {
+                "keyword": r["keyword"],
+                "callCount": int(r["keywordTotal"]),           # bubble size
+                "distinctCustomers": int(r["distinctCustomers"]),  # X axis
+                "averageDurationSeconds": avg,                 # Y axis (unrounded)
+                "averageDurationDisplay": _mmss(avg),
+                "moodCounts": {},
+            }
         item["moodCounts"][r["mood"]] = int(r["callCount"])
-        item["callCount"] = int(r["keywordTotal"])
     return {"items": list(items.values()), "truncated": False}
+
+
+def _mmss(seconds: float | None) -> str | None:
+    """MM:SS rounded to the nearest whole second; minutes not truncated past 99."""
+    if seconds is None or seconds < 0:
+        return None
+    total = int(seconds + 0.5)
+    return f"{total // 60:02d}:{total % 60:02d}"
+
+
+# ---- v1.4 Excel-style column filters (allow-listed fields/operators only) ----
+
+MAX_FILTER_VALUES = 500
+
+
+class TextColumnFilter(BaseModel):
+    values: list[str] = Field(default_factory=list, max_length=MAX_FILTER_VALUES)
+    contains: str | None = Field(None, max_length=200)
+
+    model_config = {"extra": "forbid"}
+
+
+class MoodColumnFilter(BaseModel):
+    values: list[str] = Field(default_factory=list, max_length=MAX_FILTER_VALUES)
+
+    model_config = {"extra": "forbid"}
+
+
+class DateColumnFilter(BaseModel):
+    selected_dates: list[date] = Field(default_factory=list, alias="selectedDates", max_length=MAX_FILTER_VALUES)
+    date_from: date | None = Field(None, alias="from")
+    date_to: date | None = Field(None, alias="to")
+
+    model_config = {"extra": "forbid", "populate_by_name": True}
+
+
+class DurationColumnFilter(BaseModel):
+    operator: Literal["eq", "gt", "gte", "lt", "lte", "between"]
+    value: int = Field(..., ge=0)
+    value_to: int | None = Field(None, alias="valueTo", ge=0)
+
+    model_config = {"extra": "forbid", "populate_by_name": True}
+
+
+class ColumnFilters(BaseModel):
+    ticket_no: list[int] = Field(default_factory=list, alias="ticketNo", max_length=MAX_FILTER_VALUES)
+    call_date: DateColumnFilter | None = Field(None, alias="callDate")
+    customer_name: TextColumnFilter | None = Field(None, alias="customerName")
+    executive_name: TextColumnFilter | None = Field(None, alias="executiveName")
+    customer_mood: MoodColumnFilter | None = Field(None, alias="customerMood")
+    software_name: TextColumnFilter | None = Field(None, alias="softwareName")
+    call_duration_seconds: DurationColumnFilter | None = Field(None, alias="callDurationSeconds")
+
+    # Unknown field names are rejected (422), never turned into SQL.
+    model_config = {"extra": "forbid", "populate_by_name": True}
+
+    def to_json(self) -> str:
+        d = self.model_dump(by_alias=True, exclude_none=True, mode="json")
+        dur = self.call_duration_seconds
+        if dur and dur.operator == "between":
+            if dur.value_to is None:
+                raise HTTPException(status_code=400, detail="Duration 'between' needs valueTo.")
+            if dur.value_to < dur.value:
+                d["callDurationSeconds"]["value"], d["callDurationSeconds"]["valueTo"] = dur.value_to, dur.value
+        return json.dumps(d, ensure_ascii=False)
 
 
 class KeywordCallsRequest(BaseModel):
@@ -153,6 +230,7 @@ class KeywordCallsRequest(BaseModel):
     page: int = 1
     page_size: int = Field(50, alias="pageSize")
     view_mode: str = Field("compact", alias="viewMode")
+    column_filters: ColumnFilters = Field(default_factory=ColumnFilters, alias="columnFilters")
 
     model_config = {"populate_by_name": True}
 
@@ -166,17 +244,17 @@ def get_keyword_calls(body: KeywordCallsRequest, user: CurrentUser = Depends(get
     page_size = min(max(1, body.page_size), MAX_PAGE_SIZE)
     view_mode = "expanded" if body.view_mode == "expanded" else "compact"
     sets = _run_proc(
-        "EXEC dbo.usp_Sentimeter_GetKeywordCalls ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?",
+        "EXEC dbo.usp_Sentimeter_GetKeywordCalls ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?",
         [body.keyword.strip(), *body.filters.proc_params(),
-         (body.local_mood or "").strip() or None, page, page_size, view_mode],
+         (body.local_mood or "").strip() or None, page, page_size, view_mode,
+         body.column_filters.to_json()],
         multi=True,
     )
     mood_rows = sets[0] if sets else []
     call_rows = sets[1] if len(sets) > 1 else []
+    # The windowed COUNT rides on the page's rows; past the last page there is
+    # none, so the client just sees an empty page with totalItems 0.
     total = int(call_rows[0]["totalItems"]) if call_rows else 0
-    if not call_rows and page > 1:
-        # Past the last page: the windowed COUNT has no row to ride on.
-        total = sum(int(r["callCount"]) for r in mood_rows) if not body.local_mood else 0
     return {
         "items": [
             {
@@ -197,6 +275,34 @@ def get_keyword_calls(body: KeywordCallsRequest, user: CurrentUser = Depends(get
         "totalItems": total,
         "totalPages": math.ceil(total / page_size) if total else 0,
         "viewMode": view_mode,
+    }
+
+
+class FilterOptionsRequest(BaseModel):
+    keyword: str
+    filters: SentimeterFilters = Field(default_factory=SentimeterFilters)
+    field: Literal["ticketNo", "callDate", "customerName", "executiveName", "customerMood", "softwareName"]
+    search: str | None = Field(None, max_length=200)
+    max_values: int = Field(200, alias="maxValues", ge=1, le=1000)
+
+    model_config = {"populate_by_name": True}
+
+
+@router.post("/analytics/keyword-calls/filter-options")
+def get_keyword_call_filter_options(body: FilterOptionsRequest, user: CurrentUser = Depends(get_current_user)) -> dict:
+    """Distinct values of one expanded-list column for the selected keyword +
+    global filters — bounded and searchable (Excel-style header menus)."""
+    _require_view(user)
+    if not body.keyword.strip():
+        raise HTTPException(status_code=400, detail="keyword is required.")
+    rows = _run_proc(
+        "EXEC dbo.usp_Sentimeter_GetKeywordCallFilterOptions ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?",
+        [body.keyword.strip(), *body.filters.proc_params(), body.field, (body.search or "").strip() or None, body.max_values],
+    )
+    return {
+        "field": body.field,
+        "values": [{"value": r["optionValue"], "callCount": int(r["callCount"])} for r in rows],
+        "totalValues": int(rows[0]["totalValues"]) if rows else 0,
     }
 
 
