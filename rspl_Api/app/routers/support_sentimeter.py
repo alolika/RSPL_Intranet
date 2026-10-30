@@ -133,7 +133,9 @@ def get_sentimeter_options(user: CurrentUser = Depends(get_current_user)) -> dic
     sets = _run_proc("EXEC dbo.usp_Sentimeter_GetFilterOptions", [], multi=True)
     software = [str(r["option_value"]) for r in (sets[0] if sets else [])]
     moods = [str(r["option_value"]) for r in (sets[1] if len(sets) > 1 else [])]
-    return {"softwareNames": software, "moods": moods}
+    # "software" is the pre-v1.2 key; kept so an older frontend build still
+    # renders (it calls .map() on it) while frontend/backend deploys are out of step.
+    return {"softwareNames": software, "software": software, "moods": moods}
 
 
 @router.post("/analytics/keywords")
