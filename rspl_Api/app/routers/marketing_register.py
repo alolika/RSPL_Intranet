@@ -16,11 +16,9 @@ CurrentSoftware/CaseType are only partially populated from what Web_Enquiry
 actually stores (best-effort, not all fields have a confirmed real source
 column).
 
-The WhatsApp "send" button calls `Proc_DripSendWhatsApp`, which sends a
-real outbound WhatsApp message — same category of hazard as Section_General's
-leave-workflow email/WhatsApp calls (see [[feedback_report_engine_simplification]]-
-adjacent memory). Stubbed here (no actual send) rather than re-asking, per the
-established default for this category of side effect.
+The WhatsApp "send" button queues a real outbound WhatsApp message in
+SMSOutbox via `PROC_SendWhatsApp` (see send_whatsapp_message for why not the
+source's `Proc_DripSendWhatsApp`).
 """
 
 from datetime import date, datetime
@@ -403,12 +401,36 @@ def update_enquiry_action(
     return {"success": True}
 
 
+# Exact DropDownList1 item texts from CustEnquiryRegister.aspx — the source sends
+# SelectedItem.Text as the message body (the backtick in "Ma`am" is in the source too).
+_WHATSAPP_MESSAGES = [
+    "Dear Sir / Ma`am, Thank you for showing interest in our software solutions. For further details do connect with us on 9158600700 / browse on www.retailware.in - Retailware Softech Pvt Ltd",
+    "Dear Sir / Ma`am, We tried contacting you however the call was not successful. Do let us know your convenient date and time so that we can schedule it accordingly. Our Contact number is 9158600700 - Retailware Softech Pvt Ltd",
+    "Dear Sir / Ma`am, Thank you for your valuable time. Do save our Sales Number 9158600700. You could connect with us on this number or with our sales representative directly. - Retailware Softech Pvt Ltd",
+    "Dear Sir / Ma`am, Hope you have received the quotation of our software solution. As discussed, we will connect with you shortly. Do save our contact number as 9158600700 - Retailware Softech Pvt Ltd.",
+]
+
+
 @router.post("/whatsapp/{cust_id}")
-def send_whatsapp_message(cust_id: int, message_index: int, mobile_no: str = "") -> dict:
-    # Stubbed — see module docstring. Not calling Proc_DripSendWhatsApp for real.
-    # mobile_no mirrors the source's editable lblMobile.Text (the actual send target,
-    # which may differ from the customer's stored MobileNo) — accepted for interface
-    # fidelity even though the send itself stays stubbed.
+def send_whatsapp_message(
+    cust_id: int, message_index: int, mobile_no: str = "", user: CurrentUser = Depends(get_current_user)
+) -> dict:
+    # The source's btnsend_Click calls Proc_DripSendWhatsApp, but the WhatsApp
+    # sender service no longer picks up its rows (ActionId=11, IsScheduled=1 —
+    # they sit unsent in SMSOutbox; last delivered Dec 2025). Uses the source's
+    # commented-out alternative PROC_SendWhatsApp instead, with the same args as
+    # general_leave.py's working call. Both procs only queue in SMSOutbox and
+    # silently skip mobiles shorter than 10 chars, so validate that here instead
+    # of reporting a send that never queued.
+    if not 0 <= message_index < len(_WHATSAPP_MESSAGES):
+        raise HTTPException(status_code=400, detail="Invalid message.")
+    mobile = mobile_no.strip()
+    if len(mobile) < 10:
+        raise HTTPException(status_code=400, detail="Enter a valid 10-digit mobile number.")
+    with get_cursor() as cursor:
+        cursor.execute(
+            "EXEC PROC_SendWhatsApp ?, ?, 0, 0, 0, 0, 0, '', 0, 1", mobile, _WHATSAPP_MESSAGES[message_index]
+        )
     return {"success": True}
 
 
