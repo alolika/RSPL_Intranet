@@ -11,6 +11,8 @@ as static files at /face-photos/<filename>.
 import hashlib
 import json
 import os
+import threading
+import time
 import urllib.parse
 import urllib.request
 import uuid
@@ -76,6 +78,47 @@ def _reverse_geocode(lat: float, lng: float) -> dict[str, str]:
         }
     except Exception:
         return {"city": "", "state": "", "country": ""}
+
+
+_AREA_KEYS = ("suburb", "neighbourhood", "quarter", "city_district", "village", "hamlet", "town", "road")
+_area_cache: dict[tuple[float, float], str] = {}
+_area_lock = threading.Lock()
+_area_last_call = 0.0
+
+
+def _area_name(lat: float | None, lng: float | None) -> str:
+    """Area/locality name (e.g. "Sahakar Nagar", "MIDC") for a coordinate, via
+    OpenStreetMap Nominatim. BigDataCloud only resolves to city level.
+    Nominatim's policy is max 1 request/second with an identifying
+    User-Agent, so calls are serialised, spaced 1s apart and cached by
+    ~11 m grid cell (office coordinates repeat every day). Never raises."""
+    global _area_last_call
+    if lat is None or lng is None:
+        return ""
+    key = (round(lat, 4), round(lng, 4))
+    if key in _area_cache:
+        return _area_cache[key]
+    with _area_lock:
+        if key in _area_cache:
+            return _area_cache[key]
+        wait = 1.0 - (time.monotonic() - _area_last_call)
+        if wait > 0:
+            time.sleep(wait)
+        try:
+            url = "https://nominatim.openstreetmap.org/reverse?" + urllib.parse.urlencode(
+                {"format": "jsonv2", "lat": lat, "lon": lng, "zoom": 18,
+                 "addressdetails": 1, "accept-language": "en"}
+            )
+            req = urllib.request.Request(url, headers={"User-Agent": "rspl-intranet-attendance/1.0"})
+            with urllib.request.urlopen(req, timeout=6) as resp:
+                address = json.loads(resp.read().decode("utf-8")).get("address") or {}
+            area = next((address[k] for k in _AREA_KEYS if address.get(k)), "")
+        except Exception:
+            return ""  # not cached, so a later request retries
+        finally:
+            _area_last_call = time.monotonic()
+        _area_cache[key] = area
+        return area
 
 
 def _logged_in_user_id(employee_id: str, cu: CurrentUser) -> int:
@@ -184,6 +227,8 @@ class FaceAttendanceReportRow(BaseModel):
     outCity: str | None = None
     outState: str | None = None
     outCountry: str | None = None
+    inArea: str | None = None
+    outArea: str | None = None
 
 
 def _require_location(body: "FaceAttendanceRequest | FaceCheckoutRequest") -> None:
@@ -405,11 +450,11 @@ def mark_face_attendance(
 
         cursor.execute(
             "INSERT INTO FaceAttendance "
-            "(UserID, AttendanceDate, ArrivalTime, Confidence, Lat, Lng, AccuracyM, City, [State], Country) "
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "(UserID, AttendanceDate, ArrivalTime, Confidence, Lat, Lng, AccuracyM, City, [State], Country, InArea) "
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             user_id, today, arrival_time,
             body.confidence, body.lat, body.lng, body.accuracyM,
-            body.city, body.state, body.country,
+            body.city, body.state, body.country, _area_name(body.lat, body.lng) or None,
         )
 
     return FaceAttendanceResponse(
@@ -456,7 +501,8 @@ def get_face_attendance_report(
         "CONVERT(NVARCHAR(10), fa.AttendanceDate, 23) AS AttendanceDate, "
         "fa.ArrivalTime, fa.DepartureTime, fa.Confidence, fa.Lat, fa.Lng, fa.AccuracyM, "
         "fa.City, fa.[State], fa.Country, "
-        "fa.OutLat, fa.OutLng, fa.OutAccuracyM, fa.OutCity, fa.OutState, fa.OutCountry "
+        "fa.OutLat, fa.OutLng, fa.OutAccuracyM, fa.OutCity, fa.OutState, fa.OutCountry, "
+        "fa.InArea, fa.OutArea "
         "FROM FaceAttendance fa "
         "JOIN UserMaster um ON fa.UserID = um.UserID "
         f"WHERE {where} "
@@ -466,6 +512,27 @@ def get_face_attendance_report(
     with get_cursor() as cursor:
         cursor.execute(sql, *params)
         rows = rows_to_dicts(cursor)
+
+        # Backfill missing area names (older rows, or a lookup that failed at
+        # save time) and persist them, so each row is looked up only once.
+        # Bounded per request: uncached lookups are throttled to 1/second.
+        budget = 15
+        for r in rows:
+            for lat_k, lng_k, area_k in (("Lat", "Lng", "InArea"), ("OutLat", "OutLng", "OutArea")):
+                if r[area_k] or r[lat_k] is None or r[lng_k] is None:
+                    continue
+                cached = (round(r[lat_k], 4), round(r[lng_k], 4)) in _area_cache
+                if not cached:
+                    if budget <= 0:
+                        continue
+                    budget -= 1
+                area = _area_name(r[lat_k], r[lng_k])
+                if area:
+                    r[area_k] = area
+                    cursor.execute(
+                        f"UPDATE FaceAttendance SET {area_k} = ? WHERE UserID = ? AND AttendanceDate = ?",
+                        area, r["UserID"], r["AttendanceDate"],
+                    )
 
     return [
         FaceAttendanceReportRow(
@@ -487,6 +554,8 @@ def get_face_attendance_report(
             outCity=r["OutCity"],
             outState=r["OutState"],
             outCountry=r["OutCountry"],
+            inArea=r["InArea"],
+            outArea=r["OutArea"],
         )
         for r in rows
     ]
@@ -536,9 +605,10 @@ def mark_face_checkout(
         already = bool(rec.get("DepartureTime"))
         cursor.execute(
             "UPDATE FaceAttendance SET DepartureTime = ?, OutLat = ?, OutLng = ?, OutAccuracyM = ?, "
-            "OutCity = ?, OutState = ?, OutCountry = ? WHERE UserID = ? AND AttendanceDate = ?",
+            "OutCity = ?, OutState = ?, OutCountry = ?, OutArea = ? WHERE UserID = ? AND AttendanceDate = ?",
             departure_time, body.lat, body.lng, body.accuracyM,
-            body.city, body.state, body.country, user_id, today,
+            body.city, body.state, body.country, _area_name(body.lat, body.lng) or None,
+            user_id, today,
         )
 
     return FaceCheckoutResponse(
