@@ -11,6 +11,8 @@ as static files at /face-photos/<filename>.
 import hashlib
 import json
 import os
+import urllib.parse
+import urllib.request
 import uuid
 from datetime import date, datetime, timezone
 
@@ -54,6 +56,42 @@ def _decode_embeddings(value: str | None) -> list[list[float]]:
 
 def _photo_url(filename: str | None) -> str:
     return f"/face-photos/{filename}" if filename else ""
+
+
+def _reverse_geocode(lat: float, lng: float) -> dict[str, str]:
+    """Server-side fallback when the browser sent coordinates but no city
+    (its own reverse-geocode call failed). Same provider as the frontend.
+    Never raises — attendance must not fail because geocoding did."""
+    try:
+        url = (
+            "https://api.bigdatacloud.net/data/reverse-geocode-client?"
+            + urllib.parse.urlencode({"latitude": lat, "longitude": lng, "localityLanguage": "en"})
+        )
+        with urllib.request.urlopen(url, timeout=5) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        return {
+            "city": data.get("city") or data.get("locality") or "",
+            "state": data.get("principalSubdivision") or "",
+            "country": data.get("countryName") or "",
+        }
+    except Exception:
+        return {"city": "", "state": "", "country": ""}
+
+
+def _logged_in_user_id(employee_id: str, cu: CurrentUser) -> int:
+    """Attendance is only ever written for the logged-in user (JWT), never for
+    whoever's face happened to match. A matched face belonging to anyone else
+    is rejected, so a shared device can't mark/check-out other employees."""
+    try:
+        matched = int(employee_id)
+    except ValueError:
+        raise HTTPException(status_code=422, detail="employeeId must be a numeric string")
+    if matched != cu.user_id:
+        raise HTTPException(
+            status_code=403,
+            detail="This face does not belong to the logged-in user. Only your own attendance can be marked.",
+        )
+    return cu.user_id
 
 
 # ── response models ────────────────────────────────────────────────────────
@@ -110,6 +148,12 @@ class FaceAttendanceResponse(BaseModel):
 class FaceCheckoutRequest(BaseModel):
     employeeId: str
     confidence: float
+    lat: float | None = None
+    lng: float | None = None
+    accuracyM: float | None = None
+    city: str | None = None
+    state: str | None = None
+    country: str | None = None
 
 
 class FaceCheckoutResponse(BaseModel):
@@ -118,6 +162,7 @@ class FaceCheckoutResponse(BaseModel):
     firstName: str
     departureTime: str
     alreadyCheckedOut: bool
+    city: str | None = None
 
 
 class FaceAttendanceReportRow(BaseModel):
@@ -133,6 +178,27 @@ class FaceAttendanceReportRow(BaseModel):
     city: str | None = None
     state: str | None = None
     country: str | None = None
+    outLat: float | None = None
+    outLng: float | None = None
+    outAccuracyM: float | None = None
+    outCity: str | None = None
+    outState: str | None = None
+    outCountry: str | None = None
+
+
+def _require_location(body: "FaceAttendanceRequest | FaceCheckoutRequest") -> None:
+    """Location is mandatory for check-in and check-out: never save without
+    coordinates. Fills city/state/country server-side if the browser couldn't."""
+    if body.lat is None or body.lng is None:
+        raise HTTPException(
+            status_code=422,
+            detail="Location not received. Allow Location for this site, turn on GPS and try again.",
+        )
+    if not (body.city or "").strip():
+        geo = _reverse_geocode(body.lat, body.lng)
+        body.city = geo["city"]
+        body.state = body.state or geo["state"]
+        body.country = body.country or geo["country"]
 
 
 # ── endpoints ──────────────────────────────────────────────────────────────
@@ -299,10 +365,9 @@ def mark_face_attendance(
             detail=f"Confidence {body.confidence:.3f} is below the required threshold {FACE_MATCH_THRESHOLD}.",
         )
 
-    try:
-        user_id = int(body.employeeId)
-    except ValueError:
-        raise HTTPException(status_code=422, detail="employeeId must be a numeric string")
+    user_id = _logged_in_user_id(body.employeeId, _cu)
+
+    _require_location(body)
 
     now_utc = datetime.now(timezone.utc)
     # Use server's local date for the attendance record (IST ~ UTC+5:30)
@@ -320,21 +385,22 @@ def mark_face_attendance(
 
         # Check for duplicate
         cursor.execute(
-            "SELECT ArrivalTime FROM FaceAttendance WHERE UserID = ? AND AttendanceDate = ?",
+            "SELECT ArrivalTime, Lat, Lng, City FROM FaceAttendance WHERE UserID = ? AND AttendanceDate = ?",
             user_id, today,
         )
         dup = first_row_or_none(cursor)
         if dup:
+            # Report what was actually saved at check-in, not this re-scan's location.
             return FaceAttendanceResponse(
-                employeeId=body.employeeId,
+                employeeId=str(user_id),
                 memberName=name,
                 firstName=first,
                 alreadyMarked=True,
                 arrivalTime=dup["ArrivalTime"],
                 confidence=body.confidence,
-                lat=body.lat,
-                lng=body.lng,
-                city=body.city,
+                lat=dup["Lat"],
+                lng=dup["Lng"],
+                city=dup["City"],
             )
 
         cursor.execute(
@@ -389,7 +455,8 @@ def get_face_attendance_report(
         "SELECT TOP 2000 fa.UserID, um.Name, "
         "CONVERT(NVARCHAR(10), fa.AttendanceDate, 23) AS AttendanceDate, "
         "fa.ArrivalTime, fa.DepartureTime, fa.Confidence, fa.Lat, fa.Lng, fa.AccuracyM, "
-        "fa.City, fa.[State], fa.Country "
+        "fa.City, fa.[State], fa.Country, "
+        "fa.OutLat, fa.OutLng, fa.OutAccuracyM, fa.OutCity, fa.OutState, fa.OutCountry "
         "FROM FaceAttendance fa "
         "JOIN UserMaster um ON fa.UserID = um.UserID "
         f"WHERE {where} "
@@ -414,6 +481,12 @@ def get_face_attendance_report(
             city=r["City"],
             state=r["State"],
             country=r["Country"],
+            outLat=r["OutLat"],
+            outLng=r["OutLng"],
+            outAccuracyM=r["OutAccuracyM"],
+            outCity=r["OutCity"],
+            outState=r["OutState"],
+            outCountry=r["OutCountry"],
         )
         for r in rows
     ]
@@ -437,10 +510,8 @@ def mark_face_checkout(
             detail=f"Confidence {body.confidence:.3f} is below threshold {FACE_MATCH_THRESHOLD}.",
         )
 
-    try:
-        user_id = int(body.employeeId)
-    except ValueError:
-        raise HTTPException(status_code=422, detail="employeeId must be a numeric string")
+    user_id = _logged_in_user_id(body.employeeId, _cu)
+    _require_location(body)
 
     now_utc = datetime.now(timezone.utc)
     today: date = now_utc.date()
@@ -464,8 +535,10 @@ def mark_face_checkout(
 
         already = bool(rec.get("DepartureTime"))
         cursor.execute(
-            "UPDATE FaceAttendance SET DepartureTime = ? WHERE UserID = ? AND AttendanceDate = ?",
-            departure_time, user_id, today,
+            "UPDATE FaceAttendance SET DepartureTime = ?, OutLat = ?, OutLng = ?, OutAccuracyM = ?, "
+            "OutCity = ?, OutState = ?, OutCountry = ? WHERE UserID = ? AND AttendanceDate = ?",
+            departure_time, body.lat, body.lng, body.accuracyM,
+            body.city, body.state, body.country, user_id, today,
         )
 
     return FaceCheckoutResponse(
@@ -474,4 +547,5 @@ def mark_face_checkout(
         firstName=first,
         departureTime=departure_time,
         alreadyCheckedOut=already,
+        city=body.city,
     )
