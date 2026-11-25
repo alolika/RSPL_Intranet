@@ -710,3 +710,116 @@ def get_lead_records(
         )
         for r in rows
     ]
+
+
+# -------------------- Subscription Expiry Report --------------------
+#
+# Customers whose most recent subscription bill (products with LOB attribute
+# 7 = '2', i.e. annual-subscription products, minus the excluded product IDs
+# below) is more than one year old, i.e. the subscription has expired and
+# not been renewed. Query supplied by the user; filters added on top of it.
+
+_SUBSCRIPTION_EXCLUDED_PRODUCTS = "2123, 2077, 2188, 2074, 2072"
+
+
+class SubscriptionExpiryRow(BaseModel):
+    cust_id: int
+    display_name: str
+    product_names: str
+    mobile_no: str
+    last_subscription_voucher: str
+    last_subscription_bill_date: str | None
+    subscription_expired_date: str | None
+    last_bill_amount: float
+    days_since_last_bill: int
+    days_after_expiry: int
+
+
+@router.get("/subscription-products", response_model=list[LookupOption])
+def get_subscription_products(_cu: CurrentUser = Depends(get_current_user)) -> list[LookupOption]:
+    with get_cursor() as cursor:
+        cursor.execute(
+            "SELECT DISTINCT P.PRODUCTID, P.PRODUCTNAME FROM PRODUCTS P "
+            "INNER JOIN LOBATTRIBUTEVALUE LAV ON LAV.PRODUCTID = P.PRODUCTID "
+            "AND LAV.ATTRIBUTEID = 7 AND LAV.VALUEID = '2' "
+            f"WHERE P.PRODUCTID NOT IN ({_SUBSCRIPTION_EXCLUDED_PRODUCTS}) ORDER BY P.PRODUCTNAME"
+        )
+        return [LookupOption(label=r["PRODUCTNAME"], value=r["PRODUCTID"]) for r in rows_to_dicts(cursor)]
+
+
+@router.get("/subscription-expiry", response_model=list[SubscriptionExpiryRow])
+def get_subscription_expiry(
+    product_id: int = 0, customer_name: str = "", _cu: CurrentUser = Depends(get_current_user),
+) -> list[SubscriptionExpiryRow]:
+    where = ""
+    params: list = []
+    if product_id > 0:
+        # Subscription filter: the customer's last subscription bill includes this product.
+        where += " AND EXISTS (SELECT 1 FROM SALESDETAIL SDX WHERE SDX.VOUCHERNO = LB.VOUCHERNO AND SDX.PRODUCTID = ?)"
+        params.append(product_id)
+    if customer_name.strip():
+        where += " AND CM.DISPLAYNAME LIKE ?"
+        params.append(f"%{customer_name.strip()}%")
+
+    sql = f"""
+DECLARE @FromDate DATE = DATEADD(YEAR, -1, CAST(GETDATE() AS DATE));
+SELECT
+    CM.CUSTID, CM.DISPLAYNAME, LB.PRODUCTNAMES, CM.MOBILENO,
+    LB.VOUCHERNO AS LASTSUBSCRIPTIONVOUCHER,
+    LB.DATE AS LASTSUBSCRIPTIONBILLDATE,
+    DATEADD(YEAR, 1, LB.DATE) AS SUBSCRIPTIONEXPIREDDATE,
+    LB.NETAMOUNT AS LASTBILLAMOUNT,
+    DATEDIFF(DAY, LB.DATE, GETDATE()) AS DAYSSINCELASTBILL,
+    DATEDIFF(DAY, DATEADD(YEAR, 1, LB.DATE), GETDATE()) AS DAYSAFTEREXPIRY
+FROM CUSTOMERMASTER CM
+CROSS APPLY
+(
+    SELECT TOP 1
+        SM.VOUCHERNO, SM.DATE, SM.NETAMOUNT,
+        (
+            SELECT STRING_AGG(X.PRODUCTNAME, ', ')
+            FROM
+            (
+                SELECT DISTINCT P2.PRODUCTNAME
+                FROM SALESDETAIL SD2
+                INNER JOIN PRODUCTS P2 ON P2.PRODUCTID = SD2.PRODUCTID
+                INNER JOIN LOBATTRIBUTEVALUE LAV2
+                    ON LAV2.PRODUCTID = P2.PRODUCTID AND LAV2.ATTRIBUTEID = 7 AND LAV2.VALUEID = '2'
+                WHERE SD2.VOUCHERNO = SM.VOUCHERNO
+                  AND SD2.PRODUCTID NOT IN ({_SUBSCRIPTION_EXCLUDED_PRODUCTS})
+            ) X
+        ) AS PRODUCTNAMES
+    FROM SALESMASTER SM
+    INNER JOIN SALESDETAIL SD ON SM.VOUCHERNO = SD.VOUCHERNO
+    INNER JOIN PRODUCTS P ON P.PRODUCTID = SD.PRODUCTID
+    INNER JOIN LOBATTRIBUTEVALUE LAV
+        ON LAV.PRODUCTID = P.PRODUCTID AND LAV.ATTRIBUTEID = 7 AND LAV.VALUEID = '2'
+    WHERE SM.CUSTID = CM.CUSTID
+      AND SD.PRODUCTID NOT IN ({_SUBSCRIPTION_EXCLUDED_PRODUCTS})
+    ORDER BY SM.DATE DESC, SM.VOUCHERNO DESC
+) LB
+WHERE LB.DATE < @FromDate{where}
+ORDER BY LB.DATE DESC, CM.DISPLAYNAME
+"""
+    with get_cursor() as cursor:
+        cursor.execute(sql, *params)
+        rows = rows_to_dicts(cursor)
+
+    def _d(v) -> str | None:
+        return v.date().isoformat() if hasattr(v, "date") else (v.isoformat() if v else None)
+
+    return [
+        SubscriptionExpiryRow(
+            cust_id=r["CUSTID"],
+            display_name=(r["DISPLAYNAME"] or "").strip(),
+            product_names=r["PRODUCTNAMES"] or "",
+            mobile_no=(r["MOBILENO"] or "").strip(),
+            last_subscription_voucher=str(r["LASTSUBSCRIPTIONVOUCHER"] or ""),
+            last_subscription_bill_date=_d(r["LASTSUBSCRIPTIONBILLDATE"]),
+            subscription_expired_date=_d(r["SUBSCRIPTIONEXPIREDDATE"]),
+            last_bill_amount=float(r["LASTBILLAMOUNT"] or 0),
+            days_since_last_bill=r["DAYSSINCELASTBILL"] or 0,
+            days_after_expiry=r["DAYSAFTEREXPIRY"] or 0,
+        )
+        for r in rows
+    ]
